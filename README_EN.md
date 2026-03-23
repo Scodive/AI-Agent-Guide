@@ -676,6 +676,10 @@ As agents become increasingly autonomous and are empowered to take actions in th
 - **OSWorld**: The first benchmark for evaluating multimodal agents on open-ended tasks in real full-desktop OS environments, supporting cross-platform (Windows/Linux/macOS) evaluation with combined mouse and keyboard operations.
 
 ### Related Papers & Resources
+- **Why Agents Compromise Safety Under Pressure** (Jiang et al., 2026)
+    This work is the first to introduce the concept of "Agentic Pressure," exploring how interactions between agents and their environments affect accuracy under non-adversarial conditions. It provides a novel perspective on AI agent safety.
+    [arXiv: 2603.14975](https://arxiv.org/abs/2603.14975)
+
 
 - **Constitutional AI: Harmlessness from AI Feedback** (Bai et al., 2022)
 

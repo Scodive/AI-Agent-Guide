@@ -609,6 +609,10 @@ graph TB
 *   **MultiAgentBench**: 这是一个专为多智能体系统设计的评估基准。与AgentBench不同，它不仅关注最终的任务完成情况，更侧重于评估智能体在协作和竞争场景中的互动质量。它通过新颖的、基于里程碑的关键绩效指标（KPIs）来衡量智能体之间的协作效率和竞争策略的有效性 。
 
 ### 相关论文与资源
+*   **论文: Why Agents Compromise Safety Under Pressure** (Jiang et al., 2026)
+    首个提出智能体压力概念，探讨非主动攻击情况下智能体和环境交互影响准确性的现象，为智能体安全开辟了新的视角。
+    [arXiv: 2603.14975](https://arxiv.org/abs/2603.14975)
+
 *   **论文: Constitutional AI: Harmlessness from AI Feedback** (Bai et al., 2022)
 
     [arXiv: 2212.08073](https://arxiv.org/abs/2212.08073)
