@@ -610,7 +610,9 @@ graph TB
 
 ### 相关论文与资源
 *   **论文: Why Agents Compromise Safety Under Pressure** (Jiang et al., 2026)
+
     首个提出智能体压力概念，探讨非主动攻击情况下智能体和环境交互影响准确性的现象，为智能体安全开辟了新的视角。
+    
     [arXiv: 2603.14975](https://arxiv.org/abs/2603.14975)
 
 *   **论文: Constitutional AI: Harmlessness from AI Feedback** (Bai et al., 2022)
