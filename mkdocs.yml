@@ -1,0 +1,88 @@
+site_name: AI-Agent-Guide
+site_description: A comprehensive, authoritative guide to LLM-based AI Agents — covering architecture, papers, frameworks, and tools.
+site_url: https://scodive.github.io/AI-Agent-Guide/
+repo_url: https://github.com/Scodive/AI-Agent-Guide
+repo_name: Scodive/AI-Agent-Guide
+
+theme:
+  name: material
+  language: en
+  palette:
+    - scheme: slate
+      primary: deep purple
+      accent: cyan
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+    - scheme: default
+      primary: deep purple
+      accent: cyan
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - toc.follow
+  icon:
+    repo: fontawesome/brands/github
+
+plugins:
+  - search:
+      lang:
+        - en
+        - zh
+  - tags
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - admonition
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - attr_list
+  - md_in_html
+  - toc:
+      permalink: true
+
+nav:
+  - Home: index.md
+  - Guide (English):
+    - Surveys & Overviews: en/surveys.md
+    - Core Architecture: en/architecture.md
+    - Perception Module: en/perception.md
+    - Planning & Reasoning: en/planning.md
+    - Memory Module: en/memory.md
+    - Action Module & MCP: en/action.md
+    - Agentic Coding: en/coding.md
+    - Agent Frameworks: en/frameworks.md
+    - Multi-Agent Systems: en/mas.md
+    - Trustworthiness: en/trustworthiness.md
+    - Top Conference Papers: en/conferences.md
+  - 指南 (中文):
+    - 综述概览: zh/surveys.md
+    - 核心架构: zh/architecture.md
+  - Contributing: contributing.md
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/Scodive/AI-Agent-Guide
+  analytics:
+    provider: google
+
+copyright: Copyright &copy; 2025 Scodive | MIT License
