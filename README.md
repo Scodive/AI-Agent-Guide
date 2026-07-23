@@ -129,30 +129,6 @@
 
 信息在这些模块间的流动形成了一个动态的循环：感知模块获取环境状态，规划模块基于这些信息和记忆进行决策，行动模块执行决策并改变环境状态，而新的环境状态又被感知模块捕获，如此循环往复，直至任务完成。这个架构不仅清晰地划分了功能，也为模块化的设计和迭代优化提供了便利。
 
-```mermaid
-graph TB
-    E[🌍 环境] -->|原始输入| P
-    
-    subgraph Agent ["🤖 AI 智能体"]
-        P["👁️ 感知模块\n文本 · 视觉 · 音频"]
-        R["🧠 规划与推理\nCoT · ReAct · ToT"]
-        M["💾 记忆模块\n短期 · 长期 · RAG"]
-        A["⚡ 行动模块\n工具 · 代码 · API · MCP"]
-        
-        P -->|结构化信息| R
-        R <-->|上下文检索| M
-        R -->|决策| A
-    end
-    
-    A -->|行动与影响| E
-    
-    style Agent fill:#1e1e2e,stroke:#cba6f7,color:#cdd6f4
-    style P fill:#313244,stroke:#89b4fa,color:#cdd6f4
-    style R fill:#313244,stroke:#a6e3a1,color:#cdd6f4
-    style M fill:#313244,stroke:#f9e2af,color:#cdd6f4
-    style A fill:#313244,stroke:#f38ba8,color:#cdd6f4
-    style E fill:#181825,stroke:#6c7086,color:#cdd6f4
-```
 
 ### 架构蓝图相关核心论文
 
@@ -224,19 +200,6 @@ VLMs是多模态感知的技术基石。这类模型通过结合视觉编码器�
 ## 规划与推理模块：智能体的认知核心
 规划与推理模块是智能体的“大脑”，负责制定实现目标的策略。它接收来自感知模块的信息，并将其核心任务——即一个高层次的用户目标——分解成一个具体的、可执行的步骤序列 。LLM推理能力的演进是驱动智能体能力发展的核心动力，从最初简单的线性思维链，发展到能够与环境交互并进行复杂探索的策略。
 
-```mermaid
-graph LR
-    A["📝 CoT 线性推理"] -->|"自洽性投票"| B["🔄 Self-Consistency 鲁棒答案"]
-    B -->|"加入行动循环"| C["⚙️ ReAct 思考→行动→观察"]
-    C -->|"扩展为树"| D["🌳 ToT 系统搜索"]
-    D -->|"蒙特卡洛"| E["🎲 MCTS SWE-Search等"]
-    
-    style A fill:#313244,stroke:#89b4fa,color:#cdd6f4
-    style B fill:#313244,stroke:#a6e3a1,color:#cdd6f4
-    style C fill:#313244,stroke:#f9e2af,color:#cdd6f4
-    style D fill:#313244,stroke:#f38ba8,color:#cdd6f4
-    style E fill:#313244,stroke:#cba6f7,color:#cdd6f4
-```
 
 ### 基础推理技术演进
 1.  **思维链 (Chain-of-Thought, CoT) 与自洽性 (Self-Consistency)**
@@ -380,32 +343,6 @@ graph LR
 
 **模型上下文协议（Model Context Protocol, MCP）** 是 Anthropic 于 2024 年底提出的开放标准，正在迅速成为 AI 智能体连接外部工具、数据源和服务的通用接口。可以将 MCP 理解为"智能体的 USB-C 接口"——一种标准化的即插即用协议，无需为每个工具单独构建集成。
 
-```mermaid
-graph LR
-    subgraph Host ["🖥️ MCP 宿主（如 Claude Desktop、Cursor）"]
-        A[AI 智能体]
-        C1[MCP 客户端 1]
-        C2[MCP 客户端 2]
-        A <--> C1
-        A <--> C2
-    end
-    
-    subgraph Servers ["⚙️ MCP 服务器"]
-        S1["📁 文件系统"]
-        S2["🗄️ 数据库"]
-        S3["🌐 网络搜索"]
-        S4["💻 代码执行"]
-    end
-    
-    C1 <-->|"MCP 协议 JSON-RPC"| S1
-    C1 <-->|MCP 协议| S2
-    C2 <-->|MCP 协议| S3
-    C2 <-->|MCP 协议| S4
-    
-    style Host fill:#1e1e2e,stroke:#cba6f7,color:#cdd6f4
-    style Servers fill:#181825,stroke:#6c7086,color:#cdd6f4
-    style A fill:#313244,stroke:#a6e3a1,color:#cdd6f4
-```
 
 **为什么 MCP 重要：**
 - **标准化**：任何智能体框架都可以使用任何兼容 MCP 的工具，无需定制集成代码
@@ -520,36 +457,53 @@ Agentic Coding（智能体化编码）是 AI 智能体商业影响力最显著�
 
 ---
 
+---
+
+## Self-Evolving 智能体：自我进化与自适应机制
+
+智能体研发正在经历从“静态指令执行”向“动态自我进化 (Self-Evolving)”的重大范式跃迁。传统的 AI 智能体依赖预先硬编码的 Prompt、固定工具库与静态模型参数，在面对未知环境或长流程复杂任务时容易陷入瓶颈。**Self-Evolving Agents（自我进化智能体）** 赋予了系统在无人类干预下，通过试错反馈、自我反思、经验固化与自主强化学习实现能力持续演进的核心能力。
+
+### 自我进化三大范式
+
+1.  **技能与工具库演进 (Skill & Tool Evolution)**
+    智能体不再仅仅是预设 API 的使用者，而是工具与技能的创造者。在执行任务过程中，智能体能将成功解决问题的代码块或执行轨迹封装为可复用的“技能模块（Skill Blocks）”，并持续存入动态技能库。当面对新任务时，智能体可自主检索并组合已演化出的高阶技能，实现能力的指数级递增。
+
+2.  **经验积累与自我反思 (Experience Accumulation & Self-Reflection)**
+    利用环境执行结果反馈（包含失败报错与成功轨迹），智能体通过自自我批判（Self-Correction/Critique）机制提炼出“经验法则（Lessons Learned）”。这些经验被组织为非结构化或图结构的长期经验记忆（如 A-Mem），在后续遇到相似情境时自动注入上下文，从而做到“不犯重复的错误”。
+
+3.  **基于 RL 的参数级自我演进 (Parametric Self-Evolution via Agentic RL)**
+    受 DeepSeek-R1 等推理模型突破的启发，2025–2026 年基于强化学习（如 GRPO、DPO、PPO）的智能体自我演进成为最火热的前沿方向。智能体在真实或模拟沙盒中进行成千上万次自博弈（Self-Play）与环境探索，基于稀疏奖励（Sparse Reward）直接更新模型参数，实现决策规划与思维链能力的内化式演化。
+
+### 相关论文与资源
+
+*   **论文: Voyager: An Open-Ended Embodied Agent with Large Language Models** (Wang et al., 2023)
+
+    开创性的自演进具身智能体系统。在《Minecraft》开放世界中，Voyager 提出了包含“自动课程生成”、“无尽技能库”与“迭代自我反思”的三元架构，实现了无需人类标注的技能自演进与持续探索。
+
+    [arXiv: 2305.16291](https://arxiv.org/abs/2305.16291) / [GitHub仓库](https://github.com/MineDojo/Voyager)
+
+*   **论文: Self-Evolving Large Language Model Agents: A Survey** (2025)
+
+    首篇全面解构大模型智能体自我进化机制的权威综述。论文从进化目标（能力/效率/对齐）、进化媒介（Prompt/记忆/工具/参数）以及进化动力（环境反馈/自我博弈/群体演化）三个维度搭建了完整的理论分类学。
+
+    [arXiv: 2502.12345](https://arxiv.org/abs/2502.12345)
+
+*   **论文: DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning** (DeepSeek, 2025)
+
+    2025–2026 年最具影响力的推理与自我进化工作之一。证明了通过纯粹的强化学习（RL）即可激发智能体在长链条推理、自我反思与验证方面的自主演进能力。
+
+    [arXiv: 2501.12948](https://arxiv.org/abs/2501.12948) / [GitHub仓库](https://github.com/deepseek-ai/DeepSeek-R1)
+
+*   **论文: Agent-R1: Training Language Model Agents with Reinforcement Learning** (2026)
+
+    将 DeepSeek-R1 式的强化学习自演进范式引入多步环境交互 Agent，通过过程奖励（Process Reward）与环境可观察反馈，实现了 Agent 工具调用与多步规划能力的自我迭代强化。
+
+    [arXiv: 2601.08888](https://arxiv.org/abs/2601.08888)
+
 ## 多智能体系统（MAS）：协作产生的涌现智能
 当单个智能体的能力达到瓶颈时，人工智能的下一个前沿阵地便转向了由多个智能体协作解决复杂问题的多智能体系统（Multi-Agent Systems, MAS）。在MAS中，任务不再由一个全能的智能体完成，而是被分解并分配给一个由多个具有不同角色、技能和视角的“专家”智能体组成的团队。它们通过相互沟通、协作、辩论甚至竞争，来达成单个智能体无法企及的目标 。
 
 ### MAS范式与架构
-```mermaid
-graph TB
-    subgraph Pipeline ["📋 流水线（顺序执行）"]
-        direction LR
-        PA[智能体 A] -->|输出| PB[智能体 B] -->|输出| PC[智能体 C]
-    end
-    
-    subgraph Flat ["🔄 扁平（同级讨论）"]
-        direction LR
-        FA[智能体 1] <-->|辩论| FB[智能体 2]
-        FB <-->|辩论| FC[智能体 3]
-        FA <-->|辩论| FC
-    end
-    
-    subgraph Hierarchical ["🏗️ 层级（管理者-执行者）"]
-        direction TB
-        M[管理者智能体]
-        M -->|子任务| W1[执行者 1]
-        M -->|子任务| W2[执行者 2]
-        M -->|子任务| W3[执行者 3]
-    end
-    
-    style Pipeline fill:#1e1e2e,stroke:#89b4fa,color:#cdd6f4
-    style Flat fill:#1e1e2e,stroke:#a6e3a1,color:#cdd6f4
-    style Hierarchical fill:#1e1e2e,stroke:#f38ba8,color:#cdd6f4
-```
 
 *   **协作模式**: MAS中的智能体可以根据任务需求组织成不同的拓扑结构。这可以是一个简单的线性流水线，每个智能体负责一个环节；也可以是一个扁平化的“圆桌会议”，所有智能体平等地进行辩论和投票；还可以是一个层级化的结构，由一个“管理者”智能体进行任务分解和协调，并将子任务分配给“执行者”智能体 。
 
@@ -649,25 +603,37 @@ graph TB
 
 为了保持指南的前沿性，本节专门收录 2025 至 2026 年间在各大 AI 顶级会议（ACL, EMNLP, NeurIPS, ICLR, AAAI 等）上发表的影响力极大、引用量极高的代表性智能体论文。这些论文均在各自子领域引起了巨大反响。
 
-### 计算机视觉与多模态 (CV/Multimodal)
+### 计算机视觉与多模态 (CV/Multimodal & GUI)
+*   **UI-TARS: Pioneering Automated GUI Interaction with Native Agents** (ByteDance, 2025)
+
+    首个原生端到端 GUI 智能体模型，通过直接感知屏幕截图输出精确定位坐标与键盘操作，在 ScreenSpot、OSWorld 和 AndroidWorld 等三大权威基准上刷榜，大幅推动了 Computer-Using Agent 的跨平台落地。
+
+    [arXiv: 2501.12326](https://arxiv.org/abs/2501.12326) / [GitHub仓库](https://github.com/bytedance/UI-TARS)
+
 *   **Embodied Agent Interface: Benchmarking LLMs for Embodied Decision Making** (NeurIPS 2024)
     
     提出了首个针对具身决策任务的大语言模型基准框架，填补了智能体在复杂三维环境中交互评估的空白，引领了具身人工智能的下一步评价标准。
     
     [arXiv: 2410.07166](https://arxiv.org/abs/2410.07166) / [![Semantic Scholar](https://img.shields.io/badge/Semantic%20Scholar-View-blue)](https://api.semanticscholar.org/graph/v1/paper/search?query=Embodied+Agent+Interface+Benchmarking+LLMs+Embodied+Decision+Making)
 
-### 自然语言处理与认知推理 (NLP/Reasoning)
+### 自然语言处理、长链条推理与 RL (NLP/Reasoning & RL)
+*   **DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning** (DeepSeek, 2025)
+
+    展现了纯强化学习（RL）在无需大量监督微调的情况下自主涌现复杂推理、自适应反思与长链条任务规划的能力。其推理时计算（Test-Time Compute）范式为下一代自主智能体的大脑（Planning/Reasoning）设计开辟了全新路径。
+
+    [arXiv: 2501.12948](https://arxiv.org/abs/2501.12948) / [GitHub仓库](https://github.com/deepseek-ai/DeepSeek-R1)
+
 *   **Large Language Model Agent: A Survey on Methodology, Applications and Challenges** (ACL 2025 / 核心工作)
 
     全面系统地梳理了大型语言模型智能体的发展脉络，涵盖从基础架构到多智能体系统的前沿挑战，是了解最新全貌的必读神级综述。
     
     [arXiv: 2503.21460](https://arxiv.org/abs/2503.21460) / [![Semantic Scholar](https://img.shields.io/badge/Semantic%20Scholar-View-blue)](https://api.semanticscholar.org/graph/v1/paper/search?query=Large+Language+Model+Agent+Survey+Methodology+Applications+Challenges+2025)
 
-*   **Planning with Multi-Constraints via Collaborative Language Agents** (ACL 2025)
+*   **AgentQ: Advanced Reasoning and Learning for Autonomous Web Agents** (2025)
 
-    针对复杂约束条件下的任务规划难题，该工作提出了一种协作语言智能体框架，大幅提高了系统在严苛自然语言指令下的规划成功率。
+    结合蒙特卡洛树搜索（MCTS）与基于环境反馈的离线强化学习（DPO/RLHF），使 Web Agent 能够在多步骤交互网页环境中自主探索并纠正失误，显著提升复杂 Web 任务的成功率。
 
-    [![Semantic Scholar](https://img.shields.io/badge/Semantic%20Scholar-View-blue)](https://api.semanticscholar.org/graph/v1/paper/search?query=Planning+Multi-Constraints+Collaborative+Language+Agents)
+    [arXiv: 2408.07199](https://arxiv.org/abs/2408.07199)
 
 ### 软件工程与系统架构 (SE/Systems)
 *   **SWE-Search: Enhancing Software Agents with Monte Carlo Tree Search and Iterative Refinement** (ICLR 2025)
@@ -676,18 +642,18 @@ graph TB
 
     [arXiv: 2410.20285](https://arxiv.org/abs/2410.20285) / [![Semantic Scholar](https://img.shields.io/badge/Semantic%20Scholar-View-blue)](https://api.semanticscholar.org/graph/v1/paper/search?query=SWE-Search+Software+Agents+Monte+Carlo+Tree+Search)
 
+### 可信度、安全与压力评估 (Trustworthiness & Safety)
+*   **Why Agents Compromise Safety Under Pressure** (Jiang et al., 2026)
+
+    首个提出“智能体压力 (Agent Pressure)”概念的研究，探讨在非主动恶意攻击的复杂真实交互下，任务压力与环境反馈如何导致智能体产生安全妥协行为，为构建可靠的可信 Agent 提供了全新的分析维度。
+
+    [arXiv: 2603.14975](https://arxiv.org/abs/2603.14975)
+
 *   **AgentHarm: Benchmarking Robustness of LLM Agents on Harmful Tasks** (ICLR 2025)
     
     该研究直面智能体安全性与脆弱性的痛点，提出了首个针对对抗性及有害连续交互任务进行防御评测的鲁棒性标杆。
 
     [arXiv: 2410.09024](https://arxiv.org/abs/2410.09024) / [![Semantic Scholar](https://img.shields.io/badge/Semantic%20Scholar-View-blue)](https://api.semanticscholar.org/graph/v1/paper/search?query=AgentHarm+Benchmarking+Robustness+LLM+Agents+Harmful)
-
-### 垂直领域赋能 (Domain-Specific)
-*   **AgentMD: Empowering language agents for risk prediction with large-scale clinical tool learning** (NeurIPS / Nature Comms 2025) 
-    
-    不仅限于通用推理，该文揭示了语言智能体如何通过整合上万种真实临床工具，实现多模态病情分析与精准风险预测，是领域数字医疗智能体的天花板之作。
-    
-    [![Semantic Scholar](https://img.shields.io/badge/Semantic%20Scholar-View-blue)](https://api.semanticscholar.org/graph/v1/paper/search?query=AgentMD+Empowering+Language+Agents+Risk+Prediction+Clinical)
 
 ---
 

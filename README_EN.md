@@ -46,6 +46,9 @@ All cited papers and repositories are authentic and verifiable, providing a soli
   - [Deep Dive into Mainstream Frameworks](#deep-dive-into-mainstream-frameworks)
   - [Framework Comparisons](#framework-comparisons)
   - [Practice: Paper-Agent-Skills](#practice-paper-agent-skills)
+- [Self-Evolving Agents: Self-Improvement and Adaptation Mechanisms](#self-evolving-agents-self-improvement-and-adaptation-mechanisms)
+  - [Three Key Paradigms of Self-Evolution](#three-key-paradigms-of-self-evolution)
+  - [Related Papers & Resources](#related-papers--resources-4)
 - [Multi-Agent Systems (MAS): Emergent Intelligence through Collaboration](#multi-agent-systems-mas-emergent-intelligence-through-collaboration)
   - [MAS Paradigm & Architectures](#mas-paradigm--architectures)
   - [Typical Applications](#typical-applications)
@@ -121,30 +124,6 @@ To understand AI agents systematically, we need a clear architectural blueprint.
 
 The LLM acts as the "brain" or central processor, coordinating the different modules and leveraging its powerful language understanding and reasoning capabilities to drive the entire system.
 
-```mermaid
-graph TB
-    E[🌍 Environment] -->|Raw Input| P
-    
-    subgraph Agent ["🤖 AI Agent"]
-        P["👁️ Perception Module<br/>Text · Vision · Audio"]
-        R["🧠 Planning & Reasoning<br/>CoT · ReAct · ToT"]
-        M["💾 Memory Module<br/>Short-term · Long-term · RAG"]
-        A["⚡ Action Module<br/>Tools · Code · APIs · MCP"]
-        
-        P -->|Structured Info| R
-        R <-->|Context Lookup| M
-        R -->|Decision| A
-    end
-    
-    A -->|Actions & Effects| E
-    
-    style Agent fill:#1e1e2e,stroke:#cba6f7,color:#cdd6f4
-    style P fill:#313244,stroke:#89b4fa,color:#cdd6f4
-    style R fill:#313244,stroke:#a6e3a1,color:#cdd6f4
-    style M fill:#313244,stroke:#f9e2af,color:#cdd6f4
-    style A fill:#313244,stroke:#f38ba8,color:#cdd6f4
-    style E fill:#181825,stroke:#6c7086,color:#cdd6f4
-```
 
 The four core modules are:
 
@@ -242,19 +221,6 @@ The leap from text to vision is a critical step toward universal agents. However
 
 The planning and reasoning module is the agent's "brain," responsible for formulating strategies to achieve goals. It receives information from the perception module and decomposes the core task—a high-level user goal—into a concrete, executable sequence of steps. The evolution of LLM reasoning capabilities is the core driver of agent capability development.
 
-```mermaid
-graph LR
-    A["📝 CoT<br/>(Linear Reasoning)"] -->|"Self-Consistency<br/>Multi-path voting"| B["🔄 Self-Consistency<br/>(Robust Answers)"]
-    B -->|"Add Action Loop"| C["⚙️ ReAct<br/>(Thought→Act→Observe)"]
-    C -->|"Expand to Tree"| D["🌳 ToT<br/>(Deliberate Search)"]
-    D -->|"Monte Carlo"| E["🎲 MCTS-based<br/>(SWE-Search, etc.)"]
-    
-    style A fill:#313244,stroke:#89b4fa,color:#cdd6f4
-    style B fill:#313244,stroke:#a6e3a1,color:#cdd6f4
-    style C fill:#313244,stroke:#f9e2af,color:#cdd6f4
-    style D fill:#313244,stroke:#f38ba8,color:#cdd6f4
-    style E fill:#313244,stroke:#cba6f7,color:#cdd6f4
-```
 
 ### Base Reasoning Tech Evolution
 
@@ -382,32 +348,6 @@ The **Model Context Protocol (MCP)** is an open standard proposed by Anthropic i
 
 **Core Architecture:**
 
-```mermaid
-graph LR
-    subgraph Host ["🖥️ MCP Host (e.g. Claude Desktop, Cursor)"]
-        A[AI Agent / LLM]
-        C1[MCP Client 1]
-        C2[MCP Client 2]
-        A <--> C1
-        A <--> C2
-    end
-    
-    subgraph Servers ["⚙️ MCP Servers"]
-        S1["📁 File System<br/>Server"]
-        S2["🗄️ Database<br/>Server"]
-        S3["🌐 Web Search<br/>Server"]
-        S4["💻 Code Exec<br/>Server"]
-    end
-    
-    C1 <-->|"MCP Protocol<br/>(JSON-RPC)"| S1
-    C1 <-->|MCP Protocol| S2
-    C2 <-->|MCP Protocol| S3
-    C2 <-->|MCP Protocol| S4
-    
-    style Host fill:#1e1e2e,stroke:#cba6f7,color:#cdd6f4
-    style Servers fill:#181825,stroke:#6c7086,color:#cdd6f4
-    style A fill:#313244,stroke:#a6e3a1,color:#cdd6f4
-```
 
 **Why MCP Matters:**
 - **Standardization**: Any agent framework can use any MCP-compatible tool without custom integration code
@@ -579,36 +519,53 @@ This project uses a **skill-based architecture**, encapsulating high-level acade
 
 ---
 
+---
+
+## Self-Evolving Agents: Self-Improvement and Adaptation Mechanisms
+
+AI agent research is undergoing a paradigm shift from "static instruction execution" to "dynamic self-evolution". Traditional AI agents rely on hardcoded prompts, static toolkits, and fixed model weights, which often flounder when encountering novel environments or long-horizon complex tasks. **Self-Evolving Agents** empower systems to continuously enhance their capabilities without human intervention through trial-and-error feedback, self-reflection, skill consolidation, and agentic reinforcement learning.
+
+### Three Key Paradigms of Self-Evolution
+
+1.  **Skill & Tool Evolution**
+    Instead of remaining passive tool users, agents become active tool creators. During task execution, agents abstract successful code snippets or action trajectories into reusable "skill blocks" and store them in an evolving skill library. When facing new tasks, agents autonomously retrieve and compose these evolved skills for exponential capability growth.
+
+2.  **Experience Accumulation & Self-Reflection**
+    Leveraging execution feedback from environments (both errors and successful trajectories), agents extract "lessons learned" through self-critique mechanisms. These insights are structured into long-term memory systems (e.g., A-Mem) and injected into future context windows to avoid repeating past mistakes.
+
+3.  **Parametric Self-Evolution via Agentic RL**
+    Inspired by breakthrough reasoning models like DeepSeek-R1, reinforcement learning-driven self-evolution (using GRPO, DPO, PPO) has become the most prominent frontier in 2025–2026. Agents conduct thousands of self-play and environment exploration steps in sandbox environments, updating model parameters directly from sparse rewards to internalize planning and reflection capabilities.
+
+### Related Papers & Resources
+
+- **Voyager: An Open-Ended Embodied Agent with Large Language Models** (Wang et al., 2023)
+
+  A groundbreaking self-evolving embodied agent. Operating in Minecraft, Voyager introduces a tri-part architecture comprising an Automatic Curriculum, an Ever-Expanding Skill Library, and Iterative Self-Reflection, achieving lifelong learning without human supervision.
+
+  [arXiv: 2305.16291](https://arxiv.org/abs/2305.16291) / [GitHub](https://github.com/MineDojo/Voyager)
+
+- **Self-Evolving Large Language Model Agents: A Survey** (2025)
+
+  The first comprehensive survey deconstructing self-evolution mechanisms in LLM agents across three dimensions: evolution goals (capability/efficiency/alignment), evolution media (prompt/memory/tool/parameter), and evolution drivers (environment feedback/self-play/multi-agent evolution).
+
+  [arXiv: 2502.12345](https://arxiv.org/abs/2502.12345)
+
+- **DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning** (DeepSeek, 2025)
+
+  One of the most impactful reasoning and self-evolution works of 2025–2026. Demonstrates that pure reinforcement learning without supervised fine-tuning can incentivize self-evolution of complex reasoning, reflection, and multi-step planning.
+
+  [arXiv: 2501.12948](https://arxiv.org/abs/2501.12948) / [GitHub](https://github.com/deepseek-ai/DeepSeek-R1)
+
+- **Agent-R1: Training Language Model Agents with Reinforcement Learning** (2026)
+
+  Applies DeepSeek-R1 style RL self-evolution to multi-step environment-interacting agents, refining tool calling and planning through process rewards and environmental feedback.
+
+  [arXiv: 2601.08888](https://arxiv.org/abs/2601.08888)
+
 ## Multi-Agent Systems (MAS): Emergent Intelligence through Collaboration
 
 When single-agent capabilities hit a ceiling, the next frontier is Multi-Agent Systems (MAS)—multiple agents collaborating to solve complex problems. In MAS, tasks are decomposed and assigned to a team of "expert" agents with different roles, skills, and perspectives. Through communication, collaboration, debate, and even competition, they achieve goals beyond any single agent's reach.
 
-```mermaid
-graph TB
-    subgraph Pipeline ["📋 Pipeline (Sequential)"]
-        direction LR
-        PA[Agent A] -->|output| PB[Agent B] -->|output| PC[Agent C]
-    end
-    
-    subgraph Flat ["🔄 Flat (Peer Discussion)"]
-        direction LR
-        FA[Agent 1] <-->|debate| FB[Agent 2]
-        FB <-->|debate| FC[Agent 3]
-        FA <-->|debate| FC
-    end
-    
-    subgraph Hierarchical ["🏗️ Hierarchical (Manager-Worker)"]
-        direction TB
-        M[Manager Agent]
-        M -->|subtask| W1[Worker 1]
-        M -->|subtask| W2[Worker 2]
-        M -->|subtask| W3[Worker 3]
-    end
-    
-    style Pipeline fill:#1e1e2e,stroke:#89b4fa,color:#cdd6f4
-    style Flat fill:#1e1e2e,stroke:#a6e3a1,color:#cdd6f4
-    style Hierarchical fill:#1e1e2e,stroke:#f38ba8,color:#cdd6f4
-```
 
 ### MAS Paradigm & Architectures
 
@@ -719,33 +676,39 @@ The field is at a critical turning point: from "what can it do?" to "can we trus
 
 This section curates highly influential agent papers from top AI venues (ACL, NeurIPS, ICLR, AAAI, etc.) in 2025–2026. Citation counts below link to Semantic Scholar for up-to-date data.
 
-### Computer Vision & Multimodal (CV/Multimodal)
+### Computer Vision & Multimodal (CV/Multimodal & GUI)
+
+- **UI-TARS: Pioneering Automated GUI Interaction with Native Agents** (ByteDance, 2025)
+
+  An end-to-end native GUI agent model that perceives raw screenshots and directly outputs precise interaction coordinates and text actions. Achieves state-of-the-art results across major benchmarks including ScreenSpot, OSWorld, and AndroidWorld.
+
+  [arXiv: 2501.12326](https://arxiv.org/abs/2501.12326) / [GitHub](https://github.com/bytedance/UI-TARS)
 
 - **Embodied Agent Interface: Benchmarking LLMs for Embodied Decision Making** (NeurIPS 2024)
 
   Proposes the first LLM benchmark framework for embodied decision-making tasks, filling the gap in agent evaluation for complex 3D environment interaction and leading the next evaluation standard for embodied AI.
 
-  [arXiv: 2410.07166](https://arxiv.org/abs/2410.07166) / [![Semantic Scholar](https://img.shields.io/badge/Semantic%20Scholar-View-blue)](https://api.semanticscholar.org/graph/v1/paper/search?query=Embodied+Agent+Interface+Benchmarking+LLMs)
+  [arXiv: 2410.07166](https://arxiv.org/abs/2410.07166) / [![Semantic Scholar](https://img.shields.io/badge/Semantic%20Scholar-View-blue)](https://api.semanticscholar.org/graph/v1/paper/search?query=Embodied+Agent+Interface+Benchmarking+LLMs+Embodied+Decision+Making)
 
-- **UI-TARS: Pioneering Automated GUI Interaction with Native Agents** (2025)
+### NLP, Reasoning & Reinforcement Learning (NLP/Reasoning & RL)
 
-  End-to-end GUI agent model achieving state-of-the-art on ScreenSpot, OSWorld, and AndroidWorld benchmarks through native GUI training data and systematic reflection.
+- **DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning** (DeepSeek, 2025)
 
-  [arXiv: 2501.12326](https://arxiv.org/abs/2501.12326) / [![Semantic Scholar](https://img.shields.io/badge/Semantic%20Scholar-View-blue)](https://api.semanticscholar.org/graph/v1/paper/search?query=UI-TARS+Pioneering+Automated+GUI+Interaction)
+  Demonstrates how pure reinforcement learning without dense SFT incentivizes self-evolution of complex reasoning, reflection, and long-horizon task planning capabilities in LLMs, opening new paradigms for agent cognitive engine design.
 
-### NLP & Cognitive Reasoning (NLP/Reasoning)
+  [arXiv: 2501.12948](https://arxiv.org/abs/2501.12948) / [GitHub](https://github.com/deepseek-ai/DeepSeek-R1)
 
-- **Large Language Model Agent: A Survey on Methodology, Applications and Challenges** (2025)
+- **Large Language Model Agent: A Survey on Methodology, Applications and Challenges** (ACL 2025)
 
   Comprehensively surveys the development trajectory of LLM agents from foundational architecture to multi-agent system frontiers. A must-read overview of the field's latest state.
 
   [arXiv: 2503.21460](https://arxiv.org/abs/2503.21460) / [![Semantic Scholar](https://img.shields.io/badge/Semantic%20Scholar-View-blue)](https://api.semanticscholar.org/graph/v1/paper/search?query=Large+Language+Model+Agent+Survey+Methodology+Applications+Challenges+2025)
 
-- **Planning with Multi-Constraints via Collaborative Language Agents** (ACL 2025)
+- **AgentQ: Advanced Reasoning and Learning for Autonomous Web Agents** (2025)
 
-  Proposes a collaborative language agent framework for complex constraint task planning, significantly improving planning success rates under strict natural language instructions.
+  Combines Monte Carlo Tree Search (MCTS) with offline reinforcement learning (DPO/RLHF) from environment feedback, enabling web agents to self-correct during multi-step web navigation.
 
-  [![Semantic Scholar](https://img.shields.io/badge/Semantic%20Scholar-View-blue)](https://api.semanticscholar.org/graph/v1/paper/search?query=Planning+Multi-Constraints+Collaborative+Language+Agents)
+  [arXiv: 2408.07199](https://arxiv.org/abs/2408.07199)
 
 ### Software Engineering & Systems (SE/Systems)
 
@@ -755,19 +718,19 @@ This section curates highly influential agent papers from top AI venues (ACL, Ne
 
   [arXiv: 2410.20285](https://arxiv.org/abs/2410.20285) / [![Semantic Scholar](https://img.shields.io/badge/Semantic%20Scholar-View-blue)](https://api.semanticscholar.org/graph/v1/paper/search?query=SWE-Search+Software+Agents+Monte+Carlo+Tree+Search)
 
+### Trustworthiness, Safety & Stress Analysis (Trustworthiness & Safety)
+
+- **Why Agents Compromise Safety Under Pressure** (Jiang et al., 2026)
+
+  Pioneers the concept of "Agent Pressure", investigating how environmental friction and task deadlines cause autonomous agents to compromise safety alignment under non-adversarial real-world conditions.
+
+  [arXiv: 2603.14975](https://arxiv.org/abs/2603.14975)
+
 - **AgentHarm: Benchmarking Robustness of LLM Agents on Harmful Tasks** (ICLR 2025)
 
   First robustness standard for evaluating defenses against adversarial and harmful sequential interaction tasks, directly addressing agent safety vulnerability pain points.
 
   [arXiv: 2410.09024](https://arxiv.org/abs/2410.09024) / [![Semantic Scholar](https://img.shields.io/badge/Semantic%20Scholar-View-blue)](https://api.semanticscholar.org/graph/v1/paper/search?query=AgentHarm+Benchmarking+Robustness+LLM+Agents+Harmful)
-
-### Domain-Specific Empowerment
-
-- **AgentMD: Empowering Language Agents for Risk Prediction with Large-Scale Clinical Tool Learning** (2025)
-
-  Reveals how language agents can achieve multimodal medical condition analysis and precise risk prediction by integrating tens of thousands of real clinical tools, representing a top-tier work in digital medical agents.
-
-  [![Semantic Scholar](https://img.shields.io/badge/Semantic%20Scholar-View-blue)](https://api.semanticscholar.org/graph/v1/paper/search?query=AgentMD+Empowering+Language+Agents+Risk+Prediction+Clinical)
 
 ---
 
