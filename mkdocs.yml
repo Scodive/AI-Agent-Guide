@@ -1,25 +1,16 @@
 site_name: AI-Agent-Guide
-site_description: A comprehensive, authoritative guide to LLM-based AI Agents — covering architecture, papers, frameworks, and tools.
+site_description: 人工精选、可核验的 AI Agent 研究指南与论文库。
 site_url: https://scodive.github.io/AI-Agent-Guide/
 repo_url: https://github.com/Scodive/AI-Agent-Guide
 repo_name: Scodive/AI-Agent-Guide
 
 theme:
   name: material
-  language: en
+  language: zh
   palette:
-    - scheme: slate
-      primary: deep purple
-      accent: cyan
-      toggle:
-        icon: material/brightness-4
-        name: Switch to light mode
-    - scheme: default
-      primary: deep purple
-      accent: cyan
-      toggle:
-        icon: material/brightness-7
-        name: Switch to dark mode
+    scheme: default
+    primary: custom
+    accent: custom
   features:
     - navigation.tabs
     - navigation.sections
@@ -59,23 +50,22 @@ markdown_extensions:
   - toc:
       permalink: true
 
+extra_css:
+  - assets/papers.css
+
+extra_javascript:
+  - assets/papers.js
+
 nav:
-  - Home: index.md
-  - Guide (English):
-    - Surveys & Overviews: en/surveys.md
-    - Core Architecture: en/architecture.md
-    - Perception Module: en/perception.md
-    - Planning & Reasoning: en/planning.md
-    - Memory Module: en/memory.md
-    - Action Module & MCP: en/action.md
-    - Agentic Coding: en/coding.md
-    - Agent Frameworks: en/frameworks.md
-    - Multi-Agent Systems: en/mas.md
-    - Trustworthiness: en/trustworthiness.md
-    - Top Conference Papers: en/conferences.md
-  - 指南 (中文):
-    - 综述概览: zh/surveys.md
-    - 核心架构: zh/architecture.md
+  - 首页: index.md
+  - 新手阅读路线: reading-path.md
+  - 论文库: papers.md
+  - 本月精选: monthly-picks.md
+  - Agent Harness 与 Coding Agent: harness.md
+  - RSI 与自我改进: rsi.md
+  - 中文完整指南: guide-zh.md
+  - English guide: guide-en.md
+  - 收录标准与每周 SOP: update-sop.md
   - Contributing: contributing.md
 
 extra:
@@ -85,4 +75,4 @@ extra:
   analytics:
     provider: google
 
-copyright: Copyright &copy; 2025 Scodive | MIT License
+copyright: Copyright &copy; 2026 Scodive | MIT License

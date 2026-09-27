@@ -1,22 +1,22 @@
 # AI-Agent-Guide
 
-[English](README_EN.md) | [中文](README.md)
+[English](guide-en.md) | [中文](guide-zh.md)
 
 [![GitHub Stars](https://img.shields.io/github/stars/Scodive/AI-Agent-Guide?style=social)](https://github.com/Scodive/AI-Agent-Guide/stargazers)
 [![Last Commit](https://img.shields.io/github/last-commit/Scodive/AI-Agent-Guide)](https://github.com/Scodive/AI-Agent-Guide/commits/main)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/Scodive/AI-Agent-Guide/blob/main/CONTRIBUTING.md)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/Scodive/AI-Agent-Guide/blob/main/contributing.md)
 [![License: MIT](https://img.shields.io/github/license/Scodive/AI-Agent-Guide)](https://github.com/Scodive/AI-Agent-Guide/blob/main/LICENSE)
 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
 Welcome to **AI-Agent-Guide**. This repository keeps its long-form guide and adds a manually curated paper catalog. Each catalog record links to a primary paper page and records the research question, mechanism, evaluation setting, conclusion, limitation, and verification date.
 
-**Start here:** [Site](https://scodive.github.io/AI-Agent-Guide/) · [Reading path](docs/reading-path.md) · [Paper table](docs/papers.md) · [September 2026 picks](docs/monthly-picks.md) · [Harness and coding agents](docs/harness.md) · [RSI and self-improvement](docs/rsi.md) · [Weekly maintenance SOP](docs/update-sop.md) · [CSV data](data/papers.csv).
+**Start here:** [Site](https://scodive.github.io/AI-Agent-Guide/) · [Reading path](reading-path.md) · [Paper table](papers.md) · [September 2026 picks](monthly-picks.md) · [Harness and coding agents](harness.md) · [RSI and self-improvement](rsi.md) · [Weekly maintenance SOP](update-sop.md) · [CSV data](https://github.com/Scodive/AI-Agent-Guide/blob/main/data/papers.csv).
 
 As of September 27, 2026, the catalog contains 57 papers, including 10 September picks. The site version supports search and filtering. Catalog inclusion does not mean independent replication. Please report incorrect links or descriptions through an Issue or PR.
 
 ## How to use this guide
 
-The long-form guide below introduces foundational modules such as perception, planning, memory, and action. It is a conceptual starting point, not an exhaustive list of current techniques. For recent work, use the [monthly picks](docs/monthly-picks.md) alongside the [paper catalog](docs/papers.md):
+The long-form guide below introduces foundational modules such as perception, planning, memory, and action. It is a conceptual starting point, not an exhaustive list of current techniques. For recent work, use the [monthly picks](monthly-picks.md) alongside the [paper catalog](papers.md):
 
 | Recent question | Start with | Where it fits |
 | --- | --- | --- |
@@ -25,58 +25,7 @@ The long-form guide below introduces foundational modules such as perception, pl
 | How should long-term memory and multi-agent coordination be evaluated? | [DolphinBench](https://arxiv.org/abs/2609.24971), [CoCoBench](https://arxiv.org/abs/2608.28266) | Memory and retrieval; multi-agent systems. |
 | How do we measure real use and downstream outcomes? | [DAREBench](https://arxiv.org/abs/2609.06059), [Are We There Yet?](https://arxiv.org/abs/2609.00524), [Who Finishes the Job?](https://arxiv.org/abs/2609.26847) | Evaluation, GUI, and coding; include cost, users, and follow-up fixes. |
 
-**Coverage limit:** This is a curated reading path, not a live inventory of every new model, framework, or paper. The [harness chapter](docs/harness.md) explains coding-agent runtimes; the [RSI chapter](docs/rsi.md) separates prompt, agent-program, and target-algorithm improvement. Both are introductory syntheses. New papers enter the catalog first; the [weekly SOP](docs/update-sop.md) governs updates to the guide.
-
----
-
-## Table of Contents
-
-- [How to use this guide](#how-to-use-this-guide)
-- [Foundational Overviews & Surveys](#foundational-overviews--surveys)
-  - [General Agent Surveys](#general-agent-surveys)
-  - [Domain-Specific Application Surveys](#domain-specific-application-surveys)
-  - [Foundation Models & Decision Making Surveys](#foundation-models--decision-making-surveys)
-- [Anatomy of AI Agents: Core Architecture Blueprint](#anatomy-of-ai-agents-core-architecture-blueprint)
-- [Perception Module: Perceiving Digital and Physical Worlds](#perception-module-perceiving-digital-and-physical-worlds)
-  - [Text Perception](#text-perception)
-  - [Multimodal Perception & GUI Agents](#multimodal-perception--gui-agents)
-  - [Core Tech: Vision-Language Models (VLMs)](#core-tech-vision-language-models-vlms)
-  - [Key Challenges](#key-challenges)
-  - [Related Papers & Resources](#related-papers--resources)
-- [Planning & Reasoning Module: The Cognitive Core of Agents](#planning--reasoning-module-the-cognitive-core-of-agents)
-  - [Base Reasoning Tech Evolution](#base-reasoning-tech-evolution)
-  - [Reasoning Tech Comparisons](#reasoning-tech-comparisons)
-- [Memory Module: Enabling Learning and Context Awareness](#memory-module-enabling-learning-and-context-awareness)
-  - [Memory Architecture](#memory-architecture)
-  - [Core Mechanisms for Long-Term Memory](#core-mechanisms-for-long-term-memory)
-  - [Related Papers & Resources](#related-papers--resources-1)
-- [Action Module: Executing Tasks and Using Tools](#action-module-executing-tasks-and-using-tools)
-  - [Tool Use Paradigms](#tool-use-paradigms)
-  - [Tool Creation Paradigms](#tool-creation-paradigms)
-  - [MCP: Model Context Protocol](#mcp-model-context-protocol)
-  - [Related Papers & Resources](#related-papers--resources-2)
-- [Agentic Coding: The Software Engineering Frontier](#agentic-coding-the-software-engineering-frontier)
-  - [Key Systems & Benchmarks](#key-systems--benchmarks)
-  - [Related Papers & Resources](#related-papers--resources-3)
-- [Agent Development Frameworks: From Theory to Practice](#agent-development-frameworks-from-theory-to-practice)
-  - [Deep Dive into Mainstream Frameworks](#deep-dive-into-mainstream-frameworks)
-  - [Framework Comparisons](#framework-comparisons)
-  - [Practice: Paper-Agent-Skills](#practice-paper-agent-skills)
-- [Self-Evolving Agents: Self-Improvement and Adaptation Mechanisms](#self-evolving-agents-self-improvement-and-adaptation-mechanisms)
-  - [Three Key Paradigms of Self-Evolution](#three-key-paradigms-of-self-evolution)
-  - [Related Papers & Resources](#related-papers--resources-4)
-- [Multi-Agent Systems (MAS): Emergent Intelligence through Collaboration](#multi-agent-systems-mas-emergent-intelligence-through-collaboration)
-  - [MAS Paradigm & Architectures](#mas-paradigm--architectures)
-  - [Typical Applications](#typical-applications)
-  - [Key Challenges](#key-challenges-1)
-  - [Related Papers & Resources](#related-papers--resources-4)
-- [Trustworthiness: Safety, Alignment, and Evaluation](#trustworthiness-safety-alignment-and-evaluation)
-  - [Alignment Methodologies](#alignment-methodologies)
-  - [Evaluation & Benchmarks](#evaluation--benchmarks)
-  - [Related Papers & Resources](#related-papers--resources-5)
-- [2025–2026 Selected Research](#20252026-selected-research)
-- [How to Contribute](#how-to-contribute)
-- [Citation](#citation)
+**Coverage limit:** This is a curated reading path, not a live inventory of every new model, framework, or paper. The [harness chapter](harness.md) explains coding-agent runtimes; the [RSI chapter](rsi.md) separates prompt, agent-program, and target-algorithm improvement. Both are introductory syntheses. New papers enter the catalog first; the [weekly SOP](update-sop.md) governs updates to the guide.
 
 ---
 
@@ -692,7 +641,7 @@ The field is at a critical turning point: from "what can it do?" to "can we trus
 
 ## 2025–2026 Selected Research
 
-This section keeps a set of earlier further-reading items. See the [September 2026 picks](docs/monthly-picks.md) for recent work and its evidence limits; the items below are not a current leaderboard. Verify publication status and experimental claims on the original paper or official proceedings page.
+This section keeps a set of earlier further-reading items. See the [September 2026 picks](monthly-picks.md) for recent work and its evidence limits; the items below are not a current leaderboard. Verify publication status and experimental claims on the original paper or official proceedings page.
 
 ### Computer Vision & Multimodal (CV/Multimodal & GUI)
 
@@ -754,14 +703,14 @@ This section keeps a set of earlier further-reading items. See the [September 20
 
 ## How to Contribute
 
-We warmly welcome community contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for the full guide.
+We warmly welcome community contributions! See [contributing.md](contributing.md) for the full guide.
 
 **Quick start:**
-- 📄 **Add a paper**: Open a PR with a new paper entry following our [paper template](CONTRIBUTING.md#paper-template)
+- 📄 **Add a paper**: Open a PR with a new paper entry following our [paper template](contributing.md)
 - 🐛 **Report an issue**: Open a GitHub Issue for broken links, outdated info, or corrections
 - 💡 **Suggest new sections**: Open a Discussion on GitHub
 
-**Selection criteria:** A paper should directly inform agent mechanisms, systems, use, or evaluation; have a verifiable primary paper page; and support a concise account of its question, evidence, and limits. New preprints are eligible when their source status is labeled. Citation counts, GitHub stars, and venue names are not standalone thresholds. See the [selection criteria and weekly SOP](docs/update-sop.md).
+**Selection criteria:** A paper should directly inform agent mechanisms, systems, use, or evaluation; have a verifiable primary paper page; and support a concise account of its question, evidence, and limits. New preprints are eligible when their source status is labeled. Citation counts, GitHub stars, and venue names are not standalone thresholds. See the [selection criteria and weekly SOP](update-sop.md).
 
 ---
 

@@ -1,6 +1,6 @@
 # Contributing to AI-Agent-Guide
 
-Thank you for helping maintain the guide. The long-form `README.md` and `README_EN.md` explain the field; `data/papers.csv` is the single source for the curated paper table. Read the [selection criteria and weekly SOP](docs/update-sop.md) before submitting a paper.
+Thank you for helping maintain the guide. The long-form `README.md` and `README_EN.md` explain the field; `data/papers.csv` is the single source for the curated paper table. Read the [selection criteria and weekly SOP](update-sop.md) before submitting a paper.
 
 ## Suggest a paper
 

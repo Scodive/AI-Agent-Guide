@@ -1,36 +1,33 @@
-# AI-Agent-Guide
+# AI Agent 研究指南
 
-> A comprehensive, authoritative, and continuously updated guide to LLM-based AI Agents.
+从研究问题出发阅读 Agent 论文。导读解释概念与脉络；[论文库](papers.md)保存可筛选、可核验的核心条目。
 
-[English](README_EN.md) | [中文](README.md) | [![GitHub](https://img.shields.io/github/stars/Scodive/AI-Agent-Guide?style=social)](https://github.com/Scodive/AI-Agent-Guide)
+> 核心库每周人工维护，**不承诺收录每天所有新论文**。当前篇数及最近核验日期见[论文库](papers.md)。
 
----
+## 新手阅读路线
 
-## What is this guide?
+先读综述和架构，再看一个完整的“推理—行动”循环，最后进入你关心的环境与评估。推荐的 10 个阅读步骤见[新手阅读路线](reading-path.md)。
 
-This guide systematically covers the full AI Agent ecosystem: core architecture, perception, planning, memory, action modules, MCP, agentic coding, multi-agent systems, safety, and over 50 curated papers.
+## 按问题探索
 
-Use the navigation on the left to explore by topic, or use the **search bar** (top right) to find any paper, concept, or framework instantly.
+| 我想了解的问题 | 从这里开始 |
+| --- | --- |
+| Agent 如何规划并使用工具？ | [规划与推理、工具与行动](papers.md) |
+| Coding Agent 的模型、工具和运行环境怎样协同工作？ | [Agent Harness 与 Codex](harness.md) |
+| Agent 如何记住并利用过去的经验？ | [记忆与检索](papers.md) |
+| Agent 怎样改进自己的提示词、逻辑或代码？ | [RSI 与自我改进](rsi.md) |
+| Agent 如何操作界面与代码仓库？ | [感知与 GUI、代码智能体](papers.md) |
+| 多 Agent 协作到底解决什么问题？ | [多智能体](papers.md) |
+| 如何评估能力、安全和自我演进？ | [评估与安全、自我演进](papers.md) |
 
-## Quick Reference
+论文库支持按**主题、年份、论文类型**筛选，也可搜索标题、研究问题和机制。每条记录列出实验环境与指标、主要结论、局限和核验日期。
 
-| Module | What it does |
-|:---|:---|
-| 👁️ Perception | How agents see and understand the world |
-| 🧠 Planning & Reasoning | CoT, ReAct, ToT, MCTS |
-| 💾 Memory | Short-term, long-term, RAG, vector databases |
-| ⚡ Action & MCP | Tool use, tool creation, Model Context Protocol |
-| 💻 Agentic Coding | SWE-bench, SWE-agent, OpenHands, Devin |
-| 🤖 Multi-Agent Systems | Collaboration patterns, MetaGPT, ChatDev |
-| 🛡️ Trustworthiness | Safety, alignment, evaluation benchmarks |
+## 本月精选
 
-## Getting Started
+[2026 年 9 月编辑精选](monthly-picks.md)收录十篇近期论文，并说明每篇的推荐理由与证据边界。
 
-If you are new to AI Agents, start with:
-1. [Foundational Surveys](en/surveys.md) — big-picture overviews
-2. [Core Architecture](en/architecture.md) — the 4-module blueprint
-3. [Agent Frameworks](en/frameworks.md) — pick a framework and build
+## 保留的完整指南
 
-## Contributing
+[中文完整指南](guide-zh.md) · [English guide](guide-en.md)
 
-See [CONTRIBUTING.md](contributing.md) to add a paper or suggest a section.
+新论文建议按[收录标准与每周更新 SOP](update-sop.md)提交。核心库中的简短结论是阅读导航，不替代原论文，也不表示独立复现。

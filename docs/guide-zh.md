@@ -1,22 +1,22 @@
 # AI-Agent-Guide
 
-[English](README_EN.md) | [中文](README.md)
+[English](guide-en.md) | [中文](guide-zh.md)
 
 [![GitHub Stars](https://img.shields.io/github/stars/Scodive/AI-Agent-Guide?style=social)](https://github.com/Scodive/AI-Agent-Guide/stargazers)
 [![Last Commit](https://img.shields.io/github/last-commit/Scodive/AI-Agent-Guide)](https://github.com/Scodive/AI-Agent-Guide/commits/main)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/Scodive/AI-Agent-Guide/blob/main/CONTRIBUTING.md)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/Scodive/AI-Agent-Guide/blob/main/contributing.md)
 [![License: MIT](https://img.shields.io/github/license/Scodive/AI-Agent-Guide)](https://github.com/Scodive/AI-Agent-Guide/blob/main/LICENSE)
 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
 欢迎来到 AI-Agent-Guide。本指南梳理 AI 智能体的架构、关键技术与研究问题，并保留原有的长篇导读。论文库采用人工精选和逐条核验，不追求收齐每天的新论文；每条记录提供研究问题、机制、实验环境与指标、结论、局限和核验日期。
 
-**快速入口：** [网站首页](https://scodive.github.io/AI-Agent-Guide/) · [新手阅读路线](docs/reading-path.md) · [论文库表格](docs/papers.md) · [2026 年 9 月精选](docs/monthly-picks.md) · [Harness 与 Coding Agent](docs/harness.md) · [RSI 与自我改进](docs/rsi.md) · [每周更新 SOP](docs/update-sop.md)
+**快速入口：** [网站首页](https://scodive.github.io/AI-Agent-Guide/) · [新手阅读路线](reading-path.md) · [论文库表格](papers.md) · [2026 年 9 月精选](monthly-picks.md) · [Harness 与 Coding Agent](harness.md) · [RSI 与自我改进](rsi.md) · [每周更新 SOP](update-sop.md)
 
-论文库的原始数据在 [`data/papers.csv`](data/papers.csv)。截至 2026-09-27，共收录 57 篇；其中 10 篇作为九月精选。网站版提供搜索与筛选。收录不代表对论文结论的独立复现；发现错误请提交 Issue 或 PR。
+论文库的原始数据在 [`data/papers.csv`](https://github.com/Scodive/AI-Agent-Guide/blob/main/data/papers.csv)。截至 2026-09-27，共收录 57 篇；其中 10 篇作为九月精选。网站版提供搜索与筛选。收录不代表对论文结论的独立复现；发现错误请提交 Issue 或 PR。
 
 ## 如何使用这份指南
 
-下文的长篇导读以感知、规划、记忆、行动等基础模块建立概念，不应当作截至今天的完整技术清单。要了解近期研究，请结合[本月精选](docs/monthly-picks.md)和[论文库](docs/papers.md)阅读：
+下文的长篇导读以感知、规划、记忆、行动等基础模块建立概念，不应当作截至今天的完整技术清单。要了解近期研究，请结合[本月精选](monthly-picks.md)和[论文库](papers.md)阅读：
 
 | 近期问题 | 从哪篇开始 | 在指南中的位置 |
 | --- | --- | --- |
@@ -25,57 +25,7 @@
 | 长期记忆和多 Agent 协作如何评估？ | [DolphinBench](https://arxiv.org/abs/2609.24971)、[CoCoBench](https://arxiv.org/abs/2608.28266) | 记忆与检索、多智能体。 |
 | Agent 的实际使用和交付结果怎样衡量？ | [DAREBench](https://arxiv.org/abs/2609.06059)、[Are We There Yet?](https://arxiv.org/abs/2609.00524)、[Who Finishes the Job?](https://arxiv.org/abs/2609.26847) | 评估与安全、GUI、代码智能体；需同时看成本、用户和后续修复。 |
 
-**覆盖边界：**现有论文库是人工精选的阅读路线，不是对所有最新模型、框架或论文的实时盘点。[Harness 专题](docs/harness.md)说明运行框架与 Coding Agent，[RSI 专题](docs/rsi.md)区分提示词、Agent 程序和目标算法的改进。两者是入门导读，新增论文仍先记录在库中，再按[每周 SOP](docs/update-sop.md)更新解释。
-
-## 目录
-*   [如何使用这份指南](#如何使用这份指南)
-*   [基础综述与概述](#基础综述与概述)
-    *   [通用智能体综述](#通用智能体综述)
-    *   [特定领域应用综述](#特定领域应用综述)
-    *   [基础模型与决策综述](#基础模型与决策综述)
-*   [AI智能体剖析：核心架构蓝图](#ai智能体剖析：核心架构蓝图)
-*   [感知模块：感知数字与物理世界](#感知模块：感知数字与物理世界)
-    *   [文本感知](#文本感知)
-    *   [多模态感知](#多模态感知)
-    *   [核心技术：视觉语言模型 (Vision-Language Models, VLMs)](#核心技术：视觉语言模型-vision-language-models-vlms)
-    *   [关键挑战](#关键挑战)
-    *   [相关论文与资源](#相关论文与资源)
-*   [规划与推理模块：智能体的认知核心](#规划与推理模块：智能体的认知核心)
-    *   [基础推理技术演进](#基础推理技术演进)
-    *   [核心推理技术对比](#核心推理技术对比)
-*   [记忆模块：实现学习与情境感知](#记忆模块：实现学习与情境感知)
-    *   [记忆架构](#记忆架构)
-    *   [长期记忆的关键机制](#长期记忆的关键机制)
-    *   [相关论文与资源](#相关论文与资源-1)
-*   [行动模块：执行任务与使用工具](#行动模块：执行任务与使用工具)
-    *   [工具使用范式](#工具使用范式)
-    *   [工具创造范式](#工具创造范式)
-    *   [MCP：模型上下文协议](#mcp模型上下文协议)
-    *   [相关论文与资源](#相关论文与资源-2)
-*   [Agentic Coding：软件工程新前沿](#agentic-coding软件工程新前沿)
-*   [智能体开发框架：从理论到实践](#智能体开发框架：从理论到实践)
-    *   [主流框架深度解析](#主流框架深度解析)
-    *   [智能体开发框架对比](#智能体开发框架对比)
-    *   [实战：科研技能库 (Paper-Agent-Skills)](#实战科研技能库-paper-agent-skills)
-*   [Self-Evolving 智能体：自我进化与自适应机制](#self-evolving-智能体自我进化与自适应机制)
-*   [多智能体系统（MAS）：协作产生的涌现智能](#多智能体系统mas：协作产生的涌现智能)
-    *   [MAS范式与架构](#mas范式与架构)
-    *   [典型应用](#典型应用)
-    *   [关键挑战](#关键挑战)
-    *   [相关论文与资源](#相关论文与资源-3)
-*   [可信度：安全、对齐与评估](#可信度：安全、对齐与评估)
-    *   [对齐方法论](#对齐方法论)
-    *   [评估与基准测试](#评估与基准测试)
-    *   [相关论文与资源](#相关论文与资源-4)
-*   [2025-2026 研究选读](#2025-2026-研究选读)
-    *   [计算机视觉与多模态 (CV/Multimodal)](#计算机视觉与多模态-cvmultimodal)
-    *   [自然语言处理与认知推理 (NLP/Reasoning)](#自然语言处理与认知推理-nlpreasoning)
-    *   [软件工程与系统架构 (SE/Systems)](#软件工程与系统架构-sesystems)
-    *   [垂直领域赋能 (Domain-Specific)](#垂直领域赋能-domain-specific)
-*   [如何贡献](#如何贡献)
-*   [引用](#引用)
-
----
+**覆盖边界：**现有论文库是人工精选的阅读路线，不是对所有最新模型、框架或论文的实时盘点。[Harness 专题](harness.md)说明运行框架与 Coding Agent，[RSI 专题](rsi.md)区分提示词、Agent 程序和目标算法的改进。两者是入门导读，新增论文仍先记录在库中，再按[每周 SOP](update-sop.md)更新解释。
 
 ## 基础综述与概述
 对于任何希望深入了解AI智能体领域的研究者而言，从权威的综述性论文开始是至关重要的。这些文献为整个领域提供了宏观视角、核心概念定义以及系统的技术分类，是构建知识体系的基石。本节精选了一系列高质量的综述论文，涵盖了从通用智能体架构到特定领域应用的广泛主题。
@@ -620,7 +570,7 @@ Agentic Coding（智能体化编码）是 AI 智能体商业影响力最显著�
 
 ## 2025-2026 研究选读
 
-本节保留一组历史延伸阅读。2026 年 9 月的新工作及其证据边界集中在[本月精选](docs/monthly-picks.md)；下列条目不构成最新成果榜单。论文的发表状态和实验结论应以原始论文及正式会议页面为准。
+本节保留一组历史延伸阅读。2026 年 9 月的新工作及其证据边界集中在[本月精选](monthly-picks.md)；下列条目不构成最新成果榜单。论文的发表状态和实验结论应以原始论文及正式会议页面为准。
 
 ### 计算机视觉与多模态 (CV/Multimodal & GUI)
 *   **UI-TARS: Pioneering Automated GUI Interaction with Native Agents** (ByteDance, 2025)
@@ -677,14 +627,14 @@ Agentic Coding（智能体化编码）是 AI 智能体商业影响力最显著�
 ---
 
 ## 如何贡献
-我们热烈欢迎社区的贡献！请查看 [CONTRIBUTING.md](CONTRIBUTING.md) 了解完整贡献指南。
+我们热烈欢迎社区的贡献！请查看 [contributing.md](contributing.md) 了解完整贡献指南。
 
 **快速开始：**
-- 📄 **添加论文**：提交 PR，按照[论文模板](CONTRIBUTING.md)添加条目
+- 📄 **添加论文**：提交 PR，按照[论文模板](contributing.md)添加条目
 - 🐛 **报告问题**：通过 GitHub Issue 报告失效链接、过时信息或错误
 - 💡 **建议新章节**：在 GitHub Discussions 发起讨论
 
-**论文收录要求：**与 Agent 的机制、系统、使用或评估直接相关；有可核验的原始论文页面；能写清研究问题、证据与局限。新预印本可以收录，但要注明来源状态。引用数、GitHub stars 和会议名都不是单独的门槛。完整规则见[收录标准与每周 SOP](docs/update-sop.md)。
+**论文收录要求：**与 Agent 的机制、系统、使用或评估直接相关；有可核验的原始论文页面；能写清研究问题、证据与局限。新预印本可以收录，但要注明来源状态。引用数、GitHub stars 和会议名都不是单独的门槛。完整规则见[收录标准与每周 SOP](update-sop.md)。
 
 ---
 
