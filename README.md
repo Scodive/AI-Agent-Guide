@@ -1,16 +1,15 @@
 # AI-Agent-Guide
-
-[English](README_EN.md) | [中文](README.md)
-
 [![GitHub Stars](https://img.shields.io/github/stars/Scodive/AI-Agent-Guide?style=social)](https://github.com/Scodive/AI-Agent-Guide/stargazers)
 [![Last Commit](https://img.shields.io/github/last-commit/Scodive/AI-Agent-Guide)](https://github.com/Scodive/AI-Agent-Guide/commits/main)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/Scodive/AI-Agent-Guide/blob/main/CONTRIBUTING.md)
 [![License: MIT](https://img.shields.io/github/license/Scodive/AI-Agent-Guide)](https://github.com/Scodive/AI-Agent-Guide/blob/main/LICENSE)
 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
+[English](README_EN.md) | [中文](README.md)
+
 欢迎来到 AI-Agent-Guide。本指南梳理 AI 智能体的架构、关键技术与研究问题，并保留原有的长篇导读。论文库采用人工精选和逐条核验，不追求收齐每天的新论文；每条记录提供研究问题、机制、实验环境与指标、结论、局限和核验日期。
 
-**快速入口：** [网站首页](https://scodive.github.io/AI-Agent-Guide/) · [新手阅读路线](docs/reading-path.md) · [论文库表格](docs/papers.md) · [2026 年 9 月精选](docs/monthly-picks.md) · [Harness 与 Coding Agent](docs/harness.md) · [RSI 与自我改进](docs/rsi.md) · [每周更新 SOP](docs/update-sop.md)
+**快速入口：** [网站首页](https://ai-notes-red-two.vercel.app) · [新手阅读路线](docs/reading-path.md) · [论文库表格](docs/papers.md) · [2026 年 9 月精选](docs/monthly-picks.md) · [Harness 与 Coding Agent](docs/harness.md) · [RSI 与自我改进](docs/rsi.md) 
 
 论文库的原始数据在 [`data/papers.csv`](data/papers.csv)。截至 2026-09-27，共收录 57 篇；其中 10 篇作为九月精选。网站版提供搜索与筛选。收录不代表对论文结论的独立复现；发现错误请提交 Issue 或 PR。
 
