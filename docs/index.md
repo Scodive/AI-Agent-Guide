@@ -20,14 +20,16 @@
 | 多 Agent 协作到底解决什么问题？ | [多智能体](papers.md) |
 | 如何评估能力、安全和自我演进？ | [评估与安全、自我演进](papers.md) |
 
-论文库支持按**主题、年份、论文类型**筛选，也可搜索标题、研究问题和机制。每条记录列出实验环境与指标、主要结论、局限和核验日期。
+仓库内的论文库提供静态表格，展示网站从 `data/papers.csv` 读取论文并负责搜索与筛选。每条记录列出实验环境与指标、主要结论、局限和核验日期。
 
 ## 本月精选
 
-[2026 年 9 月编辑精选](monthly-picks.md)收录十篇近期论文，并说明每篇的推荐理由与证据边界。
+最近一期是[2026 年 9 月编辑精选](monthly-picks.md)，共十篇，并说明推荐理由与证据边界。10 月精选按 SOP 在月底整理。
+
+**2026-10-03 周更：**论文库新增 5 篇，含 3 篇 10 月 1 日提交的新论文和 2 篇 9 月遗漏补收。先从 [VISTA](papers.md#paper-2610.02200)、[Mingbird](papers.md#paper-2610.02001)了解视觉和小模型 Harness，再用 [Beyond the Model](papers.md#paper-2609.32459)比较组件效果；[RAC](papers.md#paper-2610.00980)与 [Self-Healing Harness](papers.md#paper-2609.24130)分别讨论动态协作和持久规则修改。它们均按预印本收录。
 
 ## 保留的完整指南
 
-[中文完整指南](guide-zh.md) · [English guide](guide-en.md)
+[中文完整指南](../README.md) · [English guide](../README_EN.md)
 
 新论文建议按[收录标准与每周更新 SOP](update-sop.md)提交。核心库中的简短结论是阅读导航，不替代原论文，也不表示独立复现。

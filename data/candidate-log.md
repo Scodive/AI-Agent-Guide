@@ -24,3 +24,19 @@
 | 2026-09-27 | Recursive self-improvement of AI research agents | https://arxiv.org/abs/2609.26457 | RSI | 收录 | AIDE² 自改研究 Agent 代码；保留单次运行与有限任务边界。 | Codex |
 
 状态使用：`待核验`、`收录`、`暂缓`、`拒收`、`修订旧条目`。若论文编号或代码链接更正，在理由栏留下旧值和核验来源。
+
+## 2026-10-03 周更
+
+窗口以 2026-09-28 至 2026-10-03 为主，并补查 9 月 Harness/RSI 漏项；不是全领域穷尽检索。
+
+| 发现日期 | 标题 | 原始链接 | 主题 | 状态 | 收录或暂缓理由 | 核验人 |
+| --- | --- | --- | --- | --- | --- | --- |
+| 2026-10-03 | VISTA: A Visual Harness for Reasoning in an Interactive World | https://arxiv.org/abs/2610.02200 | Harness 与运行时 | 收录 | 10 月 1 日提交；全文方法、组件消融与局限已读，补视觉 Harness；官方代码由全文链接确认。 | Codex |
+| 2026-10-03 | Mingbird: A Local-First Agent Harness Enabling Small Open Models to Complete Real Tasks | https://arxiv.org/abs/2610.02001 | Harness 与运行时 | 收录 | 10 月 1 日提交；全文机制与比较协议已读，补小模型 Harness；保留单机器和消融波动限制，官方代码由摘要页确认。 | Codex |
+| 2026-10-03 | Can AI Scientists Coordinate at Runtime? | https://arxiv.org/abs/2610.00980 | 多智能体 | 收录 | 10 月 1 日提交；全文方法与实验已读，补动态协作及机制叠加的负结果；官方代码由摘要页确认。 | Codex |
+| 2026-10-03 | Beyond the Model: Demystifying Harness Effects in Software Engineering Agents | https://arxiv.org/abs/2609.32459 | Harness 与运行时 | 收录 | 9 月 26 日遗漏补收；全文核对模型/任务/组件矩阵及实际子集规模，补 Coding Harness 机制对照。 | Codex |
+| 2026-10-03 | Self-Healing Harness for Runtime Oversight of Agent Self-Modification | https://arxiv.org/abs/2609.24130 | 自我演进 | 收录 | 9 月 21 日遗漏补收；全文核对规则修改面、回放与后续试验差别、分母和统计边界，补自我修改监督。 | Codex |
+| 2026-10-03 | Causal Memory Policy: Making Memory Utility Identifiable by Intervening on Retrieval | https://arxiv.org/abs/2610.02070 | 记忆与检索 | 待核验 | 已找到原始全文，检索干预与记忆效用相关；估计器假设、实验协议及官方代码待详细核验，下周优先。 | Codex |
+| 2026-10-03 | RegenHarness: A Robot Agent Harness with Evidence-Gated Recursive Self-Improvement | https://arxiv.org/abs/2609.27612 | Harness/RSI | 待核验 | 9 月 23 日补查候选；摘要以机器人部署案例为主，需检查是否有受控 RSI 增益与回归证据。 | Codex |
+| 2026-10-03 | Fewer Tokens, Better Action: GPT-6 Astra Robot Agents with 14% Higher Success Rate but 65% Fewer Tokens | https://arxiv.org/abs/2610.01939 | 具身 Agent | 待核验 | 已查到摘要，需细读全文；节省 token 的统计条件是双方均解决的实例，不能当作全部任务平均。 | Codex |
+| 2026-10-03 | Towards Efficient HPC Systems for Agents: Challenges and Opportunities | https://arxiv.org/abs/2609.38723 | 系统与应用 | 待核验 | 已查到摘要，涉及真实 HPC 使用与资源压力；先核验日志采样、用户识别和隐私处理，再决定收录。 | Codex |

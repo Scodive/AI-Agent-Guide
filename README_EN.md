@@ -10,9 +10,9 @@
 
 Welcome to **AI-Agent-Guide**. This repository keeps its long-form guide and adds a manually curated paper catalog. Each catalog record links to a primary paper page and records the research question, mechanism, evaluation setting, conclusion, limitation, and verification date.
 
-**Start here:** [Site](https://scodive.github.io/AI-Agent-Guide/) · [Reading path](docs/reading-path.md) · [Paper table](docs/papers.md) · [September 2026 picks](docs/monthly-picks.md) · [Harness and coding agents](docs/harness.md) · [RSI and self-improvement](docs/rsi.md) · [Weekly maintenance SOP](docs/update-sop.md) · [CSV data](data/papers.csv).
+**Start here:** [Site](https://ai-notes-red-two.vercel.app) · [Reading path](docs/reading-path.md) · [Paper table](docs/papers.md) · [September 2026 picks](docs/monthly-picks.md) · [Harness and coding agents](docs/harness.md) · [RSI and self-improvement](docs/rsi.md) · [Weekly maintenance SOP](docs/update-sop.md) · [CSV data](data/papers.csv).
 
-As of September 27, 2026, the catalog contains 57 papers, including 10 September picks. The site version supports search and filtering. Catalog inclusion does not mean independent replication. Please report incorrect links or descriptions through an Issue or PR.
+As of October 3, 2026, the catalog contains 62 papers, including 10 September picks. This weekly update adds visual and small-model harnesses, runtime research coordination, coding-harness ablations, and admission control for self-modification. See the [verification notes](data/verification-notes.md) for sources and selection decisions. The separate presentation website consumes the CSV; this repository maintains the data and guide. Catalog inclusion does not mean independent replication. Please report incorrect links or descriptions through an Issue or PR.
 
 ## How to use this guide
 

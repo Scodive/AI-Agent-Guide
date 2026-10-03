@@ -12,10 +12,10 @@ Open an Issue with its stable paper URL, the research problem it addresses, its 
 2. Search `data/papers.csv` for the arXiv ID and title. Update an existing row for a new version or a correction.
 3. Add or edit one CSV row. Complete the question, mechanism, evaluation setting and metrics, supported conclusion, and limitation. Put the date you checked sources in `verified_on`. Leave unconfirmed code links blank.
 4. Record the candidate, source, and decision in `data/candidate-log.md`.
-5. Run `python3 scripts/render_catalog.py` and `python3 scripts/render_catalog.py --check`. Commit the CSV and generated pages together.
+5. Run `python3 scripts/render_catalog.py` and `python3 scripts/render_catalog.py --check`. Commit the CSV and generated `docs/papers.md` together.
 6. In the PR, state what was added or corrected and link the primary sources. If the paper changes the recommended path or monthly selection, update those pages too.
 
-The render script is run **manually**. This repository does not automatically fetch or accept new papers.
+The render script is run **manually** and uses only the Python standard library. This repository does not automatically fetch or accept new papers, and does not build or deploy a website. The separate presentation website consumes the CSV and topic Markdown files.
 
 ## Other contributions
 

@@ -1,6 +1,6 @@
 # Agent Harness：Coding Agent 如何工作
 
-*资料核对：2026-09-27。产品行为以链接的官方文档为准。*
+*论文增补核对：2026-10-03；产品资料核对：2026-09-27。产品行为以链接的官方文档为准。*
 
 **Harness（运行框架）**是围绕模型组织任务、工具、执行环境和反馈的程序。模型决定下一步要做什么；harness 决定它能看到哪些信息、怎样调用工具、命令在哪里执行、结果如何回到上下文，以及何时验证、停止或请人介入。不要把模型、harness、执行环境和评测任务混成一个“Agent 能力”数字。[OpenAI 官方架构说明](https://developers.openai.com/api/docs/guides/agents-api/architecture)明确区分 harness、environment 和 application server；[Code as Agent Harness](https://arxiv.org/abs/2605.18747)从研究角度梳理这些层次。
 
@@ -23,6 +23,14 @@
 | 如何判断做完？ | 测试与构建、隐藏用例、成本、超时和人工复核。 | [DAREBench](https://arxiv.org/abs/2609.06059)同时报告任务表现和资源；[τ^τ-Bench](https://arxiv.org/abs/2609.04611)检验交付的 Agent。 |
 | 框架本身有多大影响？ | 固定模型时比较工具、上下文和停止策略，报告 token、时延与失败类型。 | [The Scaffold Effect](https://arxiv.org/abs/2607.22585)在有限的模型、框架和任务组合上给出初步对照。 |
 | 工具与配置是否安全？ | 沙箱、权限、依赖固定、技能和 MCP 配置的来源及作用范围。 | [Scanning the Harness](https://arxiv.org/abs/2609.07360)审计公开仓库配置；配置暴露不等于真实利用。 |
+
+## 近期延伸阅读（2026-10-03）
+
+- [Beyond the Model](https://arxiv.org/abs/2609.32459)：先看固定模型的框架比较，再看组件消融。读图时分清基准总规模与实际抽样数；压缩和通用子 Agent 在所测仓库生成任务中可能降分。
+- [Mingbird](https://arxiv.org/abs/2610.02001)：看工具预填充、循环检测与完成检查如何适配小模型。主实验只在一台 Windows 机器上进行；单组件结果的波动限制了归因。
+- [VISTA](https://arxiv.org/abs/2610.02200)：将 Harness 视角延伸到视觉交互。核心是保留原始帧并主动回看、放大和读取像素；公开游戏成绩仍需留出环境检验。
+
+这些是拓展阅读，均按预印本记录；完整实验范围见[论文库](papers.md)。
 
 ## 阅读 Codex 时应分清的边界
 

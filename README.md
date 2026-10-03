@@ -9,9 +9,9 @@
 
 欢迎来到 AI-Agent-Guide。本指南梳理 AI 智能体的架构、关键技术与研究问题，并保留原有的长篇导读。论文库采用人工精选和逐条核验，不追求收齐每天的新论文；每条记录提供研究问题、机制、实验环境与指标、结论、局限和核验日期。
 
-**快速入口：** [网站首页](https://ai-notes-red-two.vercel.app) · [新手阅读路线](docs/reading-path.md) · [论文库表格](docs/papers.md) · [2026 年 9 月精选](docs/monthly-picks.md) · [Harness 与 Coding Agent](docs/harness.md) · [RSI 与自我改进](docs/rsi.md) 
+**快速入口：** [网站首页](https://ai-notes-red-two.vercel.app) · [新手阅读路线](docs/reading-path.md) · [论文库表格](docs/papers.md) · [2026 年 9 月精选](docs/monthly-picks.md) · [Harness 与 Coding Agent](docs/harness.md) · [RSI 与自我改进](docs/rsi.md)
 
-论文库的原始数据在 [`data/papers.csv`](data/papers.csv)。截至 2026-09-27，共收录 57 篇；其中 10 篇作为九月精选。网站版提供搜索与筛选。收录不代表对论文结论的独立复现；发现错误请提交 Issue 或 PR。
+论文库的原始数据在 [`data/papers.csv`](data/papers.csv)。截至 2026-10-03，共收录 62 篇；其中 10 篇作为九月精选。本次周更补充视觉 Harness、小模型运行框架、动态科研协作、Coding Harness 消融与自我修改门控，来源和取舍见[核验记录](data/verification-notes.md)。展示由独立网站负责，本仓库维护数据与导读。收录不代表对论文结论的独立复现；发现错误请提交 Issue 或 PR。
 
 ## 如何使用这份指南
 
