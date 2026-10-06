@@ -12,7 +12,7 @@ Welcome to **AI-Agent-Guide**. This repository keeps its long-form guide and add
 
 **Start here:** [Site](https://ai-notes-red-two.vercel.app) · [Reading path](docs/reading-path.md) · [Paper table](docs/papers.md) · [September 2026 picks](docs/monthly-picks.md) · [Harness and coding agents](docs/harness.md) · [RSI and self-improvement](docs/rsi.md) · [Weekly maintenance SOP](docs/update-sop.md) · [CSV data](data/papers.csv).
 
-As of October 3, 2026, the catalog contains 62 papers, including 10 September picks. This weekly update adds visual and small-model harnesses, runtime research coordination, coding-harness ablations, and admission control for self-modification. See the [verification notes](data/verification-notes.md) for sources and selection decisions. The separate presentation website consumes the CSV; this repository maintains the data and guide. Catalog inclusion does not mean independent replication. Please report incorrect links or descriptions through an Issue or PR.
+As of October 5, 2026, the catalog contains 67 papers, including 10 September picks. This review adds memory-utility identification, incident-recovery evaluation, and three older omissions: MemGPT, LATS, and τ²-Bench. See the [weekly review](data/weekly-reviews/2026-10-05.md) for teaching changes and pending verification. The separate presentation website consumes the CSV; this repository maintains the data and guide. Catalog inclusion does not mean independent replication. Please report incorrect links or descriptions through an Issue or PR.
 
 ## How to use this guide
 
@@ -37,6 +37,7 @@ The long-form guide below introduces foundational modules such as perception, pl
   - [Domain-Specific Application Surveys](#domain-specific-application-surveys)
   - [Foundation Models & Decision Making Surveys](#foundation-models--decision-making-surveys)
 - [Anatomy of AI Agents: Core Architecture Blueprint](#anatomy-of-ai-agents-core-architecture-blueprint)
+  - [Architecture Blueprint — Key Papers](#architecture-blueprint--key-papers)
 - [Perception Module: Perceiving Digital and Physical Worlds](#perception-module-perceiving-digital-and-physical-worlds)
   - [Text Perception](#text-perception)
   - [Multimodal Perception & GUI Agents](#multimodal-perception--gui-agents)
@@ -45,11 +46,13 @@ The long-form guide below introduces foundational modules such as perception, pl
   - [Related Papers & Resources](#related-papers--resources)
 - [Planning & Reasoning Module: The Cognitive Core of Agents](#planning--reasoning-module-the-cognitive-core-of-agents)
   - [Base Reasoning Tech Evolution](#base-reasoning-tech-evolution)
+  - [From thought search to feedback-guided action search](#from-thought-search-to-feedback-guided-action-search)
   - [Reasoning Tech Comparisons](#reasoning-tech-comparisons)
 - [Memory Module: Enabling Learning and Context Awareness](#memory-module-enabling-learning-and-context-awareness)
   - [Memory Architecture](#memory-architecture)
   - [Core Mechanisms for Long-Term Memory](#core-mechanisms-for-long-term-memory)
   - [Related Papers & Resources](#related-papers--resources-1)
+  - [From storing memory to influencing outcomes](#from-storing-memory-to-influencing-outcomes)
 - [Action Module: Executing Tasks and Using Tools](#action-module-executing-tasks-and-using-tools)
   - [Tool Use Paradigms](#tool-use-paradigms)
   - [Tool Creation Paradigms](#tool-creation-paradigms)
@@ -63,18 +66,24 @@ The long-form guide below introduces foundational modules such as perception, pl
   - [Framework Comparisons](#framework-comparisons)
   - [Practice: Paper-Agent-Skills](#practice-paper-agent-skills)
 - [Self-Evolving Agents: Self-Improvement and Adaptation Mechanisms](#self-evolving-agents-self-improvement-and-adaptation-mechanisms)
-  - [Three Key Paradigms of Self-Evolution](#three-key-paradigms-of-self-evolution)
+  - [Adaptation mechanisms and the RSI boundary](#adaptation-mechanisms-and-the-rsi-boundary)
   - [Related Papers & Resources](#related-papers--resources-4)
 - [Multi-Agent Systems (MAS): Emergent Intelligence through Collaboration](#multi-agent-systems-mas-emergent-intelligence-through-collaboration)
   - [MAS Paradigm & Architectures](#mas-paradigm--architectures)
   - [Typical Applications](#typical-applications)
   - [Key Challenges](#key-challenges-1)
-  - [Related Papers & Resources](#related-papers--resources-4)
+  - [Related Papers & Resources](#related-papers--resources-5)
 - [Trustworthiness: Safety, Alignment, and Evaluation](#trustworthiness-safety-alignment-and-evaluation)
   - [Alignment Methodologies](#alignment-methodologies)
+  - [From outcomes to evaluation protocols](#from-outcomes-to-evaluation-protocols)
+  - [Context trust and execution permissions](#context-trust-and-execution-permissions)
   - [Evaluation & Benchmarks](#evaluation--benchmarks)
-  - [Related Papers & Resources](#related-papers--resources-5)
+  - [Related Papers & Resources](#related-papers--resources-6)
 - [2025–2026 Selected Research](#20252026-selected-research)
+  - [Computer Vision & Multimodal (CV/Multimodal & GUI)](#computer-vision--multimodal-cvmultimodal--gui)
+  - [NLP, Reasoning & Reinforcement Learning (NLP/Reasoning & RL)](#nlp-reasoning--reinforcement-learning-nlpreasoning--rl)
+  - [Software Engineering & Systems (SE/Systems)](#software-engineering--systems-sesystems)
+  - [Trustworthiness, Safety & Stress Analysis (Trustworthiness & Safety)](#trustworthiness-safety--stress-analysis-trustworthiness--safety)
 - [How to Contribute](#how-to-contribute)
 - [Citation](#citation)
 
@@ -136,10 +145,9 @@ For any researcher looking to dive into the field of AI agents, starting with au
 
 ## Anatomy of AI Agents: Core Architecture Blueprint
 
-To understand AI agents systematically, we need a clear architectural blueprint. Although specific implementations vary, most LLM-based single-agent systems can be deconstructed into a unified framework comprising **four core modules**. This framework, proposed by Wang et al. (2023), provides a universal model for analyzing and constructing agents.
+This guide uses four analytical views—perception, planning and reasoning, memory, and action—to explain a decision loop. They need not correspond to four independent implementation modules. Wang et al.'s survey uses profile, memory, planning, and action; this guide separately introduces input processing as perception. These are different taxonomies, rather than a single universal standard.
 
-The LLM acts as the "brain" or central processor, coordinating the different modules and leveraging its powerful language understanding and reasoning capabilities to drive the entire system.
-
+The LLM can propose decisions; the harness organizes context, executes tools, persists state, and applies stopping rules. For each module, ask how information reaches the model, who executes an action, and what evidence verifies its result.
 
 The four core modules are:
 
@@ -268,6 +276,12 @@ The planning and reasoning module is the agent's "brain," responsible for formul
 
    [arXiv: 2305.10601](https://arxiv.org/abs/2305.10601) / [GitHub](https://github.com/princeton-nlp/tree-of-thought-llm)
 
+### From thought search to feedback-guided action search
+
+[LATS](https://arxiv.org/abs/2310.04406) connects ReAct and ToT: MCTS selects and expands trajectories, estimates value after observing the environment, backpropagates terminal feedback, and retains failure reflections. Read it before SWE-Search to distinguish searching thoughts from searching executable actions.
+
+These techniques are composable design choices. Report nodes, trajectories, tokens, and environment calls together. LATS uses correctness-oracle feedback for HotpotQA and assumes reversible states; backtracking in a benchmark does not authorize reversing real payments or production changes. See the [catalog record](docs/papers.md#paper-2310.04406).
+
 ### Reasoning Tech Comparisons
 
 | Technique | Core Idea | Main Advantage | Best Use Case |
@@ -294,11 +308,11 @@ Agent memory systems are typically designed to mimic human cognitive architectur
 
 ### Core Mechanisms for Long-Term Memory
 
-- **Retrieval-Augmented Generation (RAG)**: The mainstream paradigm for implementing long-term memory. When responding to a user request, first retrieve the most relevant information from an external knowledge base (documents, databases), then augment the LLM's input with retrieved information as additional context. This "anchors" agent responses in reliable external facts, effectively reducing hallucination and enabling the agent to leverage up-to-date or private data.
+- **Retrieval-Augmented Generation (RAG)**: A mechanism for retrieving external knowledge or experience into the current context; a knowledge corpus, episodic memory, and visible context should be described separately. When responding to a user request, first retrieve the most relevant information from an external knowledge base (documents, databases), then augment the LLM's input with retrieved information as additional context. Its benefit depends on source quality, recall, and how the model uses the evidence; retrieval does not guarantee a correct answer.
 
 - **Agentic RAG**: An evolution of standard RAG where one or more autonomous agents are integrated into the retrieval pipeline. These agents can dynamically manage retrieval strategies—reformulating queries through self-reflection, deciding when and from which data source to retrieve, or collaborating on complex multi-step queries—making the entire retrieval process more intelligent and flexible.
 
-- **Vector Databases**: The underlying technical support for efficient RAG. Converts unstructured data (text, images) into high-dimensional vectors via embedding models for storage. During retrieval, the user query is also converted to a vector and semantic similarity search is performed to find the most conceptually related stored vectors. This semantic retrieval is far more powerful than traditional keyword matching.
+- **Vector Databases**: The underlying technical support for efficient RAG. Converts unstructured data (text, images) into high-dimensional vectors via embedding models for storage. During retrieval, the user query is also converted to a vector and semantic similarity search is performed to find the most conceptually related stored vectors. Compare semantic and keyword retrieval on task-specific recall, precision, and cost.
 
 ### Related Papers & Resources
 
@@ -328,7 +342,11 @@ Agent memory systems are typically designed to mimic human cognitive architectur
 
 - **Vector Databases**: [Weaviate](https://weaviate.io/) · [Chroma](https://www.trychroma.com/) · [Qdrant](https://qdrant.tech/) · [Pinecone](https://www.pinecone.io/)
 
-Memory development reveals a deep logic of agent capability evolution. From static pretraining knowledge, to RAG-enabled external knowledge access, to self-organizing memory like A-Mem—memory is not a passive storage module, but the core engine driving agent specialization and capability evolution.
+### From storing memory to influencing outcomes
+
+Separate **storage → retrieval → visible context → task outcome → future retention**. [MemGPT](https://arxiv.org/abs/2310.08560) explains tiered storage, paging, and control flow; A-MEM explains organization. These address complementary questions.
+
+[CMP](https://arxiv.org/abs/2610.02070) adds a measurement boundary: a memory never exposed in context has not been tested, so absent contribution does not establish uselessness. Random exposure improves identification, but the experimental pool uses relevance labels and future-query retention remains unresolved. Read it as an evaluation method, rather than a deployment-ready eviction policy.
 
 ---
 
@@ -362,16 +380,9 @@ This represents a new height of agent capability: from tool *user* to tool *crea
 
 ### MCP: Model Context Protocol
 
-The **Model Context Protocol (MCP)** is an open standard proposed by Anthropic in late 2024 that is rapidly becoming the universal interface for connecting AI agents to external tools, data sources, and services. Think of MCP as "USB-C for AI agents"—a standardized plug-and-play protocol that eliminates the need to build custom integrations for every tool.
+The **Model Context Protocol (MCP)** standardizes interfaces for clients and servers to exchange tools, resources, and related information. Task state, business authorization, and execution outcomes remain implementation responsibilities.
 
-**Core Architecture:**
-
-
-**Why MCP Matters:**
-- **Standardization**: Any agent framework can use any MCP-compatible tool without custom integration code
-- **Security**: Servers define explicit permissions; agents cannot access resources outside granted scope
-- **Ecosystem**: Hundreds of community-built MCP servers already cover GitHub, Slack, databases, browsers, file systems, and more
-- **Adoption**: Major IDEs (Cursor, Windsurf), Claude Desktop, and agent frameworks now support MCP natively
+Separate the protocol interface, server/downstream authentication and authorization, and harness/environment process, file, and network permissions. MCP support does not itself guarantee isolation. The official [security practices](https://modelcontextprotocol.io/docs/2025-11-25/tutorials/security/security_best_practices) discuss token passthrough, confused-deputy risks, and scope minimization (checked 2026-10-05).
 
 **Key Resources:**
 - [Official MCP Specification](https://modelcontextprotocol.io/)
@@ -431,14 +442,7 @@ Agentic coding represents one of the most commercially impactful frontiers of AI
 
   [arXiv: 2410.20285](https://arxiv.org/abs/2410.20285) / [GitHub](https://github.com/aorwall/moatless-tools)
 
-**Commercial Systems:**
-
-| System | Developer | Key Capability |
-|:---|:---|:---|
-| Cursor / Composer | Anysphere | AI-native IDE with multi-file agent editing |
-| GitHub Copilot Workspace | GitHub | Agentic coding from issue to pull request |
-| Devin | Cognition AI | Autonomous software engineer |
-| Windsurf | Codeium | Agentic IDE with MCP support |
+**Understanding delivery:** A generated patch, passing tests, human acceptance, post-merge maintenance, and live-service recovery are distinct observations. Use the [harness chapter](docs/harness.md) to separate interfaces, context, and verification, then [Who Finishes the Job?](https://arxiv.org/abs/2609.26847) for follow-up maintenance. [Incident-Arena](https://arxiv.org/abs/2610.00648) extends evaluation to recovery under sustained load and restart while preserving data and permitted change scope. Its limited tasks and model/harness pairs do not establish a commercial product ranking.
 
 ### Related Papers & Resources
 
@@ -488,7 +492,7 @@ Understanding the modular architecture of agents is the theoretical foundation, 
 
    **Core Positioning**: A framework focused on multi-agent conversation.
 
-   **Highlights**: Microsoft Research's AutoGen is designed to simplify building multi-agent collaboration systems. It provides powerful abstractions for defining agents with different roles, capabilities, and conversation patterns, and coordinates their interactions to complete complex tasks. If you need to build a "virtual team" of expert agents ("programmer," "tester," "project manager"), AutoGen is the go-to framework.
+   **Highlights**: Microsoft Research's AutoGen is designed to simplify building multi-agent collaboration systems. It provides powerful abstractions for defining agents with different roles, capabilities, and conversation patterns, and coordinates their interactions to complete complex tasks. If you need to build a "virtual team" of expert agents ("programmer," "tester," "project manager"), AutoGen is a historical example of multi-agent orchestration. As of 2026-10-05, its [official repository](https://github.com/microsoft/autogen) states that it is in maintenance mode and directs new users to Microsoft Agent Framework; this does not establish the successor's performance.
 
    Repository: [AutoGen GitHub](https://github.com/microsoft/autogen)
 
@@ -541,18 +545,15 @@ This project uses a **skill-based architecture**, encapsulating high-level acade
 
 ## Self-Evolving Agents: Self-Improvement and Adaptation Mechanisms
 
-AI agent research is undergoing a paradigm shift from "static instruction execution" to "dynamic self-evolution". Traditional AI agents rely on hardcoded prompts, static toolkits, and fixed model weights, which often flounder when encountering novel environments or long-horizon complex tasks. **Self-Evolving Agents** empower systems to continuously enhance their capabilities without human intervention through trial-and-error feedback, self-reflection, skill consolidation, and agentic reinforcement learning.
+Classify self-improvement by **the component changed, the feedback source, and the adaptation stage**. Experience accumulation, inference-time reflection, training-time weight updates, and recursive modification of an agent program involve different mechanisms and evidence. The label does not guarantee autonomy or sustained growth.
 
-### Three Key Paradigms of Self-Evolution
+### Adaptation mechanisms and the RSI boundary
 
-1.  **Skill & Tool Evolution**
-    Instead of remaining passive tool users, agents become active tool creators. During task execution, agents abstract successful code snippets or action trajectories into reusable "skill blocks" and store them in an evolving skill library. When facing new tasks, agents autonomously retrieve and compose these evolved skills for exponential capability growth.
+1. **Skills and memory**: Voyager stores reusable skills; A-MEM organizes experience. Neither guarantees avoiding repeated mistakes or exponential growth.
+2. **Prompts and programs**: [GEPA](https://arxiv.org/abs/2507.19457) optimizes prompts; [Darwin Gödel Machine](https://arxiv.org/abs/2505.22954) modifies agent code. Check whether accepted versions participate in further improvement, whether feedback is independent, and whether old tasks regress.
+3. **Model training**: DeepSeek-R1 and Agent-R1 provide parameter-learning background. Reflection by a fixed trained model does not demonstrate runtime modification of its own improver; preference optimization such as DPO should not uniformly be described as online self-play.
 
-2.  **Experience Accumulation & Self-Reflection**
-    Leveraging execution feedback from environments (both errors and successful trajectories), agents extract "lessons learned" through self-critique mechanisms. These insights are structured into long-term memory systems (e.g., A-Mem) and injected into future context windows to avoid repeating past mistakes.
-
-3.  **Parametric Self-Evolution via Agentic RL**
-    Inspired by breakthrough reasoning models like DeepSeek-R1, reinforcement learning-driven self-evolution (using GRPO, DPO, PPO) has become the most prominent frontier in 2025–2026. Agents conduct thousands of self-play and environment exploration steps in sandbox environments, updating model parameters directly from sparse rewards to internalize planning and reflection capabilities.
+The [RSI chapter](docs/rsi.md) compares GEPA, Gödel Agent, DGM, and AIDE² and separates AlphaEvolve's target-algorithm improvement. External validation, held-out tasks, and rollback conditions must be reported without assuming universal gains.
 
 ### Related Papers & Resources
 
@@ -570,7 +571,7 @@ AI agent research is undergoing a paradigm shift from "static instruction execut
 
 - **DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning** (DeepSeek, 2025)
 
-  One of the most impactful reasoning and self-evolution works of 2025–2026. Demonstrates that pure reinforcement learning without supervised fine-tuning can incentivize self-evolution of complex reasoning, reflection, and multi-step planning.
+  Background on model reasoning training. R1-Zero studies pure RL without SFT; R1 uses cold-start data, SFT, and multi-stage RL. Neither directly establishes runtime RSI of an environment-interacting agent.
 
   [arXiv: 2501.12948](https://arxiv.org/abs/2501.12948) / [GitHub](https://github.com/deepseek-ai/DeepSeek-R1)
 
@@ -582,8 +583,9 @@ AI agent research is undergoing a paradigm shift from "static instruction execut
 
 ## Multi-Agent Systems (MAS): Emergent Intelligence through Collaboration
 
-When single-agent capabilities hit a ceiling, the next frontier is Multi-Agent Systems (MAS)—multiple agents collaborating to solve complex problems. In MAS, tasks are decomposed and assigned to a team of "expert" agents with different roles, skills, and perspectives. Through communication, collaboration, debate, and even competition, they achieve goals beyond any single agent's reach.
+Multi-agent systems organize tasks through division of labor, communication, and shared artifacts. Role design is a mechanism choice; gains over a single agent require comparisons under matched tasks, budgets, and tools, including handoff costs and error propagation.
 
+[RAC](https://arxiv.org/abs/2610.00980) complements fixed-role examples with runtime selection. Selection has the highest observed mean in three research-agent hosts, while jointly adding contracts and verification reduces those means. This single-seed, small-sample result does not isolate either component or establish that collaboration is useless. Retain MetaGPT and ChatDev to study fixed workflows; use RAC to examine the cost of added coordination.
 
 ### MAS Paradigm & Architectures
 
@@ -614,7 +616,7 @@ When single-agent capabilities hit a ceiling, the next frontier is Multi-Agent S
 
 - **MetaGPT: Meta Programming for A Multi-Agent Collaborative Framework** (Hong et al., 2023)
 
-  Uses Standard Operating Procedures (SOPs) to meta-program LLMs, integrating human workflows into multi-agent collaboration. Generates a complete software system—product documents, architecture diagrams, task lists, and executable code—from a single-line requirement, dramatically reducing hallucination.
+  Uses Standard Operating Procedures (SOPs) to meta-program LLMs, integrating human workflows into multi-agent collaboration. Organizes requirements, design, and code through roles and structured artifacts; correctness still requires task verification and cannot be inferred from role count or document completeness.
 
   [arXiv: 2308.00352](https://arxiv.org/abs/2308.00352) / [GitHub](https://github.com/geekan/MetaGPT)
 
@@ -628,7 +630,7 @@ When single-agent capabilities hit a ceiling, the next frontier is Multi-Agent S
 
   [arXiv: 2307.07924](https://arxiv.org/abs/2307.07924) / [GitHub](https://github.com/OpenBMB/ChatDev)
 
-- **Development Framework**: AutoGen is the go-to framework for building MAS, providing powerful support for defining and coordinating multi-agent conversations.
+- **Development Framework**: AutoGen illustrates multi-agent conversation; see the framework section and [official repository](https://github.com/microsoft/autogen) for its maintenance status and successor.
 
 ---
 
@@ -641,6 +643,16 @@ As agents become increasingly autonomous and are empowered to take actions in th
 - **Constitutional AI (CAI)**: An innovative alignment technique from Anthropic. Rather than relying heavily on human annotators (like RLHF), CAI lets the AI "self-align" to a degree. First, a set of principles and values—a "Constitution"—is established. During training, the model not only generates responses but also self-critiques and revises them according to the Constitution through "Reinforcement Learning from AI Feedback" (RLAIF). This aims to make the alignment process more scalable, transparent, and consistent, reducing reliance on large-scale human annotation.
 
 - **Defense Mechanisms**: Beyond training-time alignment, deployment-time defense is also needed. Researchers are exploring deploying external "guard" models before and after the agent's "brain" to filter malicious inputs and review unsafe outputs, or using multi-agent systems with debate and review mechanisms to collectively enhance decision robustness and safety.
+
+### From outcomes to evaluation protocols
+
+- **Who acts on the environment?** [τ²-Bench](https://arxiv.org/abs/2506.07982) gives both agents and simulated users tools in shared state. No-User/Oracle Plan comparisons separate reasoning and coordination. [τ^τ-Bench](https://arxiv.org/abs/2609.04611) evaluates constructing and delivering an agent; these are distinct benchmarks.
+- **What counts as finished?** [Incident-Arena](https://arxiv.org/abs/2610.00648) checks recovery and safety under load and restart. Functional verifiers determine primary success; its separate reward-hacking analysis uses an LLM judge.
+- **What are the denominator and budget?** Report task version, sample size, repetitions, tokens, latency, cost, permissions, and stopping rules. Consistent success in `pass^k` differs from at-least-one success in `pass@k`. Separate agent failures, tool/verifier faults, and missing results; report uncertainty and distinguish simulated from real users.
+
+### Context trust and execution permissions
+
+Training alignment, guards, context trust, and execution permissions constrain different stages. [CPE](https://arxiv.org/abs/2609.01222) studies lower-trust content promoted to higher-priority or more persistent context; the [harness chapter](docs/harness.md) separates this from configuration exposure. Findings on paper-era versions do not establish exploitability of current products; guards and multi-agent review do not replace permission isolation.
 
 ### Evaluation & Benchmarks
 
@@ -712,7 +724,7 @@ This section keeps a set of earlier further-reading items. See the [September 20
 
 - **DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning** (DeepSeek, 2025)
 
-  Demonstrates how pure reinforcement learning without dense SFT incentivizes self-evolution of complex reasoning, reflection, and long-horizon task planning capabilities in LLMs, opening new paradigms for agent cognitive engine design.
+  Distinguish R1-Zero's pure RL from R1's multi-stage training. Longer inference traces, training-time weight updates, and agent-program self-modification are separate processes.
 
   [arXiv: 2501.12948](https://arxiv.org/abs/2501.12948) / [GitHub](https://github.com/deepseek-ai/DeepSeek-R1)
 
@@ -722,9 +734,9 @@ This section keeps a set of earlier further-reading items. See the [September 20
 
   [arXiv: 2503.21460](https://arxiv.org/abs/2503.21460) / [![Semantic Scholar](https://img.shields.io/badge/Semantic%20Scholar-View-blue)](https://api.semanticscholar.org/graph/v1/paper/search?query=Large+Language+Model+Agent+Survey+Methodology+Applications+Challenges+2025)
 
-- **AgentQ: Advanced Reasoning and Learning for Autonomous Web Agents** (2025)
+- **Agent Q: Advanced Reasoning and Learning for Autonomous AI Agents** (2024)
 
-  Combines Monte Carlo Tree Search (MCTS) with offline reinforcement learning (DPO/RLHF) from environment feedback, enabling web agents to self-correct during multi-step web navigation.
+  Combines guided MCTS, self-critique, and off-policy DPO fine-tuning on interaction trajectories. Search and training are distinct stages; this is a historical method entry, with experimental numbers awaiting full-text verification.
 
   [arXiv: 2408.07199](https://arxiv.org/abs/2408.07199)
 
@@ -757,7 +769,7 @@ This section keeps a set of earlier further-reading items. See the [September 20
 We warmly welcome community contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for the full guide.
 
 **Quick start:**
-- 📄 **Add a paper**: Open a PR with a new paper entry following our [paper template](CONTRIBUTING.md#paper-template)
+- 📄 **Add a paper**: Open a PR with a new paper entry following our [paper template](CONTRIBUTING.md#submit-a-catalog-change)
 - 🐛 **Report an issue**: Open a GitHub Issue for broken links, outdated info, or corrections
 - 💡 **Suggest new sections**: Open a Discussion on GitHub
 

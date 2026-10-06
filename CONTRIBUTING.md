@@ -20,3 +20,9 @@ The render script is run **manually** and uses only the Python standard library.
 ## Other contributions
 
 Broken links, factual corrections, clearer limitations, reading-path improvements, translations, and accessibility fixes are welcome. Please link the relevant source when correcting a factual claim. For large taxonomy changes, open an Issue first so readers can review the proposed categories.
+
+## Weekly review
+
+Weekly maintenance reviews recent papers, older omissions, the technical coverage of the whole guide, and the teaching logic of the reading paths. Each proposed conceptual change should identify the current passage, the learning problem, the primary evidence, the relationship between old and new methods, and the concrete revision. Follow the [weekly SOP](docs/update-sop.md) and [report template](docs/weekly-review-template.md).
+
+Save the completed analysis in `data/weekly-reviews/YYYY-MM-DD.md` and leave the proposed edits local for the maintainer to review. Wait for explicit approval for that week's changes before staging, committing, pushing, or creating a PR. Preserve previous unreviewed work and distinguish it from the current week's edits.

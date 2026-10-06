@@ -1,6 +1,6 @@
 # Agent Harness：Coding Agent 如何工作
 
-*论文增补核对：2026-10-03；产品资料核对：2026-09-27。产品行为以链接的官方文档为准。*
+*论文增补核对：2026-10-05；产品资料核对：2026-09-27。产品行为以链接的官方文档为准。*
 
 **Harness（运行框架）**是围绕模型组织任务、工具、执行环境和反馈的程序。模型决定下一步要做什么；harness 决定它能看到哪些信息、怎样调用工具、命令在哪里执行、结果如何回到上下文，以及何时验证、停止或请人介入。不要把模型、harness、执行环境和评测任务混成一个“Agent 能力”数字。[OpenAI 官方架构说明](https://developers.openai.com/api/docs/guides/agents-api/architecture)明确区分 harness、environment 和 application server；[Code as Agent Harness](https://arxiv.org/abs/2605.18747)从研究角度梳理这些层次。
 
@@ -39,3 +39,11 @@
 - **安全边界**：工具可访问的文件、网络与凭据取决于执行环境；评估 Coding Agent 时应记录权限、沙箱和人工审批设置。[官方环境文档](https://developers.openai.com/api/docs/guides/agents-api/architecture)区分托管与自有执行环境。
 
 **推荐顺序：**先读 SWE-agent 理解接口，再读 Codex 官方架构理解产品中的循环，之后用 The Scaffold Effect 和 DAREBench 检查“同一模型/不同框架”和“不同工作负载”的比较边界。相关论文的研究问题、指标、局限与核验日期见[论文库](papers.md)。
+
+## 上下文、权限和验收的三个接口
+
+1. **上下文接口**：[MemGPT](https://arxiv.org/abs/2310.08560)用分层存储与分页解释“保存的信息如何进入模型”。信息进入哪种消息、作用于会话/项目/用户哪个范围，仍需由具体 Harness 说明。
+2. **信任接口**：[CPE](https://arxiv.org/abs/2609.01222)研究低信任内容提升消息角色或跨范围持久化的路径。应分别记录内容来源、角色/范围与执行权限。它是运行攻击路径研究，与 Scanning the Harness 的配置审计不同；自动验证的传播与后续行为也分别计数，不能据此断言所有当前产品均存在同一漏洞。该论文仅用于本段解释，完整候选核验见周报。
+3. **验收接口**：[Incident-Arena](https://arxiv.org/abs/2610.00648)把验证从补丁延伸到运行服务：恢复门、安全门、持续负载与重启检查。它有 20 个任务、每推理档 3 次试验，且使用不同模型/Harness 配置；主成功检查和另用 LLM judge 的奖励投机分析分开。读它学习验收设计，而不把得分归因给模型单独。
+
+MCP 定义接口；业务授权与沙箱隔离仍需实现。官方[安全实践](https://modelcontextprotocol.io/docs/2025-11-25/tutorials/security/security_best_practices)讨论令牌透传、混淆代理和最小权限（2026-10-05 核对）。本段补充跨层机制；前文 Codex 产品资料的核对日期仍为 2026-09-27。

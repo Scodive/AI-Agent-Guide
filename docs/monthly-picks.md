@@ -16,3 +16,5 @@
 | 10 | [AI-Research Agents in the Wild](https://arxiv.org/abs/2609.11975) · 科研 Agent<br>[库内记录](papers.md#paper-2609.11975) | 将论文、仓库与设计谱系分开登记，避免重复计数和泛化过度。 | 连接 139 个仓库与 101 篇论文，并审计新样本；范围受公开资源和冻结日期限制。 |
 
 **选读建议：**先读 1–2 理解任务与评估，再按兴趣选 3–6 的机制研究；7–10 展示配置、维护、监督和科研生态中的现实边界。完整研究问题、机制、实验环境、结论与局限见[论文库](papers.md)。
+
+**2026-10-05 编辑说明：**本页保留九月十篇；十月按 SOP 于月底整理。本周补充 CMP、Incident-Arena 及三项经典路线，见[候选记录](https://github.com/Scodive/AI-Agent-Guide/blob/main/data/candidate-log.md)和[周报](https://github.com/Scodive/AI-Agent-Guide/blob/main/data/weekly-reviews/2026-10-05.md)，不以未完成核验的候选替换月度精选。链接随本次源文件获批提交后可在网站访问；本地完整周报位于 `data/weekly-reviews/2026-10-05.md`。
