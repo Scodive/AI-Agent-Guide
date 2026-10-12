@@ -28,7 +28,9 @@
 
 **2026-10-03 周更：**论文库新增 5 篇，含 3 篇 10 月 1 日提交的新论文和 2 篇 9 月遗漏补收。先从 [VISTA](papers.md#paper-2610.02200)、[Mingbird](papers.md#paper-2610.02001)了解视觉和小模型 Harness，再用 [Beyond the Model](papers.md#paper-2609.32459)比较组件效果；[RAC](papers.md#paper-2610.00980)与 [Self-Healing Harness](papers.md#paper-2609.24130)分别讨论动态协作和持久规则修改。它们均按预印本收录。
 
-**2026-10-05 周审查：**库从 62 增至 67 篇：新增近期的 [CMP](papers.md#paper-2610.02070)、[Incident-Arena](papers.md#paper-2610.00648)，补收 [MemGPT](papers.md#paper-2310.08560)、[LATS](papers.md#paper-2310.04406)、[τ²-Bench](papers.md#paper-2506.07982)。重点修订记忆可见性、搜索反馈、RSI 分类、MCP 权限和多 Agent 协作边界，详见[完整周报](../data/weekly-reviews/2026-10-05.md)。均为本地待审修改，网站上线另行核验。
+**2026-10-12 周审查（已获批）：**库从 67 增至 72 篇。本周新提交的 [HarnessSecurity-Bench](papers.md#paper-2610.07639)与[时间跨度统计审查](papers.md#paper-2610.12466)补安全/效用和指标解释；较早补收 [Agentless](papers.md#paper-2407.01489)、[Component Routing](papers.md#paper-2610.01787)、[VERSE](papers.md#paper-2610.02616)，连接固定流程、经验去向和改进器自改。CMP 跟进 10 月 8 日 v3，不重复入库。详见[本周完整报告](../data/weekly-reviews/2026-10-12.md)；源数据修改已获维护者批准，网站上线另行核验。
+
+**2026-10-05 周审查：**库从 62 增至 67 篇：新增近期的 [CMP](papers.md#paper-2610.02070)、[Incident-Arena](papers.md#paper-2610.00648)，补收 [MemGPT](papers.md#paper-2310.08560)、[LATS](papers.md#paper-2310.04406)、[τ²-Bench](papers.md#paper-2506.07982)。重点修订记忆可见性、搜索反馈、RSI 分类、MCP 权限和多 Agent 协作边界，详见[完整周报](../data/weekly-reviews/2026-10-05.md)。该期源文件已于 10 月 6 日获批提交；不再标作待审核。
 
 ## 保留的完整指南
 

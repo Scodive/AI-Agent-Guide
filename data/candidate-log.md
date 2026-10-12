@@ -68,3 +68,27 @@
 | [Not All Experience Belongs in the Weights: Component Routing for Self-Improving GUI Agents](https://arxiv.org/abs/2610.01787) | 2026-10-01；v1 | 暂缓，优先后续核验。可连接上下文/技能/权重修改对象；训练测试隔离、路由消融、预算与代码待全文检查。 |
 | [VideoEvolve: Evolving Agent Harnesses for Video Temporal Grounding](https://arxiv.org/abs/2610.01766) | 2026-10-01；v1 | 暂缓。只读元数据/摘要；工作流修改与改进器递归、留出反馈及完整成本未核验。 |
 | [Agents Are Systems, Not Models: Rethinking Agentic Evaluation](https://arxiv.org/abs/2610.01618) | 2026-10-01；v1 | 暂缓，优先后续核验。系统配置与模型归因贴合指南；配置选择、任务覆盖和方差分析待全文核验。 |
+
+## 2026-10-12 周审查
+
+窗口 2026-10-05 至 2026-10-11，按 arXiv UTC 首次提交/修订记录。处理 15 项唯一候选：新增 5（本周首次提交 2、较早补收 3）、旧 CSV 修订 1、既有条目元数据检查 2、暂缓 7。仅元数据/摘要核验的暂缓项不进入 CSV；未重读的历史候选另列，不虚增本周处理数。详见[周报](weekly-reviews/2026-10-12.md)。
+
+| 候选 / 原始来源 | 首次提交；本次版本 | 决定与具体理由 |
+| --- | --- | --- |
+| [HarnessSecurity-Bench: Do Security Mechanisms Really Protect Coding Agent Harnesses?](https://arxiv.org/abs/2610.07639) | 2026-10-06；v1 | 收录，评估与安全。固定模型的机制开关、效用与攻击独立 oracle 补运行证据；保留单模型、LLM 审批、模拟环境、未知矩阵与非官方源码边界。作者任务包已关联，不视为完整实验复现。 |
+| [On the estimation and validity of AI time horizons---a statistical look at the METR plot](https://arxiv.org/abs/2610.12466) | 2026-10-08；v1 | 收录，实证研究。补人类时间/AI 运行时间、非线性难度、家族区间与交叉验证；不能把拟合诊断写成部署代表性审计或否定进展趋势。官方方法代码未确认。 |
+| [VERSE: Verified Self-Evolving Optimizer for Agent Harnesses](https://arxiv.org/abs/2610.02616) | 2026-10-02；v1 | 较早补收，自我演进。补执行器/改进器两层修改；核对主实验一次演化、avg@3 测试重复、108/107 有效分母和完整成本未匹配。作者代码入口已确认，未运行。 |
+| [Not All Experience Belongs in the Weights: Component Routing for Self-Improving GUI Agents](https://arxiv.org/abs/2610.01787) | 2026-10-01；v1 | 将上期暂缓改为收录。读方法、任务拆分、路由/训练、配对区间及成本；补记忆到 GUI 参数训练的连接。路由不是通用定律，GUI-Owl 的部分区间含零；代码承诺发布未确认，留空。 |
+| [Agentless: Demystifying LLM-based Software Engineering Agents](https://arxiv.org/abs/2407.01489) | 2024-07-01；v2 2024-10-29 | 经典补收。缺固定流程基线；补分层定位、采样、测试与投票，不从不同模型/预算的历史榜单归因机制。作者仓库已确认，未运行。 |
+| [Causal Memory Policy: Making Memory Utility Identifiable by Intervening on Retrieval](https://arxiv.org/abs/2610.02070) | 2026-10-01；v3 2026-10-08，另有 v2 10-02 | 修订旧条目三个字段，不新增编号。补 v3 评分/曝光预算、固定存储方差与动态流、未记账探索成本；未做完整逐行版本 diff，不称这些全是 v3 新发明。匿名代码入口可访问但正文不可抽取。 |
+| [Incident-Arena](https://arxiv.org/abs/2610.00648) | 2026-09-30；仍 v1 | 已收录；本次仅检查标题/作者/历史，无新修订。保留上期日期与局限，不重复刷新全文核验日期。 |
+| [Can AI Scientists Coordinate at Runtime?](https://arxiv.org/abs/2610.00980) | 2026-10-01；仍 v1 | 已收录；本次元数据无新修订。沿用上期小样本/联合消融边界，不新增。 |
+| [MedicalHarness: A Controlled Evaluation of LLMs and Agent Harnesses on Medical Tasks](https://arxiv.org/abs/2610.05778) | 2026-10-05；v1 | 暂缓，仅元数据/摘要。可补垂直工作负载对照；医疗评分、参考答案、权限和组件预算尚未全文核验，不引用摘要的方差或优劣结论。 |
+| [OnTrack: Real-Time Monitoring and Intervention in LLM Agent Trajectories via Streaming Structure-Aware Optimal Transport](https://arxiv.org/abs/2610.12375) | 2026-10-08；v1 | 暂缓，仅元数据/摘要。轨迹监控可补停止规则；参考轨迹划分、误中止、6 次中止分母与成本收益待全文核验，不能按摘要百分比推荐部署。 |
+| [Recursive Self-Improvement through Multi-Agent Self-Supervision](https://arxiv.org/abs/2610.12176) | 2026-10-08；v1 | 暂缓，下一期优先。仅元数据/摘要，MASS 交替工作流搜索与参数训练；同一模型生成/评价反馈的独立性、两轮递归和公开基准污染需细读。与固定权重 VERSE 的对象不同，不凭标题写 RSI 已解决。 |
+| [BrickBench: Evaluating Agentic Brick Design](https://arxiv.org/abs/2610.12452) | 2026-10-08；v1 | 暂缓，仅元数据/摘要。可补物理可构建性与开放设计质量，但领域专门，验证器、人工设计比较和任务分母未读；当前先补指南跨层缺口。 |
+| [Searching for "Harmful Refusal": A Psychometric Audit of an AI Safety Benchmark](https://arxiv.org/abs/2610.12409) | 2026-10-08；v1 | 暂缓，仅元数据/摘要。安全构念与聚合问题值得读；本周未核验多维 IRT/DIF 条件，arXiv 评论的工作坊状态未由正式页面确认。 |
+| [Agents Are Systems, Not Models: Rethinking Agentic Evaluation](https://arxiv.org/abs/2610.01618) | 2026-10-01；仍 v1 | 继续暂缓。复查摘要/历史，组件归因价值明确；四科学任务、信息给定与方差分析协议未全文核验，不引用“54%”作指南结论。 |
+| [ScholarCatalyst](https://arxiv.org/abs/2610.02202) | 2026-10-01；v1 | 继续暂缓；重新打开原始页，但时间截断、标注、检索预算仍未核验，不能称研究 Agent 找论文已全面比较。 |
+
+**历史待核验，未计入上述 15：**CPE、RegenHarness、Fewer Tokens Better Action、HPC Systems、Mimir、Global Coherence、VideoEvolve。本周未重新核验全文，沿用 10-05 状态，不把仍暂缓写成拒收。cs.AI 第一页其他标题仅读取作发现，未形成证据卡；检索误返的旧年份结果排除在时间窗口外，不列作已核验候选。

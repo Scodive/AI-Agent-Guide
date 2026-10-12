@@ -60,3 +60,17 @@
 - **官方技术资料**：2026-10-05 读[AutoGen 官方仓库维护说明](https://github.com/microsoft/autogen)，纠正“新项目首选”的过时推荐；读[MCP 官方安全实践](https://modelcontextprotocol.io/docs/2025-11-25/tutorials/security/security_best_practices)，纠正协议天然提供授权/隔离的绝对表述。Codex 产品资料本周未重核，专题保留原 2026-09-27 日期。
 
 本次不使用 MDPI；不凭仓库徽章、搜索摘要或 arXiv 评论栏增加正式录用状态。新入库记录继续标记 venue unverified，近期两篇仍是预印本。其他历史条目的核验日期没有整体刷成今天。
+
+## 2026-10-12 原始来源核验
+
+核验范围是下列五篇新增与 CMP 修订，以及两个既有条目的元数据。其他条目沿用原日期。以下只列实际读的章节，不宣称逐行审计全部附录、正式录用或独立复现；代码核验是论文/作者关联和入口可访问，未执行代码。
+
+- **HarnessSecurity-Bench**：Zhengyang Zhu、Liming Huang、Runmin Ji、Mingxi Ye、Zihan Zhou、Hanyang Guo、Jingwen Wu、Yuhan Ye、Yuming Feng、Hong-Ning Dai、Zibin Zheng。[记录](https://arxiv.org/abs/2610.07639)，v1 2026-10-06 02:34:53 UTC；[全文](https://arxiv.org/html/2610.07639v1) §1–2、机制矩阵、§5 任务/oracle、§6 开关协议和结果、§7 局限/Data Availability。2500 试验、23 任务、GLM-5.2；40 Harness 矩阵的 112 项未知不作缺失。AA-OFF 使用 Qwen3.8-27B 审批，不代表人类审批；源码覆盖包含非官方镜像，不推断当前产品可利用。全文关联[作者任务包](https://github.com/TsingPig/HarnessSecurity-Benchmark)，入口已打开；完整实验复现未核验。
+- **时间跨度统计审查**：Drew T. Nguyen、William Fithian。[记录](https://arxiv.org/abs/2610.12466)，v1 2026-10-08 17:59:50 UTC；[全文](https://arxiv.org/html/2610.12466v1) §1–4、附录 A.1。228 任务/79 家族/26 AI，家族五折交叉验证与 12 评分口径；29% 人类时间是专家估计。50% horizon 用人类时间作标尺，不计 AI 执行时长；单 AI 的不少区间仍含零。论文只诊断预测性/可比性，任务代表性和一维构念未验证；没有明确作者方法代码入口，CSV 留空，不把 arXiv HTML 报错仓库当代码。
+- **VERSE**：Zekai Wang、Yingqiang Ge、Zekun Wang、Hai Wang、Yuhui Xu、Joshua Frandsen、Shancong Fu、Ashia C. Wilson、Chandan K. Reddy。[记录](https://arxiv.org/abs/2610.02616)，v1 2026-10-02 00:16:30 UTC；[全文](https://arxiv.org/html/2610.02616v1) §2–4、实验结果和局限、附录 D.2/D.3、F 的部分补充。主训练/验证110/50，封存测试原110/111剔除2/4参考失败为108/107；三个 OOD 任务与训练同仓库，时间分割不是完全仓库隔离。主表各一次演化，avg@3 是测试重复；附录不同模型重复不可移给主表。共享探测单位不等于总调用或成本相等；自改评估原语不可修改。记录/全文关联[作者代码](https://github.com/wzekai/VERSE)，已打开，未运行。
+- **Component Routing**：Beining Wu、Zihao Ding、Jun Huang。[记录](https://arxiv.org/abs/2610.01787)，v1 2026-10-01 14:34:32 UTC；[全文](https://arxiv.org/html/2610.01787v1) §1/3、路由规则与结果、附录 B/C、E.2、H。MobileGym 主测试1106实例/种子，32个混合应用模板不计主表；AndroidWorld58任务×4实例=232/种子。三个模型与三个种子，同一经验内容，模型家族留出校准路由；训练/推理费用未匹配。AndroidWorld GUI-Owl 路由相对全上下文 -0.3pp，区间[-2.6,+2.0]，不写成所有模型增益。文中承诺发布，官方代码未确认，留空。
+- **Agentless**：Chunqiu Steven Xia、Yinlin Deng、Soren Dunn、Lingming Zhang。[记录](https://arxiv.org/abs/2407.01489)，v1 2024-07-01、v2 2024-10-29；[全文](https://arxiv.org/html/2407.01489v2) §3–6 的定位/修复/验证、实验协议、采样消融、Lite 问题分类。v2 GPT-4o 每题40补丁与40测试，96/300 和平均费用0.70美元是历史设置；比较含不同模型/预算和未公开轨迹。Lite-S 过滤改变任务集，不等于证明无训练污染。全文关联[OpenAutoCoder/Agentless](https://github.com/OpenAutoCoder/Agentless)，入口已打开，未运行。
+- **CMP v3**：Arman Behnam、Binghui Wang。[记录](https://arxiv.org/abs/2610.02070) v1 10-01、v2 10-02、v3 10-08 14:30:55 UTC；[v3 全文](https://arxiv.org/html/2610.02070v3) §3.1–3.2、§4–5、附录 C 方差、I/J。固定存储估计方差与演化流相关性分开，曝光预算随池大小扩张，费用未覆盖无仪表探索；作者只报告确定性指标，匿名代码默认路径与论文实验臂也有差别。更新旧 CSV 的 evaluation/limitation/verified_on，不新增。未做完整 v1-v3 逐行差异，不能称各机制都是本周新增。作者匿名代码仍不可抽取，未运行。
+- **旧条目元数据**：重新打开 Incident-Arena 与 RAC 的摘要/历史，仍为 v1；未本周重审全文，不刷新它们的 CSV 日期。其他新发现/暂缓条目只查原始元数据/摘要，去留记录见[候选日志](candidate-log.md)。
+
+产品资料仍保留 Codex 2026-09-27、MCP/AutoGen 2026-10-05 的核对日期，本周研究中的产品实验不代替当前官方产品审计。未使用 MDPI。旧条目的正式会议状态、代码可复现性和全库失效外链仍未完成核验。

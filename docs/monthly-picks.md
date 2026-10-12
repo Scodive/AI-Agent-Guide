@@ -17,4 +17,6 @@
 
 **选读建议：**先读 1–2 理解任务与评估，再按兴趣选 3–6 的机制研究；7–10 展示配置、维护、监督和科研生态中的现实边界。完整研究问题、机制、实验环境、结论与局限见[论文库](papers.md)。
 
-**2026-10-05 编辑说明：**本页保留九月十篇；十月按 SOP 于月底整理。本周补充 CMP、Incident-Arena 及三项经典路线，见[候选记录](https://github.com/Scodive/AI-Agent-Guide/blob/main/data/candidate-log.md)和[周报](https://github.com/Scodive/AI-Agent-Guide/blob/main/data/weekly-reviews/2026-10-05.md)，不以未完成核验的候选替换月度精选。链接随本次源文件获批提交后可在网站访问；本地完整周报位于 `data/weekly-reviews/2026-10-05.md`。
+**2026-10-05 编辑说明：**本页保留九月十篇；十月按 SOP 于月底整理。该期补充 CMP、Incident-Arena 及三项经典路线，见[候选记录](https://github.com/Scodive/AI-Agent-Guide/blob/main/data/candidate-log.md)和[周报](https://github.com/Scodive/AI-Agent-Guide/blob/main/data/weekly-reviews/2026-10-05.md)；源文件已于 10 月 6 日获批提交。
+
+**2026-10-12 周审查说明（已获批）：**本期补安全设置对照、时间跨度统计解释，并补收固定流程、GUI 经验路由、两层 Harness 优化；CMP 跟进 v3。九月十条精选不变，十月仍于月底整理。详细分析保存在 `data/weekly-reviews/2026-10-12.md`；[线上周报链接](https://github.com/Scodive/AI-Agent-Guide/blob/main/data/weekly-reviews/2026-10-12.md)随本次获批源文件更新发布，网站同步状态单独核验。

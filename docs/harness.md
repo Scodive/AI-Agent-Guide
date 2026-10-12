@@ -1,6 +1,6 @@
 # Agent Harness：Coding Agent 如何工作
 
-*论文增补核对：2026-10-05；产品资料核对：2026-09-27。产品行为以链接的官方文档为准。*
+*论文增补核对：2026-10-12；产品资料核对：2026-09-27。产品行为以链接的官方文档为准。*
 
 **Harness（运行框架）**是围绕模型组织任务、工具、执行环境和反馈的程序。模型决定下一步要做什么；harness 决定它能看到哪些信息、怎样调用工具、命令在哪里执行、结果如何回到上下文，以及何时验证、停止或请人介入。不要把模型、harness、执行环境和评测任务混成一个“Agent 能力”数字。[OpenAI 官方架构说明](https://developers.openai.com/api/docs/guides/agents-api/architecture)明确区分 harness、environment 和 application server；[Code as Agent Harness](https://arxiv.org/abs/2605.18747)从研究角度梳理这些层次。
 
@@ -11,6 +11,8 @@
 3. **执行并观察**：harness 把动作交给有权限的工具或沙箱；输出、错误和文件变化返回会话。
 4. **验证与修复**：运行相关测试、构建或人工可检查的演示；失败时根据反馈修改，而非只凭“代码已写”结束。
 5. **交付与监督**：展示差异、验证结果及剩余风险；需要权限或方向判断时交由人决定。
+
+**先看固定流程基线。**[Agentless](https://arxiv.org/abs/2407.01489)把仓库修复组织为定位、补丁生成、验证三个预定阶段，模型不自主决定下一种工具动作；程序仍执行检索、测试和候选筛选。对照 SWE-agent 的动态动作循环与 SWE-Search 的分支搜索，问新增自由度解决了什么失败、花了多少预算。Agentless v2 的 SWE-bench Lite 结果是历史快照，且每题最多生成 40 个补丁和 40 个复现测试；固定流程也有采样成本，不能直接用异模型榜单证明其总是更优。[完整记录](papers.md#paper-2407.01489)。
 
 这是一种**概念性拆解**，不是某个产品内部代码的逐行复刻。[OpenAI 对 Codex 长任务的说明](https://developers.openai.com/blog/run-long-horizon-tasks-with-codex)将其概括为计划、编辑、运行工具、观察、修复和重复；[官方 Agents API 文档](https://developers.openai.com/api/docs/guides/agents-api/overview)说明 Codex harness 管理会话、编排、上下文压缩与恢复，执行环境负责命令和文件。Codex 是帮助理解这一结构的实例，不等于所有 Coding Agent 共用同一实现。
 
@@ -38,7 +40,7 @@
 - **仓库指令与验证**：`AGENTS.md`、技能或任务说明可以给出项目约束；它们不能代替运行测试、检查差异和确认交付条件。[OpenAI 的长任务案例](https://developers.openai.com/blog/run-long-horizon-tasks-with-codex)是一个有说明文件和阶段验证的实例，不是所有任务的效果保证。
 - **安全边界**：工具可访问的文件、网络与凭据取决于执行环境；评估 Coding Agent 时应记录权限、沙箱和人工审批设置。[官方环境文档](https://developers.openai.com/api/docs/guides/agents-api/architecture)区分托管与自有执行环境。
 
-**推荐顺序：**先读 SWE-agent 理解接口，再读 Codex 官方架构理解产品中的循环，之后用 The Scaffold Effect 和 DAREBench 检查“同一模型/不同框架”和“不同工作负载”的比较边界。相关论文的研究问题、指标、局限与核验日期见[论文库](papers.md)。
+**推荐顺序：**先用 Agentless 理解固定流程，再用 SWE-agent 理解动态动作与接口，读 Codex 官方架构理解产品中的循环，之后用 The Scaffold Effect 和 DAREBench 检查模型、框架和工作负载的比较边界。相关论文的研究问题、指标、局限与核验日期见[论文库](papers.md)。
 
 ## 上下文、权限和验收的三个接口
 
@@ -47,3 +49,11 @@
 3. **验收接口**：[Incident-Arena](https://arxiv.org/abs/2610.00648)把验证从补丁延伸到运行服务：恢复门、安全门、持续负载与重启检查。它有 20 个任务、每推理档 3 次试验，且使用不同模型/Harness 配置；主成功检查和另用 LLM judge 的奖励投机分析分开。读它学习验收设计，而不把得分归因给模型单独。
 
 MCP 定义接口；业务授权与沙箱隔离仍需实现。官方[安全实践](https://modelcontextprotocol.io/docs/2025-11-25/tutorials/security/security_best_practices)讨论令牌透传、混淆代理和最小权限（2026-10-05 核对）。本段补充跨层机制；前文 Codex 产品资料的核对日期仍为 2026-09-27。
+
+## 保护是否有效：同时测正常任务与攻击效果
+
+[HarnessSecurity-Bench](https://arxiv.org/abs/2610.07639)连接三种证据：配置审计发现暴露，CPE 分析信任传播路径，运行对照检查安全设置是否改变实际效果。它在固定 GLM-5.2、23 个任务、六种 Harness 中分别用确定性 oracle 检查任务效用和攻击效果，比较支持开关的机制，并计入 token 与执行时间。评估时先确认开关、其他权限和基准版本，再问保护是否留下正常完成路径、是否覆盖通向同一资源的其他执行路径。
+
+**边界：**40 种 Harness 的静态机制矩阵有 112/400 项未知，未知不等于缺失。运行实验是容器和模拟服务，审批关闭条件使用固定 LLM 审查器；部分源码来自非官方镜像。论文结果不能直接代表当前 Codex/Claude Code 版本或真人审批效果。任务效用按通过的检查计数，攻击效果按攻击实例计数，分母不同，不能合并为一个成功率。作者提供的是[任务包与效用检查](https://github.com/TsingPig/HarnessSecurity-Benchmark)，本库未运行。
+
+运行框架也可以成为优化对象。[VERSE](https://arxiv.org/abs/2610.02616)进一步区分执行器的 Harness 与改进器自己的 Harness；两层修改和不可改验证接口见 [RSI 专题](rsi.md)。

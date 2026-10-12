@@ -12,7 +12,7 @@ Welcome to **AI-Agent-Guide**. This repository keeps its long-form guide and add
 
 **Start here:** [Site](https://ai-notes-red-two.vercel.app) · [Reading path](docs/reading-path.md) · [Paper table](docs/papers.md) · [September 2026 picks](docs/monthly-picks.md) · [Harness and coding agents](docs/harness.md) · [RSI and self-improvement](docs/rsi.md) · [Weekly maintenance SOP](docs/update-sop.md) · [CSV data](data/papers.csv).
 
-As of October 5, 2026, the catalog contains 67 papers, including 10 September picks. This review adds memory-utility identification, incident-recovery evaluation, and three older omissions: MemGPT, LATS, and τ²-Bench. See the [weekly review](data/weekly-reviews/2026-10-05.md) for teaching changes and pending verification. The separate presentation website consumes the CSV; this repository maintains the data and guide. Catalog inclusion does not mean independent replication. Please report incorrect links or descriptions through an Issue or PR.
+As of October 12, 2026, the catalog contains 72 papers, including 10 September picks. This review adds two papers submitted in the past week, three older omissions (Agentless, Component Routing, VERSE), and follows CMP v3. It connects fixed workflows, experience routing, optimizer self-modification, permission effects, and statistical metrics. See the [weekly review](data/weekly-reviews/2026-10-12.md). The maintainer has approved these source updates; source updates and website publication are checked separately. Inclusion does not mean independent replication. Please report errors through an Issue or PR.
 
 ## How to use this guide
 
@@ -282,6 +282,8 @@ The planning and reasoning module is the agent's "brain," responsible for formul
 
 These techniques are composable design choices. Report nodes, trajectories, tokens, and environment calls together. LATS uses correctness-oracle feedback for HotpotQA and assumes reversible states; backtracking in a benchmark does not authorize reversing real payments or production changes. See the [catalog record](docs/papers.md#paper-2310.04406).
 
+For code repair, first compare a fixed workflow: [Agentless](https://arxiv.org/abs/2407.01489) prescribes localization, generation, and validation; SWE-agent lets the model select actions; SWE-Search adds branching search. Evaluate the additional freedom under matched tasks, models, and budgets. Workflow complexity alone does not establish capability.
+
 ### Reasoning Tech Comparisons
 
 | Technique | Core Idea | Main Advantage | Best Use Case |
@@ -347,6 +349,8 @@ Agent memory systems are typically designed to mimic human cognitive architectur
 Separate **storage → retrieval → visible context → task outcome → future retention**. [MemGPT](https://arxiv.org/abs/2310.08560) explains tiered storage, paging, and control flow; A-MEM explains organization. These address complementary questions.
 
 [CMP](https://arxiv.org/abs/2610.02070) adds a measurement boundary: a memory never exposed in context has not been tested, so absent contribution does not establish uselessness. Random exposure improves identification, but the experimental pool uses relevance labels and future-query retention remains unresolved. Read it as an evaluation method, rather than a deployment-ready eviction policy.
+
+**Where should experience go?** [Component Routing](https://arxiv.org/abs/2610.01787) splits GUI experience into locators, procedures, state facts, and lessons, then compares context retrieval with weight updates. This connects memory to GUI training and distinguishes information access from policy learning. Three models and two environments do not establish a universal routing rule; training compute and prompt tokens are not equalized. [CMP v3](https://arxiv.org/html/2610.02070v3) also makes pool-size exposure costs and the fixed-store variance assumption explicit; an evolving memory stream needs additional treatment (checked 2026-10-12).
 
 ---
 
@@ -443,6 +447,8 @@ Agentic coding represents one of the most commercially impactful frontiers of AI
   [arXiv: 2410.20285](https://arxiv.org/abs/2410.20285) / [GitHub](https://github.com/aorwall/moatless-tools)
 
 **Understanding delivery:** A generated patch, passing tests, human acceptance, post-merge maintenance, and live-service recovery are distinct observations. Use the [harness chapter](docs/harness.md) to separate interfaces, context, and verification, then [Who Finishes the Job?](https://arxiv.org/abs/2609.26847) for follow-up maintenance. [Incident-Arena](https://arxiv.org/abs/2610.00648) extends evaluation to recovery under sustained load and restart while preserving data and permitted change scope. Its limited tasks and model/harness pairs do not establish a commercial product ranking.
+
+**Fixed-workflow baseline:** [Agentless](https://arxiv.org/abs/2407.01489) localizes edits, samples patches and reproduction tests, and selects a patch through validation and voting without autonomous tool-action selection. Its v2 generates 40 patches and 40 tests per issue and reports 96/300 on SWE-bench Lite. Generated and existing tests can remain incomplete. This is a historical baseline, not a current ranking or proof under matched budgets. [Author-linked code](https://github.com/OpenAutoCoder/Agentless) was checked but not run.
 
 ### Related Papers & Resources
 
@@ -555,6 +561,8 @@ Classify self-improvement by **the component changed, the feedback source, and t
 
 The [RSI chapter](docs/rsi.md) compares GEPA, Gödel Agent, DGM, and AIDE² and separates AlphaEvolve's target-algorithm improvement. External validation, held-out tasks, and rollback conditions must be reported without assuming universal gains.
 
+[VERSE](https://arxiv.org/abs/2610.02616) separates changes to the executor's harness from changes to the optimizer's own harness, whose accepted version participates in later rounds; model weights and verification interfaces stay fixed. It complements the program-evolution path and GEPA's prompt evolution. Main results have one evolution run per condition; avg@3 repeats test evaluation. Self-evolution does not always improve over VERSE without self-evolution. Read held-out outcomes and full costs together.
+
 ### Related Papers & Resources
 
 - **Voyager: An Open-Ended Embodied Agent with Large Language Models** (Wang et al., 2023)
@@ -649,10 +657,13 @@ As agents become increasingly autonomous and are empowered to take actions in th
 - **Who acts on the environment?** [τ²-Bench](https://arxiv.org/abs/2506.07982) gives both agents and simulated users tools in shared state. No-User/Oracle Plan comparisons separate reasoning and coordination. [τ^τ-Bench](https://arxiv.org/abs/2609.04611) evaluates constructing and delivering an agent; these are distinct benchmarks.
 - **What counts as finished?** [Incident-Arena](https://arxiv.org/abs/2610.00648) checks recovery and safety under load and restart. Functional verifiers determine primary success; its separate reward-hacking analysis uses an LLM judge.
 - **What are the denominator and budget?** Report task version, sample size, repetitions, tokens, latency, cost, permissions, and stopping rules. Consistent success in `pass^k` differs from at-least-one success in `pass@k`. Separate agent failures, tool/verifier faults, and missing results; report uncertainty and distinguish simulated from real users.
+- **Whose time is a horizon?** The [METR statistical audit](https://arxiv.org/abs/2610.12466) re-estimates horizons on 228 software tasks and 26 AIs. A 50% horizon is the human completion time associated with tasks an AI solves with 50% probability, rather than autonomous runtime. Nonlinear difficulty mappings and family/run dependence matter; a horizon multiplier need not imply the same capability multiplier. This does not reject the observed progress trend or establish deployment representativeness.
 
 ### Context trust and execution permissions
 
 Training alignment, guards, context trust, and execution permissions constrain different stages. [CPE](https://arxiv.org/abs/2609.01222) studies lower-trust content promoted to higher-priority or more persistent context; the [harness chapter](docs/harness.md) separates this from configuration exposure. Findings on paper-era versions do not establish exploitability of current products; guards and multi-agent review do not replace permission isolation.
+
+[HarnessSecurity-Bench](https://arxiv.org/abs/2610.07639) adds runtime comparisons: measure legitimate-task utility, attack effects, and costs separately before comparing settings under a fixed model and task. Containerized services, one acting model, and an LLM approval reviewer limit generalization; unknown mechanisms are unresolved, and tested versions do not establish current product behavior. See the [harness discussion](docs/harness.md#保护是否有效同时测正常任务与攻击效果).
 
 ### Evaluation & Benchmarks
 
