@@ -92,3 +92,34 @@
 | [ScholarCatalyst](https://arxiv.org/abs/2610.02202) | 2026-10-01；v1 | 继续暂缓；重新打开原始页，但时间截断、标注、检索预算仍未核验，不能称研究 Agent 找论文已全面比较。 |
 
 **历史待核验，未计入上述 15：**CPE、RegenHarness、Fewer Tokens Better Action、HPC Systems、Mimir、Global Coherence、VideoEvolve。本周未重新核验全文，沿用 10-05 状态，不把仍暂缓写成拒收。cs.AI 第一页其他标题仅读取作发现，未形成证据卡；检索误返的旧年份结果排除在时间窗口外，不列作已核验候选。
+
+## 2026-10-19 研究候选与存量复查
+
+窗口为10月12–18日（提交/修订按UTC）。本节22个唯一编号：4篇新增（3篇本周首次提交，MASS为10月8日补收）、10篇暂缓、3篇旧库版本检查、5篇旧指南纠正。四篇新增读方法、实验与限制；暂缓项仅查元数据/摘要，不据摘要数字改指南。详见[周报](weekly-reviews/2026-10-19.md)。所有新入库条目保留预印本/venue unverified；没有确认代码入口则留空。
+
+| 原始记录 | 首次/本次版本日期 | 本次决定与理由 |
+| --- | --- | --- |
+| [AgentPerturb](https://arxiv.org/abs/2610.21624) | 2026-10-15；v1 | 新增基准；补输入来源与错误类型的配对测试。完成情况选择Toolathlon子集、无评分排除、单轨迹限制保留；作者代码仓库为空。 |
+| [FDE-Gym](https://arxiv.org/abs/2610.22350) | 2026-10-15；v1 | 新增基准；连接需求澄清与交付。原系统/专家锚点、事故和沟通成本有明确口径；脚本客户、无真人基线和留出数据限制保留。 |
+| [Terminal-RSI](https://arxiv.org/abs/2610.22192) | 2026-10-15；v1 | 新增方法，作为有边界的参数训练阅读；保留历史对照、critic记录及外部榜单未统一的问题，不引用SOTA排名，代码未确认。 |
+| [MASS](https://arxiv.org/abs/2610.12176) | 2026-10-08；v1 | 推进上期暂缓，较早补收；核对内环自评与外部报告、权重回到三角色。MLR的107/12协议差异保留为未调和，不作全量显著增益结论。 |
+| [LEASH](https://arxiv.org/abs/2610.22280) | 2026-10-15；v1 | 暂缓；弱强模型接管适合GUI成本分支，但成功/失败历史划分、泄漏与匹配接管率未细读。 |
+| [RSIFlow](https://arxiv.org/abs/2610.21791) | 2026-10-15；v1 | 暂缓；元Agent与技能蒸馏可补VERSE，但递归后代、任务留出和总预算未核验。 |
+| [Shortcut Sensitivity in Agent-Safety Evaluations](https://arxiv.org/abs/2610.22243) | 2026-10-15；v1 | 暂缓；标签线索/分组验证/配对干预有学习价值，尚未细读固定队列、placebo与重复评估；工作坊状态未由正式页面确认。 |
+| [PROBE](https://arxiv.org/abs/2610.22124) | 2026-10-15；v1 | 暂缓；补政策合规的多轮审计，奖励、合法用户分布、确认违例与攻击成本尚未核验；不以arXiv评论证明录用。 |
+| [E-Ledger / WorldAbduct](https://arxiv.org/abs/2610.11552) | 2026-10-08；v1 | 暂缓；部分可观测状态与规则账本值得补查，但隐藏规则核验与安全完成分母未读完。 |
+| [HASTE](https://arxiv.org/abs/2610.02920) | 2026-10-02；v1 | 暂缓；稀疏威胁证据演化Harness，尚需独立攻击集、效用回归和总预算核验。 |
+| [Complex Agents, Shallow Tests / HarnessTester](https://arxiv.org/abs/2610.04921) | 2026-10-04；v1 | 暂缓；可补Harness实现测试，覆盖/变异分数、开发者确认与真实故障分母未细读。摘要数字不写入指南。 |
+| [The Harness as the Only Mutable Surface](https://arxiv.org/abs/2610.10629) | 2026-10-07；v1 | 暂缓；摘要明确是模拟Agent和种子搜索，不能当LLM自演进实测；门控迁移未核验，不展开法律结论。 |
+| [OnTrack](https://arxiv.org/abs/2610.12375) | 2026-10-08；仍v1 | 延续暂缓；仅复查摘要/历史，中止阈值与有效分母未细读，不将少量中止推广为可靠节约。 |
+| [Agents Are Systems, Not Models](https://arxiv.org/abs/2610.01618) | 2026-10-01；仍v1 | 延续暂缓；方差分解和专用验证工具对照尚未细读，不把摘要方差比例写入指南。 |
+| [CMP](https://arxiv.org/abs/2610.02070) | 首次10-01；最新v3 10-08 | 只查元数据，无窗口内新版本；72条旧记录保持，不刷新CSV日期。 |
+| [VERSE](https://arxiv.org/abs/2610.02616) | 首次10-02；仍v1 | 只查元数据，无窗口内新版本；固定权重改进器路线保留。 |
+| [GEPA](https://arxiv.org/abs/2507.19457) | 首次2025-07-25；v2 2026-02-14 | 元数据检查，无本周修订；评论有ICLR标签，正式录用未本周核验，不改变来源状态。 |
+| [Wang等综述](https://arxiv.org/abs/2308.11432) | 首次2023-08-22；v7 2025-03-02 | 仅纠正两语言导读“标准模型”措辞；本次读摘要/记录，不称全文重核。 |
+| [CoALA](https://arxiv.org/abs/2309.02427) | 首次2023-09-05；v3 2024-03-15 | 纠正“架构标准”为模块化记忆/行动空间/决策的分析框架；不重写经典路线。 |
+| [OpenAgents](https://arxiv.org/abs/2310.10634) | 2023-10-16；v1 | 平台三类Agent与用户界面明确，删“验证通用标准架构”的强推断；不刷新旧CSV日期。 |
+| [Beyond Self-Talk](https://arxiv.org/abs/2502.14321) | 首次2025-02-20；v3 2026-05-26 | 两README标题改为原始记录和CSV中的准确标题；不是本周修订。 |
+| [Trustworthy LLM Agents](https://arxiv.org/abs/2503.09648) | 2025-03-12；v1 | 两README标题与记录/CSV一致；保留TrustAgent介绍，不添加未核验发表标签。 |
+
+其他历史待核验（本期未重审，未计22）：MedicalHarness、ScholarCatalyst、BrickBench、Harmful Refusal、CPE、RegenHarness、Fewer Tokens Better Action、HPC Systems、Mimir、Global Coherence、VideoEvolve。cs.AI第一页其他标题用于发现，未形成证据卡。检索没有完整翻页或覆盖全部会议录。MCP工具错误规范与AWS幂等说明是技术资料，不另算论文候选。

@@ -2,17 +2,21 @@
 
 [English](README_EN.md) | [中文](README.md)
 
-[![GitHub Stars](https://img.shields.io/github/stars/Scodive/AI-Agent-Guide?style=social)](https://github.com/Scodive/AI-Agent-Guide/stargazers)
-[![Last Commit](https://img.shields.io/github/last-commit/Scodive/AI-Agent-Guide)](https://github.com/Scodive/AI-Agent-Guide/commits/main)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/Scodive/AI-Agent-Guide/blob/main/CONTRIBUTING.md)
-[![License: MIT](https://img.shields.io/github/license/Scodive/AI-Agent-Guide)](https://github.com/Scodive/AI-Agent-Guide/blob/main/LICENSE)
-[![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+[![GitHub Stars](https://img.shields.io/github/stars/Scodive/AI-Agent-Guide?style=social)](https://github.com/Scodive/AI-Agent-Guide/stargazers) [![Last Commit](https://img.shields.io/github/last-commit/Scodive/AI-Agent-Guide)](https://github.com/Scodive/AI-Agent-Guide/commits/main) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/Scodive/AI-Agent-Guide/blob/main/CONTRIBUTING.md) [![License: MIT](https://img.shields.io/github/license/Scodive/AI-Agent-Guide)](https://github.com/Scodive/AI-Agent-Guide/blob/main/LICENSE) [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
 Welcome to **AI-Agent-Guide**. This repository keeps its long-form guide and adds a manually curated paper catalog. Each catalog record links to a primary paper page and records the research question, mechanism, evaluation setting, conclusion, limitation, and verification date.
 
-**Start here:** [Site](https://ai-notes-red-two.vercel.app) · [Reading path](docs/reading-path.md) · [Paper table](docs/papers.md) · [September 2026 picks](docs/monthly-picks.md) · [Harness and coding agents](docs/harness.md) · [RSI and self-improvement](docs/rsi.md) · [Weekly maintenance SOP](docs/update-sop.md) · [CSV data](data/papers.csv).
+<p align="center">Read the guide · Search papers · Explore by topic</p>
 
-As of October 12, 2026, the catalog contains 72 papers, including 10 September picks. This review adds two papers submitted in the past week, three older omissions (Agentless, Component Routing, VERSE), and follows CMP v3. It connects fixed workflows, experience routing, optimizer self-modification, permission effects, and statistical metrics. See the [weekly review](data/weekly-reviews/2026-10-12.md). The maintainer has approved these source updates; source updates and website publication are checked separately. Inclusion does not mean independent replication. Please report errors through an Issue or PR.
+<p align="center">
+  <a href="https://ai-notes-red-two.vercel.app/">
+    <img src="assets/open-guide-en.svg" alt="Open website · Start learning" width="380" height="76">
+  </a>
+</p>
+
+Reading links: [Reading path](docs/reading-path.md) · [Paper table](docs/papers.md) · [September 2026 picks](docs/monthly-picks.md) · [Harness and coding agents](docs/harness.md) · [RSI and self-improvement](docs/rsi.md) · [Weekly maintenance SOP](docs/update-sop.md) · [CSV data](data/papers.csv).
+
+As of October 19, 2026, the catalog contains 76 papers, including 10 September picks. This review adds AgentPerturb, FDE-Gym, and Terminal-RSI, and follows up the October 8 MASS paper. It connects interaction recovery, requirements and acceptance, parameter learning, and feedback provenance. See the [weekly review](data/weekly-reviews/2026-10-19.md). Inclusion does not mean independent replication. Please report errors through an Issue or PR.
 
 ## How to use this guide
 
@@ -24,8 +28,6 @@ The long-form guide below introduces foundational modules such as perception, pl
 | What shortcuts can tool-use policies learn? | [Spurious Tool Use](https://arxiv.org/abs/2609.16268) | Tools and action; agent improvement. |
 | How should long-term memory and multi-agent coordination be evaluated? | [DolphinBench](https://arxiv.org/abs/2609.24971), [CoCoBench](https://arxiv.org/abs/2608.28266) | Memory and retrieval; multi-agent systems. |
 | How do we measure real use and downstream outcomes? | [DAREBench](https://arxiv.org/abs/2609.06059), [Are We There Yet?](https://arxiv.org/abs/2609.00524), [Who Finishes the Job?](https://arxiv.org/abs/2609.26847) | Evaluation, GUI, and coding; include cost, users, and follow-up fixes. |
-
-**Coverage limit:** This is a curated reading path, not a live inventory of every new model, framework, or paper. The [harness chapter](docs/harness.md) explains coding-agent runtimes; the [RSI chapter](docs/rsi.md) separates prompt, agent-program, and target-algorithm improvement. Both are introductory syntheses. New papers enter the catalog first; the [weekly SOP](docs/update-sop.md) governs updates to the guide.
 
 ---
 
@@ -97,7 +99,7 @@ For any researcher looking to dive into the field of AI agents, starting with au
 
 - **A Survey on Large Language Model based Autonomous Agents** (Wang et al., 2023)
 
-  This paper proposes a holistic framework for LLM-driven autonomous agents, systematically surveying existing research across three dimensions: construction, application, and evaluation. The proposed agent architecture (profile, memory, planning, and action modules) has become a widely-cited standard model in the field.
+  This paper proposes a holistic framework for LLM-driven autonomous agents, systematically surveying existing research across three dimensions: construction, application, and evaluation. Its profile, memory, planning, and action taxonomy organizes the literature; it is a reading framework rather than a required implementation standard.
 
   [arXiv: 2308.11432](https://arxiv.org/abs/2308.11432)
 
@@ -167,13 +169,13 @@ These four modules describe the **agent's internal decision loop**. A runnable s
 
 - **Cognitive Architectures for Language Agents (CoALA)** (Sumers et al., 2023)
 
-  Deeply integrates modern LLMs with classic cognitive science architectures (ACT-R, SOAR) to construct the highly influential CoALA standard. Rigorously defines the cyclical relationship between "internal actions" (procedure/memory modules) and the "external environment," deepening the theoretical foundation of general agent architecture design.
+  CoALA draws on cognitive science and symbolic AI to organize language agents through modular memory, internal/external action spaces, and a decision process. It helps compare how systems select actions and change state; the framework itself does not establish implementation superiority.
 
   [arXiv: 2309.02427](https://arxiv.org/abs/2309.02427)
 
 - **OpenAgents: An Open Platform for Language Agents in the Wild** (Xie et al., 2023)
 
-  Explores a unified design model from an engineering implementation perspective. Uses a highly standardized perception-planning-memory-execution framework to simultaneously incubate three complex specialized agent systems (data analysis, plugin, and web agents). A quintessential system engineering achievement validating complex multimodal modular architectures.
+  OpenAgents offers data, plugin, and web agents with an interactive interface. Use it to study tools, hosting, and user workflows; platform examples do not validate every four-module architecture or establish cross-task reliability.
 
   [arXiv: 2310.10634](https://arxiv.org/abs/2310.10634) / [GitHub](https://github.com/xlang-ai/OpenAgents)
 
@@ -388,6 +390,8 @@ The **Model Context Protocol (MCP)** standardizes interfaces for clients and ser
 
 Separate the protocol interface, server/downstream authentication and authorization, and harness/environment process, file, and network permissions. MCP support does not itself guarantee isolation. The official [security practices](https://modelcontextprotocol.io/docs/2025-11-25/tutorials/security/security_best_practices) discuss token passthrough, confused-deputy risks, and scope minimization (checked 2026-10-05).
 
+**From calls to recovery:** The MCP [tool specification](https://modelcontextprotocol.io/specification/2025-11-25/server/tools) distinguishes protocol errors from `isError` execution errors. A timeout can also leave a write outcome unknown. Check the operation receipt before deciding to retry; see the [harness recovery example](docs/harness.md#写入超时后先确认状态2026-10-19). [AgentPerturb](https://arxiv.org/abs/2610.21624) adds controlled input perturbations, but its Toolathlon results cover only 25/79 tasks with complete sweeps and do not estimate a deployment-wide fault rate.
+
 **Key Resources:**
 - [Official MCP Specification](https://modelcontextprotocol.io/)
 - [Awesome MCP Servers](https://github.com/punkpeye/awesome-mcp-servers) — Community-curated server list
@@ -563,6 +567,8 @@ The [RSI chapter](docs/rsi.md) compares GEPA, Gödel Agent, DGM, and AIDE² and 
 
 [VERSE](https://arxiv.org/abs/2610.02616) separates changes to the executor's harness from changes to the optimizer's own harness, whose accepted version participates in later rounds; model weights and verification interfaces stay fixed. It complements the program-evolution path and GEPA's prompt evolution. Main results have one evolution run per condition; avg@3 repeats test evaluation. Self-evolution does not always improve over VERSE without self-evolution. Read held-out outcomes and full costs together.
 
+**Parameter-learning extension:** [MASS](https://arxiv.org/abs/2610.12176) alternates workflow search and shared-model training, returning the new model to execution, optimization, and in-loop evaluation. Final external reporting is separate. [Terminal-RSI](https://arxiv.org/abs/2610.22192) alternates verified-trajectory supervision with critic-inheriting policy optimization. These extend the parameter-learning route; their names do not demonstrate autonomous runtime rewriting of the improvement algorithm. See the [RSI feedback discussion](docs/rsi.md#参数更新与反馈来源2026-10-19).
+
 ### Related Papers & Resources
 
 - **Voyager: An Open-Ended Embodied Agent with Large Language Models** (Wang et al., 2023)
@@ -595,6 +601,8 @@ Multi-agent systems organize tasks through division of labor, communication, and
 
 [RAC](https://arxiv.org/abs/2610.00980) complements fixed-role examples with runtime selection. Selection has the highest observed mean in three research-agent hosts, while jointly adding contracts and verification reduces those means. This single-seed, small-sample result does not isolate either component or establish that collaboration is useless. Retain MetaGPT and ChatDev to study fixed workflows; use RAC to examine the cost of added coordination.
 
+[MASS](https://arxiv.org/abs/2610.12176) adds a training-stage view: orchestrator and worker traces train one shared model. This differs from RAC runtime selection. Check artifact delivery, quality on a common completed set, and total training cost separately; role count alone is not evidence of gains.
+
 ### MAS Paradigm & Architectures
 
 - **Collaboration Patterns**: MAS agents can be organized into different topologies based on task needs:
@@ -616,7 +624,7 @@ Multi-agent systems organize tasks through division of labor, communication, and
 
 ### Related Papers & Resources
 
-- **Survey: A Communication-Centric Perspective on Large Language Model based Multi-Agent Systems** (2025)
+- **Survey: Beyond Self-Talk: A Communication-Centric Survey of LLM-Based Multi-Agent Systems** (2025)
 
   Analyzes MAS from the core perspective of "communication," providing a novel framework for understanding the internal mechanisms of multi-agent collaboration.
 
@@ -659,6 +667,9 @@ As agents become increasingly autonomous and are empowered to take actions in th
 - **What are the denominator and budget?** Report task version, sample size, repetitions, tokens, latency, cost, permissions, and stopping rules. Consistent success in `pass^k` differs from at-least-one success in `pass@k`. Separate agent failures, tool/verifier faults, and missing results; report uncertainty and distinguish simulated from real users.
 - **Whose time is a horizon?** The [METR statistical audit](https://arxiv.org/abs/2610.12466) re-estimates horizons on 228 software tasks and 26 AIs. A 50% horizon is the human completion time associated with tasks an AI solves with 50% probability, rather than autonomous runtime. Nonlinear difficulty mappings and family/run dependence matter; a horizon multiplier need not imply the same capability multiplier. This does not reject the observed progress trend or establish deployment representativeness.
 
+- **How complete are the requirements?** [FDE-Gym](https://arxiv.org/abs/2610.22350) varies instruction information while holding the customer environment and acceptance criteria fixed. Its 95 tasks include shared-scenario variants; L0–L2 cover only 20 originals. Scripted customers, assigned contact costs, and a pending human baseline limit transfer. Separate normalized uplift, incidents, contact costs, and resolution rate.
+- **Where does incorrect information enter?** [AgentPerturb](https://arxiv.org/abs/2610.21624) builds paired tests by input source and corruption type. Record recovery paths, additional cost, unscored runs, and subset selection. Single-trajectory comparisons and LLM semantic validation do not replace repeated execution or a full task audit.
+
 ### Context trust and execution permissions
 
 Training alignment, guards, context trust, and execution permissions constrain different stages. [CPE](https://arxiv.org/abs/2609.01222) studies lower-trust content promoted to higher-priority or more persistent context; the [harness chapter](docs/harness.md) separates this from configuration exposure. Findings on paper-era versions do not establish exploitability of current products; guards and multi-agent review do not replace permission isolation.
@@ -685,7 +696,7 @@ Training alignment, guards, context trust, and execution permissions constrain d
 
   [arXiv: 2212.08073](https://arxiv.org/abs/2212.08073)
 
-- **Survey: A Survey on Trustworthiness in LLM-based Agents** (2025)
+- **Survey: A Survey on Trustworthy LLM Agents: Threats and Countermeasures** (2025)
 
   Proposes the TrustAgent framework, comprehensively studying all aspects of agent trustworthiness.
 
@@ -729,7 +740,7 @@ This section keeps a set of earlier further-reading items. See the [September 20
 
   Proposes the first LLM benchmark framework for embodied decision-making tasks, filling the gap in agent evaluation for complex 3D environment interaction and leading the next evaluation standard for embodied AI.
 
-  [arXiv: 2410.07166](https://arxiv.org/abs/2410.07166) / [![Semantic Scholar](https://img.shields.io/badge/Semantic%20Scholar-View-blue)](https://api.semanticscholar.org/graph/v1/paper/search?query=Embodied+Agent+Interface+Benchmarking+LLMs+Embodied+Decision+Making)
+  [arXiv: 2410.07166](https://arxiv.org/abs/2410.07166)
 
 ### NLP, Reasoning & Reinforcement Learning (NLP/Reasoning & RL)
 
@@ -743,7 +754,7 @@ This section keeps a set of earlier further-reading items. See the [September 20
 
   Comprehensively surveys the development trajectory of LLM agents from foundational architecture to multi-agent system frontiers. A must-read overview of the field's latest state.
 
-  [arXiv: 2503.21460](https://arxiv.org/abs/2503.21460) / [![Semantic Scholar](https://img.shields.io/badge/Semantic%20Scholar-View-blue)](https://api.semanticscholar.org/graph/v1/paper/search?query=Large+Language+Model+Agent+Survey+Methodology+Applications+Challenges+2025)
+  [arXiv: 2503.21460](https://arxiv.org/abs/2503.21460)
 
 - **Agent Q: Advanced Reasoning and Learning for Autonomous AI Agents** (2024)
 
@@ -757,7 +768,7 @@ This section keeps a set of earlier further-reading items. See the [September 20
 
   Creatively integrates MCTS with LLM software development agents, achieving remarkable optimization in codebase navigation and issue resolution tasks.
 
-  [arXiv: 2410.20285](https://arxiv.org/abs/2410.20285) / [![Semantic Scholar](https://img.shields.io/badge/Semantic%20Scholar-View-blue)](https://api.semanticscholar.org/graph/v1/paper/search?query=SWE-Search+Software+Agents+Monte+Carlo+Tree+Search)
+  [arXiv: 2410.20285](https://arxiv.org/abs/2410.20285)
 
 ### Trustworthiness, Safety & Stress Analysis (Trustworthiness & Safety)
 
@@ -771,7 +782,7 @@ This section keeps a set of earlier further-reading items. See the [September 20
 
   First robustness standard for evaluating defenses against adversarial and harmful sequential interaction tasks, directly addressing agent safety vulnerability pain points.
 
-  [arXiv: 2410.09024](https://arxiv.org/abs/2410.09024) / [![Semantic Scholar](https://img.shields.io/badge/Semantic%20Scholar-View-blue)](https://api.semanticscholar.org/graph/v1/paper/search?query=AgentHarm+Benchmarking+Robustness+LLM+Agents+Harmful)
+  [arXiv: 2410.09024](https://arxiv.org/abs/2410.09024)
 
 ---
 

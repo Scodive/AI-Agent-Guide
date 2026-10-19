@@ -74,3 +74,17 @@
 - **旧条目元数据**：重新打开 Incident-Arena 与 RAC 的摘要/历史，仍为 v1；未本周重审全文，不刷新它们的 CSV 日期。其他新发现/暂缓条目只查原始元数据/摘要，去留记录见[候选日志](candidate-log.md)。
 
 产品资料仍保留 Codex 2026-09-27、MCP/AutoGen 2026-10-05 的核对日期，本周研究中的产品实验不代替当前官方产品审计。未使用 MDPI。旧条目的正式会议状态、代码可复现性和全库失效外链仍未完成核验。
+
+## 2026-10-19 原始来源核验
+
+只对下列四条新入库记录填写10-19；原72条CSV及原核验日期完全保留。以下为作者报告和实际阅读范围，代码仅核对关联/可访问性，未运行，未核验正式录用；没有使用MDPI。
+
+- **AgentPerturb**：Yuanjian Xu、Jinyi Han、Jianing Hao、Yuxuan Sun、Fanyang Lu、Richeng Xuan、Guang Zhang、Zhichao Hu。[记录](https://arxiv.org/abs/2610.21624)v1 2026-10-15 10:05:54 UTC；读[全文](https://arxiv.org/html/2610.21624v1)§3–4、A.1–A.4、B的成本/相关性说明和F.1实现边界。两环境各25题、12扰动、10模型；Toolathlon原79题仅完成全扫25题，未评分排除。APEX为连续评分而Toolathlon为二元；成本细析仅一个模型，失败归因30例不能代表全部轨迹。语义验证依赖LLM及可用原生检查，不能说完备证明可解。论文关联[xuyj233/AgentPerturb](https://github.com/xuyj233/AgentPerturb)，10-19页面明确空仓库：code_url保留作者入口，但标注尚无代码；不称已开源可复现。论文使用的Codex CLI配置不是对当前产品行为的核验。
+- **FDE-Gym**：Dongxu Yang、Hongda Yan、Renxin Wang、Baoli Zhang、Haojia Zuo、Ying Zhao、Youmin Chen、Xiaojian Liao、Congming Gao、Tianyang Jiang、Yixiao Chen、Qing Wang、Zhiguo Yu、Xiaqing Li、Yuhao Zhang、Jiawen Sun、Renzhe Xu、De Mi、Tiancheng Wu、Xianya Fu、Xuanlu Zhao、Bo Feng、Meixuan Ren、Guanming Lin、Ziheng Zhou、Xinhua Wang。[记录](https://arxiv.org/abs/2610.22350)v1 2026-10-15 17:57:23 UTC；读[全文](https://arxiv.org/html/2610.22350v1)§2–5、§7。L3为95任务，L0–L2为20原题，3个L2/L3完全相同复用，152组合/模型、每组合3次；共同框架但模型费用不同。归一化收益可为负，事故截断与沟通扣分、聚合下界和解决标准分开。区间按任务bootstrap，变体共享场景，不能假设95个独立客户。论文关联[deeplethe/fde-gym](https://github.com/deeplethe/fde-gym)，框架/runner入口已开；20原任务需申请（3个公开样例），75变体/参考方案留出。真人基线待收集，未核验真实生产部署效果。
+- **Terminal-RSI**：Junyao Yang、Zongxia Li、Yucheng Shi、Zhongzhi Li、Ruhan Wang、Ruiwen Zhou、Haitao Mi、Shuicheng Yan、Leowei Liang。[记录](https://arxiv.org/abs/2610.22192)v1 2026-10-15 16:43:56 UTC；读[全文](https://arxiv.org/html/2610.22192v1)§2、§3.1–3.5及附录A/B/F。修改actor/critic参数，训练和奖励流程仍人为规定；RSR的私有runbook过滤、受保护verifier、critic继承有说明，但全部配对记录未调和。Mean@3是同checkpoint推理重复，不是独立训练；四套件均值非任务加权。PPO历史重复/总算力、外部榜单协议未统一，不写排名。离线重评分不证明在线训练贡献，TB-GAE推导不证明已部署且隔离增益；SWR100不与训练池重叠不等于全源污染已排除。未找到明确作者复现代码链接，CSV空白。
+- **MASS**：Hyunin Lee、Jinglue Xu、Jeffrey Seely、Donghyun Lee、Somayeh Sojoudi、Matei Zaharia、Yujin Tang。[记录](https://arxiv.org/abs/2610.12176)v1 2026-10-08 15:44:02 UTC；读[全文](https://arxiv.org/html/2610.12176v1)§2–5、B.1/B.2、C.1/C.2/C.5。九个训练候选任务取八，119轨迹；主循环验证损失选checkpoint；部分数据组成消融另用外部强模型判断选模，不能泛化成全部实验无外部选择。同模型内环评价与外部报告分开，外部评价两个模型各三判断；六判断不是六执行。Terminal和SWE试验有效分母分别86/88/87、499/499/496，非固定89/500全有评分；观测均值下降不自行推出显著退化。MLR主文与[作者仓库](https://github.com/SakanaAI/mass)写107任务，论文附录C.5描述12任务/五次，仓库也说打包配置仅12题、107适配器未包含。**差异未调和，禁止把其MLR聚合数字当统一全量证据**；本次主要收录机制及边界，不采用摘要效率倍数作总成本结论。循环外判分只用于报告不回传，但未完成基础模型污染或全部数据流审计。
+- **旧条目元数据**：CMP仍v3（10-08）、VERSE仍v1（10-02）、GEPA仍v2（02-14）；无窗口内修订。不重读它们的方法和实验、不更新CSV日期或评论栏的会议标签。
+- **旧指南定点修正**：读取[Wang综述](https://arxiv.org/abs/2308.11432)记录/摘要、[CoALA](https://arxiv.org/abs/2309.02427)记录/摘要、[OpenAgents](https://arxiv.org/abs/2310.10634)记录/摘要，分别收窄“标准模型/架构标准/通用架构验证”推断；读取[Beyond Self-Talk](https://arxiv.org/abs/2502.14321)与[可信综述](https://arxiv.org/abs/2503.09648)原始标题，两语言对齐CSV。仅为标题/概念纠正，不声称本周重核这些论文的全部实验。
+- **官方技术资料**：10-19读[MCP 2025-11-25工具规范](https://modelcontextprotocol.io/specification/2025-11-25/server/tools)的错误类型与调用约定、[AWS幂等API说明](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/)的调用标识、原子性与参数意图。退款恢复流程为编者教学例，不是实测新方法；未新增为论文记录。Codex产品资料仍沿用09-27，MCP安全页沿用10-05，不因工具错误页重核而批量刷新。
+
+10项暂缓均只到元数据/摘要，完整候选及待读协议见[候选日志](candidate-log.md)。无全库外链、发表状态或独立复现完成声明。

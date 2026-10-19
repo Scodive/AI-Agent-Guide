@@ -20,3 +20,5 @@
 **2026-10-05 编辑说明：**本页保留九月十篇；十月按 SOP 于月底整理。该期补充 CMP、Incident-Arena 及三项经典路线，见[候选记录](https://github.com/Scodive/AI-Agent-Guide/blob/main/data/candidate-log.md)和[周报](https://github.com/Scodive/AI-Agent-Guide/blob/main/data/weekly-reviews/2026-10-05.md)；源文件已于 10 月 6 日获批提交。
 
 **2026-10-12 周审查说明（已获批）：**本期补安全设置对照、时间跨度统计解释，并补收固定流程、GUI 经验路由、两层 Harness 优化；CMP 跟进 v3。九月十条精选不变，十月仍于月底整理。详细分析保存在 `data/weekly-reviews/2026-10-12.md`；[线上周报链接](https://github.com/Scodive/AI-Agent-Guide/blob/main/data/weekly-reviews/2026-10-12.md)随本次获批源文件更新发布，网站同步状态单独核验。
+
+**2026-10-19 周审查说明（已获批）：**九月十篇及十月底编辑周期保留。本期补交互恢复、需求验收与参数学习分支，详见[周报](https://github.com/Scodive/AI-Agent-Guide/blob/main/data/weekly-reviews/2026-10-19.md)；该仓库链接随本次获批源文件发布。未修改独立网站的同步或发布设置。

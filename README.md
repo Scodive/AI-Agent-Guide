@@ -1,17 +1,21 @@
 # AI-Agent-Guide
-[![GitHub Stars](https://img.shields.io/github/stars/Scodive/AI-Agent-Guide?style=social)](https://github.com/Scodive/AI-Agent-Guide/stargazers)
-[![Last Commit](https://img.shields.io/github/last-commit/Scodive/AI-Agent-Guide)](https://github.com/Scodive/AI-Agent-Guide/commits/main)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/Scodive/AI-Agent-Guide/blob/main/CONTRIBUTING.md)
-[![License: MIT](https://img.shields.io/github/license/Scodive/AI-Agent-Guide)](https://github.com/Scodive/AI-Agent-Guide/blob/main/LICENSE)
-[![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+[![GitHub Stars](https://img.shields.io/github/stars/Scodive/AI-Agent-Guide?style=social)](https://github.com/Scodive/AI-Agent-Guide/stargazers) [![Last Commit](https://img.shields.io/github/last-commit/Scodive/AI-Agent-Guide)](https://github.com/Scodive/AI-Agent-Guide/commits/main) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/Scodive/AI-Agent-Guide/blob/main/CONTRIBUTING.md) [![License: MIT](https://img.shields.io/github/license/Scodive/AI-Agent-Guide)](https://github.com/Scodive/AI-Agent-Guide/blob/main/LICENSE) [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
 [English](README_EN.md) | [中文](README.md)
 
 欢迎来到 AI-Agent-Guide。本指南梳理 AI 智能体的架构、关键技术与研究问题，并保留原有的长篇导读。论文库采用人工精选和逐条核验，不追求收齐每天的新论文；每条记录提供研究问题、机制、实验环境与指标、结论、局限和核验日期。
 
-**快速入口：** [网站首页](https://ai-notes-red-two.vercel.app) · [新手阅读路线](docs/reading-path.md) · [论文库表格](docs/papers.md) · [2026 年 9 月精选](docs/monthly-picks.md) · [Harness 与 Coding Agent](docs/harness.md) · [RSI 与自我改进](docs/rsi.md)
+<p align="center">在线阅读指南 · 搜索论文 · 按主题探索</p>
 
-论文库的原始数据在 [`data/papers.csv`](data/papers.csv)。截至 2026-10-12，共收录 72 篇；其中 10 篇作为九月精选。本周新增两篇最近一周工作，补收 Agentless、Component Routing、VERSE，跟进 CMP v3；重点连接固定流程基线、经验路由、改进器自改、权限效果与统计指标，详见[本周审查](data/weekly-reviews/2026-10-12.md)。本次源文件更新已获维护者批准；展示由独立网站负责，源文件更新与网站上线分别核验。收录不代表独立复现；发现错误请提交 Issue 或 PR。
+<p align="center">
+  <a href="https://ai-notes-red-two.vercel.app/">
+    <img src="assets/open-guide-zh.svg" alt="打开网站 · 开始学习" width="380" height="76">
+  </a>
+</p>
+
+阅读导航：[新手阅读路线](docs/reading-path.md) · [论文库表格](docs/papers.md) · [2026 年 9 月精选](docs/monthly-picks.md) · [Harness 与 Coding Agent](docs/harness.md) · [RSI 与自我改进](docs/rsi.md)
+
+论文库的原始数据在 [`data/papers.csv`](data/papers.csv)。截至 2026-10-19，共收录 76 篇；其中 10 篇作为九月精选。本周新增 AgentPerturb、FDE-Gym、Terminal-RSI，补收 10 月 8 日的 MASS；重点补交互恢复、需求与验收、参数学习和反馈来源，详见[本周审查](data/weekly-reviews/2026-10-19.md)。收录不代表独立复现；发现错误请提交 Issue 或 PR。
 
 ## 如何使用这份指南
 
@@ -23,8 +27,6 @@
 | 工具调用策略会学到什么捷径？ | [Spurious Tool Use](https://arxiv.org/abs/2609.16268) | 工具与行动、自我演进。 |
 | 长期记忆和多 Agent 协作如何评估？ | [DolphinBench](https://arxiv.org/abs/2609.24971)、[CoCoBench](https://arxiv.org/abs/2608.28266) | 记忆与检索、多智能体。 |
 | Agent 的实际使用和交付结果怎样衡量？ | [DAREBench](https://arxiv.org/abs/2609.06059)、[Are We There Yet?](https://arxiv.org/abs/2609.00524)、[Who Finishes the Job?](https://arxiv.org/abs/2609.26847) | 评估与安全、GUI、代码智能体；需同时看成本、用户和后续修复。 |
-
-**覆盖边界：**现有论文库是人工精选的阅读路线，不是对所有最新模型、框架或论文的实时盘点。[Harness 专题](docs/harness.md)说明运行框架与 Coding Agent，[RSI 专题](docs/rsi.md)区分提示词、Agent 程序和目标算法的改进。两者是入门导读，新增论文仍先记录在库中，再按[每周 SOP](docs/update-sop.md)更新解释。
 
 ## 目录
 
@@ -91,7 +93,7 @@
 ### 通用智能体综述
 *   **A Survey on Large Language Model based Autonomous Agents** (Wang et al., 2023)
 
-    这篇论文提出了一个关于LLM驱动的自主智能体的整体性框架，系统地从构建、应用和评估三个维度对现有研究进行了梳理。它提出的智能体架构（包括画像、记忆、规划、行动模块）已成为该领域广泛引用的标准模型 。
+    这篇论文提出了一个关于LLM驱动的自主智能体的整体性框架，系统地从构建、应用和评估三个维度对现有研究进行了梳理。其画像、记忆、规划、行动分类提供组织文献的视角；这里将它作为阅读框架，不将分类称为统一实现标准。
 
     [arXiv: 2308.11432](https://arxiv.org/abs/2308.11432)
 
@@ -161,13 +163,13 @@ LLM 可以提出决策，但运行框架还要组织上下文、执行工具、�
 
 *   **Cognitive Architectures for Language Agents (CoALA)** (Sumers et al., 2023)
     
-    该论文将现代大语言模型与经典的认知科学架构（如ACT-R、SOAR）深度融合，构建了极具影响力的语言智能体认知架构标准（CoALA）。该工作严密地定义了通过程序/记忆模块组成的“内部行动”和“外部环境”循环协同关系，极大深化了通用智能体的底层基础架构设计理论。
+    CoALA 借鉴认知科学与符号 AI，以模块化记忆、内部/外部行动空间和决策过程组织语言 Agent。它帮助比较系统如何选择动作和改变状态；这是分析框架，框架本身不证明某种实现更优。
     
     [arXiv: 2309.02427](https://arxiv.org/abs/2309.02427)
 
 *   **OpenAgents: An Open Platform for Language Agents in the Wild** (Xie et al., 2023)
     
-    从架构工程落地层面探讨智能体的统一设计模型。该工作的意义在于，它以一套极其标准化的感知、规划、记忆与执行框架，并行孵化了三种复杂度极高的特化智能体体系（数据分析智能体、插件智能体、网页智能体），属于验证复杂多模态模块化架构的经典且综合的系统工程实现。
+    OpenAgents 提供数据分析、插件和网页三个 Agent 及交互界面，适合作为工具、宿主平台与用户使用流程的工程实例。平台案例不等于对所有四模块架构或跨任务可靠性的验证。
     
     [arXiv: 2310.10634](https://arxiv.org/abs/2310.10634) / [GitHub仓库](https://github.com/xlang-ai/OpenAgents)
 
@@ -243,7 +245,7 @@ VLMs是多模态感知的技术基石。这类模型通过结合视觉编码器�
         [arXiv: 2203.11171](https://arxiv.org/abs/2203.11171)
 
 2.  **ReAct: 融合推理与行动**
-    概念：ReAct框架是一个范式上的飞跃，它将**推理（Thought）和行动（Action）**交错进行。智能体首先生成一个“思考”，用于分析当前情况并制定下一步计划；然后，它执行一个“行动”，例如调用搜索引擎API来获取缺失的信息。行动的结果会作为新的观察被反馈给智能体，用于下一轮的“思考”。这种“思考-行动-观察”的循环，使得智能体的推理能够被外部世界的真实信息所“接地”，有效缓解了纯内部推理（如CoT）容易产生的知识幻觉问题 。
+    概念：ReAct框架是一个范式上的飞跃，它将推理（Thought）和行动（Action）交错进行。智能体首先生成一个“思考”，用于分析当前情况并制定下一步计划；然后，它执行一个“行动”，例如调用搜索引擎API来获取缺失的信息。行动的结果会作为新的观察被反馈给智能体，用于下一轮的“思考”。这种“思考-行动-观察”的循环，使得智能体的推理能够被外部世界的真实信息所“接地”，有效缓解了纯内部推理（如CoT）容易产生的知识幻觉问题 。
 
     奠基论文: **ReAct: Synergizing Reasoning and Acting in Language Models** (Yao et al., 2022)
 
@@ -382,9 +384,11 @@ VLMs是多模态感知的技术基石。这类模型通过结合视觉编码器�
 
 ### MCP：模型上下文协议
 
-**模型上下文协议（Model Context Protocol, MCP）**统一客户端与服务器交换工具、资源等信息的接口。它帮助减少重复集成，但任务状态、业务权限与工具执行结果仍由具体实现负责。
+模型上下文协议（Model Context Protocol, MCP）统一客户端与服务器交换工具、资源等信息的接口。它帮助减少重复集成，但任务状态、业务权限与工具执行结果仍由具体实现负责。
 
-**需要分开的三层：**协议负责描述与交互；服务器和下游服务负责认证、授权；运行框架和执行环境负责进程、文件与网络权限。支持 MCP 不自动保证隔离。官方[安全实践](https://modelcontextprotocol.io/docs/2025-11-25/tutorials/security/security_best_practices)明确讨论令牌透传、混淆代理与最小权限问题（资料核对：2026-10-05）。
+需要分开的三层：协议负责描述与交互；服务器和下游服务负责认证、授权；运行框架和执行环境负责进程、文件与网络权限。支持 MCP 不自动保证隔离。官方[安全实践](https://modelcontextprotocol.io/docs/2025-11-25/tutorials/security/security_best_practices)明确讨论令牌透传、混淆代理与最小权限问题（资料核对：2026-10-05）。
+
+从调用到恢复：MCP 的[工具规范](https://modelcontextprotocol.io/specification/2025-11-25/server/tools)区分协议错误与 `isError` 执行错误；超时还可能留下“写入是否发生未知”的状态。先查回执，再决定重试，具体例子见 [Harness 的恢复流程](docs/harness.md#写入超时后先确认状态2026-10-19)。[AgentPerturb](https://arxiv.org/abs/2610.21624)补受控的输入扰动评估；其 Toolathlon 仅覆盖完成全套测试的 25/79 题，不能作为全量部署故障率。
 
 **关键资源：**
 - [官方 MCP 规范](https://modelcontextprotocol.io/)
@@ -423,7 +427,7 @@ Agentic Coding（智能体化编码）是 AI 智能体商业影响力最显著�
 
   [arXiv: 2410.20285](https://arxiv.org/abs/2410.20285) / [GitHub](https://github.com/aorwall/moatless-tools)
 
-**理解完整交付：**模型生成补丁、测试通过、人工接受、合并后维护，以及线上服务恢复是不同观察点。先用 [Harness 导读](docs/harness.md)拆解接口、上下文和验证，再用 [Who Finishes the Job?](https://arxiv.org/abs/2609.26847)检查后续维护。[Incident-Arena](https://arxiv.org/abs/2610.00648)将边界延伸到故障恢复：持续负载和重启之后，服务、数据和允许修改范围是否仍满足要求？其有限任务与模型/Harness 组合不构成商业产品排名。
+理解完整交付：模型生成补丁、测试通过、人工接受、合并后维护，以及线上服务恢复是不同观察点。先用 [Harness 导读](docs/harness.md)拆解接口、上下文和验证，再用 [Who Finishes the Job?](https://arxiv.org/abs/2609.26847)检查后续维护。[Incident-Arena](https://arxiv.org/abs/2610.00648)将边界延伸到故障恢复：持续负载和重启之后，服务、数据和允许修改范围是否仍满足要求？其有限任务与模型/Harness 组合不构成商业产品排名。
 
 ---
 
@@ -443,7 +447,7 @@ Agentic Coding（智能体化编码）是 AI 智能体商业影响力最显著�
 2.  **LlamaIndex**
     核心定位: 一个以数据为中心的RAG应用开发框架。
 
-    特点: LlamaIndex的独特价值主张是为基于私有数据构建LLM应用提供一站式解决方案。它的核心功能围绕着数据的摄取（Ingestion）、**索引（Indexing）和查询（Querying）**展开。如果你应用的核心需求是让LLM能够高效、准确地查询和理解你的私有知识库（无论是PDF、数据库还是API），LlamaIndex提供了最优化的工具链和抽象层 。
+    特点: LlamaIndex的独特价值主张是为基于私有数据构建LLM应用提供一站式解决方案。它的核心功能围绕着数据的摄取（Ingestion）、索引（Indexing）和查询（Querying）展开。如果你应用的核心需求是让LLM能够高效、准确地查询和理解你的私有知识库（无论是PDF、数据库还是API），LlamaIndex提供了最优化的工具链和抽象层 。
 
     代码库: [LlamaIndex GitHub](https://github.com/run-llama/llama_index)
 
@@ -478,7 +482,7 @@ Agentic Coding（智能体化编码）是 AI 智能体商业影响力最显著�
 ### 实战：科研技能库 (Paper-Agent-Skills)
 为了展示智能体如何学习并执行复杂的垂直领域任务，我们提供了一个实战项目：**[Paper-Agent-Skills](https://github.com/Scodive/Paper-Agent-Skills)**。
 
-该项目采用了**基于技能（Skill-based）**的架构，将学术研究中的高阶能力（如论文撰写、Rebuttal 策略、Slides 生成）封装为可复用的智能体模块。
+该项目采用了基于技能（Skill-based）的架构，将学术研究中的高阶能力（如论文撰写、Rebuttal 策略、Slides 生成）封装为可复用的智能体模块。
 
 *   **核心特性**:
     *   **模式提取**: 从顶会（NeurIPS, ICLR, CVPR）的 Best Paper 中提取论证逻辑和修辞模式。
@@ -503,6 +507,8 @@ Agentic Coding（智能体化编码）是 AI 智能体商业影响力最显著�
 **RSI 阅读入口：**[专题](docs/rsi.md)逐项比较 GEPA、Gödel Agent、DGM、AIDE² 的修改面和递归性，并说明 AlphaEvolve 改进目标算法的相邻边界。外部验证、留出任务与版本回滚都是要报告的条件，而非通用效果保证。
 
 [VERSE](https://arxiv.org/abs/2610.02616)补“谁在改进谁”：内层修改执行器的 Harness，外层修改优化器自身的 Harness，再由接受后的版本进入下一轮；模型权重与验证接口固定。它补充程序演化路线，不替代 GEPA。主实验每项只有一次演化运行，avg@3 是重复测试；自演化相对不自演化版本并非总有增益，需同时看完整成本和留出任务。
+
+**参数学习拓展：**[MASS](https://arxiv.org/abs/2610.12176)交替优化工作流与训练共享模型，新模型回到执行、优化和内环评价角色；最终外部报告与内环自评分开。[Terminal-RSI](https://arxiv.org/abs/2610.22192)交替验证轨迹监督训练和继承 critic 的策略优化，改的是参数与训练流程。两者补参数学习路线，不能据名称推断运行时自主重写改进算法。详见 [RSI 的反馈与参数更新](docs/rsi.md#参数更新与反馈来源2026-10-19)。
 
 ### 相关论文与资源
 
@@ -535,6 +541,8 @@ Agentic Coding（智能体化编码）是 AI 智能体商业影响力最显著�
 
 [RAC](https://arxiv.org/abs/2610.00980)提供已有经典角色分工之外的对照：根据执行状态选择下一位协作者，在三个科研宿主中取得最高观察均分，但联合加入契约和验证后均分下降。该结果来自单种子小样本，不能分别归因到契约或验证，也不能推广为“协作无用”。用它检查复杂机制是否值得预算，而保留 MetaGPT、ChatDev 作为固定工作流阅读。
 
+[MASS](https://arxiv.org/abs/2610.12176)再补训练阶段：把工作流中的编排与子 Agent 执行轨迹用于训练同一个共享模型。它与 RAC 的运行时选择研究对象不同；角色越多不构成收益证明，研究产物完成率、同一完成集合上的质量及全训练成本还需分别核对。
+
 ### MAS范式与架构
 
 *   **协作模式**: MAS中的智能体可以根据任务需求组织成不同的拓扑结构。这可以是一个简单的线性流水线，每个智能体负责一个环节；也可以是一个扁平化的“圆桌会议”，所有智能体平等地进行辩论和投票；还可以是一个层级化的结构，由一个“管理者”智能体进行任务分解和协调，并将子任务分配给“执行者”智能体 。
@@ -554,7 +562,7 @@ Agentic Coding（智能体化编码）是 AI 智能体商业影响力最显著�
 *   **群体记忆**: 除了单个智能体的记忆，如何为整个智能体团队设计一个共享的、一致的、可更新的“集体记忆”系统，以支持长期协作和学习，也是一个开放的研究问题 。
 
 ### 相关论文与资源
-*   **综述: A Communication-Centric Perspective on Large Language Model based Multi-Agent Systems** (2025)
+*   **综述: Beyond Self-Talk: A Communication-Centric Survey of LLM-Based Multi-Agent Systems** (2025)
 
     该综述从“沟通”这一核心视角来剖析MAS，为理解多智能体协作的内在机制提供了一个新颖的框架。
 
@@ -582,7 +590,7 @@ Agentic Coding（智能体化编码）是 AI 智能体商业影响力最显著�
 ---
 
 ## 可信度：安全、对齐与评估
-随着智能体变得日益自主，并被赋予在真实世界中采取行动的能力，确保其行为的可信度（Trustworthiness）已成为该领域最重要、最紧迫的议题。一个强大的智能体如果行为不可预测、不符合人类价值观或存在安全漏洞，其潜在风险将远超其带来的益处。因此，智能体的安全（Safety）、与人类价值观的**对齐（Alignment）以及对其行为的严格评估（Evaluation）**构成了可信度研究的三大支柱 。
+随着智能体变得日益自主，并被赋予在真实世界中采取行动的能力，确保其行为的可信度（Trustworthiness）已成为该领域最重要、最紧迫的议题。一个强大的智能体如果行为不可预测、不符合人类价值观或存在安全漏洞，其潜在风险将远超其带来的益处。因此，智能体的安全（Safety）、与人类价值观的对齐（Alignment）以及对其行为的严格评估（Evaluation）构成了可信度研究的三大支柱 。
 
 ### 对齐方法论
 *   **宪法AI (Constitutional AI, CAI)**: 由Anthropic公司提出的一种创新的对齐技术。传统对齐方法（如RLHF）严重依赖人类标注者来判断模型的输出是否“好”。CAI则试图让AI在一定程度上“自我对齐”。其核心思想是，首先为AI制定一套原则或价值观，即“宪法”（Constitution）。然后，在训练过程中，模型不仅要生成对用户问题的回答，还要根据“宪法”自我批判和修正其回答。这个过程被称为“来自AI反馈的强化学习”（Reinforcement Learning from AI Feedback, RLAIF）。通过这种方式，CAI旨在使对齐过程更具可扩展性、透明度和一致性，减少对大规模人工标注的依赖 。
@@ -593,8 +601,11 @@ Agentic Coding（智能体化编码）是 AI 智能体商业影响力最显著�
 
 - **谁改变环境？**[τ²-Bench](https://arxiv.org/abs/2506.07982)让 Agent 与模拟用户都能操作共享状态；No-User/Oracle Plan 对照区分推理与协作负担。它测执行中的协作；[τ^τ-Bench](https://arxiv.org/abs/2609.04611)测构建并交付一个 Agent，二者不是同一个基准或版本。
 - **什么时候算完成？**[Incident-Arena](https://arxiv.org/abs/2610.00648)要求恢复与安全条件同时通过，并检查负载和重启后的结果。主成功判定使用功能验证；论文另行分析奖励投机时使用 LLM judge，不能把整篇工作概括为完全无模型判分。
-- **分母与预算是什么？**报告任务集版本、抽样数、重复次数、token/时延/费用、工具权限及停止规则。`pass^k` 的多次一致成功与 `pass@k` 的至少一次成功含义不同。区分模型失败、工具/验证器故障与缺失结果，并报告不确定性；真实用户研究与模拟用户也分开。
+- 分母与预算是什么？报告任务集版本、抽样数、重复次数、token/时延/费用、工具权限及停止规则。`pass^k` 的多次一致成功与 `pass@k` 的至少一次成功含义不同。区分模型失败、工具/验证器故障与缺失结果，并报告不确定性；真实用户研究与模拟用户也分开。
 - **“时间跨度”是谁的时间？**[METR 指标统计审查](https://arxiv.org/abs/2610.12466)在 228 个软件任务、26 个 AI 上重估：50% horizon 是 Agent 成功概率为 50% 的任务对应的人类完成时间，不是 Agent 自主运行时长。人类时间到 AI 难度的映射可能非线性，任务家族与重复运行相关性也影响区间；不能由跨度倍数直接推出同倍能力提升。这不否定既有进展趋势，也未验证任务库对全部部署的代表性。
+
+- **需求是否给全？**[FDE-Gym](https://arxiv.org/abs/2610.22350)固定客户环境和验收、改变任务说明的信息量，连接需求澄清与交付收益。其 95 个任务包含同场景变体，L0–L2 仅测 20 个原题；脚本客户、设定的沟通成本与未完成真人基线限制外推。归一化收益、事故、沟通成本和解决比例要分别读。
+- **错误怎样进入交互？**[AgentPerturb](https://arxiv.org/abs/2610.21624)按来源与错误类型构造成对测试。记录恢复路径、额外成本、无评分运行和子集选择；单轨迹比较及 LLM 语义核验不能替代重复试验或全部任务审计。
 
 ### 上下文与执行权限的连接
 
@@ -618,7 +629,7 @@ Agentic Coding（智能体化编码）是 AI 智能体商业影响力最显著�
 
     [arXiv: 2212.08073](https://arxiv.org/abs/2212.08073)
 
-*   **综述: A Survey on Trustworthiness in LLM-based Agents** (2025)
+*   **综述: A Survey on Trustworthy LLM Agents: Threats and Countermeasures** (2025)
 
     该综述提出了一个名为TrustAgent的框架，全面地研究了智能体可信度的各个方面。
 
@@ -659,7 +670,7 @@ Agentic Coding（智能体化编码）是 AI 智能体商业影响力最显著�
     
     提出了首个针对具身决策任务的大语言模型基准框架，填补了智能体在复杂三维环境中交互评估的空白，引领了具身人工智能的下一步评价标准。
     
-    [arXiv: 2410.07166](https://arxiv.org/abs/2410.07166) / [![Semantic Scholar](https://img.shields.io/badge/Semantic%20Scholar-View-blue)](https://api.semanticscholar.org/graph/v1/paper/search?query=Embodied+Agent+Interface+Benchmarking+LLMs+Embodied+Decision+Making)
+    [arXiv: 2410.07166](https://arxiv.org/abs/2410.07166)
 
 ### 自然语言处理、长链条推理与 RL (NLP/Reasoning & RL)
 *   **DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning** (DeepSeek, 2025)
@@ -672,7 +683,7 @@ Agentic Coding（智能体化编码）是 AI 智能体商业影响力最显著�
 
     全面系统地梳理了大型语言模型智能体的发展脉络，涵盖从基础架构到多智能体系统的前沿挑战，是了解最新全貌的必读神级综述。
     
-    [arXiv: 2503.21460](https://arxiv.org/abs/2503.21460) / [![Semantic Scholar](https://img.shields.io/badge/Semantic%20Scholar-View-blue)](https://api.semanticscholar.org/graph/v1/paper/search?query=Large+Language+Model+Agent+Survey+Methodology+Applications+Challenges+2025)
+    [arXiv: 2503.21460](https://arxiv.org/abs/2503.21460)
 
 *   **Agent Q: Advanced Reasoning and Learning for Autonomous AI Agents** (2024)
 
@@ -685,7 +696,7 @@ Agentic Coding（智能体化编码）是 AI 智能体商业影响力最显著�
     
     创新性地将蒙特卡洛树搜索（MCTS）与大语言模型软件开发智能体深入融合，在代码库导航和错误自动修复 (Issue Resolution) 任务中实现了惊人优化。
 
-    [arXiv: 2410.20285](https://arxiv.org/abs/2410.20285) / [![Semantic Scholar](https://img.shields.io/badge/Semantic%20Scholar-View-blue)](https://api.semanticscholar.org/graph/v1/paper/search?query=SWE-Search+Software+Agents+Monte+Carlo+Tree+Search)
+    [arXiv: 2410.20285](https://arxiv.org/abs/2410.20285)
 
 ### 可信度、安全与压力评估 (Trustworthiness & Safety)
 *   **Why Agents Compromise Safety Under Pressure** (Jiang et al., 2026)
@@ -698,7 +709,7 @@ Agentic Coding（智能体化编码）是 AI 智能体商业影响力最显著�
     
     该研究直面智能体安全性与脆弱性的痛点，提出了首个针对对抗性及有害连续交互任务进行防御评测的鲁棒性标杆。
 
-    [arXiv: 2410.09024](https://arxiv.org/abs/2410.09024) / [![Semantic Scholar](https://img.shields.io/badge/Semantic%20Scholar-View-blue)](https://api.semanticscholar.org/graph/v1/paper/search?query=AgentHarm+Benchmarking+Robustness+LLM+Agents+Harmful)
+    [arXiv: 2410.09024](https://arxiv.org/abs/2410.09024)
 
 ---
 
@@ -710,7 +721,7 @@ Agentic Coding（智能体化编码）是 AI 智能体商业影响力最显著�
 - 🐛 **报告问题**：通过 GitHub Issue 报告失效链接、过时信息或错误
 - 💡 **建议新章节**：在 GitHub Discussions 发起讨论
 
-**论文收录要求：**与 Agent 的机制、系统、使用或评估直接相关；有可核验的原始论文页面；能写清研究问题、证据与局限。新预印本可以收录，但要注明来源状态。引用数、GitHub stars 和会议名都不是单独的门槛。完整规则见[收录标准与每周 SOP](docs/update-sop.md)。
+论文收录要求：与 Agent 的机制、系统、使用或评估直接相关；有可核验的原始论文页面；能写清研究问题、证据与局限。新预印本可以收录，但要注明来源状态。引用数、GitHub stars 和会议名都不是单独的门槛。完整规则见[收录标准与每周 SOP](docs/update-sop.md)。
 
 ---
 
