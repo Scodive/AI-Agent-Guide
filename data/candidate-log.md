@@ -123,3 +123,33 @@
 | [Trustworthy LLM Agents](https://arxiv.org/abs/2503.09648) | 2025-03-12；v1 | 两README标题与记录/CSV一致；保留TrustAgent介绍，不添加未核验发表标签。 |
 
 其他历史待核验（本期未重审，未计22）：MedicalHarness、ScholarCatalyst、BrickBench、Harmful Refusal、CPE、RegenHarness、Fewer Tokens Better Action、HPC Systems、Mimir、Global Coherence、VideoEvolve。cs.AI第一页其他标题用于发现，未形成证据卡。检索没有完整翻页或覆盖全部会议录。MCP工具错误规范与AWS幂等说明是技术资料，不另算论文候选。
+
+## 2026-10-26 研究候选与月末复查
+
+窗口为 2026-10-19–25，首次/修订按 arXiv UTC。本节 21 个唯一编号：5 新增（3 窗口内、2 较早补收）、5 暂缓、1 旧条目版本核验更新、9 旧库元数据复查、1 旧指南定点纠正。前五篇读方法/实验/限制，Adaptive Skill Granularity 也读正文；其余暂缓项只到记录/摘要，不用摘要数字替代证据。详见[周报](weekly-reviews/2026-10-26.md)。
+
+| 原始记录 | 首次/最新版本日期 | 本次决定与理由 |
+| --- | --- | --- |
+| [Memory-Centric Continual Learning for AI Agents](https://arxiv.org/abs/2610.29357) | 10-21；v1 | 收录，综述/框架带有限实证；补内容与管理策略、留存/适应/迁移。缩放假设和合成图与实测分开；不是通用定律或完整双层演化验证。 |
+| [Muffin - A Shared Memory Buffer for Asynchronous AI Agents](https://arxiv.org/abs/2610.31355) | 10-22；v1 | 收录方法；补只追加的共享发现、有限窗口与异步可见性。不把推理问答视为工具环境协作，不把同一步数当同总预算；匿名代码访问受限。 |
+| [EpiSEM-Bench: Evaluating Safety and Evidence Recovery in LLM Agents under Missing Evidence](https://arxiv.org/abs/2610.31650) | 10-22；v1 | 收录基准；补真实但不完整证据与主动查证。配对世界、UCR分母和mask对齐明确；有限模拟/单轨迹，未确认官方代码。 |
+| [ReWOO: Decoupling Reasoning from Observations for Efficient Augmented Language Models](https://arxiv.org/abs/2305.18323) | 2023-05-23；v1 | 经典补收，不称本周新论文；预规划/证据变量补ReAct对照。未知环境限制、历史模型与评分口径保留，作者原实现已关联。 |
+| [Doc2Harness: Benchmarking LLMs on Long-Horizon Harness Engineering of Coding Agents](https://arxiv.org/abs/2610.20344) | 10-14；v1 | 较早补收；框架实现测试补任务评估缺口。冻结候选、mock和正对照有教学价值；相关用例/固定构建器/部分开放限制保留，不称RSI实验证据。 |
+| [Adaptive Skill Granularity for Coding Agents](https://arxiv.org/abs/2610.31461) | 10-22；v1 | 暂缓，读§3–6。设计目标80题，但实际主表12题/故障表7题；模型配置、独立留出与重复证据不够清楚。恢复时应检查当前终态的思路可观察，不把100%当通用保证；未来技能演化未实测。 |
+| [DuoCook](https://arxiv.org/abs/2610.31511) | 10-22；v1 | 暂缓，仅记录/摘要；单VLM控制双玩家不能直接作独立多Agent协作证据，记忆消融/重复和地图覆盖需全文。 |
+| [Certified Execution Harness for Agentic AI](https://arxiv.org/abs/2610.31376) | 10-22；v1 | 暂缓，仅记录/摘要；Petri网监督与最少干预值得补，四项实现迁移假设、重规划成本与理论最优条件尚未核验。不能凭标题称现实执行获认证。 |
+| [MemScope](https://arxiv.org/abs/2610.21170) | 10-15；v1 | 较早候选，暂缓；记忆代码局部修复可接RSI，但任务留出、修改选择与费用尚未全文核验，不采用摘要增益。 |
+| [L3M](https://arxiv.org/abs/2610.19591) | 10-14；v1 | 较早候选，暂缓；Lean权限/可逆性可补运行时，但定理覆盖、外部副作用映射与Terminal对照尚未读完。 |
+| [AgentPerturb](https://arxiv.org/abs/2610.21624) | 首次10-15；v2 10-23 | 修订核验；逐行对比HTML可提取正文，差异为作者等贡献标记及页面/版本信息，未见方法/实验变化。只更新CSV核验日期，不新增编号；作者仓库仍空。 |
+| [CMP](https://arxiv.org/abs/2610.02070) | 10-01；v3 10-08 | 元数据无本周新版本；入十月精选，沿用上期全文记录和日期。 |
+| [Component Routing](https://arxiv.org/abs/2610.01787) | 10-01；v1 | 元数据无新版本；入十月精选，原成本/区间边界不变。 |
+| [VERSE](https://arxiv.org/abs/2610.02616) | 10-02；v1 | 元数据无新版本；入十月精选，avg@3非三次演化。 |
+| [MASS](https://arxiv.org/abs/2610.12176) | 10-08；v1 | 元数据无新版本；保留入库与参数路线，实验细节留条目/日志，不恢复首页警告。 |
+| [HarnessSecurity-Bench](https://arxiv.org/abs/2610.07639) | 10-06；v2 10-10 | 元数据无新版本；双目标安全/效用阅读保留，产品当前状态未核验。 |
+| [Incident-Arena](https://arxiv.org/abs/2610.00648) | 09-30；v1 | 元数据无新版本；十月编辑选读明确为九月末提交，不按2610编号推断十月首发。 |
+| [FDE-Gym](https://arxiv.org/abs/2610.22350) | 10-15；v1 | 元数据无新版本；入十月精选，模拟客户/分母边界保留。 |
+| [Terminal-RSI](https://arxiv.org/abs/2610.22192) | 10-15；v1 | 元数据无新版本；保留上期阅读，不因未入月度十篇而撤出核心库。 |
+| [AI time horizons statistical audit](https://arxiv.org/abs/2610.12466) | 10-08；v1 | 元数据无新版本；量尺解释留阅读路线，不把未入精选当撤稿。 |
+| [AgentHarm](https://arxiv.org/abs/2410.09024) | 首次2024-10-11；v3 2025-04-18 | 旧指南纠正；准确标题与CSV对齐，去掉“首个鲁棒性标准”表述；仅记录/摘要核对，未重读全文，不刷新CSV日期。 |
+
+其他搜索命中（Harmony Harness、Harness Evolution Hits a Ceiling、MemCode、Persistent Memory等）仅用于发现，未形成证据卡，不算已核验/已拒收。上期 LEASH、RSIFlow、PROBE、Shortcut Sensitivity、HarnessTester 等继续待全文，不在本周重复计数。检索未遍历全部分类日期或全部会议录，允许漏检。

@@ -19,23 +19,34 @@
 
 完成基础路线后，可按兴趣进入[Agent Harness 与 Coding Agent](harness.md)或[RSI 与自我改进](rsi.md)。前者关注模型如何在工具、环境和验证循环中工作；后者关注系统实际修改了自身的哪一部分。
 
-## 把经典机制接到近期问题
+## 按问题进入拓展路线
 
-- **开始前**：区分模型、运行框架、执行环境和任务；知道工具请求、工具执行与状态变化是三件事。遇到不熟悉的运行循环，先读 [Harness](harness.md) 的五步拆解。
-- **步骤 3 之后**：ReAct → ToT → [LATS](https://arxiv.org/abs/2310.04406) → SWE-Search。比较搜索对象、反馈来源、回退能力与预算，而非按年份理解成升级阶梯。LATS 的正确性 oracle 是要识别的实验条件。
-- **步骤 5 之后**：[CMP](https://arxiv.org/abs/2610.02070)检查未曝光记忆的效用是否可识别，再用 DolphinBench 看任务、成本与时延。CMP 的实验池包含相关性标签，尚不支持直接部署淘汰策略。
-- **步骤 5/7 之后**：[Component Routing](https://arxiv.org/abs/2610.01787)比较同一份 GUI 经验进入上下文还是权重；先区分信息可见性与参数学习，再看状态依赖、留出任务和费用。它不是通用路由定律，也不单独证明 RSI。
-- **步骤 8 的对照**：SWE-bench → [Agentless](https://arxiv.org/abs/2407.01489) → SWE-agent → SWE-Search。分别看预定阶段、动态动作接口和分支搜索，比较相同任务/模型/预算下新增机制的价值；保留原十步，只补固定流程基线。
-- **步骤 6/8 之后**：[τ²-Bench](https://arxiv.org/abs/2506.07982)看人与 Agent 共同控制状态；[τ^τ-Bench](https://arxiv.org/abs/2609.04611)看构建 Agent；[Incident-Arena](https://arxiv.org/abs/2610.00648)看服务恢复、修改范围与修复持久性。三个研究对象分别是协作执行、系统构建、运维恢复。
-- **步骤 6/10 之后**：[时间跨度统计审查](https://arxiv.org/abs/2610.12466)区分人类完成时间与 Agent 运行时间；[HarnessSecurity-Bench](https://arxiv.org/abs/2610.07639)把正常任务收益、攻击效果和成本分开。前者是统计估计阅读，后者是运行对照；不能只看一个总分。
-- **步骤 9 之后**：[RAC](https://arxiv.org/abs/2610.00980)用运行时选择补固定分工，并提供“增加机制未必增益”的小样本边界；不要从这一项推断所有多 Agent 系统的优劣。
+所有分支先区分模型、Harness、执行环境和工作负载；再记录任务分母、预算、反馈来源、失败与未评分运行。不按发表年份理解成升级阶梯。
 
-每个分支都补问：论文测的是哪个任务分母、是否等预算、失败由谁定义、收益能迁移到哪里？2026-10-12 增补保留原十步；Agentless、Component Routing、VERSE 是较早补收。RSI 拓展读 GEPA/DGM/AIDE² 后进入 [VERSE 的两层改进](rsi.md#执行器改进与改进器改进2026-10-12)。CMP 已核对 v3（10 月 8 日），曝光预算随候选池扩张，动态记忆流的相关性还会影响方差；不据此推荐自动淘汰。
+### 规划需要什么时候读取环境？
 
-## 恢复、交付与参数学习分支（2026-10-19）
+步骤 3 之后，对照 ReAct 的逐步观察与 [ReWOO](papers.md#paper-2305.18323)的“预写计划—工具填证据—合并答案”。再读 ToT → [LATS](papers.md#paper-2310.04406) → SWE-Search，区分思维分支和可执行动作搜索。预规划可能受未知环境限制；搜索的节点、轨迹、token 和环境调用要一起计费，LATS 的正确性 oracle 与状态可回退是假设，真实不可逆动作要另处理。
 
-- **步骤4/6之后**：先读 [Harness 的写入超时例子](harness.md#写入超时后先确认状态2026-10-19)，再读 [AgentPerturb](https://arxiv.org/abs/2610.21624)。区分工具报错、无回执与错误信息，检查恢复路径是否存在、无评分运行怎样入分母。
-- **步骤8与构建/运维之后**：用 [FDE-Gym](https://arxiv.org/abs/2610.22350)连接需求澄清、原系统基线和交付验收；保留 SWE-bench 的代码修复对象，比较不同问题而不合并量尺。
-- **步骤9与RSI专题之后**：比较 [MASS](https://arxiv.org/abs/2610.12176)的工作流/共享权重更新和 [Terminal-RSI](https://arxiv.org/abs/2610.22192)的 actor/critic 训练。先补 SFT、LoRA、策略优化和价值估计概念，再读 [反馈来源](rsi.md#参数更新与反馈来源2026-10-19)；无需把高级训练论文放进前六步。
+### 保存、共享和学习分别改变了什么？
 
-原十步保持；本期三篇窗口内新提交，一篇 MASS 较早补收。只读元数据未发现 CMP、VERSE、GEPA 在本周的新版本，保留旧核验日期。
+步骤 5 之后，MemGPT → A-MEM → [CMP](papers.md#paper-2610.02070) → [DolphinBench](papers.md#paper-2609.24971)：从存取、组织、效用识别走到任务与成本。CMP 的实验池含相关性标签，不能直接当淘汰策略。用 [MCCL](papers.md#paper-2610.29357)的载体/内容/策略分类回看这条路线，再问延迟、干扰、变化与迁移，而不把检索命中当持续学习。
+
+步骤 5/7 之后，[Component Routing](papers.md#paper-2610.01787)比较同一 GUI 经验进入上下文还是权重；先补参数训练与成本概念。步骤 9 之后，对照 MetaGPT/ChatDev 的固定分工、[RAC](papers.md#paper-2610.00980)的运行时选择与 [Muffin](papers.md#paper-2610.31355)的异步发现共享，再用 [CoCoBench](papers.md#paper-2608.28266)看环境协作。推理缓冲区不等于跨会话记忆，增加协调和共享条目都未必增益。
+
+### 框架、任务结果和交付目标怎样分别验证？
+
+步骤 8 之后，SWE-bench → [Agentless](papers.md#paper-2407.01489) → SWE-agent → SWE-Search，比较固定流程、动态接口和分支搜索。[Doc2Harness](papers.md#paper-2610.20344)另检验框架实现是否符合约定；先读 [Harness 五步循环及框架测试](harness.md#框架实现测试与任务评估分开)，理解 mock、确定性检查与正对照，再读其构建/测试协议。公开场景不是全量用例。
+
+步骤 6/8 之后，[τ²-Bench](papers.md#paper-2506.07982)测共同控制状态的执行，[τ^τ-Bench](papers.md#paper-2609.04611)测构建 Agent，[FDE-Gym](papers.md#paper-2610.22350)测需求与交付收益，[Incident-Arena](papers.md#paper-2610.00648)测恢复安全与持久性。保留各自任务对象，不合并分数；模拟客户与实际用户分开。
+
+### 信息不足、攻击和执行错误怎样区分？
+
+步骤 4/6 之后，先读 [写入超时查状态](harness.md#写入超时后先确认状态2026-10-19)，再看 [AgentPerturb](papers.md#paper-2610.21624)的交互扰动、[EpiSEM-Bench](papers.md#paper-2610.31650)的真实但不完整证据、[HarnessSecurity-Bench](papers.md#paper-2610.07639)的安全/效用对照。主动查证后分别检验禁止动作和允许动作；不把一律拒绝当有用恢复。
+
+步骤 6/10 之后，[时间跨度统计审查](papers.md#paper-2610.12466)补量尺解释：人类任务用时与 Agent 运行时间不同。持续成功 `pass^k`、至少一次成功 `pass@k`、任务出现过任一违规的比例也分别解释。
+
+### 自我改进的下一轮使用了什么？
+
+读 [RSI 专题](rsi.md)中的 GEPA → Gödel Agent/DGM → AIDE² → [VERSE](papers.md#paper-2610.02616)，逐项记修改对象、筛选反馈和下一轮继承。该顺序是概念展开，不是能力排名。[MCCL 的状态/策略区分](rsi.md#记忆状态变化与管理策略变化)帮助判断增加记忆与改变管理规则。
+
+完成多 Agent 与 RSI 阅读、具备 SFT/LoRA/策略优化/价值估计基础后，再比较 [MASS](papers.md#paper-2610.12176)的工作流/共享权重与 [Terminal-RSI](papers.md#paper-2610.22192)的 actor/critic 更新；详见[反馈来源](rsi.md#参数更新与反馈来源2026-10-19)。这些拓展不改变前十步的入门顺序。

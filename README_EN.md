@@ -14,9 +14,9 @@ Welcome to **AI-Agent-Guide**. This repository keeps its long-form guide and add
   </a>
 </p>
 
-Reading links: [Reading path](docs/reading-path.md) · [Paper table](docs/papers.md) · [September 2026 picks](docs/monthly-picks.md) · [Harness and coding agents](docs/harness.md) · [RSI and self-improvement](docs/rsi.md) · [Weekly maintenance SOP](docs/update-sop.md) · [CSV data](data/papers.csv).
+Reading links: [Reading path](docs/reading-path.md) · [Paper table](docs/papers.md) · [October 2026 picks](docs/monthly-picks.md) · [Harness and coding agents](docs/harness.md) · [RSI and self-improvement](docs/rsi.md) · [Weekly maintenance SOP](docs/update-sop.md) · [CSV data](data/papers.csv).
 
-As of October 19, 2026, the catalog contains 76 papers, including 10 September picks. This review adds AgentPerturb, FDE-Gym, and Terminal-RSI, and follows up the October 8 MASS paper. It connects interaction recovery, requirements and acceptance, parameter learning, and feedback provenance. See the [weekly review](data/weekly-reviews/2026-10-19.md). Inclusion does not mean independent replication. Please report errors through an Issue or PR.
+As of October 26, 2026, the catalog contains 81 papers and ten October selections. This review adds MCCL, Muffin, and EpiSEM-Bench, backfills ReWOO and Doc2Harness, and checks AgentPerturb v2. It connects advance planning, continual memory, shared information, harness testing, and evidence recovery. See the [weekly review](data/weekly-reviews/2026-10-26.md). Inclusion does not mean independent replication. Please report errors through an Issue or PR.
 
 ## How to use this guide
 
@@ -286,6 +286,8 @@ These techniques are composable design choices. Report nodes, trajectories, toke
 
 For code repair, first compare a fixed workflow: [Agentless](https://arxiv.org/abs/2407.01489) prescribes localization, generation, and validation; SWE-agent lets the model select actions; SWE-Search adds branching search. Evaluate the additional freedom under matched tasks, models, and budgets. Workflow complexity alone does not establish capability.
 
+**Another classical branch: plan, then fill evidence.** [ReWOO](https://arxiv.org/abs/2305.18323) has a Planner write dependencies with evidence variables, Workers fill them through tool calls, and a Solver combine the results. This reduces repeated observation context. It complements ReAct: advance planning can fail when the environment must first be discovered. Historical QA token savings do not establish gains for actions with side effects.
+
 ### Reasoning Tech Comparisons
 
 | Technique | Core Idea | Main Advantage | Best Use Case |
@@ -300,15 +302,15 @@ For code repair, first compare a fixed workflow: [Agentless](https://arxiv.org/a
 
 ## Memory Module: Enabling Learning and Context Awareness
 
-If planning and reasoning are the agent's "brain," memory is the foundation for gaining wisdom and enabling growth. The memory module allows agents to escape the limitations of "one-shot" tools, becoming stateful entities that can learn from experience and maintain context awareness in continuous interactions. Without memory, every interaction is a cold start.
+Memory lets past information influence later decisions. Separate currently visible context, experience persisted across sessions, and knowledge in model parameters, then examine how each is used. Storing history is a mechanism; durable behavioral improvement is an outcome that requires evaluation.
 
 ### Memory Architecture
 
-Agent memory systems are typically designed to mimic human cognitive architecture, divided into two main types:
+Begin with two common forms: visible context and external persistent storage. This is not an exhaustive taxonomy; MCCL below also covers parametric and hybrid substrates.
 
-- **Short-Term Memory**: Corresponds to the context window the LLM can process in a single interaction. Stores immediate information from the current conversation—fast to access but limited in capacity and temporary. Lost when the session ends or the context window fills up.
+- **Short-Term Memory**: The context visible to the model on its current call, bounded by its window. Out-of-window information cannot directly affect that call; persistence, compaction, and reloading depend on the harness and storage implementation.
 
-- **Long-Term Memory**: Enables cross-session knowledge retention and learning by storing information in external databases. Allows agents to persistently save and recall past interactions, user preferences, and successful or failed experiences. Critical for continuous learning and capability evolution.
+- **Long-Term Memory**: State that preserves facts, preferences, and task experience across sessions, often in files, databases, or indexes. Later tasks still require correct retrieval, interpretation, and revision; persistence alone does not establish a learned capability.
 
 ### Core Mechanisms for Long-Term Memory
 
@@ -353,6 +355,8 @@ Separate **storage → retrieval → visible context → task outcome → future
 [CMP](https://arxiv.org/abs/2610.02070) adds a measurement boundary: a memory never exposed in context has not been tested, so absent contribution does not establish uselessness. Random exposure improves identification, but the experimental pool uses relevance labels and future-query retention remains unresolved. Read it as an evaluation method, rather than a deployment-ready eviction policy.
 
 **Where should experience go?** [Component Routing](https://arxiv.org/abs/2610.01787) splits GUI experience into locators, procedures, state facts, and lessons, then compares context retrieval with weight updates. This connects memory to GUI training and distinguishes information access from policy learning. Three models and two environments do not establish a universal routing rule; training compute and prompt tokens are not equalized. [CMP v3](https://arxiv.org/html/2610.02070v3) also makes pool-size exposure costs and the fixed-store variance assumption explicit; an evolving memory stream needs additional treatment (checked 2026-10-12).
+
+**From memory contents to continual learning.** [MCCL](https://arxiv.org/abs/2610.29357) separates where state is stored, what experience it represents, and which policy manages it. Updating contents differs from updating the management policy. Retrieval hits alone do not establish continual learning: evaluate retained gains after delay and interference, adaptation to changed facts, and transfer. Its limited experiments and theoretical scaling illustrations are different evidence. This connects MemGPT access, A-MEM organization, CMP utility estimation, and RSI modification targets.
 
 ---
 
@@ -603,6 +607,8 @@ Multi-agent systems organize tasks through division of labor, communication, and
 
 [MASS](https://arxiv.org/abs/2610.12176) adds a training-stage view: orchestrator and worker traces train one shared model. This differs from RAC runtime selection. Check artifact delivery, quality on a common completed set, and total training cost separately; role count alone is not evidence of gains.
 
+**What is shared, and when is it visible?** [Muffin](https://arxiv.org/abs/2610.31355) retains private reasoning locally and appends source- and step-tagged findings to a shared buffer. Peers read a bounded recent window at their next step without waiting for a global round. This adds a communication mechanism, rather than cross-session memory. Append-only storage avoids overwrites but does not establish factual correctness, freshness, or consistent external actions. QA/reasoning results complement CoCoBench's executable coordination tests.
+
 ### MAS Paradigm & Architectures
 
 - **Collaboration Patterns**: MAS agents can be organized into different topologies based on task needs:
@@ -670,6 +676,9 @@ As agents become increasingly autonomous and are empowered to take actions in th
 - **How complete are the requirements?** [FDE-Gym](https://arxiv.org/abs/2610.22350) varies instruction information while holding the customer environment and acceptance criteria fixed. Its 95 tasks include shared-scenario variants; L0–L2 cover only 20 originals. Scripted customers, assigned contact costs, and a pending human baseline limit transfer. Separate normalized uplift, incidents, contact costs, and resolution rate.
 - **Where does incorrect information enter?** [AgentPerturb](https://arxiv.org/abs/2610.21624) builds paired tests by input source and corruption type. Record recovery paths, additional cost, unscored runs, and subset selection. Single-trajectory comparisons and LLM semantic validation do not replace repeated execution or a full task audit.
 
+- **Are truthful observations sufficient?** [EpiSEM-Bench](https://arxiv.org/abs/2610.31650) suppresses safety evidence while keeping remaining facts true, pairing permissible and prohibited worlds. Useful recovery requires seeking evidence and then completing or withholding the action appropriately. Read unsafe-task rates, useful recovery, and legitimate completion jointly; see the [harness example](docs/harness.md#证据缺失先查证再决定执行).
+- **Does the harness implement its contract?** [Doc2Harness](https://arxiv.org/abs/2610.20344) freezes generated harnesses and drives them with a scripted model, checking requests, files, exit codes, and output. Positive controls exclude apparent passes when the behavior was never exercised. Contract correctness, downstream task capability, and RSI gains require distinct evidence.
+
 ### Context trust and execution permissions
 
 Training alignment, guards, context trust, and execution permissions constrain different stages. [CPE](https://arxiv.org/abs/2609.01222) studies lower-trust content promoted to higher-priority or more persistent context; the [harness chapter](docs/harness.md) separates this from configuration exposure. Findings on paper-era versions do not establish exploitability of current products; guards and multi-agent review do not replace permission isolation.
@@ -716,7 +725,7 @@ Training alignment, guards, context trust, and execution permissions constrain d
 
 - **AgentHarm: A Benchmark for Measuring Harmfulness of LLM Agents** (2024)
 
-  A benchmark directly addressing the pain points of agent safety and vulnerability, establishing the first robustness standard for evaluating defenses against adversarial and harmful sequential interaction tasks.
+  A benchmark for measuring harmful task execution by tool-using agents under refusal and attack conditions; it addresses a specific task set rather than a universal safety standard.
 
   [arXiv: 2410.09024](https://arxiv.org/abs/2410.09024)
 
@@ -726,7 +735,7 @@ The field is at a critical turning point: from "what can it do?" to "can we trus
 
 ## 2025–2026 Selected Research
 
-This section keeps a set of earlier further-reading items. See the [September 2026 picks](docs/monthly-picks.md) for recent work and its evidence limits; the items below are not a current leaderboard. Verify publication status and experimental claims on the original paper or official proceedings page.
+This section keeps a set of earlier further-reading items. See the [October 2026 picks](docs/monthly-picks.md) for recent work and its evidence limits; the items below are not a current leaderboard. Verify publication status and experimental claims on the original paper or official proceedings page.
 
 ### Computer Vision & Multimodal (CV/Multimodal & GUI)
 
@@ -778,9 +787,9 @@ This section keeps a set of earlier further-reading items. See the [September 20
 
   [arXiv: 2603.14975](https://arxiv.org/abs/2603.14975)
 
-- **AgentHarm: Benchmarking Robustness of LLM Agents on Harmful Tasks** (ICLR 2025)
+- **AgentHarm: A Benchmark for Measuring Harmfulness of LLM Agents** (ICLR 2025)
 
-  First robustness standard for evaluating defenses against adversarial and harmful sequential interaction tasks, directly addressing agent safety vulnerability pain points.
+  Evaluates tool-using agents on harmful tasks and refusal/attack conditions. This differs from missing-evidence, legitimate-utility, and environment-permission tests; its task set does not cover all deployment risks.
 
   [arXiv: 2410.09024](https://arxiv.org/abs/2410.09024)
 

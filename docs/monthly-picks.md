@@ -1,24 +1,20 @@
-# 本月精选 · 2026 年 9 月
+# 本月精选 · 2026 年 10 月
 
-**截至 2026-09-26 人工选读 10 篇。**其中 9 篇于 9 月首次提交，CoCoBench 于 8 月 28 日提交。本页按研究问题排布，不按引用量或榜单排序。以下均按 arXiv 预印本处理；数据与效果是论文作者报告，尚未独立复现。
+**截至 2026-10-26 人工选读 10 篇。**九篇在十月首次提交，Incident-Arena 首次提交于 9 月 30 日。本页围绕“经验怎样进入系统、运行机制怎样被验证、交付怎样验收”组织阅读，兼顾本月较早工作；不按发布时间或榜单排名。均按预印本阅读，效果为作者报告，未独立复现。
 
 | # | 论文 | 为什么本月读 | 证据与边界 |
 | --- | --- | --- | --- |
-| 1 | [DAREBench](https://arxiv.org/abs/2609.06059) · 评估<br>[库内记录](papers.md#paper-2609.06059) | 把 Agent 评估从单一正确率推进到不同模态、执行形式和成本。 | 233 个任务来自 22 个来源基准；统一环境便于比较，但仍是经过选择与改写的工作负载。 |
-| 2 | [τ^τ-Bench](https://arxiv.org/abs/2609.04611) · Agent 构建<br>[库内记录](papers.md#paper-2609.04611) | 让编码 Agent **交付一个 Agent**，再用留出用户检验其运行结果。 | 53 个任务覆盖四个领域；模拟客户与用户仍不能等同真实项目验收。 |
-| 3 | [Spurious Tool Use](https://arxiv.org/abs/2609.16268) · 工具学习<br>[库内记录](papers.md#paper-2609.16268) | 检查强化学习是否让 Agent 学会“看见线索就调用工具”的捷径。 | 通过反事实线索测试工具必要性；现有证据来自受控合成环境。 |
-| 4 | [DolphinBench](https://arxiv.org/abs/2609.24971) · 长期记忆<br>[库内记录](papers.md#paper-2609.24971) | 将记忆评价放进实际任务完成，并同时报告成本与时延。 | 三个知识工作角色各有 200 个任务，使用有无相关历史的对照；角色和任务是构造的。 |
-| 5 | [CoCoBench](https://arxiv.org/abs/2608.28266) · 多智能体<br>[库内记录](papers.md#paper-2608.28266) | 将“协作”拆成分工、顺序、互斥和交接，避免只看总成功率。 | 897 个 oracle 验证实例、11 个模型；结论来自可执行家庭任务环境。 |
-| 6 | [Are We There Yet?](https://arxiv.org/abs/2609.00524) · GUI 与无障碍<br>[库内记录](papers.md#paper-2609.00524) | 用盲人用户的桌面工作流检验计算机操作 Agent 的实际帮助。 | 8 位用户、三周、1258 条命令；小规模样本与单一原型限制泛化。 |
-| 7 | [Scanning the Harness](https://arxiv.org/abs/2609.07360) · 配置安全<br>[库内记录](papers.md#paper-2609.07360) | 把技能、钩子和 MCP 声明视为 Agent 的软件供应链。 | 复核 3171 个公开仓库的配置问题；**配置暴露不等于已发生利用**。 |
-| 8 | [Who Finishes the Job?](https://arxiv.org/abs/2609.26847) · 代码维护<br>[库内记录](papers.md#paper-2609.26847) | 把“PR 已合并”之后的修复工作也算进 Agent 成果评价。 | 追踪 6774 个 Agent PR，并与 5044 个人类 PR 比较；观察性数据不能证明因果。 |
-| 9 | [The Work Behind Delegation](https://arxiv.org/abs/2609.24234) · 人机协作<br>[库内记录](papers.md#paper-2609.24234) | 研究开发者监督编码 Agent 的实际工作，而不只看模型产出。 | 基于 19 位开发者的观察和公开讨论提出七阶段框架；尚未证明某一流程提高产出。 |
-| 10 | [AI-Research Agents in the Wild](https://arxiv.org/abs/2609.11975) · 科研 Agent<br>[库内记录](papers.md#paper-2609.11975) | 将论文、仓库与设计谱系分开登记，避免重复计数和泛化过度。 | 连接 139 个仓库与 101 篇论文，并审计新样本；范围受公开资源和冻结日期限制。 |
+| 1 | [Memory-Centric Continual Learning](https://arxiv.org/abs/2610.29357) · 记忆框架<br>[库内记录](papers.md#paper-2610.29357) | 先分清经验载体、内容和管理策略，再区分记忆状态更新与策略变化。 | 提出留存/适应/迁移评估，并有小规模实证；部分缩放图是理论示意，不能当普适经验定律。 |
+| 2 | [CMP](https://arxiv.org/abs/2610.02070) · 记忆效用<br>[库内记录](papers.md#paper-2610.02070) | 接着问：未进入上下文的记忆，效用能否从日志识别？ | v3 的随机曝光有明确概率；相关性标签构造的池、曝光成本和未来查询留存仍限制部署解释。 |
+| 3 | [Component Routing](https://arxiv.org/abs/2610.01787) · GUI 学习<br>[库内记录](papers.md#paper-2610.01787) | 同一经验的定位、程序步骤、状态与失败教训未必要进入同一种载体。 | 三模型、两个 GUI 环境；部分相对全上下文的区间含零，训练与提示费用未等额匹配。 |
+| 4 | [Muffin](https://arxiv.org/abs/2610.31355) · 多 Agent 共享<br>[库内记录](papers.md#paper-2610.31355) | 把“群体记忆”落实为只追加的中间发现、有限读取窗口和异步可见性。 | 四模型、四类推理基准、三次运行；尚未检验工具副作用或跨会话长期记忆，token 节省不等于时延节省。 |
+| 5 | [VERSE](https://arxiv.org/abs/2610.02616) · 改进器演化<br>[库内记录](papers.md#paper-2610.02616) | 区分改执行器与改优化器，保留 GEPA/DGM 之后的两层循环阅读。 | 主表每项一次演化，avg@3 是重复测试；额外自演化并非总增益，部分 OOD 仓库与训练重叠。 |
+| 6 | [MASS](https://arxiv.org/abs/2610.12176) · 参数与工作流<br>[库内记录](papers.md#paper-2610.12176) | 工作流搜索产生训练经验，新共享模型回到执行、优化和评价角色。 | 两轮、小规模训练/私有测试；外部报告不等于内环反馈，各任务和训练成本须分开读。 |
+| 7 | [HarnessSecurity-Bench](https://arxiv.org/abs/2610.07639) · 安全设置<br>[库内记录](papers.md#paper-2610.07639) | 同时测正常任务效用、攻击效果和成本，理解安全开关改变了什么。 | 六 Harness、固定行动模型的容器对照；未知机制和论文版本不能当作当前产品漏洞结论。 |
+| 8 | [EpiSEM-Bench](https://arxiv.org/abs/2610.31650) · 证据恢复<br>[库内记录](papers.md#paper-2610.31650) | 观察都真实也可能缺事实；查证后应当既能阻止禁止动作，又能完成允许动作。 | 六领域 300 对任务、十模型、每条件一次轨迹；UCR 是出现过违规的任务比例，比较恢复要对齐遗漏集合。 |
+| 9 | [FDE-Gym](https://arxiv.org/abs/2610.22350) · 需求与验收<br>[库内记录](papers.md#paper-2610.22350) | 让需求澄清连接客户指标、原系统基线和交付结果。 | 20 场景 95 任务，信息层级覆盖不同分母；客户与沟通成本为模拟，归一化收益不是成功率。 |
+| 10 | [Incident-Arena](https://arxiv.org/abs/2610.00648) · 持久恢复<br>[库内记录](papers.md#paper-2610.00648) | 最后检查系统在负载与重启后是否仍恢复，同时满足数据和修改范围要求。 | 20 任务、三应用基底、重复运行；主任务偏重 Slack，模型与 Harness 混杂，不作商业产品排名。 |
 
-**选读建议：**先读 1–2 理解任务与评估，再按兴趣选 3–6 的机制研究；7–10 展示配置、维护、监督和科研生态中的现实边界。完整研究问题、机制、实验环境、结论与局限见[论文库](papers.md)。
+**阅读顺序：**1–4 看经验与信息流，5–6 看可复用组件的更新，7–8 看约束与证据，9–10 看交付及持久验收。需要学习 Harness 本身如何测试，可加读 [Doc2Harness](papers.md#paper-2610.20344)；它是 10 月 14 日的遗漏补收，不是本周新论文。
 
-**2026-10-05 编辑说明：**本页保留九月十篇；十月按 SOP 于月底整理。该期补充 CMP、Incident-Arena 及三项经典路线，见[候选记录](https://github.com/Scodive/AI-Agent-Guide/blob/main/data/candidate-log.md)和[周报](https://github.com/Scodive/AI-Agent-Guide/blob/main/data/weekly-reviews/2026-10-05.md)；源文件已于 10 月 6 日获批提交。
-
-**2026-10-12 周审查说明（已获批）：**本期补安全设置对照、时间跨度统计解释，并补收固定流程、GUI 经验路由、两层 Harness 优化；CMP 跟进 v3。九月十条精选不变，十月仍于月底整理。详细分析保存在 `data/weekly-reviews/2026-10-12.md`；[线上周报链接](https://github.com/Scodive/AI-Agent-Guide/blob/main/data/weekly-reviews/2026-10-12.md)随本次获批源文件更新发布，网站同步状态单独核验。
-
-**2026-10-19 周审查说明（已获批）：**九月十篇及十月底编辑周期保留。本期补交互恢复、需求验收与参数学习分支，详见[周报](https://github.com/Scodive/AI-Agent-Guide/blob/main/data/weekly-reviews/2026-10-19.md)；该仓库链接随本次获批源文件发布。未修改独立网站的同步或发布设置。
+[九月十篇存档](https://github.com/Scodive/AI-Agent-Guide/blob/main/docs/archive/monthly-picks-2026-09.md) · [完整论文库](papers.md) · [新手路线](reading-path.md) · [本期审查](https://github.com/Scodive/AI-Agent-Guide/blob/main/data/weekly-reviews/2026-10-26.md)

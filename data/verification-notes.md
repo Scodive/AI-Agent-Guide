@@ -1,4 +1,4 @@
-# 文献核验记录 · 截至 2026-10-03
+# 文献核验记录
 
 首批 40 篇核心条目的标题与 arXiv 编号已对照原始摘要页，使用初次上载年份作为 CSV 的 `year`。表格中的研究问题、机制、环境和局限是供阅读导航的简述；没有逐项复现论文实验，也没有批量确认正式会议录状态。首批 `source_status` 标为 `arXiv record (venue unverified)`。
 
@@ -88,3 +88,35 @@
 - **官方技术资料**：10-19读[MCP 2025-11-25工具规范](https://modelcontextprotocol.io/specification/2025-11-25/server/tools)的错误类型与调用约定、[AWS幂等API说明](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/)的调用标识、原子性与参数意图。退款恢复流程为编者教学例，不是实测新方法；未新增为论文记录。Codex产品资料仍沿用09-27，MCP安全页沿用10-05，不因工具错误页重核而批量刷新。
 
 10项暂缓均只到元数据/摘要，完整候选及待读协议见[候选日志](candidate-log.md)。无全库外链、发表状态或独立复现完成声明。
+
+## 2026-10-26：五篇补充、一次版本跟进与十月精选
+
+本节核对日期为 2026-10-26。五篇新增均未独立运行；2026预印本不凭评论或作者自称认定正式录用。旧记录不因入月度精选而批量刷新日期。
+
+### 身份与版本
+
+- **2610.29357**：Memory-Centric Continual Learning for AI Agents。作者：Dongfang Li , Zhuoen Chen , Bonian Jia , Zixuan Liu , Zhengxuan Lu , Can Deng , Yukun Shi , Yuhang Meng , Xin Zhang , Jiahe Huang , Fuhao Li , Junmai Wang , Shunyao Wen , Jingjun Sun , Jiaxu Tian , Jiangling Zhang , Zihan Wang , Liangyou Li , Yitong Yao , Shuangyong Song , Beilun Wang , Pengxu Wei , Hanlin Xu , Chang Liu , Yongxiang Li , Baotian Hu , Xiangyang Ji , Min Zhang。版本历史（UTC）：[v1] Wed, 21 Oct 2026 07:49:42 UTC (4,176 KB)。[原始记录](https://arxiv.org/abs/2610.29357)。
+- **2610.31355**：Muffin - A Shared Memory Buffer for Asynchronous AI Agents。作者：Ping-Lin Kuo , Suman Navaratnarajah , Christian Frey , Gresa Shala , Josif Grabocka。版本历史（UTC）：[v1] Thu, 22 Oct 2026 14:36:46 UTC (3,916 KB)。[原始记录](https://arxiv.org/abs/2610.31355)。
+- **2610.31650**：EpiSEM-Bench: Evaluating Safety and Evidence Recovery in LLM Agents under Missing Evidence。作者：Qijin Zhang , Hanzhen Wang , Yuehan Zhao , Haoyu Dai , Yao Shu , Zhongxiang Dai , Shuang Qiu。版本历史（UTC）：[v1] Thu, 22 Oct 2026 17:57:04 UTC (1,649 KB)。[原始记录](https://arxiv.org/abs/2610.31650)。
+- **2305.18323**：ReWOO: Decoupling Reasoning from Observations for Efficient Augmented Language Models。作者：Binfeng Xu , Zhiyuan Peng , Bowen Lei , Subhabrata Mukherjee , Yuchen Liu , Dongkuan Xu。版本历史（UTC）：[v1] Tue, 23 May 2023 00:16:48 UTC (5,355 KB)。[原始记录](https://arxiv.org/abs/2305.18323)。
+- **2610.20344**：Doc2Harness: Benchmarking LLMs on Long-Horizon Harness Engineering of Coding Agents。作者：Yuyao Ge , Shenghua Liu , Peizhong Gao , Chendi Ge , Chenxu Liu , Yiwei Wang , Lingrui Mei , Baolong Bi , Jiayu Yao , Jiafeng Guo , Xueqi Cheng。版本历史（UTC）：[v1] Wed, 14 Oct 2026 15:24:39 UTC (480 KB)。[原始记录](https://arxiv.org/abs/2610.20344)。
+
+### 阅读与证据判断
+
+1. **MCCL**：[v1全文](https://arxiv.org/html/2610.29357v1)，读分类/生命周期框架，§3.5状态与策略，§4评估/缩放及有限实测，§6开放问题。LoCoMo10对话1540问、LongMemEval选100、IdeaBench50固定探针/3顺序；LoCoMo以对话聚类bootstrap，IdeaBench三顺序阴影为min–max，不是95%区间。部分曲线是预设函数/合成示意；实际IdeaBench高容量上限不绑定，评估期间仍写入，不能视为严格冻结后前向迁移。正文未找到可确认的官方实现，CSV代码留空。类型以综述/框架为主，但不是“没有实验”。
+2. **Muffin**：[v1全文](https://arxiv.org/html/2610.31355v1) §3–4及附录A/B。源Agent、步骤和可见时刻随只追加发现保存；读最近k条他人发现，重叠生成不自动看到尚未提交的条目。四模型，同模型/默认五步/三Agent对照，三次运行均值±标准差；四基准、五个报告列（OlymMATH易/难分开），不可误写五个独立基准。Chess/MMLU各100、GPQA198、OlymMATH易/难各100。更多Agent/窗口不持续增益；完整轨迹在部分设置准确率更高但token更多，不称选择性共享在所有指标支配。仅QA/推理，未测工具写入、持久性、并发环境一致性或全成本匹配。正文给[匿名入口](https://anonymous.4open.science/r/Muffin)，网页工具不可访问、直接只读请求403，未确认可用实现，代码留空。
+3. **EpiSEM-Bench**：[v1全文](https://arxiv.org/html/2610.31650v1) §3–5与附录B–E。300对/600世界、60家族、944关键+419无关事实，六领域各50对。每模型6052固定条件（600完整证据+5452单事实遗漏），再自适应枚举关键组合寻找最小观测失败；共享mask对照不直接相减不同覆盖聚合。每条件一次轨迹、12步、请求温度0不保证无随机波动；UCR按300任务计任一违规，其他遗漏率先任务内平均再等权任务。PUR要求配对世界都先主动恢复再正确处置，查证不代表完成；违规后的查证不回溯修复。方法用完整状态oracle，有限模拟规则不是生产授权强制器。全文未确认公开代码，留空；保留未复现。
+4. **ReWOO**：[v1全文](https://arxiv.org/html/2305.18323v1) §2–4、实现/轨迹附录相关部分。Planner预写带依赖变量的计划、Worker取证、Solver合并；六公开NLP任务+SOTUQA。HotpotQA/TriviaQA/GSM8K各1000，StrategyQA/Sports各300，PhysicsQA53；EM/F1与GPT-4语义准确率是不同评分。所测semantic accuracy和token收益不能概括每个指标全面更好；环境未先知时计划难以穷举，§4用ALFWorld说明边界。论文脚注关联[原始作者实现](https://github.com/billxbf/ReWOO)，仓库回链相同论文，并指向Gentopia整合；保留论文原实现地址，不用后继版本冒充冻结复现。未运行，正式发表状态未确认。
+5. **Doc2Harness**：[v1全文](https://arxiv.org/html/2610.20344v1) §2–4、§6；标题宏在HTML未正常显示前缀，依据摘要页与作者页登记完整标题。19模型各3独立构建，OpenCode1.17.0固定构建器；每次2小时/24轮/3提交上限，达到先终止；测试每例一次/900秒。328是计分用例，正对照不入分母。mock排除测试阶段模型波动，不排除构建模型/固定接口/测试选择偏差；用例相关、模块数相关非因果。构建阶段只反馈形式契约，冻结后无行为测试修复循环，不能当RSI成绩。由[作者项目页](https://geyuyao.com/doc2harness/)回链确认[代码](https://github.com/YuyaoGe/doc2harness)；项目页直取403但网页工具可读。代码README明确仅开放94场景=53计分+41正对照，全328结果不能由该子集复现；未运行。
+
+### 旧论文与官方资料
+
+- **AgentPerturb v2**：初次2026-10-15 10:05:54，v2为2026-10-23 06:33:48 UTC。比较[v1](https://arxiv.org/html/2610.21624v1)与[v2](https://arxiv.org/html/2610.21624v2)可提取正文，差异包括等贡献作者标记、版本和页面框架；未发现方法/实验内容变化。非PDF/TeX逐字节审计，不称全文所有格式完全相同。复读先前协议并保留Toolathlon25/79、完成筛选与单轨迹条件；[作者仓库](https://github.com/xuyj233/AgentPerturb)仍显示空。CSV只更新verified_on。
+- **九篇旧库元数据**：CMP仍v3(10-08)，Component Routing v1(10-01)，VERSE v1(10-02)，MASS v1(10-08)，HarnessSecurity v2(10-10)，Incident-Arena v1(09-30)，FDE-Gym/Terminal-RSI v1(10-15)，time-horizon audit v1(10-08)。本周只查记录/历史，沿用既有全文分析，CSV不刷日期；月份不由arXiv编号推断。完整作者可在对应原始记录与历史核验节查，不重新抄录为全文复核。
+- **AgentHarm**：[记录](https://arxiv.org/abs/2410.09024)准确标题A Benchmark for Measuring Harmfulness of LLM Agents，v3(2025-04-18)，核对14作者及摘要的有害任务/拒绝/攻击对象。修两语言历史选读标题、收窄“首个标准”，未重读全文。arXiv评论写ICLR2025，本周未用正式会议录复核，CSV来源状态与日期保留，不新增发表承诺。
+- **MCP**：重新读[2025-11-25工具规范](https://modelcontextprotocol.io/specification/2025-11-25/server/tools)错误/结构章节：JSON-RPC协议错误、工具isError与outputSchema/structuredContent分开；规范的成功或结构符合并不负责特定业务证据是否完整。这是编者的系统层解释，不是MCP新增的安全保证。没有重核全部规范或SDK版本。
+- **产品资料**：本周没有刷新Codex产品机制或框架选型，Harness保留09-27日期，MCP安全实践仍10-05；不能把论文收集的产品快照称为当前产品状态。
+
+### 月度选择与存档
+
+十月十篇是MCCL、CMP、Component Routing、Muffin、VERSE、MASS、HarnessSecurity、EpiSEM、FDE-Gym、Incident-Arena。九篇十月首交、一篇九月末；Terminal-RSI和时间跨度等不入十篇不表示移除。其余七篇精选沿用既有全文核验与边界；本周对旧篇仅元数据复查，不称十篇全文重核。九月原十行迁到[存档](../docs/archive/monthly-picks-2026-09.md)，只调整相对路径。
