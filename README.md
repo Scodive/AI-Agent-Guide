@@ -1,17 +1,12 @@
-# AI-Agent-Guide
-[![GitHub Stars](https://img.shields.io/github/stars/Scodive/AI-Agent-Guide?style=social)](https://github.com/Scodive/AI-Agent-Guide/stargazers) [![Last Commit](https://img.shields.io/github/last-commit/Scodive/AI-Agent-Guide)](https://github.com/Scodive/AI-Agent-Guide/commits/main) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/Scodive/AI-Agent-Guide/blob/main/CONTRIBUTING.md) [![License: MIT](https://img.shields.io/github/license/Scodive/AI-Agent-Guide)](https://github.com/Scodive/AI-Agent-Guide/blob/main/LICENSE) [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# AI-Agent-Guide   <a href="https://ai-notes-red-two.vercel.app/"><img src="assets/open-guide-zh.svg" alt="打开网站 · 开始学习" width="150" height="46"></a>
 
-[English](README_EN.md) | [中文](README.md)
+[English](README_EN.md) | [中文](README.md) | [![GitHub Stars](https://img.shields.io/github/stars/Scodive/AI-Agent-Guide?style=social)](https://github.com/Scodive/AI-Agent-Guide/stargazers)
+
+
 
 欢迎来到 AI-Agent-Guide。本指南梳理 AI 智能体的架构、关键技术与研究问题，并保留原有的长篇导读。论文库采用人工精选和逐条核验，不追求收齐每天的新论文；每条记录提供研究问题、机制、实验环境与指标、结论、局限和核验日期。
 
-<p align="center">在线阅读指南 · 搜索论文 · 按主题探索</p>
 
-<p align="center">
-  <a href="https://ai-notes-red-two.vercel.app/">
-    <img src="assets/open-guide-zh.svg" alt="打开网站 · 开始学习" width="380" height="76">
-  </a>
-</p>
 
 阅读导航：[新手阅读路线](docs/reading-path.md) · [论文库表格](docs/papers.md) · [2026 年 10 月精选](docs/monthly-picks.md) · [Harness 与 Coding Agent](docs/harness.md) · [RSI 与自我改进](docs/rsi.md)
 
