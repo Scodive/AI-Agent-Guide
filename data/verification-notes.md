@@ -120,3 +120,29 @@
 ### 月度选择与存档
 
 十月十篇是MCCL、CMP、Component Routing、Muffin、VERSE、MASS、HarnessSecurity、EpiSEM、FDE-Gym、Incident-Arena。九篇十月首交、一篇九月末；Terminal-RSI和时间跨度等不入十篇不表示移除。其余七篇精选沿用既有全文核验与边界；本周对旧篇仅元数据复查，不称十篇全文重核。九月原十行迁到[存档](../docs/archive/monthly-picks-2026-09.md)，只调整相对路径。
+
+## 2026-11-02 原始来源、旧版本与官方架构核验
+
+只对五条新增和Terminal-RSI更新日期至11-02，其余80条旧记录不变。以下记录实际阅读范围，未逐行审计全部附录、未运行论文代码或独立复现。下载全文和确认作者仓库不等于完成实验核验。没有使用MDPI。
+
+### 五篇新增的身份、阅读与证据
+
+1. **VeriCUA**：Qiushi Sun、Da Yu、Alexander Knop、Amer Sinha、Lingpeng Kong、Ben Kao、Ravi Kumar、Pritish Kamath。[记录](https://arxiv.org/abs/2610.40578)，v1 2026-10-29 17:45:26 UTC；读[v1全文](https://arxiv.org/html/2610.40578v1)§3–5、附录A.3–A.6、B.1–B.3及B.4部分、E局限。执行后量规/探查/带来源与时序证据/仲裁，并非新执行策略。在线成功要求持久证明、失败需独立探查，可未决弃权；离线多路径未决回退初始VLM，WebArena回退约23%。AndroidWorld116、在线OSWorld361、ScienceBoard169；离线WebArena715是三执行器轨迹，OSReward1019与hard284子集不相加。主比较使用Gemini3Flash预览版；强验证器另测。基准标签有误差，分歧后的模型复裁不等于独立人工真值；主基线信息/预算并非全面对齐。费用为多轮模型/工具查询，不适合作为零成本实时检查。只读工具、快照和特权状态依赖具体实现，不能由论文推生产权限保证。全文未找到可确认的本工作官方代码，CSV留空。
+2. **DynaRev**：Shiqi Zhang、Guochen Zhou、Zesheng Wei、Hai Zhao、Zhisong Zhang。[记录](https://arxiv.org/abs/2610.40133)，v1 2026-10-29 14:25:54 UTC；读[v1全文](https://arxiv.org/html/2610.40133v1)§3–7/局限、附录B执行与C评分。两个来源各选70种子题构成181变体（107/74），不是181独立域；五模型、100步，每配置单轨迹。修订按原目标的语义里程碑触发，Agent提前结束且有剩余预算时也会送达待发修订，不能说全部只在正常里程碑触发。未送达修订的约束计失败；WRA由LLM判后续最多三动作，只按已触发修订、先任务内聚合，分母不同于全181。DeepSeekV4.1Flash参与构建/触发/判分且是被测模型之一，判断偏差未独立排除。静态/动态对照只30增补题；指令重写/浏览器重置是有限子集分析，不外推所有配置。全文关联[作者仓库](https://github.com/zsq259/DynaRev)，README回链相同论文，data三类计76+62+43=181；入口已读，未运行，不保证当前网站任务不漂移。
+3. **Prefix Executability**：Amir H. Rezaeian、Weiyi Sun、Yassine Benajiba、Dan Roth。[记录](https://arxiv.org/abs/2610.40444)，v1 2026-10-29 16:58:04 UTC；读[v1全文](https://arxiv.org/html/2610.40444v1)§2及主实验/局限、附录C.1示例、D验证循环、E成本说明、F.1–F.3、G量尺解释。基准侧确定性检查器和事前LLM验证器分开；首个无效动作停止的是前缀评分，不是删除后续真实轨迹。BFCL-v3/ToolSandbox各200、Airline50/Retail114，三模型四方法总6768；单任务单运行，区间刻画跨任务变化。主表任务bootstrap10000次；独立敏感性配对bootstrap100000次，不能混为同一试验。PEC还受提前终止影响，RR只用无效前缀轨迹且报精确分母。Airline/Retail验证差异TER/AUC区间全含零；GPT5.4五轮验证另多40.7k token/176.9s点估计，非全基准费用。代理调用成本不含模拟器/评价器；BFCL/ToolSandbox没有逐方法完整成本。确定性接受还改变执行指令，不是逻辑验证的纯因果消融。评论称NeurIPS2026，正式录用未核验；未确认工作专属代码，留空。
+4. **LEASH**：Qingni Wang、Changdae Oh、Yuzhe Yang、Sharon Li、Jiachen Yang、Ang Li、Xin Eric Wang。[记录](https://arxiv.org/abs/2610.22280)，v1 2026-10-15 17:40:12 UTC；较早补收。读[v1全文](https://arxiv.org/html/2610.22280v1)§3.1–3.2/3.4、§4.1–4.4/局限、附录A.2–A.4与B.1–B.4。弱模型隐状态+成功/失败参考库拟合统计风险，初始/运行时切强模型，强模型接管后弱模型每三步影子监控；候选弱动作不执行或交给强模型，触发后是中性重想。OSWorld99参考/262测试，按任务分组十折OOF避免同任务泄漏；忽略任务划分的高AUROC不能当有效结果。目标初始25%/总50%不等实际43–64%，随机对照匹配实际率。四弱模型、固定强模型与Manager、共享50动作；always-strong不带Manager，不完全控制框架。运行时风险针对Manager子目标结果，不是每动作正确率；弱失败概率也不等强模型条件收益。影子干预因果贡献未隔离，费用未覆盖完整参考获取/实际硬件时延。training-free指不训LM权重，仍拟合/校准。官方代码未确认，留空。
+5. **Reflexion**：[arXiv记录](https://arxiv.org/abs/2303.11366)，首次2023-03-20 18:08:50 UTC，v4 2023-10-10 05:21:45 UTC；读[v4全文](https://arxiv.org/html/2303.11366v4)§3反馈/记忆、§4.1–4.3实验及§5局限。Actor/Evaluator/Self-reflection固定，记忆窗口通常1–3，非递归修改改进器。ALFWorld134题最多12试验，130/134是累计；HotpotQA100含正确性反馈，CoT给定证据与ReAct检索信息条件不同。代码任务可先内部生成/自测多次再按隐藏测试pass@1报告；MBPP Python基线0.80而Reflexion0.77，保留负结果。生成测试假阳性和历史模型/预算不能忽略。arXiv v4列Noah Shinn、Federico Cassano、Edward Berman、Ashwin Gopinath、Karthik Narasimhan、Shunyu Yao六人；[NeurIPS2023正式会议录](https://proceedings.neurips.cc/paper_files/paper/2023/hash/1b44b878bb782e6954cd888628510e90-Abstract-Conference.html)列五人（无Edward Berman）。分别记录，不擅自合并，也未逐字比较正式PDF与v4。论文旧noahshinn024地址本期网页返回404，当前[作者仓库noahshinn/reflexion](https://github.com/noahshinn/reflexion)README回链2303.11366并列六作者；登记当前作者入口，不声称冻结复现。
+
+### Terminal-RSI：补查上期遗漏的v2
+
+[记录](https://arxiv.org/abs/2610.22192)作者仍为Junyao Yang、Zongxia Li、Yucheng Shi、Zhongzhi Li、Ruhan Wang、Ruiwen Zhou、Haitao Mi、Shuicheng Yan、Leowei Liang。首次10-15 16:43:56 UTC；v2为**2026-10-25 06:56:48 UTC**，早于本周。上期候选/报告记为仍v1，与本期查到的历史不符；本节追加纠正，不改写上期报告或假称本周发布。
+
+逐行比较[v1](https://arxiv.org/html/2610.22192v1)/[v2](https://arxiv.org/html/2610.22192v2)可提取正文，复读§2.4、§3.1–3.3变化：v1说首阶段标准GAE/unit-clock等价不足以证明TB-GAE部署；v2改为明确宣称使用TB-GAE。异步延迟、clip阈值、局部step20对照、非共同时钟及小log-prob差距的限定措辞改成更强的稳定性/效用解释；相应已引用数值保留，未见新增隔离训练、全预算匹配或重要性比率尾部分布证据。不是PDF/TeX/所有原始日志的逐字节审计，不断言作者没有其他资料。
+
+因此CSV更新evaluation、limitation、verified_on、source_status，机制和主结论不改。承认v2作者部署声明，同时不把声明当TB-GAE的隔离因果增益或独立训练重复；保留PPO预算、critic记录与污染审计条件，不在首页恢复警告。没有确认作者复现代码。
+
+### 其余候选与产品资料
+
+九条旧记录仅摘要页/历史：MCCL/Muffin/EpiSEM/Doc2仍v1，AgentPerturb仍v2(10-23)、CMP仍v3(10-08)、GEPA仍v2(2026-02-14)、MASS/VERSE仍v1。无窗口内修订，CSV旧日期不刷新。四暂缓项作者/编号/日期已对记录；EnvOS作者Ankush Kadu、Athira Gopal、Niharika Singh、Arpit Jain、Aswanth Krishnan，v1 10-29 15:17:29；Retrieval as Traversal为Daniel Strauß、Zhenshan Bing、Alois Knoll，17:37:21；SPLICE为Yaxin Gong、Chongming Gao、Gangyi Zhang、Chenxiao Fan、Leyang Shen、Jiakai Wang、Dong Wang、Yang Liu、Haoyan Liu、Xinting Hu，14:45:43；EpiAgent为Xuanfa Jin、Xinyu Cui、Zhijian Ma、Xue Yan、Jian Zhao、Haifeng Zhang、Jun Wang，15:05:08（均10-29 UTC）。只读记录/摘要，未核实其代码或实验；去留见[候选日志](candidate-log.md)。
+
+两项官方资料本期读正文：[Agents API architecture](https://developers.openai.com/api/docs/guides/agents-api/architecture)的托管Harness/environment/application server、无environment时工具范围、自有环境生命周期；[Codex as a platform](https://developers.openai.com/blog/codex-as-a-platform)（2026-08-19）的exec/SDK/app-server及应用职责。据此刷新Harness专题两页日期与适用范围，不从产品博客的示例分数推效果。长任务博客、overview仍09-27；MCP安全10-05、退款/AWS10-19、MCP工具10-26分别保留，未核查全部产品/SDK现状。

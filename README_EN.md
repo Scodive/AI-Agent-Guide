@@ -16,7 +16,7 @@ Welcome to **AI-Agent-Guide**. This repository keeps its long-form guide and add
 
 Reading links: [Reading path](docs/reading-path.md) · [Paper table](docs/papers.md) · [October 2026 picks](docs/monthly-picks.md) · [Harness and coding agents](docs/harness.md) · [RSI and self-improvement](docs/rsi.md) · [Weekly maintenance SOP](docs/update-sop.md) · [CSV data](data/papers.csv).
 
-As of October 26, 2026, the catalog contains 81 papers and ten October selections. This review adds MCCL, Muffin, and EpiSEM-Bench, backfills ReWOO and Doc2Harness, and checks AgentPerturb v2. It connects advance planning, continual memory, shared information, harness testing, and evidence recovery. See the [weekly review](data/weekly-reviews/2026-10-26.md). Inclusion does not mean independent replication. Please report errors through an Issue or PR.
+As of November 2, 2026, the local catalog awaiting review contains 86 papers. This review adds this week’s VeriCUA, DynaRev, and Prefix Executability, backfills LEASH and the classical Reflexion, and follows Terminal-RSI’s earlier v2 revision. It connects outcome evidence, goal changes, executable trajectories, and reflection memory; see the [weekly review](data/weekly-reviews/2026-11-02.md). The latest monthly selection remains October’s ten papers; November’s selection follows the month-end SOP. Inclusion does not mean independent replication. Please report errors through an Issue or PR.
 
 ## How to use this guide
 
@@ -25,6 +25,7 @@ The long-form guide below introduces foundational modules such as perception, pl
 | Recent question | Start with | Where it fits |
 | --- | --- | --- |
 | How are agents built, configured, and supervised? | [τ^τ-Bench](https://arxiv.org/abs/2609.04611), [Scanning the Harness](https://arxiv.org/abs/2609.07360), [The Work Behind Delegation](https://arxiv.org/abs/2609.24234) | Coding, tools, and safety; harnesses and human oversight span several modules. |
+| If goals change after actions, what counts as completion? | [DynaRev](https://arxiv.org/abs/2610.40133), [VeriCUA](https://arxiv.org/abs/2610.40578), [Prefix Executability](https://arxiv.org/abs/2610.40444) | Planning, GUI, and evaluation: distinguish current goals, executable steps, and persisted outcomes. |
 | What shortcuts can tool-use policies learn? | [Spurious Tool Use](https://arxiv.org/abs/2609.16268) | Tools and action; agent improvement. |
 | How should long-term memory and multi-agent coordination be evaluated? | [DolphinBench](https://arxiv.org/abs/2609.24971), [CoCoBench](https://arxiv.org/abs/2608.28266) | Memory and retrieval; multi-agent systems. |
 | How do we measure real use and downstream outcomes? | [DAREBench](https://arxiv.org/abs/2609.06059), [Are We There Yet?](https://arxiv.org/abs/2609.00524), [Who Finishes the Job?](https://arxiv.org/abs/2609.26847) | Evaluation, GUI, and coding; include cost, users, and follow-up fixes. |
@@ -241,7 +242,7 @@ Despite significant advances, several challenges remain in agent perception:
 
   [arXiv: 2401.10935](https://arxiv.org/abs/2401.10935) / [GitHub](https://github.com/njucckevin/SeeClick)
 
-The leap from text to vision is a critical step toward universal agents. However, current research clearly shows that reliable, faithful multimodal perception remains the primary bottleneck. The entire agent stack ultimately relies on the fidelity of its perception module.
+For GUI tasks, separate **element grounding → action execution → persisted state change → satisfaction of the current goal**. Finding a Save button does not establish that a file was saved. [VeriCUA](https://arxiv.org/abs/2610.40578) combines screenshots, history, and file/database probes after execution, attaching source and temporal evidence. Online verification can abstain; unresolved offline cases fall back to the initial visual judge. These are distinct protocols, with instrumentation and extra-call costs; see the [harness chapter](docs/harness.md#界面结果取证与模型接管).
 
 ---
 
@@ -287,6 +288,8 @@ These techniques are composable design choices. Report nodes, trajectories, toke
 For code repair, first compare a fixed workflow: [Agentless](https://arxiv.org/abs/2407.01489) prescribes localization, generation, and validation; SWE-agent lets the model select actions; SWE-Search adds branching search. Evaluate the additional freedom under matched tasks, models, and budgets. Workflow complexity alone does not establish capability.
 
 **Another classical branch: plan, then fill evidence.** [ReWOO](https://arxiv.org/abs/2305.18323) has a Planner write dependencies with evidence variables, Workers fill them through tool calls, and a Solver combine the results. This reduces repeated observation context. It complements ReAct: advance planning can fail when the environment must first be discovered. Historical QA token savings do not establish gains for actions with side effects.
+
+**What if the goal changes during execution?** [DynaRev](https://arxiv.org/abs/2610.40133) delivers additive or overriding instructions at semantic milestones, extending fixed-goal planning. Track active constraints, superseded constraints, and reusable browser progress before replanning; revising the goal differs from resetting the environment. WRA covers fired revisions, while final constraints are evaluated across the 181-task cohort. Rewrite gains on a limited subset do not establish universal benefits. These revisions come from the user; treating webpage text as lower-trust content is an editorial connection to permission boundaries.
 
 ### Reasoning Tech Comparisons
 
@@ -352,6 +355,8 @@ Begin with two common forms: visible context and external persistent storage. Th
 
 Separate **storage → retrieval → visible context → task outcome → future retention**. [MemGPT](https://arxiv.org/abs/2310.08560) explains tiered storage, paging, and control flow; A-MEM explains organization. These address complementary questions.
 
+**How does failure inform the next attempt?** Classical [Reflexion](https://arxiv.org/abs/2303.11366) converts evaluation feedback into verbal lessons, retains bounded memory, and retries with fixed model weights. It connects ReAct and memory, rather than modifying the improver. ALFWorld’s cumulative success over up to twelve trials differs from one-run success. Generated tests can misjudge outcomes, and MBPP Python includes a negative result; compare task outcomes and retry budgets.
+
 [CMP](https://arxiv.org/abs/2610.02070) adds a measurement boundary: a memory never exposed in context has not been tested, so absent contribution does not establish uselessness. Random exposure improves identification, but the experimental pool uses relevance labels and future-query retention remains unresolved. Read it as an evaluation method, rather than a deployment-ready eviction policy.
 
 **Where should experience go?** [Component Routing](https://arxiv.org/abs/2610.01787) splits GUI experience into locators, procedures, state facts, and lessons, then compares context retrieval with weight updates. This connects memory to GUI training and distinguishes information access from policy learning. Three models and two environments do not establish a universal routing rule; training compute and prompt tokens are not equalized. [CMP v3](https://arxiv.org/html/2610.02070v3) also makes pool-size exposure costs and the fixed-store variance assumption explicit; an evolving memory stream needs additional treatment (checked 2026-10-12).
@@ -395,6 +400,8 @@ The **Model Context Protocol (MCP)** standardizes interfaces for clients and ser
 Separate the protocol interface, server/downstream authentication and authorization, and harness/environment process, file, and network permissions. MCP support does not itself guarantee isolation. The official [security practices](https://modelcontextprotocol.io/docs/2025-11-25/tutorials/security/security_best_practices) discuss token passthrough, confused-deputy risks, and scope minimization (checked 2026-10-05).
 
 **From calls to recovery:** The MCP [tool specification](https://modelcontextprotocol.io/specification/2025-11-25/server/tools) distinguishes protocol errors from `isError` execution errors. A timeout can also leave a write outcome unknown. Check the operation receipt before deciding to retry; see the [harness recovery example](docs/harness.md#写入超时后先确认状态2026-10-19). [AgentPerturb](https://arxiv.org/abs/2610.21624) adds controlled input perturbations, but its Toolathlon results cover only 25/79 tasks with complete sweeps and do not estimate a deployment-wide fault rate.
+
+**Check legal calls separately from task completion.** [Prefix Executability](https://arxiv.org/abs/2610.40444) locates the first invalid action under tool contracts and visible state, reporting terminal success and recovery separately. Valid argument syntax does not establish satisfied dependencies, and later recovery does not erase an invalid prefix. Fixed-cohort PEC can decrease when trajectories end early, so it is not a depth-conditional error rate. This adds a process layer between MCP interfaces and task scoring; see the [harness chapter](docs/harness.md#从接口契约到过程可执行性).
 
 **Key Resources:**
 - [Official MCP Specification](https://modelcontextprotocol.io/)
@@ -563,7 +570,7 @@ Classify self-improvement by **the component changed, the feedback source, and t
 
 ### Adaptation mechanisms and the RSI boundary
 
-1. **Skills and memory**: Voyager stores reusable skills; A-MEM organizes experience. Neither guarantees avoiding repeated mistakes or exponential growth.
+1. **Skills and memory**: Voyager stores skills, A-MEM organizes experience, and [Reflexion](https://arxiv.org/abs/2303.11366) turns feedback into lessons for another attempt. Adding memory under fixed rules does not demonstrate recursive changes to the improver or sustained gains.
 2. **Prompts and programs**: [GEPA](https://arxiv.org/abs/2507.19457) optimizes prompts; [Darwin Gödel Machine](https://arxiv.org/abs/2505.22954) modifies agent code. Check whether accepted versions participate in further improvement, whether feedback is independent, and whether old tasks regress.
 3. **Model training**: DeepSeek-R1 and Agent-R1 provide parameter-learning background. Reflection by a fixed trained model does not demonstrate runtime modification of its own improver; preference optimization such as DPO should not uniformly be described as online self-play.
 
@@ -677,6 +684,7 @@ As agents become increasingly autonomous and are empowered to take actions in th
 - **Where does incorrect information enter?** [AgentPerturb](https://arxiv.org/abs/2610.21624) builds paired tests by input source and corruption type. Record recovery paths, additional cost, unscored runs, and subset selection. Single-trajectory comparisons and LLM semantic validation do not replace repeated execution or a full task audit.
 
 - **Are truthful observations sufficient?** [EpiSEM-Bench](https://arxiv.org/abs/2610.31650) suppresses safety evidence while keeping remaining facts true, pairing permissible and prohibited worlds. Useful recovery requires seeking evidence and then completing or withholding the action appropriately. Read unsafe-task rates, useful recovery, and legitimate completion jointly; see the [harness example](docs/harness.md#证据缺失先查证再决定执行).
+- **How do process and outcome relate?** [Prefix Executability](https://arxiv.org/abs/2610.40444) separates uninterrupted executability from success after an error; [VeriCUA](https://arxiv.org/abs/2610.40578) checks outcome evidence. Executable steps can still miss the goal, and agreement with a reference judge is imperfect evidence. Include verification calls, latency, abstentions, and their denominators.
 - **Does the harness implement its contract?** [Doc2Harness](https://arxiv.org/abs/2610.20344) freezes generated harnesses and drives them with a scripted model, checking requests, files, exit codes, and output. Positive controls exclude apparent passes when the behavior was never exercised. Contract correctness, downstream task capability, and RSI gains require distinct evidence.
 
 ### Context trust and execution permissions

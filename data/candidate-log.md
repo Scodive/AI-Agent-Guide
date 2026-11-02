@@ -153,3 +153,31 @@
 | [AgentHarm](https://arxiv.org/abs/2410.09024) | 首次2024-10-11；v3 2025-04-18 | 旧指南纠正；准确标题与CSV对齐，去掉“首个鲁棒性标准”表述；仅记录/摘要核对，未重读全文，不刷新CSV日期。 |
 
 其他搜索命中（Harmony Harness、Harness Evolution Hits a Ceiling、MemCode、Persistent Memory等）仅用于发现，未形成证据卡，不算已核验/已拒收。上期 LEASH、RSIFlow、PROBE、Shortcut Sensitivity、HarnessTester 等继续待全文，不在本周重复计数。检索未遍历全部分类日期或全部会议录，允许漏检。
+
+## 2026-11-02 研究候选与旧版本补查
+
+窗口为 2026-10-26–11-01，按 arXiv UTC。本期19个唯一编号：5新增（3窗口内、2较早补收）、1旧记录修订、9旧库元数据复查、4暂缓。前五篇读方法、实验、局限；四暂缓项只查记录/摘要，不采用摘要效果数字。本期未遍历所有日期/分类/会议录，不能视为完整领域覆盖。详见[周报](weekly-reviews/2026-11-02.md)。
+
+| 原始记录 | 首次；本次版本日期 | 决定与理由 |
+| --- | --- | --- |
+| [VeriCUA: Verification as Agentic Exploration for Computer-Using Agents](https://arxiv.org/abs/2610.40578) | 2026-10-29；v1同日 | 收录方法。补执行后环境取证、来源/时序和持久结果；在线弃权与离线回退分开，高查询成本/参考标签并非真值保证。官方代码未确认。 |
+| [DynaRev: Benchmarking Web Agents under Dynamic Goal Revision](https://arxiv.org/abs/2610.40133) | 10-29；v1 | 收录基准。补运行中增补/覆盖目标与环境进度保留；WRA只统计已触发修订，最终约束不同分母。作者代码关联已确认，未运行。 |
+| [Prefix Executability: Evaluating Tool-Using Agents Beyond Final Success](https://arxiv.org/abs/2610.40444) | 10-29；v1 | 收录评估方法/基准。补首次无效动作、完整轨迹与条件恢复；PEC兼含到达深度，验证迁移并非总增益。评论录用标签未用正式会议录确认，无确认代码。 |
+| [LEASH: Uncertainty-Aware Weak-to-Strong Escalation and Oversight for Computer-Use Agents](https://arxiv.org/abs/2610.22280) | 10-15；v1 | 较早补收，覆盖旧待核验状态。隐状态风险门控、强模型接管后影子监控有教学价值；需参考库/统计拟合/校准，实际升级率和名义预算不同，不把模型升级当人工批准。 |
+| [Reflexion: Language Agents with Verbal Reinforcement Learning](https://arxiv.org/abs/2303.11366) | 2023-03-20；v4 2023-10-10 | 经典补收。反馈转成有界语言记忆、固定模型重试，补ReAct到RSI的前置；保留多试验、oracle和MBPP负结果。会议录与arXiv作者列表差异分别留证。 |
+| [Terminal-RSI](https://arxiv.org/abs/2610.22192) | 10-15；v2 10-25 | 修订旧记录，不计本周新论文。补查到上期漏记的v2；对比可提取HTML正文，TB-GAE部署和稳定性宣称增强，但未见对应新增隔离对照。不回写历史报告，见核验日志。 |
+| [EnvOS: Auditing Computer-Use Agents When the World Moves On : Phenomenon-Based Task Construction, Certification, and Evidence-Based Evaluation](https://arxiv.org/abs/2610.40246) | 10-29；v1 | 暂缓，仅记录/摘要。环境变动与审计认证值得补，但需细读触发暴露、认证假设、grader故障和预注册覆盖。下载全文不等于已完成全文核验。 |
+| [Retrieval as Traversal: Value-Indexed Memory for Stateful Long-Context Agents](https://arxiv.org/abs/2610.40545) | 10-29；v1 | 暂缓，仅记录/摘要。局部遍历与内容/地址分离值得观察；摘要明确仅MiniGrid固定几何概念验证，未检验学习几何或反复检索。不能用它替代生产记忆路线，workshop录用未核验。 |
+| [Locating and Closing Information Gaps in Multi-Agent Systems](https://arxiv.org/abs/2610.40186) | 10-29；v1 | 暂缓，仅记录/摘要。SPLICE加边/重执行/选择器可补Muffin的通信图视角；选择器训练标签、留出划分、传播错误和重执行总成本未全文核验，不采用摘要增益。 |
+| [EpiAgent: Epistemic Self-Play for LLM Agents](https://arxiv.org/abs/2610.40227) | 10-29；v1 | 暂缓，仅记录/摘要。显式信念层和自博弈可补不完全信息；训练奖励、博弈分布、基线及泛化未核验，不把自博弈直接写成RSI。 |
+| [MCCL](https://arxiv.org/abs/2610.29357) | 10-21；v1 | 元数据未变，保留状态/策略与有限实证解释，不刷新CSV日期。 |
+| [Muffin](https://arxiv.org/abs/2610.31355) | 10-22；v1 | 元数据未变，保留异步共享与非工具交互边界；匿名代码可用性本期未重查。 |
+| [EpiSEM-Bench](https://arxiv.org/abs/2610.31650) | 10-22；v1 | 元数据未变，保留配对证据恢复与分母解释。 |
+| [Doc2Harness](https://arxiv.org/abs/2610.20344) | 10-14；v1 | 元数据未变，保留实现测试/任务评估分层；未重跑公开子集。 |
+| [AgentPerturb](https://arxiv.org/abs/2610.21624) | 10-15；v2 10-23 | 元数据未变，沿用上期正文比较；空代码仓库状态本期未重查，不冒称当前仍空。 |
+| [CMP](https://arxiv.org/abs/2610.02070) | 10-01；v3 10-08 | 元数据未变，沿用固定存储/演化流和曝光预算边界。 |
+| [GEPA](https://arxiv.org/abs/2507.19457) | 2025-07-25；v2 2026-02-14 | 无窗口内修订，保留提示词演化路线，不重标发表状态。 |
+| [MASS](https://arxiv.org/abs/2610.12176) | 10-08；v1 | 无新版本；保留工作流/参数路线与既有记录条件，不恢复首页协议警告。 |
+| [VERSE](https://arxiv.org/abs/2610.02616) | 10-02；v1 | 无新版本，固定权重的改进器演化仍是对照；沿用既有全文核验。 |
+
+其他发现的FARMS、PreCrime、Reward-Adaptive Co-Evolution、LWAM、SolveBind等仅标题/搜索发现，未形成完整证据卡，不计作已核验候选。旧待核验的HarnessTester、Certified Execution、L3M、MemScope等本期未继续全文核验，不以新条目数量掩盖积压。两项Codex官方资料是技术说明，不计论文条目。
