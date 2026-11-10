@@ -146,3 +146,41 @@
 九条旧记录仅摘要页/历史：MCCL/Muffin/EpiSEM/Doc2仍v1，AgentPerturb仍v2(10-23)、CMP仍v3(10-08)、GEPA仍v2(2026-02-14)、MASS/VERSE仍v1。无窗口内修订，CSV旧日期不刷新。四暂缓项作者/编号/日期已对记录；EnvOS作者Ankush Kadu、Athira Gopal、Niharika Singh、Arpit Jain、Aswanth Krishnan，v1 10-29 15:17:29；Retrieval as Traversal为Daniel Strauß、Zhenshan Bing、Alois Knoll，17:37:21；SPLICE为Yaxin Gong、Chongming Gao、Gangyi Zhang、Chenxiao Fan、Leyang Shen、Jiakai Wang、Dong Wang、Yang Liu、Haoyan Liu、Xinting Hu，14:45:43；EpiAgent为Xuanfa Jin、Xinyu Cui、Zhijian Ma、Xue Yan、Jian Zhao、Haifeng Zhang、Jun Wang，15:05:08（均10-29 UTC）。只读记录/摘要，未核实其代码或实验；去留见[候选日志](candidate-log.md)。
 
 两项官方资料本期读正文：[Agents API architecture](https://developers.openai.com/api/docs/guides/agents-api/architecture)的托管Harness/environment/application server、无environment时工具范围、自有环境生命周期；[Codex as a platform](https://developers.openai.com/blog/codex-as-a-platform)（2026-08-19）的exec/SDK/app-server及应用职责。据此刷新Harness专题两页日期与适用范围，不从产品博客的示例分数推效果。长任务博客、overview仍09-27；MCP安全10-05、退款/AWS10-19、MCP工具10-26分别保留，未核查全部产品/SDK现状。
+
+## 2026-11-09 周次：2026-11-10原始核验
+
+核验日与周次分开：窗口11-02–08，实际11-10完成。三新增与三旧修订写11-10，其他83旧CSV行保持；代码仅关联/入口核对，未执行实验，未独立复现，未使用MDPI。下载文件不等于全部已读，以下列实际章节。
+
+### 新增身份与协议
+
+- **Meta$^2$: Precomputing Reusable Knowledge for Online Harness Evolution in Long-Horizon Agents**：Lingzhi Yuan , Yiguang Cai , Weize Liu , Siqi Yang , Feijiang Han , Yongkyun Lee , Udari Madhushani Sehwag , Furong Huang。[原始记录](https://arxiv.org/abs/2611.05139)；[v1] Tue, 3 Nov 2026 16:19:21 UTC。
+- **ToolSpace: Scaling Tool-Centric Environment Synthesis for Long-Horizon Agents**：Guanting Dong , Zhichao Sun , Xinyu Yang , Rui Wang , Xin Deng , Jiajie Jin , Zhixiong Yang , Junhao Huang , Han Han , Mingyu Ma , Xiaotao Wang , Yuyang Hu , Xiaoshuai Song , Xiaoxi Li , Jiejun Tan , Zhecan Wang , Shihan Dou , Honglin Guo , Zhiheng Xi , Tao Gui , Tao Ji , Qi Zhang , Yutao Zhu , Ji-Rong Wen , Zhicheng Dou。[原始记录](https://arxiv.org/abs/2611.05036)；[v1] Tue, 3 Nov 2026 15:09:01 UTC。
+- **Harness the Memory: A Holistic Evaluation of Memory Substrates in Memory Agents**：Wei-Chieh Huang , Weizhi Zhang , Yuchen Wu , Yankai Chen , Eric Hanchen Jiang , Wooseong Yang , Yiwei Yang , Henry Peng Zou , Hanrong Zhang , Ying Nian Wu , Haolun Wu , Kai-Wei Chang , Philip S. Yu , Xue Liu , Aylin Caliskan。[原始记录](https://arxiv.org/abs/2608.15008)；[v1] Sat, 15 Aug 2026 03:29:48 UTC；[v2] Wed, 4 Nov 2026 09:48:33 UTC。
+
+- **Meta²**：读[v1全文](https://arxiv.org/html/2611.05139v1)§3–4、附录B.2、C.1–C.3、E.1和F.1–F.3。训练A/B/C轨迹对比产生act/hold/avoid指导，C可读特权训练verifier但作者说审计并排除泄漏轨迹；这是作者协议，不是本库完成独立泄漏审计。部署指导冻结，每run重置seed，局部编辑/检查点对话不回写全局，环境与进度在run内保留。Terminal29训练/60测试各5次=300，DeepSWE38/75各3次=225；主模型GPT-5.6-Terra，DeepSeek另构建Meta-Skill只测Terminal，不是同一指导零样本跨模型。重复标准差是推理波动，不是多次独立指导学习。五步检查和有限terminal send-back有额外调用；离线/在线/总费用分别报，底层硬件/模型价格仍为论文快照。A/B/C的独立轨迹在编辑前可能已不同，非局部因果；持续跨任务携带编辑的消融下降，不普遍否定记忆积累或持久演化。正文只确认[作者项目页](https://meta-square.github.io/)，网页工具不可读；所见GitHub链接是比较框架，CSV不填作本工作实现。
+- **ToolSpace**：读[v1 HTML](https://arxiv.org/html/2611.05036v1)§3–6的方法/协议、主结果与组件消融，并抽查[原始v1 PDF](https://arxiv.org/pdf/2611.05036v1)§5任务规模。规则只从相邻调用抽数据/对象状态/失败后切换成功边，执行见证不等全域依赖证明。修改型合成库、查询型恢复快照、无状态缓存返回；状态游走回滚，反向生成任务及状态/轨迹/输出断言，重放接受。34376 SFT/653 RL样本，RL先Pass@16筛一或二成功，非原始任务随机样本；七原生指标均值不是统一任务成功率。三骨干，48步GRPO等训练与生成费用不等统一总算力；本地结果三次均值，外部榜单/供应方成绩按原发布值，并非统一重跑。作者声称任务/轨迹/初态去重，未独立核对全部清单，不能保证基础模型无污染。论文没有独立局限节，本库边界分析来自缓存、生成断言、采样与异协议对比，不冒充作者实验结论。[作者代码](https://github.com/dongguanting/ToolSpace)由全文关联且README回链论文；当前README一处写论文600题/公开300，**本次读取v1 PDF及HTML §5都写300，Banking Pro98**，按原文登记，不混入600；完整发布覆盖及数值复现未运行。仓库并非论文冻结快照。
+- **Harness the Memory**：8月15日首交、11月4日v2，属于较早遗漏/窗口内修订首次收录；没有逐行比较v1/v2，不能说所述分析都是v2新增。读[v2全文](https://arxiv.org/html/2608.15008v2)§2–5、附录B.2、C.1/C.2、D计量框架、E.1–E.4及末尾Limitations；未逐表核算所有26指标。11配置/7族、3骨干，4×H200固定硬件，辅助写/管理及主judge均gpt-4o-mini。M8为零样本LLM控制的MemSkill近似，M11用utterance re-prefill代替KV编辑；不把它们的排名写成完整原法。LoCoMo10对话1986问，MAB AR为重组LME-S*五长对话/300问，不与完整LME-S等同；ALFWorld134从200条参考轨迹库取经验，BCB-Hard148取去Hard重叠的跨任务池。主表单次贪心，少数配对显著性/复跑说明不能替所有小差异背书。同k的token数不同，检索宽度两主扫还换骨干；注意力探针为单骨干/M1，非因果证明。问题随机五折路由+0.023、对话分组+0.013(p=.22)、留一对话+0.001(p=.96)，不宣称新对话迁移；oracle组合只是上界。主套件不充分覆盖部署循环，MemoryArena补充仅一骨干/两域。全文链接[SubMem作者入口](https://github.com/Jasonya/SubMem)，当前README六个入口含MAB拆分/MemoryArena，不能改成六主套件；明确原始运行/图表未跟踪、M8外部backend未打包，未运行。
+
+### 经典定点复核与旧版本
+
+- **OmniParser for Pure Vision Based GUI Agent**：Yadong Lu , Jianwei Yang , Yelong Shen , Ahmed Awadallah。[记录](https://arxiv.org/abs/2408.00203)；[v1] Thu, 1 Aug 2024 00:00:43 UTC。
+- **UI-TARS: Pioneering Automated GUI Interaction with Native Agents**：Yujia Qin , Yining Ye , Junjie Fang , Haoming Wang , Shihao Liang , Shizuo Tian , Junda Zhang , Jiahao Li , Yunxin Li , Shijue Huang , Wanjun Zhong , Kuanye Li , Jiale Yang , Yu Miao , Woyu Lin , Longxiang Liu , Xu Jiang , Qianli Ma , Jingyu Li , Xiaojun Xiao , Kai Cai , Chuang Li , Yaowei Zheng , Chaolin Jin , Chen Li , Xiao Zhou , Minchao Wang , Haoli Chen , Zhaojian Li , Haihua Yang , Haifeng Liu , Feng Lin , Tao Peng , Xin Liu , Guang Shi。[记录](https://arxiv.org/abs/2501.12326)；[v1] Tue, 21 Jan 2025 17:48:10 UTC。
+- **Terminal-RSI: Recursive Self-Improving Terminal Agents via Recursive Self-Rewrite and Policy-Refine**：Junyao Yang , Zongxia Li , Yucheng Shi , Zhongzhi Li , Ruhan Wang , Ruiwen Zhou , Haitao Mi , Shuicheng Yan , Leowei Liang。[记录](https://arxiv.org/abs/2610.22192)；[v1] Thu, 15 Oct 2026 16:43:56 UTC；[v2] Sun, 25 Oct 2026 06:56:48 UTC；[v3] Fri, 30 Oct 2026 10:02:19 UTC。
+
+- **OmniParser**：读[v1](https://arxiv.org/html/2408.00203v1)§3检测/语义/OCR、§4与§5失败讨论。SeeAssign112任务，ScreenSpot定位、Mind2Web与AITW逐步指标；不是任意屏幕完整任务可靠性试验。Mind2Web相对textual-choice在Cross-Task有小幅下降；重复图标/文本、框中心粒度与裁剪图标语义可导致失败。更新机制/实验/结论/局限与日期；[作者仓库](https://github.com/microsoft/OmniParser)回链2408.00203，目前内容含后继版本，不当作2024冻结实现。
+- **UI-TARS**：读[v1](https://arxiv.org/html/2501.12326v1)§4.1截图/历史/统一动作循环及§5.4在线协议，结合原始摘要分清感知、grounding、离线动作和在线任务；没有声称完整训练数据审计。OSWorld论文描述369题、15/50步和三运行，CallUser/无Finish称不可行任务，其具体排除/分母应随原协议读，不能概括全部369三次同分母；AndroidWorld116题描述不等本库已复核每项执行。收窄“首个/刷榜/跨平台落地”和现时SOTA。[原作者仓库](https://github.com/bytedance/UI-TARS)回链原论文，页面显示**2026-11-09归档**，此为11-10观察的窗口后仓库状态；保留历史入口，未核查后继模型或全部新仓库。发表状态未查正式会议录。
+- **Terminal-RSI v3**：10月30日10:02:19 UTC，较早跟进；上期11-02记录只到v2，本期追加纠正，不重写上期日志。对比[v2](https://arxiv.org/html/2610.22192v2)与[v3](https://arxiv.org/html/2610.22192v3)可提取HTML正文（非PDF/TeX/全日志审计）。373行上下文差异包含摘要retained限定、TB-GAE方差/部署限定语、历史对照、重复/聚合解释与个案删改；LHTB三运行均值有更明确作者表述，但不因此补齐原始逐run计数。未见新增独立训练或组件隔离对照。CSV只改evaluation、limitation、verified_on、source_status，机制/结论不动。没有把文字删改当新增性能或公开代码。
+
+### 暂缓正文与摘要的边界
+
+- **StateGraph / 2611.02912**：读§3–8及A.6/A.7、基准设计段。方向/严格与弱依赖、替代支持、保守级联有价值；50构造案例（深度0/1/2/3+），All F1只按15/15/10的40级联案例加权。记录丢失重复次数和双标子集规模；行动决策/前提门控消融明确未报告；同一LLM提议/验证/支持可相关出错。CVR是条件一致性、非独立正确性，空图不能用作共同图评估。方法可以观察，暂缓核心库而不引用实验提升；没有确认作者代码。
+- **Reglos / 2611.06049**：读§3–5、A实现相关段与C全部接受/划分说明。用户记录追加、替代有效期与忘记tombstone、profile/原文上下文；逻辑撤回不是物理删除/下游遗忘证明。5k测试声称冻结后一次评分，1,317验证在排除开发persona后分两半；两半增益/第二reader限降规则在冻结后才采用，不能回溯覆盖开发五步骤。表中v2低于v1，不能说每个接受版本单调变强；产品描述和数据安全不是本库实测。提议/critic固定，论文也说未到改进器递归继承；暂缓直到候选/接受轨迹能更清楚调和，无确认代码。
+- 五篇只读原始记录/摘要：Rate-Limited Filtering、Route to Remember、WASP-Mem、MEMOIR、FlyHash。核过标题/作者/版本，未全文核验理论假设、训练/查询隔离、反馈人时、合并无损或检索硬件。去留写[候选日志](candidate-log.md)，不把摘要数值带进正文或CSV。
+- 四旧CSV和三旧待核验项只查元数据：VeriCUA/DynaRev/Prefix仍v1，GEPA仍v2；EnvOS/SPLICE/EpiAgent仍v1，未完成上期所列协议。除Terminal外没发现需刷新旧CSV的修订，不作全库版本扫描声明。
+
+本期未重新核对Codex官方架构两页（沿用11-02）、其余产品资料或MCP规范；只读当前作者仓库用于代码关联和归档观察，不推当前产品性能。源数据、源仓库发布、网站manifest与生产上线各自记录。
+
+
+### 2026-11-10 维护者指定的README补充：MOAE
+
+[arXiv:2609.05992v1](https://arxiv.org/abs/2609.05992v1)，首次提交2026-09-05 09:31:34 UTC；标题MOAE: Multi-Objective Agent Evolution with Pareto-Preserving Search；作者Hengle Jiang、Qijun Cai、Ziying Luo、Ke Tang。核对原始记录并读HTML方法和局限，README仅概述固定模型、单任务策略诊断/变异、新完整运行、经验非支配保留与部署约束选择，以及TravelPlanner/AgentDojo环境。没有运行代码或补入未公开结果，没有全局Pareto或普适安全保证；原始页面无已确认的作者代码链接。按维护者要求紧接Agent-R1，双语同步；本次仅导读补充，不作本周新论文或CSV新增，周审89条保持。

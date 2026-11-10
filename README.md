@@ -10,7 +10,7 @@
 
 阅读导航：[新手阅读路线](docs/reading-path.md) · [论文库表格](docs/papers.md) · [2026 年 10 月精选](docs/monthly-picks.md) · [Harness 与 Coding Agent](docs/harness.md) · [RSI 与自我改进](docs/rsi.md)
 
-论文库的原始数据在 [`data/papers.csv`](data/papers.csv)。截至 2026-11-02，本地待审目录共 86 篇。本期收录本周的 VeriCUA、DynaRev、Prefix Executability，补收 LEASH 与经典 Reflexion，并跟进 Terminal-RSI 的较早 v2 修订；连接结果取证、目标变更、过程可执行性与反思记忆，详见[本周审查](data/weekly-reviews/2026-11-02.md)。最近一期月度精选仍为十月十篇，十一月按月底 SOP 整理。收录不代表独立复现；发现错误请提交 Issue 或 PR。
+论文库的原始数据在 [`data/papers.csv`](data/papers.csv)。11 月 9 日周审查于 2026-11-10 完成，本期目录共 89 篇：本周窗口收录 Meta² 与 ToolSpace，较早补收 8 月首发、11 月 4 日修订的 Harness the Memory；另复核两篇经典 GUI 工作并跟进 Terminal-RSI 的较早 v3。重点解释修改的生命周期、合成环境的证据和记忆比较条件，详见[本期审查](data/weekly-reviews/2026-11-09.md)。最近一期月度精选仍为十月十篇，十一月按月底 SOP 整理。收录不代表独立复现；发现错误请提交 Issue 或 PR。
 
 ## 如何使用这份指南
 
@@ -18,6 +18,9 @@
 
 | 近期问题 | 从哪篇开始 | 在指南中的位置 |
 | --- | --- | --- |
+| 运行中的修改应只对当前任务生效，还是跨任务保留？ | [Meta²](https://arxiv.org/abs/2611.05139) · 2026-11-03 | Harness、自我演进；区分可复用指导、任务内补丁和改进器继承。 |
+| 怎样生成有执行路径、可检查的工具训练任务？ | [ToolSpace](https://arxiv.org/abs/2611.05036) · 2026-11-03 | 工具与行动、评估；从执行见证走到任务、断言与重放。 |
+| 图记忆、检索、参数记忆该怎样比较？ | [Harness the Memory](https://arxiv.org/abs/2608.15008) · 2026-08首交，11-04修订 | 记忆与检索；控制框架、工作负载和费用，再看新对话迁移。 |
 | Agent 如何被构建、配置和监督？ | [τ^τ-Bench](https://arxiv.org/abs/2609.04611)、[Scanning the Harness](https://arxiv.org/abs/2609.07360)、[The Work Behind Delegation](https://arxiv.org/abs/2609.24234) | 软件工程、工具与安全；运行框架和人工监督跨越多个基础模块。 |
 | 目标变了、动作做了，怎样判断任务仍正确完成？ | [DynaRev](https://arxiv.org/abs/2610.40133)、[VeriCUA](https://arxiv.org/abs/2610.40578)、[Prefix Executability](https://arxiv.org/abs/2610.40444) | 规划、GUI 与评估；分别检查当前目标、可执行过程和持久结果。 |
 | 工具调用策略会学到什么捷径？ | [Spurious Tool Use](https://arxiv.org/abs/2609.16268) | 工具与行动、自我演进。 |
@@ -73,7 +76,7 @@
   - [上下文与执行权限的连接](#上下文与执行权限的连接)
   - [评估与基准测试](#评估与基准测试)
   - [相关论文与资源](#相关论文与资源-5)
-- [2025-2026 研究选读](#2025-2026-研究选读)
+- [经典与背景延伸阅读](#经典与背景延伸阅读)
   - [计算机视觉与多模态 (CV/Multimodal & GUI)](#计算机视觉与多模态-cvmultimodal--gui)
   - [自然语言处理、长链条推理与 RL (NLP/Reasoning & RL)](#自然语言处理长链条推理与-rl-nlpreasoning--rl)
   - [软件工程与系统架构 (SE/Systems)](#软件工程与系统架构-sesystems)
@@ -201,7 +204,7 @@ VLMs是多模态感知的技术基石。这类模型通过结合视觉编码器�
 
 *   **论文: OmniParser for Pure Vision Based GUI Agent** (Lu et al., 2024)
 
-    针对现有多模态模型在定位 GUI 界面元素时精确度低、严重依赖底层结构树 (DOM/XML) 的问题，微软提出了 OmniParser。这是一个能够在任意屏幕上精准提取与推断可交互元素及其语义的纯视觉解析系统，显著提升了 GPT-4V 等模型在真实设备上的操作成功率。
+    OmniParser将可交互区域检测、图标语义描述与OCR结合，生成标记截图和结构化元素，辅助GPT-4V选择动作目标。原论文评估SeeAssign、ScreenSpot、Mind2Web与AITW的定位/逐步动作指标；重复图标、边框粒度和语义误判仍会失败。它是解析辅助路线，不能由此推出任意屏幕或完整任务都可靠。
 
     [arXiv: 2408.00203](https://arxiv.org/abs/2408.00203) / [GitHub仓库](https://github.com/microsoft/OmniParser)
 
@@ -336,6 +339,8 @@ VLMs是多模态感知的技术基石。这类模型通过结合视觉编码器�
 
 **从记忆内容到持续学习。**[MCCL](https://arxiv.org/abs/2610.29357)补三个观察轴：存在哪里（上下文、外部存储、参数等）、存什么（事件、事实、程序）、谁管理写入/检索/修订。内容更新与管理策略更新是不同修改面；检索命中也不足以证明持续学习，还要在延迟和干扰后保留收益、适应事实变化并迁移到新任务。其有限实证与理论缩放示意须分开读。这连接 MemGPT 的存取、A-MEM 的组织、CMP 的效用估计和 RSI 的修改对象。
 
+**怎样比较记忆配置？**[Harness the Memory](https://arxiv.org/abs/2608.15008)固定运行框架，比较表示与写入、读取、管理操作：问答召回和行动经验可能需要不同检索宽度，写入与管理开销也要记账。其中技能控制器和KV缓存方案采用近似实现，同一top-k并非同token预算。其路由在问题随机分折时有增益，留出全新对话时增益消失；因此“留出问题”与“留出整段对话”的迁移证据应分开。这是8月首发、11月修订的补收，不替代MemGPT/A-MEM。
+
 ---
 
 ## 行动模块：执行任务与使用工具
@@ -395,6 +400,8 @@ VLMs是多模态感知的技术基石。这类模型通过结合视觉编码器�
 从调用到恢复：MCP 的[工具规范](https://modelcontextprotocol.io/specification/2025-11-25/server/tools)区分协议错误与 `isError` 执行错误；超时还可能留下“写入是否发生未知”的状态。先查回执，再决定重试，具体例子见 [Harness 的恢复流程](docs/harness.md#写入超时后先确认状态2026-10-19)。[AgentPerturb](https://arxiv.org/abs/2610.21624)补受控的输入扰动评估；其 Toolathlon 仅覆盖完成全套测试的 25/79 题，不能作为全量部署故障率。
 
 **调用合法与任务完成分别检查。**[Prefix Executability](https://arxiv.org/abs/2610.40444)在工具契约和可见状态下定位首个无效动作，另报最终成功及出错后的恢复。参数格式正确不等于依赖已满足；后来修好也不能抹掉先前无效步骤。固定样本集合 PEC 下降还可能来自提前结束，不能直接解释成该深度的错误率。它补 MCP 接口与任务评分之间的过程层，详见 [Harness](docs/harness.md#从接口契约到过程可执行性)。
+
+**训练任务的环境从哪里来？**[ToolSpace](https://arxiv.org/abs/2611.05036)从相邻工具调用提取数据、状态和重试关系，按状态游走，再从成功链反向生成任务与断言，重放通过后保留。它连接工具学习与可执行训练环境；有的工具返回来自缓存，断言也由生成流程构造。重放见证支持“这条路径在所构造环境可走通”，还需另查断言覆盖、替代解、测试污染与线上服务差异。原生指标、三次本地评估和外部发布值不合成统一部署成功率。
 
 **关键资源：**
 - [官方 MCP 规范](https://modelcontextprotocol.io/)
@@ -514,6 +521,8 @@ Agentic Coding（智能体化编码）是 AI 智能体商业影响力最显著�
 
 [VERSE](https://arxiv.org/abs/2610.02616)补“谁在改进谁”：内层修改执行器的 Harness，外层修改优化器自身的 Harness，再由接受后的版本进入下一轮；模型权重与验证接口固定。它补充程序演化路线，不替代 GEPA。主实验每项只有一次演化运行，avg@3 是重复测试；自演化相对不自演化版本并非总有增益，需同时看完整成本和留出任务。
 
+**运行中适应保留到哪一轮？**[Meta²](https://arxiv.org/abs/2611.05139)离线提炼“何时改、何时保持、避免什么”的指导，部署时冻结指导，只修改当前运行的Harness，下一次运行从种子框架重新开始。它与VERSE改进器自身版本继承形成对照；测试中的局部编辑没有回写全局指导，不能只凭“online evolution”认定改进器递归变强。其重复执行也不等于重复学习指导。
+
 **参数学习拓展：**[MASS](https://arxiv.org/abs/2610.12176)交替优化工作流与训练共享模型，新模型回到执行、优化和内环评价角色；最终外部报告与内环自评分开。[Terminal-RSI](https://arxiv.org/abs/2610.22192)交替验证轨迹监督训练和继承 critic 的策略优化，改的是参数与训练流程。两者补参数学习路线，不能据名称推断运行时自主重写改进算法。详见 [RSI 的反馈与参数更新](docs/rsi.md#参数更新与反馈来源2026-10-19)。
 
 ### 相关论文与资源
@@ -541,6 +550,12 @@ Agentic Coding（智能体化编码）是 AI 智能体商业影响力最显著�
     研究使用环境反馈对多步交互 Agent 进行端到端强化学习；适用范围取决于训练环境与奖励设计。
 
     [arXiv: 2511.14460](https://arxiv.org/abs/2511.14460) / [GitHub](https://github.com/AgentR1/Agent-R1)
+
+*   **论文: MOAE: Multi-Objective Agent Evolution with Pareto-Preserving Search** (2026)
+
+    在固定模型下，针对单个任务用多目标诊断生成执行策略修改，并通过新的完整运行验证；保留经验非支配候选，最后按部署约束选择。论文在 TravelPlanner 与 AgentDojo 上研究任务表现、轨迹质量和安全之间的权衡，无需参数更新。
+
+    [arXiv: 2609.05992](https://arxiv.org/abs/2609.05992)
 
 ## 多智能体系统（MAS）：协作产生的涌现智能
 多智能体系统（Multi-Agent Systems, MAS）通过分工、通信和共享产物组织任务。角色设计是机制选择；能否优于单 Agent，需在相同任务、预算与工具条件下测量，也要计入交接开销和错误传播。
@@ -663,18 +678,20 @@ Agentic Coding（智能体化编码）是 AI 智能体商业影响力最显著�
     [arXiv: 2503.01935](https://arxiv.org/abs/2503.01935)
     
 
-智能体研究领域正处在一个关键的转折点。早期的研究重心在于证明和提升智能体的核心能力：它能否推理？能否使用工具？能否完成指定的任务？像AgentBench这样的基准测试正是为了回答这些问题而设计的。然而，随着这些能力的日益强大，并将智能体部署到真实世界的应用中，研究的焦点正不可避免地从“它能做什么？”转向“我们能信任它吗？”。这种转变体现在对齐技术（如宪法AI）、主动风险评估以及综合性可信度框架的研究日益增多。MultiAgentBench的出现进一步凸显了这一趋势，因为它认识到评估单个智能体的安全性与评估一个群体涌现出的、可能无法预测的行为是截然不同的挑战。因此，未来智能体领域的前沿探索，其衡量标准将越来越少地依赖于任务成功率等能力指标，而更多地依赖于可靠性、对齐度和安全性等可信度指标。如何构建可验证的、安全的、符合伦理的智能体系统，已成为该领域最核心的开放性问题。
+评估应同时看任务是否完成、过程是否满足约束、结果有何证据，以及为此花了多少调用、时间和费用。安全设置还要保留正常任务的完成路径，记忆与自我改进则要检查留出任务、历史干扰和回归。任务成功率与可信度是互补的评价维度；前面的过程、取证和安全对照用于解释失败发生在哪一层，并帮助决定下一步应改模型、接口还是运行框架。
 
 ---
 
-## 2025-2026 研究选读
+<a name="2025-2026-研究选读"></a>
 
-本节保留一组历史延伸阅读。近期选读及实验条件集中在[十月精选](docs/monthly-picks.md)；下列条目不构成最新成果榜单。论文的发表状态和实验结论应以原始论文及正式会议页面为准。
+## 经典与背景延伸阅读
+
+本节按主题保留经典方法、训练背景与早期系统。最近核验的研究从[近期问题入口](#如何使用这份指南)进入；完整机制、实验条件与核验日期见[论文库](docs/papers.md)，月度编辑路线见[最近一期精选](docs/monthly-picks.md)。新方法与经典分别解决什么问题，应结合对应章节阅读。
 
 ### 计算机视觉与多模态 (CV/Multimodal & GUI)
 *   **UI-TARS: Pioneering Automated GUI Interaction with Native Agents** (ByteDance, 2025)
 
-    首个原生端到端 GUI 智能体模型，通过直接感知屏幕截图输出精确定位坐标与键盘操作，在 ScreenSpot、OSWorld 和 AndroidWorld 等三大权威基准上刷榜，大幅推动了 Computer-Using Agent 的跨平台落地。
+    UI-TARS研究从截图与交互历史直接输出统一动作的原生视觉策略，并比较GUI训练、反思轨迹与DPO。其2025年结果按定位、离线动作和在线任务分别报告；OSWorld步数与CallUser/无Finish处理属于具体协议。与OmniParser外接解析路线对照阅读，不将历史SOTA表述当当前排名或部署保证。[原作者仓库](https://github.com/bytedance/UI-TARS)已于2026-11-09归档，仍保留作历史入口。
 
     [arXiv: 2501.12326](https://arxiv.org/abs/2501.12326) / [GitHub仓库](https://github.com/bytedance/UI-TARS)
 
@@ -691,9 +708,9 @@ Agentic Coding（智能体化编码）是 AI 智能体商业影响力最显著�
 
     [arXiv: 2501.12948](https://arxiv.org/abs/2501.12948) / [GitHub仓库](https://github.com/deepseek-ai/DeepSeek-R1)
 
-*   **Large Language Model Agent: A Survey on Methodology, Applications and Challenges** (ACL 2025 / 核心工作)
+*   **Large Language Model Agent: A Survey on Methodology, Applications and Challenges** (2025)
 
-    全面系统地梳理了大型语言模型智能体的发展脉络，涵盖从基础架构到多智能体系统的前沿挑战，是了解最新全貌的必读神级综述。
+    用于建立方法、应用与挑战的分类框架。综述的覆盖范围受收集时间限制；阅读后可沿近期问题入口补充后续研究，再回原论文核对机制与实验。
     
     [arXiv: 2503.21460](https://arxiv.org/abs/2503.21460)
 

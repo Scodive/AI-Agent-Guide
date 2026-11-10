@@ -26,7 +26,9 @@
 
 最近一期是[2026 年 10 月编辑精选](monthly-picks.md)，共十篇，从记忆与经验走到运行验证、证据恢复和交付验收。[九月十篇已存档](archive/monthly-picks-2026-09.md)。
 
-**2026-11-02 周审查（本地待审核）：**目录从 81 增至 86 篇：本周的 [VeriCUA](papers.md#paper-2610.40578)、[DynaRev](papers.md#paper-2610.40133)、[Prefix Executability](papers.md#paper-2610.40444)，较早补收 [LEASH](papers.md#paper-2610.22280) 与经典 [Reflexion](papers.md#paper-2303.11366)；另跟进 Terminal-RSI 的 10 月 25 日 v2。导读连接当前目标、可执行过程、持久结果与反思记忆，并分清 Codex 托管 API/本地集成。详见[完整报告](../data/weekly-reviews/2026-11-02.md)。本期尚未提交、推送或同步网站；十一月月度精选按月底 SOP 整理。
+**2026-11-09 周审查（11月10日完成，已获批提交）：**目录86→89篇；新增[Meta²](papers.md#paper-2611.05139)、[ToolSpace](papers.md#paper-2611.05036)，较早补收11月修订的[Harness the Memory](papers.md#paper-2608.15008)。连接修改生命周期、合成环境检查和记忆比较，收窄两篇经典GUI表述并跟进Terminal-RSI v3。详见[本期报告](../data/weekly-reviews/2026-11-09.md)。本期源文件更新已获维护者批准，网站同步与上线另行核验；十月精选保留。
+
+**2026-11-02 周审查（已纳入既有提交）：**目录从 81 增至 86 篇：本周的 [VeriCUA](papers.md#paper-2610.40578)、[DynaRev](papers.md#paper-2610.40133)、[Prefix Executability](papers.md#paper-2610.40444)，较早补收 [LEASH](papers.md#paper-2610.22280) 与经典 [Reflexion](papers.md#paper-2303.11366)；另跟进 Terminal-RSI 的 10 月 25 日 v2。导读连接当前目标、可执行过程、持久结果与反思记忆，并分清 Codex 托管 API/本地集成。详见[完整报告](../data/weekly-reviews/2026-11-02.md)。该期内容已在既有提交5ff34a4，网站仓库来源快照为86条；生产上线未据此确认。
 
 **2026-10-26 周审查（已获批）：**库从 76 增至 81 篇：本周的 [MCCL](papers.md#paper-2610.29357)、[Muffin](papers.md#paper-2610.31355)、[EpiSEM-Bench](papers.md#paper-2610.31650)，较早补收的 [ReWOO](papers.md#paper-2305.18323)、[Doc2Harness](papers.md#paper-2610.20344)；AgentPerturb 核对 v2，不重复计数。阅读路线按问题整合，十月十篇精选替换九月入口。详见[完整报告](../data/weekly-reviews/2026-10-26.md)。本期源文件更新已获维护者批准，网站同步与部署另行核验。
 

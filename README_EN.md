@@ -16,7 +16,7 @@ Welcome to **AI-Agent-Guide**. This repository keeps its long-form guide and add
 
 Reading links: [Reading path](docs/reading-path.md) · [Paper table](docs/papers.md) · [October 2026 picks](docs/monthly-picks.md) · [Harness and coding agents](docs/harness.md) · [RSI and self-improvement](docs/rsi.md) · [Weekly maintenance SOP](docs/update-sop.md) · [CSV data](data/papers.csv).
 
-As of November 2, 2026, the local catalog awaiting review contains 86 papers. This review adds this week’s VeriCUA, DynaRev, and Prefix Executability, backfills LEASH and the classical Reflexion, and follows Terminal-RSI’s earlier v2 revision. It connects outcome evidence, goal changes, executable trajectories, and reflection memory; see the [weekly review](data/weekly-reviews/2026-11-02.md). The latest monthly selection remains October’s ten papers; November’s selection follows the month-end SOP. Inclusion does not mean independent replication. Please report errors through an Issue or PR.
+The November 9 weekly review was completed on November 10, 2026. The catalog contains 89 papers: this window’s Meta² and ToolSpace, plus Harness the Memory, first submitted in August and revised on November 4. We also revisit two classical GUI papers and Terminal-RSI’s earlier v3. The changes explain adaptation lifetimes, synthetic-environment evidence, and memory comparison protocols; see the [review](data/weekly-reviews/2026-11-09.md). October remains the latest monthly selection; November follows the month-end SOP. Inclusion does not mean independent replication.
 
 ## How to use this guide
 
@@ -24,6 +24,9 @@ The long-form guide below introduces foundational modules such as perception, pl
 
 | Recent question | Start with | Where it fits |
 | --- | --- | --- |
+| Should an online edit remain task-local or persist across tasks? | [Meta²](https://arxiv.org/abs/2611.05139) · 2026-11-03 | Harnesses and self-improvement: separate reusable guidance, local edits, and improver inheritance. |
+| How are executable, checkable tool-training tasks generated? | [ToolSpace](https://arxiv.org/abs/2611.05036) · 2026-11-03 | Tools and evaluation: execution witnesses, task synthesis, assertions, and replay. |
+| How should graph, retrieval, and parametric memory be compared? | [Harness the Memory](https://arxiv.org/abs/2608.15008) · first submitted 2026-08; revised 11-04 | Memory: control the harness, workload, and costs, then test transfer to unseen conversations. |
 | How are agents built, configured, and supervised? | [τ^τ-Bench](https://arxiv.org/abs/2609.04611), [Scanning the Harness](https://arxiv.org/abs/2609.07360), [The Work Behind Delegation](https://arxiv.org/abs/2609.24234) | Coding, tools, and safety; harnesses and human oversight span several modules. |
 | If goals change after actions, what counts as completion? | [DynaRev](https://arxiv.org/abs/2610.40133), [VeriCUA](https://arxiv.org/abs/2610.40578), [Prefix Executability](https://arxiv.org/abs/2610.40444) | Planning, GUI, and evaluation: distinguish current goals, executable steps, and persisted outcomes. |
 | What shortcuts can tool-use policies learn? | [Spurious Tool Use](https://arxiv.org/abs/2609.16268) | Tools and action; agent improvement. |
@@ -82,7 +85,7 @@ The long-form guide below introduces foundational modules such as perception, pl
   - [Context trust and execution permissions](#context-trust-and-execution-permissions)
   - [Evaluation & Benchmarks](#evaluation--benchmarks)
   - [Related Papers & Resources](#related-papers--resources-6)
-- [2025–2026 Selected Research](#20252026-selected-research)
+- [Classical and Background Reading](#classical-and-background-reading)
   - [Computer Vision & Multimodal (CV/Multimodal & GUI)](#computer-vision--multimodal-cvmultimodal--gui)
   - [NLP, Reasoning & Reinforcement Learning (NLP/Reasoning & RL)](#nlp-reasoning--reinforcement-learning-nlpreasoning--rl)
   - [Software Engineering & Systems (SE/Systems)](#software-engineering--systems-sesystems)
@@ -220,7 +223,7 @@ Despite significant advances, several challenges remain in agent perception:
 
 - **OmniParser for Pure Vision Based GUI Agent** (Lu et al., 2024)
 
-  Microsoft's OmniParser addresses the low precision of existing multimodal models when localizing GUI elements and their heavy reliance on DOM/XML structural trees. It is a pure-vision parsing system capable of precisely extracting and inferring interactive elements and their semantics on any screen, significantly improving GPT-4V's task success rate on real devices.
+  OmniParser combines interactable-region detection, icon descriptions, and OCR to provide marked screenshots and structured elements for GPT-4V action selection. Its original evaluation covers grounding and step-level actions on SeeAssign, ScreenSpot, Mind2Web, and AITW. Repeated elements, box granularity, and icon semantics remain failure sources; these results do not establish reliable completion on arbitrary screens.
 
   [arXiv: 2408.00203](https://arxiv.org/abs/2408.00203) / [GitHub](https://github.com/microsoft/OmniParser)
 
@@ -232,7 +235,7 @@ Despite significant advances, several challenges remain in agent perception:
 
 - **UI-TARS: Pioneering Automated GUI Interaction with Native Agents** (ByteDance, 2025)
 
-  UI-TARS is an end-to-end GUI agent model that perceives screenshots and directly outputs precise actions (click coordinates, keyboard input). It achieves state-of-the-art performance on multiple GUI benchmarks (ScreenSpot, OSWorld, AndroidWorld) through large-scale GUI-specific training data and systematic reflection mechanisms.
+  UI-TARS studies a native visual policy mapping screenshots and interaction history to a unified action space, with GUI training, reflective traces, and DPO comparisons. Its 2025 grounding, offline-action, and online-task results use distinct protocols; OSWorld step budgets and CallUser/no-Finish handling matter. Compare this with external parsing, rather than treating historical scores as current rankings. The [original author repository](https://github.com/bytedance/UI-TARS) was archived on November 9, 2026 and remains a historical entry point.
 
   [arXiv: 2501.12326](https://arxiv.org/abs/2501.12326) / [GitHub](https://github.com/bytedance/UI-TARS)
 
@@ -363,6 +366,8 @@ Separate **storage → retrieval → visible context → task outcome → future
 
 **From memory contents to continual learning.** [MCCL](https://arxiv.org/abs/2610.29357) separates where state is stored, what experience it represents, and which policy manages it. Updating contents differs from updating the management policy. Retrieval hits alone do not establish continual learning: evaluate retained gains after delay and interference, adaptation to changed facts, and transfer. Its limited experiments and theoretical scaling illustrations are different evidence. This connects MemGPT access, A-MEM organization, CMP utility estimation, and RSI modification targets.
 
+**How should memory configurations be compared?** [Harness the Memory](https://arxiv.org/abs/2608.15008) fixes the harness while comparing representation and write/read/management operations. QA recall and action experience can favor different retrieval breadths; count writing and management costs too. Its skill-controller and KV-cache configurations approximate the reference methods, and equal top-k is not equal token budget. Router gains under random question folds disappear on unseen conversations, separating question holdout from history transfer. This August paper, revised in November, supplements MemGPT/A-MEM.
+
 ---
 
 ## Action Module: Executing Tasks and Using Tools
@@ -402,6 +407,8 @@ Separate the protocol interface, server/downstream authentication and authorizat
 **From calls to recovery:** The MCP [tool specification](https://modelcontextprotocol.io/specification/2025-11-25/server/tools) distinguishes protocol errors from `isError` execution errors. A timeout can also leave a write outcome unknown. Check the operation receipt before deciding to retry; see the [harness recovery example](docs/harness.md#写入超时后先确认状态2026-10-19). [AgentPerturb](https://arxiv.org/abs/2610.21624) adds controlled input perturbations, but its Toolathlon results cover only 25/79 tasks with complete sweeps and do not estimate a deployment-wide fault rate.
 
 **Check legal calls separately from task completion.** [Prefix Executability](https://arxiv.org/abs/2610.40444) locates the first invalid action under tool contracts and visible state, reporting terminal success and recovery separately. Valid argument syntax does not establish satisfied dependencies, and later recovery does not erase an invalid prefix. Fixed-cohort PEC can decrease when trajectories end early, so it is not a depth-conditional error rate. This adds a process layer between MCP interfaces and task scoring; see the [harness chapter](docs/harness.md#从接口契约到过程可执行性).
+
+**Where do training environments come from?** [ToolSpace](https://arxiv.org/abs/2611.05036) mines data, state, and retry relations from adjacent calls, walks through state-compatible tools, then reverse-synthesizes tasks and assertions and retains replayed paths. Some returns are cached, and checks are generated by the same pipeline. A replay witness establishes an executable path in that environment; assertion coverage, alternative solutions, contamination, and live-service fidelity need separate evidence. Native metrics, local reruns, and external scores do not define one deployment success rate.
 
 **Key Resources:**
 - [Official MCP Specification](https://modelcontextprotocol.io/)
@@ -578,6 +585,8 @@ The [RSI chapter](docs/rsi.md) compares GEPA, Gödel Agent, DGM, and AIDE² and 
 
 [VERSE](https://arxiv.org/abs/2610.02616) separates changes to the executor's harness from changes to the optimizer's own harness, whose accepted version participates in later rounds; model weights and verification interfaces stay fixed. It complements the program-evolution path and GEPA's prompt evolution. Main results have one evolution run per condition; avg@3 repeats test evaluation. Self-evolution does not always improve over VERSE without self-evolution. Read held-out outcomes and full costs together.
 
+**How long does an adaptation persist?** [Meta²](https://arxiv.org/abs/2611.05139) learns act/hold/avoid guidance offline, freezes it at deployment, and edits only the current run’s harness. Each new run resets to the seed. This complements VERSE’s inheritance of improver versions: local edits never update the global guidance during evaluation. Online evolution alone does not establish recursive improvement of the improver, and repeated execution differs from repeated guidance learning.
+
 **Parameter-learning extension:** [MASS](https://arxiv.org/abs/2610.12176) alternates workflow search and shared-model training, returning the new model to execution, optimization, and in-loop evaluation. Final external reporting is separate. [Terminal-RSI](https://arxiv.org/abs/2610.22192) alternates verified-trajectory supervision with critic-inheriting policy optimization. These extend the parameter-learning route; their names do not demonstrate autonomous runtime rewriting of the improvement algorithm. See the [RSI feedback discussion](docs/rsi.md#参数更新与反馈来源2026-10-19).
 
 ### Related Papers & Resources
@@ -605,6 +614,12 @@ The [RSI chapter](docs/rsi.md) compares GEPA, Gödel Agent, DGM, and AIDE² and 
   Studies end-to-end reinforcement learning of multi-step agents using environmental feedback; applicability depends on the training environments and rewards.
 
   [arXiv: 2511.14460](https://arxiv.org/abs/2511.14460) / [GitHub](https://github.com/AgentR1/Agent-R1)
+
+- **MOAE: Multi-Objective Agent Evolution with Pareto-Preserving Search** (2026)
+
+  Uses objective-specific diagnostics to mutate a fixed agent’s per-query execution policy and evaluates each mutation through a fresh complete rollout. It preserves empirically nondominated candidates before applying deployment constraints, studying task performance, trajectory quality, and safety on TravelPlanner and AgentDojo without parameter updates.
+
+  [arXiv: 2609.05992](https://arxiv.org/abs/2609.05992)
 
 ## Multi-Agent Systems (MAS): Emergent Intelligence through Collaboration
 
@@ -737,19 +752,21 @@ Training alignment, guards, context trust, and execution permissions constrain d
 
   [arXiv: 2410.09024](https://arxiv.org/abs/2410.09024)
 
-The field is at a critical turning point: from "what can it do?" to "can we trust it?" How to build verifiable, safe, ethically-aligned agent systems has become the most core open problem in the field.
+Evaluate task completion, constraint satisfaction, outcome evidence, and the calls, time, and cost required together. Safety mechanisms also need legitimate-task evaluation; memory and self-improvement need held-out tasks, interference, and regression checks. Capability and trustworthiness are complementary dimensions. The process, verification, and safety comparisons above help locate failures and decide whether to change the model, interface, or harness.
 
 ---
 
-## 2025–2026 Selected Research
+<a name="20252026-selected-research"></a>
 
-This section keeps a set of earlier further-reading items. See the [October 2026 picks](docs/monthly-picks.md) for recent work and its evidence limits; the items below are not a current leaderboard. Verify publication status and experimental claims on the original paper or official proceedings page.
+## Classical and Background Reading
+
+This section retains classical methods, training background, and earlier systems by topic. Start with the [recent-question entry points](#how-to-use-this-guide) for newly verified research; the [catalog](docs/papers.md) records mechanisms, evaluation conditions, and verification dates, and the [latest monthly selection](docs/monthly-picks.md) provides an editorial route. Read the corresponding chapters to compare the questions addressed by new and classical methods.
 
 ### Computer Vision & Multimodal (CV/Multimodal & GUI)
 
 - **UI-TARS: Pioneering Automated GUI Interaction with Native Agents** (ByteDance, 2025)
 
-  An end-to-end native GUI agent model that perceives raw screenshots and directly outputs precise interaction coordinates and text actions. Achieves state-of-the-art results across major benchmarks including ScreenSpot, OSWorld, and AndroidWorld.
+  UI-TARS studies a native visual policy mapping screenshots and interaction history to a unified action space, with GUI training, reflective traces, and DPO comparisons. Its 2025 grounding, offline-action, and online-task results use distinct protocols; OSWorld step budgets and CallUser/no-Finish handling matter. Compare this with external parsing, rather than treating historical scores as current rankings. The [original author repository](https://github.com/bytedance/UI-TARS) was archived on November 9, 2026 and remains a historical entry point.
 
   [arXiv: 2501.12326](https://arxiv.org/abs/2501.12326) / [GitHub](https://github.com/bytedance/UI-TARS)
 
@@ -767,9 +784,9 @@ This section keeps a set of earlier further-reading items. See the [October 2026
 
   [arXiv: 2501.12948](https://arxiv.org/abs/2501.12948) / [GitHub](https://github.com/deepseek-ai/DeepSeek-R1)
 
-- **Large Language Model Agent: A Survey on Methodology, Applications and Challenges** (ACL 2025)
+- **Large Language Model Agent: A Survey on Methodology, Applications and Challenges** (2025)
 
-  Comprehensively surveys the development trajectory of LLM agents from foundational architecture to multi-agent system frontiers. A must-read overview of the field's latest state.
+  Use this survey to organize methods, applications, and challenges within its collection period. Follow the recent-question entry points for subsequent work, then inspect the original mechanisms and experiments.
 
   [arXiv: 2503.21460](https://arxiv.org/abs/2503.21460)
 

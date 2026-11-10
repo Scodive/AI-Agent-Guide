@@ -39,6 +39,8 @@
 
 ReAct 与步骤 5 之后先补经典 [Reflexion](papers.md#paper-2303.11366)：反馈怎样写入下一次尝试的记忆？比较每轮、累计成功与内部重试预算，再进入 RSI；固定反思规则不等于规则自身演化。
 
+步骤5/6之后加读[Harness the Memory](papers.md#paper-2608.15008)：先固定模型与框架，再比较记忆配置、检索宽度和写/读/管理成本。其路由的随机问题分折与新对话留出结果不同，oracle组合也不是可部署选择器。四主套件、两个近似实现与单次主表限制要一起读，不能据“图记忆”或“权重记忆”名称判断优劣。
+
 步骤 5/7 之后，[Component Routing](papers.md#paper-2610.01787)比较同一 GUI 经验进入上下文还是权重；先补参数训练与成本概念。步骤 9 之后，对照 MetaGPT/ChatDev 的固定分工、[RAC](papers.md#paper-2610.00980)的运行时选择与 [Muffin](papers.md#paper-2610.31355)的异步发现共享，再用 [CoCoBench](papers.md#paper-2608.28266)看环境协作。推理缓冲区不等于跨会话记忆，增加协调和共享条目都未必增益。
 
 ### 框架、任务结果和交付目标怎样分别验证？
@@ -46,6 +48,8 @@ ReAct 与步骤 5 之后先补经典 [Reflexion](papers.md#paper-2303.11366)：�
 步骤 8 之后，SWE-bench → [Agentless](papers.md#paper-2407.01489) → SWE-agent → SWE-Search，比较固定流程、动态接口和分支搜索。[Doc2Harness](papers.md#paper-2610.20344)另检验框架实现是否符合约定；先读 [Harness 五步循环及框架测试](harness.md#框架实现测试与任务评估分开)，理解 mock、确定性检查与正对照，再读其构建/测试协议。公开场景不是全量用例。
 
 步骤 4/6 之后，用 [Prefix Executability](papers.md#paper-2610.40444)补过程层：参数/依赖/状态前提、首次无效动作、恢复与最终成功分别记。先读 [Harness 的过程解释](harness.md#从接口契约到过程可执行性)；PEC 不是条件错误率，RR 只在有无效前缀的轨迹上计算。
+
+步骤4/6之后，[ToolSpace](papers.md#paper-2611.05036)补工具环境与训练数据的来历：数据/状态/重试依赖 → 状态游走 → 反向任务与断言 → 初态重放。先区分模拟/缓存和实时服务，再读训练/Pro评估；回放可解不等于所有目标断言完备。
 
 步骤 6/8 之后，[τ²-Bench](papers.md#paper-2506.07982)测共同控制状态的执行，[τ^τ-Bench](papers.md#paper-2609.04611)测构建 Agent，[FDE-Gym](papers.md#paper-2610.22350)测需求与交付收益，[Incident-Arena](papers.md#paper-2610.00648)测恢复安全与持久性。保留各自任务对象，不合并分数；模拟客户与实际用户分开。
 
@@ -58,5 +62,7 @@ ReAct 与步骤 5 之后先补经典 [Reflexion](papers.md#paper-2303.11366)：�
 ### 自我改进的下一轮使用了什么？
 
 先用 Reflexion 区分反思记忆与改进器变化，再读 [RSI 专题](rsi.md)中的 GEPA → Gödel Agent/DGM → AIDE² → [VERSE](papers.md#paper-2610.02616)，逐项记修改对象、筛选反馈和下一轮继承。该顺序是概念展开，不是能力排名。[MCCL 的状态/策略区分](rsi.md#记忆状态变化与管理策略变化)帮助判断增加记忆与改变管理规则。
+
+在GEPA/VERSE之后读[Meta²](papers.md#paper-2611.05139)，逐项标记指导、局部补丁、模型参数、演化器谁被保留。[RSI继承面](rsi.md#可复用指导与任务内编辑)解释为何部署时冻结指导、每run重置补丁，与持续修改改进器是不同路径。
 
 完成多 Agent 与 RSI 阅读、具备 SFT/LoRA/策略优化/价值估计基础后，再比较 [MASS](papers.md#paper-2610.12176)的工作流/共享权重与 [Terminal-RSI](papers.md#paper-2610.22192)的 actor/critic 更新；详见[反馈来源](rsi.md#参数更新与反馈来源2026-10-19)。这些拓展不改变前十步的入门顺序。

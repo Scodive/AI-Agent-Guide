@@ -181,3 +181,32 @@
 | [VERSE](https://arxiv.org/abs/2610.02616) | 10-02；v1 | 无新版本，固定权重的改进器演化仍是对照；沿用既有全文核验。 |
 
 其他发现的FARMS、PreCrime、Reward-Adaptive Co-Evolution、LWAM、SolveBind等仅标题/搜索发现，未形成完整证据卡，不计作已核验候选。旧待核验的HarnessTester、Certified Execution、L3M、MemScope等本期未继续全文核验，不以新条目数量掩盖积压。两项Codex官方资料是技术说明，不计论文条目。
+
+## 2026-11-09 周次（2026-11-10执行）候选与修订
+
+窗口2026-11-02–08，按arXiv UTC；实际核验日11-10，不把11-09之后发现的产品状态称窗口内论文。共20个唯一编号：3新增（2窗口内首交、1较早首交/窗口内修订补收）、3旧CSV修订、7暂缓（2正文已读、5仅摘要）、4旧库元数据、3上期待核验元数据。未遍历全部分类/日期/会议录，无MDPI来源。完整分析见[周报](weekly-reviews/2026-11-09.md)。
+
+| 原始记录 | 查到的UTC版本历史 | 本期决定与依据 |
+| --- | --- | --- |
+| [Meta$^2$: Precomputing Reusable Knowledge for Online Harness Evolution in Long-Horizon Agents](https://arxiv.org/abs/2611.05139) | [v1] Tue, 3 Nov 2026 16:19:21 UTC | 收录方法。离线指导与任务内编辑的继承面明确；部署冻结指导、不读留出verifier，不按online evolution推递归改进器。读方法/实验/附录协议与局限，作者代码未确认。 |
+| [ToolSpace: Scaling Tool-Centric Environment Synthesis for Long-Horizon Agents](https://arxiv.org/abs/2611.05036) | [v1] Tue, 3 Nov 2026 15:09:01 UTC | 收录方法+基准。数据/状态/重试依赖、游走与断言重放补环境生成路线；PDF/HTML为300/98题，仓库一处600描述不同，按原论文登记。作者代码关联已核对，未运行。 |
+| [Harness the Memory: A Holistic Evaluation of Memory Substrates in Memory Agents](https://arxiv.org/abs/2608.15008) | [v1] Sat, 15 Aug 2026 03:29:48 UTC；[v2] Wed, 4 Nov 2026 09:48:33 UTC | 较早补收实证研究，8月首发、11月4日v2；不是本周新论文，也未逐行比较v1/v2。统一框架下的配置/工作负载/成本有学习价值；近似实现、单次主表与新对话路由负结果保留。 |
+| [A State Change Is Local, Its Consequences Are Not: Dependency-Aware State Revision for Long-Term Agent Memory](https://arxiv.org/abs/2611.02912) | [v1] Mon, 2 Nov 2026 10:44:02 UTC | 暂缓，已读§3–8及A.6/A.7。严格/弱依赖与替代支持有机制价值，但重复次数和双标子集规模丢失、行动评估未报告，同模型验证相关错误未排除；不把闭包一致当安全证据。只在本期分析观察，不入核心CSV。 |
+| [Reglos: A Self-Evolving Personal Memory Agent with Recursive Self-Improvement](https://arxiv.org/abs/2611.06049) | [v1] Wed, 4 Nov 2026 06:56:04 UTC | 暂缓，已读§3–5及附录A/C相关段。遗忘作为撤回和上下文组织值得学习，但严格persona留出/第二读者接受规则在开发冻结后才采用，不能用其证明全部已接受步骤。撤回不等物理删除，开发降分步骤也须解释；不采用摘要领先结论。 |
+| [Agent Memory as Rate-Limited Filtering: Explicit State Outlasts Long Context Beyond a Reader-Dependent Horizon](https://arxiv.org/abs/2611.02361) | [v1] Mon, 2 Nov 2026 01:09:24 UTC | 暂缓，仅记录/摘要。显式状态与依赖选择可补记忆路由，理论假设、有限键状态、冻结复测及权限动作评估尚未全文核验。 |
+| [Route to Remember: Adaptive Memory Selection for LLM Agents](https://arxiv.org/abs/2611.05636) | [v1] Tue, 3 Nov 2026 21:21:14 UTC | 暂缓，仅记录/摘要。OPSD权重记忆与回退路由可补Component Routing，但用户事实训练/查询隔离、遗忘修改和训练费用需全文，不采用低成本宣传。 |
+| [WASP-Mem: Let Agent Organize Procedural Memory. Human Spend Effort on Diagnosis](https://arxiv.org/abs/2611.04003) | [v1] Mon, 2 Nov 2026 21:43:49 UTC | 暂缓，仅记录/摘要。程序wiki与真人诊断可补Reflexion；checkpoint指标不等完整任务成功，诊断人时/反馈选择/留出与基线配置待核。 |
+| [MEMOIR: A Training-Free Memory Lifecycle for Long-Horizon LLM Agents](https://arxiv.org/abs/2611.07631) | [v1] Thu, 5 Nov 2026 08:17:22 UTC | 暂缓，仅记录/摘要。合并取证与事后效用可补CMP；去重分母、oracle边界与100合并无损失的置信上界需全文，不把零观测损失当无损证明。 |
+| [FlyHash for LLM Agent Memory: An Empirical Validation and a New Application](https://arxiv.org/abs/2611.05791) | [v1] Wed, 4 Nov 2026 00:57:24 UTC | 暂缓，仅记录/摘要。匹配比特和HNSW负结果有价值，但端到端记忆标签、规模/硬件与延迟协议未全文核验；不以近邻质量推部署速度。 |
+| [OmniParser for Pure Vision Based GUI Agent](https://arxiv.org/abs/2408.00203) | [v1] Thu, 1 Aug 2024 00:00:43 UTC | 修订旧条目与双语导读。v1方法/实验/讨论定点复核，收窄任意屏幕/真实任务保证；补结构化解析机制、逐步指标与重复图标/粒度等失败，不新增行。 |
+| [UI-TARS: Pioneering Automated GUI Interaction with Native Agents](https://arxiv.org/abs/2501.12326) | [v1] Tue, 21 Jan 2025 17:48:10 UTC | 修订旧条目与双语导读。v1 §4.1与§5.4等定点复核，历史定位/离线/在线分别解释；作者仓库11月9日归档是本次11月10日观察，不算窗口内新论文或移除经典。 |
+| [Terminal-RSI: Recursive Self-Improving Terminal Agents via Recursive Self-Rewrite and Policy-Refine](https://arxiv.org/abs/2610.22192) | [v1] Thu, 15 Oct 2026 16:43:56 UTC；[v2] Sun, 25 Oct 2026 06:56:48 UTC；[v3] Fri, 30 Oct 2026 10:02:19 UTC | 旧记录v3较早跟进。10月30日修订在上期窗口之前；对比v2/v3可提取HTML正文，限定语/历史协议/LHTB聚合表述有删改，未见新独立训练或组件隔离结果；不改写上期报告。 |
+| [VeriCUA: Verification as Agentic Exploration for Computer-Using Agents](https://arxiv.org/abs/2610.40578) | [v1] Thu, 29 Oct 2026 17:45:26 UTC | 旧库仅元数据复查，仍v1；不重新刷新论文/代码或CSV核验日期。 |
+| [DynaRev: Benchmarking Web Agents under Dynamic Goal Revision](https://arxiv.org/abs/2610.40133) | [v1] Thu, 29 Oct 2026 14:25:54 UTC | 旧库仅元数据复查，仍v1；保留WRA/最终约束与触发分母。 |
+| [Prefix Executability: Evaluating Tool-Using Agents Beyond Final Success](https://arxiv.org/abs/2610.40444) | [v1] Thu, 29 Oct 2026 16:58:04 UTC | 旧库仅元数据复查，仍v1；正式录用状态本期未查会议录，不改变旧标签。 |
+| [GEPA: Reflective Prompt Evolution Can Outperform Reinforcement Learning](https://arxiv.org/abs/2507.19457) | [v1] Fri, 25 Jul 2025 17:42:32 UTC；[v2] Sat, 14 Feb 2026 11:42:30 UTC | 旧库仅元数据复查，仍v2(2026-02-14)；提示词演化路线保留，非本周修订。 |
+| [EnvOS: Auditing Computer-Use Agents When the World Moves On : Phenomenon-Based Task Construction, Certification, and Evidence-Based Evaluation](https://arxiv.org/abs/2610.40246) | [v1] Thu, 29 Oct 2026 15:17:29 UTC | 上期待核验，只重开元数据，仍v1；EnvOS全文/认证条件未完成，不重复算作新发现。 |
+| [Locating and Closing Information Gaps in Multi-Agent Systems](https://arxiv.org/abs/2610.40186) | [v1] Thu, 29 Oct 2026 14:45:43 UTC | 上期待核验，只重开元数据，仍v1；SPLICE训练选择器/传播与重执行成本仍待全文。 |
+| [EpiAgent: Epistemic Self-Play for LLM Agents](https://arxiv.org/abs/2610.40227) | [v1] Thu, 29 Oct 2026 15:05:08 UTC | 上期待核验，只重开元数据，仍v1；EpiAgent信念自博弈不据摘要自动归RSI。 |
+
+检索摘要、镜像和资讯只用于发现原始编号，不用于实验结论；首轮精确日期检索稀疏，改宽关键词后再逐一打开arXiv。cs.AI月列表一次404，没有称遍历完整月份。Meta²项目页网页工具不可读，未将其他框架仓库当其代码。旧HarnessTester/Certified/L3M等本期未推进全文。
