@@ -184,3 +184,25 @@
 ### 2026-11-10 维护者指定的README补充：MOAE
 
 [arXiv:2609.05992v1](https://arxiv.org/abs/2609.05992v1)，首次提交2026-09-05 09:31:34 UTC；标题MOAE: Multi-Objective Agent Evolution with Pareto-Preserving Search；作者Hengle Jiang、Qijun Cai、Ziying Luo、Ke Tang。核对原始记录并读HTML方法和局限，README仅概述固定模型、单任务策略诊断/变异、新完整运行、经验非支配保留与部署约束选择，以及TravelPlanner/AgentDojo环境。没有运行代码或补入未公开结果，没有全局Pareto或普适安全保证；原始页面无已确认的作者代码链接。按维护者要求紧接Agent-R1，双语同步；本次仅导读补充，不作本周新论文或CSV新增，周审89条保持。
+
+
+## 2026-11-16 核验记录
+
+### 三篇新增：身份、方法与协议
+
+- **CoReMem / 2611.17316v1**：Peiwen Li、Harshit Verma、Sophia Zhou、Haiwen Wang、Ngoc Bui、Heng Chang、Fei Fei、David van Dijk、Rex Ying；首交2026-11-12 18:58:22 UTC。[原始记录](https://arxiv.org/abs/2611.17316)、[正文](https://arxiv.org/html/2611.17316v1)§3.1/3.2、§4、局限及附录A/B/C/E/K。下一任务在相同继承树有/无记忆的配对估值，与当前任务自重放不同；分段去除的价值依赖其他片段同时存在，不直接作独立因果贡献。训练前写者生成记忆，训练组另混入错误仓库记忆；执行器训练使用成功优先奖励和来源门控，门控是字符串锚点使用代理。ChainSWE作者划分52训练链/97边界、48测试链/96边界；六骨干，开源三种actor后训练。主表按模型1至12次不同重放，差异用48链聚类区间；不能把96边界当独立同分布重复。cache-aware总token含记忆模块调用，不含完整离线设计与后训练总成本，也不等实际付款。附录E的OpenHands仅94/96边界、原始token；一组外部writer指令在早期结果观察后调整。无时延/能耗、长期积累刷新实证；页面未给确认作者源码，代码栏空，未运行或独立复现。
+- **H2E / 2611.16246v1**：Jinze Tao、Yuxiao Han、Kangkang Dong、Yancong Wei、Xiaojun Zhu、Bokui Chen、Houde Liu；首交2026-11-12 03:42:58 UTC。[原始记录](https://arxiv.org/abs/2611.16246)、[正文](https://arxiv.org/html/2611.16246v1)§3/4、Limitations、A–D。2395保留会话来自57训练场景，将教师工具运动和VLA子指令运动均重标为原任务动作，远离目标步骤保留历史但不计训练损失，1米内加停止标签；只训练LoRA和动作头，部署不调用教师。训练使用仿真姿态/目标距离，是特权训练信号，不能当部署观测。主评估3189题/10未见场景，最大500低层步与2400秒，SR/OSR/SPL/NE；配对场景bootstrap是10场景的不确定性，不是独立训练种子。另100开发题/26训练划分留出场景才是完整教师比较；消融的训练数据量与主表不同，不能混说全部在3189题上比较教师。一个VLA/一个教师/一个导航基准，偏航恢复仍依赖教师地图记忆；未确认作者源码，不把引用的基础VLA代码填作本作代码。较早GUI记录均保留，未由导航分数替换桌面结果。
+- **Contain, Conform, Compare 扩展论文 / 2611.16485v1**：Nguyen Minh Thang；首交2026-11-12 08:54:03 UTC。[原始记录](https://arxiv.org/abs/2611.16485)明确关联[作者工具仓库](https://github.com/MinhThanghus/drydock-eval)，本期读README但未运行；正文§2/4–6/9.9/10/13–14、表30。隔离执行、八类请求/模板检查、按仓库聚类比较是三种证据；200隔离测试针对作者部署树，公开替换标识副本未重跑容器，内核逃逸排除。231题×5臂×4次为4620实验任务运行，扩展可用性另列4636结果行，不能把所有行都算有效任务。三个确认各72/128/128题，每题4次，注册门槛/统计条件未满足则“未确认”，不证明无效；第三候选+4.10点而单侧p=0.0405未过0.025。第三次重复使用128题H，构建时已知第二次结果且读过部分机械轨迹，后两次仅注册条件1–4，不能统一称三次完全独立/完整五条件确认。样本筛选、缺失旧运行、不同机器/负载和未公开Agent包/提示/适配器保留；工具代码不等完整实验臂可重建。原始附件有运行级结果入口，未下载重算全9660行、也未审计文件哈希链，作者报告与本库复现区分。
+
+### 暂缓与旧版本
+
+- **Time and Space / 2611.16492v1**：Haitao Cheng、Jerry Hu、Longdong Mao、Dong Huang、Dongming Li、Lijuan Zhang、Mengting Zhang；首交11-12 09:01:06 UTC。读§4状态/不变量、§5相关算子段、§7实现及§9–11。事件/有效/摄入时间、来源片段、歧义与撤回有教学价值；341文档等是检索存储测量，分析层未实现；证据覆盖/时间正确性/冲突打扰是待执行协议，无用户研究。不作为已验证全流程记忆方法收录，未确认代码。
+- **Architecture Cost-Success / 2611.12953v1**：Subhrangshu Nandi、Hitesh Arora、Yunfei Bai、Udita Patel、Chirag Shah、Hannah Kwon、Wei Zhang、Weian Chen、Chloe Ruoqi Li、Alberto Sconfienza、Ayush Goyal、Yasmine Lee、Ming Xiong、Prathap Ramachandra；首交11-07 05:12:41 UTC，较早漏项。读方法、主要比较、评价可靠性及局限，另下载[v1 PDF](https://arxiv.org/pdf/2611.12953v1)提取核对：§3/表2以13 SOP/2124题与75.6/67.4汇总，结论/局限写12 SOP与74.4/65.6，费用倍数也不一致；不是仅HTML数学转换差异。§4.7称编排多字段契约修复仍未验证。暂缓入库与采用数值；单模型、mock工具、单轨迹和一次实现本就限制泛化。未确认本工作专属代码。
+- Actor/Judge/Teacher（Haochen Liu等10人，11-12 17:42:46）、CapLite（Zimo Xu/Wenzhuo Liu/Hideki Nakayama，11-12 17:07:22）、LiveGeo（Pengcheng Zhou等9人，11-12 18:45:58）、PolicySniff（Weimin Fu等10人，11-12 01:42:11）均只读原始记录/摘要，核对作者/版本；不引用其数值、保证或结论进入导读。研究问题及待查协议见[候选日志](candidate-log.md)。ChainSWE v2只读原始记录与CoReMem引用；Qirui Jin等15人，07-01首交、09-01修订，未完成原基准构造/评分核验。
+- Meta²仍v1、ToolSpace仍v1、Harness the Memory仍v2（11-04），StateGraph/Reglos仍v1；仅重开元数据，不刷新原CSV日期或把旧全文核验算本周。未扫描89篇全部版本。
+
+### 官方资料与来源路径
+
+2026-11-16重开所引MCP[工具规范](https://modelcontextprotocol.io/specification/2025-11-25/server/tools)错误处理/安全段与[安全实践](https://modelcontextprotocol.io/docs/2025-11-25/tutorials/security/security_best_practices)混淆代理/令牌透传段。保留协议错误与isError区别，权限由服务器/执行环境落实；仅刷新双语README该段访问核对日期，未做历史差异比较或最新版协议全面审计。标在URL上的版本不是固定内容哈希。Codex两架构页仍沿用11-02，其余产品资料未重开，不改产品业务或权限。
+
+只读核对独立网站同步脚本仍读取CSV与阅读路线/Harness/RSI/精选；本期纯函数解析/MDX编译检查与实际同步分开。GitHub网站仓库main的来源清单记录b9c42ee、2026-11-10、89篇；本地网站来源清单仍为5ff34a4/86篇，已过时，不能据本地快照推生产状态。本期未运行同步、写入网站或部署。

@@ -16,7 +16,7 @@ Welcome to **AI-Agent-Guide**. This repository keeps its long-form guide and add
 
 Reading links: [Reading path](docs/reading-path.md) · [Paper table](docs/papers.md) · [October 2026 picks](docs/monthly-picks.md) · [Harness and coding agents](docs/harness.md) · [RSI and self-improvement](docs/rsi.md) · [Weekly maintenance SOP](docs/update-sop.md) · [CSV data](data/papers.csv).
 
-The November 9 weekly review was completed on November 10, 2026. The catalog contains 89 papers: this window’s Meta² and ToolSpace, plus Harness the Memory, first submitted in August and revised on November 4. We also revisit two classical GUI papers and Terminal-RSI’s earlier v3. The changes explain adaptation lifetimes, synthetic-environment evidence, and memory comparison protocols; see the [review](data/weekly-reviews/2026-11-09.md). October remains the latest monthly selection; November follows the month-end SOP. Inclusion does not mean independent replication.
+The catalog contains 92 papers as of November 16, 2026. This review adds CoReMem, H2E, and the extended drydock-eval paper, all first submitted on November 12, connecting next-task memory value, teacher-to-executor distillation, and confirmation of selected improvements. The previous 89-paper update and MOAE guide entry have been pushed; see the [current review](data/weekly-reviews/2026-11-16.md) for this batch and deferred candidates. October remains the latest monthly selection; November follows the month-end SOP. Inclusion does not mean independent replication.
 
 ## How to use this guide
 
@@ -24,9 +24,9 @@ The long-form guide below introduces foundational modules such as perception, pl
 
 | Recent question | Start with | Where it fits |
 | --- | --- | --- |
-| Should an online edit remain task-local or persist across tasks? | [Meta²](https://arxiv.org/abs/2611.05139) · 2026-11-03 | Harnesses and self-improvement: separate reusable guidance, local edits, and improver inheritance. |
-| How are executable, checkable tool-training tasks generated? | [ToolSpace](https://arxiv.org/abs/2611.05036) · 2026-11-03 | Tools and evaluation: execution witnesses, task synthesis, assertions, and replay. |
-| How should graph, retrieval, and parametric memory be compared? | [Harness the Memory](https://arxiv.org/abs/2608.15008) · first submitted 2026-08; revised 11-04 | Memory: control the harness, workload, and costs, then test transfer to unseen conversations. |
+| Which experience helps when the next coding task is unknown? | [CoReMem](https://arxiv.org/abs/2611.17316) · 2026-11-12 | Memory and coding: pair next-task runs from the same tree and count memory calls. |
+| Can a smaller executor learn from a complex agent? | [H2E](https://arxiv.org/abs/2611.16246) · 2026-11-12 | Perception and training: distinguish the navigation planner, action labels, and deployed VLA. |
+| Does a harness edit that leads a screen still help on other tasks? | [Extended drydock-eval paper](https://arxiv.org/abs/2611.16485) · 2026-11-12 | Harnesses, RSI, and evaluation: check request conformance, selection, and frozen confirmation separately. |
 | How are agents built, configured, and supervised? | [τ^τ-Bench](https://arxiv.org/abs/2609.04611), [Scanning the Harness](https://arxiv.org/abs/2609.07360), [The Work Behind Delegation](https://arxiv.org/abs/2609.24234) | Coding, tools, and safety; harnesses and human oversight span several modules. |
 | If goals change after actions, what counts as completion? | [DynaRev](https://arxiv.org/abs/2610.40133), [VeriCUA](https://arxiv.org/abs/2610.40578), [Prefix Executability](https://arxiv.org/abs/2610.40444) | Planning, GUI, and evaluation: distinguish current goals, executable steps, and persisted outcomes. |
 | What shortcuts can tool-use policies learn? | [Spurious Tool Use](https://arxiv.org/abs/2609.16268) | Tools and action; agent improvement. |
@@ -247,6 +247,8 @@ Despite significant advances, several challenges remain in agent perception:
 
 For GUI tasks, separate **element grounding → action execution → persisted state change → satisfaction of the current goal**. Finding a Save button does not establish that a file was saved. [VeriCUA](https://arxiv.org/abs/2610.40578) combines screenshots, history, and file/database probes after execution, attaching source and temporal evidence. Online verification can abstain; unresolved offline cases fall back to the initial visual judge. These are distinct protocols, with instrumentation and extra-call costs; see the [harness chapter](docs/harness.md#界面结果取证与模型接管).
 
+**From planner assistance to executor learning.** In embodied navigation, [H2E](https://arxiv.org/abs/2611.16246) relabels both planner-tool and VLA motion under the original task, masks training loss on steps moving away from the goal, and adds stop labels near it. Only the VLA is deployed after training. Distinguish who acts from who learns: training-time goal distance differs from deployment observations, and reaching differs from stopping correctly. REVERIE-CE simulation results do not establish GUI or real-robot performance; recovery requiring the planner’s map and memory remains unlearned.
+
 ---
 
 ## Planning & Reasoning Module: The Cognitive Core of Agents
@@ -368,6 +370,8 @@ Separate **storage → retrieval → visible context → task outcome → future
 
 **How should memory configurations be compared?** [Harness the Memory](https://arxiv.org/abs/2608.15008) fixes the harness while comparing representation and write/read/management operations. QA recall and action experience can favor different retrieval breadths; count writing and management costs too. Its skill-controller and KV-cache configurations approximate the reference methods, and equal top-k is not equal token budget. Router gains under random question folds disappear on unseen conversations, separating question holdout from history transfer. This August paper, revised in November, supplements MemGPT/A-MEM.
 
+**Then ask whether the next task benefits.** [CoReMem](https://arxiv.org/abs/2611.17316) pairs next-task runs from the same inherited repository tree, valuing trajectory segments before retaining locations and executable checks. A separate training path uses resolution-first, step-sensitive rewards and routes extra memory-value credit to provenance-marked steps. This extends CMP’s exposure identification and configuration comparisons. Anchor matching is a use proxy; distinguish a fixed memory layer, actor weight updates, and memory-call costs.
+
 ---
 
 ## Action Module: Executing Tasks and Using Tools
@@ -402,7 +406,7 @@ This represents a new height of agent capability: from tool *user* to tool *crea
 
 The **Model Context Protocol (MCP)** standardizes interfaces for clients and servers to exchange tools, resources, and related information. Task state, business authorization, and execution outcomes remain implementation responsibilities.
 
-Separate the protocol interface, server/downstream authentication and authorization, and harness/environment process, file, and network permissions. MCP support does not itself guarantee isolation. The official [security practices](https://modelcontextprotocol.io/docs/2025-11-25/tutorials/security/security_best_practices) discuss token passthrough, confused-deputy risks, and scope minimization (checked 2026-10-05).
+Separate the protocol interface, server/downstream authentication and authorization, and harness/environment process, file, and network permissions. MCP support does not itself guarantee isolation. The official [security practices](https://modelcontextprotocol.io/docs/2025-11-25/tutorials/security/security_best_practices) discuss token passthrough, confused-deputy risks, and scope minimization (cited material rechecked 2026-11-16).
 
 **From calls to recovery:** The MCP [tool specification](https://modelcontextprotocol.io/specification/2025-11-25/server/tools) distinguishes protocol errors from `isError` execution errors. A timeout can also leave a write outcome unknown. Check the operation receipt before deciding to retry; see the [harness recovery example](docs/harness.md#写入超时后先确认状态2026-10-19). [AgentPerturb](https://arxiv.org/abs/2610.21624) adds controlled input perturbations, but its Toolathlon results cover only 25/79 tasks with complete sweeps and do not estimate a deployment-wide fault rate.
 
@@ -701,6 +705,8 @@ As agents become increasingly autonomous and are empowered to take actions in th
 - **Are truthful observations sufficient?** [EpiSEM-Bench](https://arxiv.org/abs/2610.31650) suppresses safety evidence while keeping remaining facts true, pairing permissible and prohibited worlds. Useful recovery requires seeking evidence and then completing or withholding the action appropriately. Read unsafe-task rates, useful recovery, and legitimate completion jointly; see the [harness example](docs/harness.md#证据缺失先查证再决定执行).
 - **How do process and outcome relate?** [Prefix Executability](https://arxiv.org/abs/2610.40444) separates uninterrupted executability from success after an error; [VeriCUA](https://arxiv.org/abs/2610.40578) checks outcome evidence. Executable steps can still miss the goal, and agreement with a reference judge is imperfect evidence. Include verification calls, latency, abstentions, and their denominators.
 - **Does the harness implement its contract?** [Doc2Harness](https://arxiv.org/abs/2610.20344) freezes generated harnesses and drives them with a scripted model, checking requests, files, exit codes, and output. Positive controls exclude apparent passes when the behavior was never exercised. Contract correctness, downstream task capability, and RSI gains require distinct evidence.
+
+- **Does a screen lead survive confirmation?** The [extended drydock-eval paper](https://arxiv.org/abs/2611.16485) separates container isolation, request/template conformance, and task comparisons. Three screen leaders failed their registered confirmation rules; this does not establish zero effect. Record budgets, failure denominators, repository dependence, and holdout reuse; see the [harness comparison procedure](docs/harness.md#筛选领先与确认改进).
 
 ### Context trust and execution permissions
 

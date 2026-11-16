@@ -210,3 +210,28 @@
 | [EpiAgent: Epistemic Self-Play for LLM Agents](https://arxiv.org/abs/2610.40227) | [v1] Thu, 29 Oct 2026 15:05:08 UTC | 上期待核验，只重开元数据，仍v1；EpiAgent信念自博弈不据摘要自动归RSI。 |
 
 检索摘要、镜像和资讯只用于发现原始编号，不用于实验结论；首轮精确日期检索稀疏，改宽关键词后再逐一打开arXiv。cs.AI月列表一次404，没有称遍历完整月份。Meta²项目页网页工具不可读，未将其他框架仓库当其代码。旧HarnessTester/Certified/L3M等本期未推进全文。
+
+
+## 2026-11-16 周次候选与复查
+
+检索窗口2026-11-09–15（UTC），核验日2026-11-16。15个唯一论文编号：3新增、7暂缓（含两篇较早漏项）、3旧库版本复查、2上期待核验版本复查。先去重再记录，未遍历完整分类/会议录，不使用MDPI。来源、讲解影响与实际阅读范围见[周报](weekly-reviews/2026-11-16.md)。以下时刻为UTC，不把cs.AI公告日当首次提交日。
+
+| 原始记录 | 首交/最新版本 | 决定、学习价值与未完成项 |
+| --- | --- | --- |
+| [CoReMem: Cost-Internalizing Memory for Successive Coding Tasks with Prospective Valuation](https://arxiv.org/abs/2611.17316) | v1 2026-11-12 18:58:22 | 新增方法。读§3–4、局限及A/B/C/E/K等协议相关段；同状态下一任务估值和actor信用补CMP后的机制。主比较含记忆模块调用，门控只是字符串使用代理，不作单步因果结论；无确认作者代码。 |
+| [What Can a VLA Learn from the Agent That Calls It? Task-Level Experience Distillation for Embodied Navigation](https://arxiv.org/abs/2611.16246) | v1 2026-11-12 03:42:58 | 新增方法H2E。读方法、实验、局限与A–D；补教师工具运动→原任务动作标签→VLA训练→移除教师。3189题主评估和100题开发比较分开；不将仿真导航归为GUI实证，无确认代码。 |
+| [Contain, Conform, Compare (Extended Version): A Red-Teamed Evaluation Kit for Small Coding Agents and the Full Record of Its Experiments](https://arxiv.org/abs/2611.16485) | v1 2026-11-12 08:54:03 | 新增实证研究+工具。读§2/4–6/9.9/10/13–14，核对三确认表及作者仓库；按公开扩展记录三次未确认、留出复用、包未公开和部署树/公开副本区别。不是自动收录工具，也不是本库独立复现。 |
+| [Time and Space: A Dual-Axis, Evidence-Grounded Context Substrate for Personal Agents](https://arxiv.org/abs/2611.16492) | v1 2026-11-12 09:01:06 | 暂缓。读不变量、状态/算子相关段和实现/评价/局限；检索层有测量，分析层尚未实现，时间正确性、冲突裁决和用户打扰指标是提议协议，不能当完整记忆系统效果。保留作表示路线观察，无确认代码。 |
+| [Agent Architecture Cost-Success Trade-offs: A Controlled Evaluation across Enterprise-Style SOPs](https://arxiv.org/abs/2611.12953) | v1 2026-11-07 05:12:41 | 较早漏项暂缓。读方法、结果/评价可靠性与局限，PDF/HTML均见13/12 SOP及75.6/67.4与74.4/65.6两组汇总，编排多字段评分仍称provisional。机制比较值得继续，先调和协议再入核心库，不引数值结论替代MAS讲解。 |
+| [Actor, Judge, or Teacher? Understanding Decision Models in Long-Horizon Agents](https://arxiv.org/abs/2611.17167) | v1 2026-11-12 17:42:46 | 暂缓，仅原始记录/摘要。动作选择与事后判分的差别有价值；教师的完整轨迹可见性、训练/测试分离、重复和总预算未全文核验，不采用摘要增益。 |
+| [CapLite: Prompt-Injection Defense for Small Language Model Agents without Model-Written Security Artifacts](https://arxiv.org/abs/2611.17115) | v1 2026-11-12 17:07:22 | 暂缓，仅记录/摘要。schema导出的写入约束可补权限执行机制，但保证的假设、用户参数解析、只读泄漏/状态变化、效用与攻击分母待全文；不采用零攻击成功即普适安全的推断。 |
+| [LiveGeo: Benchmarking Geographic Agents in Continuously Evolving Worlds](https://arxiv.org/abs/2611.17267) | v1 2026-11-12 18:45:58 | 暂缓，仅记录/摘要。世界自行变化与DynaRev的用户目标修订应分开；动态过程、任务抽样、重复/费用、污染与作者代码未核验，不引用性能结论。 |
+| [PolicySniff: Inferring Agent Policy States through Shared-GPU Execution](https://arxiv.org/abs/2611.16158) | v1 2026-11-12 01:42:11 | 暂缓，仅记录/摘要。行为合规和配置保密不同；需查共驻攻击者、已知候选设置/任务、MoE运行模式及留出推断单位，不外推所有GPU或Agent。 |
+| [ChainSWE: Benchmarking Coding Agents on Multi-Bug Software Maintenance](https://arxiv.org/abs/2607.02606) | v1 2026-07-01 13:32:15；v2 2026-09-01 01:46:25 | 较早漏项暂缓，仅原始记录/摘要及CoReMem引用追查。共享代码状态是重要基准分支；原记录304问题/54项目与后续论文100链划分不能直接互换，链构造、重叠和累计失败评分仍需阅读全文。 |
+| [Meta²](https://arxiv.org/abs/2611.05139) | v1 2026-11-03 16:19:21，未变 | 旧库元数据复查；沿用上期全文核验，不刷新CSV日期，无重复入库。 |
+| [ToolSpace](https://arxiv.org/abs/2611.05036) | v1 2026-11-03 15:09:01，未变 | 旧库元数据复查；300/98及仓库一处600差异沿用日志，本期未重查代码，不追加性能结论。 |
+| [Harness the Memory](https://arxiv.org/abs/2608.15008) | v1 2026-08-15；v2 2026-11-04 09:48:33，未变 | 旧库元数据复查；评论录用声明仍未查正式会议录，不变更来源状态或CSV日期。 |
+| [StateGraph](https://arxiv.org/abs/2611.02912) | v1 2026-11-02 10:44:02，未变 | 上期待核验，原始记录未见修订；不重复全文、维持暂缓。因果支持、行动评估及重复/双标记录问题见上期日志。 |
+| [Reglos](https://arxiv.org/abs/2611.06049) | v1 2026-11-04 06:56:04，未变 | 上期待核验，原始记录未见修订；冻结前后接受规则与撤回/物理删除问题沿用上期，不据标题宣称已证明RSI。 |
+
+AgentSSL、Skill Adapter、Cortex-FL等只在列表发现标题，尚未形成原始记录证据卡，不计上述15个已登记编号。本期未完成EnvOS/SPLICE/EpiAgent、WASP-Mem/MEMOIR等积压全文核验；查到新论文不等于清空旧问题。
