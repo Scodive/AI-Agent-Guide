@@ -4,9 +4,9 @@
 
 [![GitHub Stars](https://img.shields.io/github/stars/Scodive/AI-Agent-Guide?style=social)](https://github.com/Scodive/AI-Agent-Guide/stargazers) [![Last Commit](https://img.shields.io/github/last-commit/Scodive/AI-Agent-Guide)](https://github.com/Scodive/AI-Agent-Guide/commits/main) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/Scodive/AI-Agent-Guide/blob/main/CONTRIBUTING.md) [![License: MIT](https://img.shields.io/github/license/Scodive/AI-Agent-Guide)](https://github.com/Scodive/AI-Agent-Guide/blob/main/LICENSE) [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
-Welcome to **AI-Agent-Guide**. This repository keeps its long-form guide and adds a manually curated paper catalog. Each catalog record links to a primary paper page and records the research question, mechanism, evaluation setting, conclusion, limitation, and verification date.
+Welcome to **AI-Agent-Guide**. This repository provides a structured, clear, and continuously updated research & engineering guide to AI Agents—helping you build a solid mental model and navigate foundational papers, core mechanisms, and open-source systems.
 
-<p align="center">Read the guide · Search papers · Explore by topic</p>
+<p align="center">Read the guide · Explore structured courses · Run hands-on labs</p>
 
 <p align="center">
   <a href="https://ai-notes-red-two.vercel.app/">
@@ -14,24 +14,30 @@ Welcome to **AI-Agent-Guide**. This repository keeps its long-form guide and add
   </a>
 </p>
 
-Reading links: [Reading path](docs/reading-path.md) · [Paper table](docs/papers.md) · [October 2026 picks](docs/monthly-picks.md) · [Harness and coding agents](docs/harness.md) · [RSI and self-improvement](docs/rsi.md) · [Weekly maintenance SOP](docs/update-sop.md) · [CSV data](data/papers.csv).
+> **GitHub for the research map → Website for structured courses & labs:**
+> Visit **[AI Notes (ai-notes)](https://ai-notes-red-two.vercel.app/)** for interactive learning paths across **AI Agents, RL & Post-Training, AI Infra Source Reading, and Engineering Interviews** (70 lessons + runnable code labs, currently in Chinese).
 
-The catalog contains 92 papers as of November 16, 2026. This review adds CoReMem, H2E, and the extended drydock-eval paper, all first submitted on November 12, connecting next-task memory value, teacher-to-executor distillation, and confirmation of selected improvements. The previous 89-paper update and MOAE guide entry have been pushed; see the [current review](data/weekly-reviews/2026-11-16.md) for this batch and deferred candidates. October remains the latest monthly selection; November follows the month-end SOP. Inclusion does not mean independent replication.
+Quick links (Chinese docs): [Reading path](docs/reading-path.md) · [96-Paper catalog](docs/papers.md) · [Monthly picks](docs/monthly-picks.md) · [Harness & coding agents](docs/harness.md) · [RSI & self-improvement](docs/rsi.md) · [CSV data](data/papers.csv).
+
+> Weekly review · 2026-11-23: added [intent contracts](docs/papers.md#paper-2611.24025), [prompt-update acceptance](docs/papers.md#paper-2611.23651), [memory deployment lessons](docs/papers.md#paper-2611.26361), and the older [Agent Meltdowns](docs/papers.md#paper-2605.19149), revised this week. H2E now follows v3. See the [review and evidence limits](data/weekly-reviews/2026-11-23.md).
 
 ## How to use this guide
 
-The long-form guide below introduces foundational modules such as perception, planning, memory, and action. It is a conceptual starting point, not an exhaustive list of current techniques. For recent work, use the [monthly picks](docs/monthly-picks.md) alongside the [paper catalog](docs/papers.md):
+Follow the Table of Contents below to build a conceptual foundation from scratch, or jump directly to active research questions in the table below (full 96-paper table and experiment metadata are in the [paper catalog](docs/papers.md)):
 
-| Recent question | Start with | Where it fits |
+| Research Question | Start With | Where It Fits |
 | --- | --- | --- |
-| Which experience helps when the next coding task is unknown? | [CoReMem](https://arxiv.org/abs/2611.17316) · 2026-11-12 | Memory and coding: pair next-task runs from the same tree and count memory calls. |
-| Can a smaller executor learn from a complex agent? | [H2E](https://arxiv.org/abs/2611.16246) · 2026-11-12 | Perception and training: distinguish the navigation planner, action labels, and deployed VLA. |
-| Does a harness edit that leads a screen still help on other tasks? | [Extended drydock-eval paper](https://arxiv.org/abs/2611.16485) · 2026-11-12 | Harnesses, RSI, and evaluation: check request conformance, selection, and frozen confirmation separately. |
-| How are agents built, configured, and supervised? | [τ^τ-Bench](https://arxiv.org/abs/2609.04611), [Scanning the Harness](https://arxiv.org/abs/2609.07360), [The Work Behind Delegation](https://arxiv.org/abs/2609.24234) | Coding, tools, and safety; harnesses and human oversight span several modules. |
-| If goals change after actions, what counts as completion? | [DynaRev](https://arxiv.org/abs/2610.40133), [VeriCUA](https://arxiv.org/abs/2610.40578), [Prefix Executability](https://arxiv.org/abs/2610.40444) | Planning, GUI, and evaluation: distinguish current goals, executable steps, and persisted outcomes. |
-| What shortcuts can tool-use policies learn? | [Spurious Tool Use](https://arxiv.org/abs/2609.16268) | Tools and action; agent improvement. |
-| How should long-term memory and multi-agent coordination be evaluated? | [DolphinBench](https://arxiv.org/abs/2609.24971), [CoCoBench](https://arxiv.org/abs/2608.28266) | Memory and retrieval; multi-agent systems. |
-| How do we measure real use and downstream outcomes? | [DAREBench](https://arxiv.org/abs/2609.06059), [Are We There Yet?](https://arxiv.org/abs/2609.00524), [Who Finishes the Job?](https://arxiv.org/abs/2609.26847) | Evaluation, GUI, and coding; include cost, users, and follow-up fixes. |
+| How can we verify that a proposed action is authorized? | [Intent Contracts](docs/papers.md#paper-2611.24025) · [Agent Meltdowns](docs/papers.md#paper-2605.19149) | [Harnesses and runtime](docs/harness.md#意图声明授权与环境证据) |
+| How can we check whether an agent actually writes and reads its memory? | [How Much Should an Agent Remember?](docs/papers.md#paper-2611.26361) | Memory and retrieval |
+| What checks should a reusable prompt update pass before adoption? | [Safe Personal RSI](docs/papers.md#paper-2611.23651) | [Self-improvement](docs/rsi.md#提示更新的接受门与静态规则对照) |
+| Which experiences are worth carrying forward to an unknown next coding task? | [CoReMem](https://arxiv.org/abs/2611.17316) | Memory / Agentic Coding |
+| How can we distill planning experience from a complex agent into a lightweight executor? | [H2E](https://arxiv.org/abs/2611.16246) | Perception & Embodied Training |
+| Do harness improvements that win on dev screens hold up on unseen tasks? | [drydock-eval](https://arxiv.org/abs/2611.16485) | Harnesses & Evaluation |
+| How are real-world coding agents built, configured, and supervised? | [τ^τ-Bench](https://arxiv.org/abs/2609.04611), [Scanning the Harness](https://arxiv.org/abs/2609.07360), [The Work Behind Delegation](https://arxiv.org/abs/2609.24234) | Agentic Coding / Security & Oversight |
+| When goals change mid-run or UIs shift, how do we verify real completion? | [DynaRev](https://arxiv.org/abs/2610.40133), [VeriCUA](https://arxiv.org/abs/2610.40578), [Prefix Executability](https://arxiv.org/abs/2610.40444) | Planning, GUI & Process Verification |
+| What reward-hacking shortcuts do RL tool-use policies learn? | [Spurious Tool Use](https://arxiv.org/abs/2609.16268) | Action & Tool Learning |
+| How should we benchmark long-term memory and multi-agent coordination? | [DolphinBench](https://arxiv.org/abs/2609.24971), [CoCoBench](https://arxiv.org/abs/2608.28266) | Memory / Multi-Agent Systems |
+| How do we measure real-world cost, reliability, and post-merge maintenance? | [DAREBench](https://arxiv.org/abs/2609.06059), [Are We There Yet?](https://arxiv.org/abs/2609.00524), [Who Finishes the Job?](https://arxiv.org/abs/2609.26847) | Evaluation, GUI & Agentic Coding |
 
 ---
 
@@ -103,7 +109,7 @@ For any researcher looking to dive into the field of AI agents, starting with au
 
 - **A Survey on Large Language Model based Autonomous Agents** (Wang et al., 2023)
 
-  This paper proposes a holistic framework for LLM-driven autonomous agents, systematically surveying existing research across three dimensions: construction, application, and evaluation. Its profile, memory, planning, and action taxonomy organizes the literature; it is a reading framework rather than a required implementation standard.
+  This foundational survey proposes a holistic framework for LLM-driven autonomous agents, systematically organizing early research across construction, application, and evaluation using a "Profile—Memory—Planning—Action" taxonomy.
 
   [arXiv: 2308.11432](https://arxiv.org/abs/2308.11432)
 
@@ -151,35 +157,31 @@ For any researcher looking to dive into the field of AI agents, starting with au
 
 ## Anatomy of AI Agents: Core Architecture Blueprint
 
-This guide uses four analytical views—perception, planning and reasoning, memory, and action—to explain a decision loop. They need not correspond to four independent implementation modules. Wang et al.'s survey uses profile, memory, planning, and action; this guide separately introduces input processing as perception. These are different taxonomies, rather than a single universal standard.
-
-The LLM can propose decisions; the harness organizes context, executes tools, persists state, and applies stopping rules. For each module, ask how information reaches the model, who executes an action, and what evidence verifies its result.
-
-The four core modules are:
+A modern AI agent can be understood through four core functional views—**Perception, Planning & Reasoning, Memory, and Action**—forming a continuous decision loop with its environment:
 
 - **Perception Module**: The entry point for environmental interaction. Receives and processes raw information—user instructions, API responses, webpage screenshots—transforming it into structured representations the agent can understand.
 
-- **Planning & Reasoning Module**: The cognitive core. Receives processed information and conducts reasoning based on goals, breaking down complex objectives into specific, executable steps or subtasks.
+- **Planning & Reasoning Module**: The cognitive core. Receives processed information and breaks down complex objectives into concrete, executable steps or subtasks.
 
-- **Memory Module**: Enables learning and adaptation. Stores and retrieves information including short-term memory (current conversation context) and long-term memory (past experiences, user preferences, knowledge bases).
+- **Memory Module**: Enables cross-step and cross-session learning by storing and retrieving short-term memory (current conversation context) and long-term memory (past experiences, user preferences, knowledge bases).
 
-- **Action Module**: Translates planning decisions into actual environmental interactions by invoking external tools (code interpreters, search APIs, databases), enabling the agent to access real-time information and execute tasks.
+- **Action Module**: Translates internal decisions into real-world effects by invoking external tools (code interpreters, search APIs, databases, browsers).
 
-Information flows in a dynamic cycle: Perception → Planning (with Memory) → Action → Environment → Perception, repeating until the task is complete.
+Information flows in a dynamic cycle: **Perception → Planning (with Memory) → Action → Environment → Perception**, repeating until the task is complete.
 
-These four modules describe the **agent's internal decision loop**. A runnable system also needs an explicit harness: tool interfaces, context and state management, execution permissions, verification and stopping rules, and human oversight. The harness can affect outcomes and resource use even when the model is held fixed, so model name alone is not a full system description. See [Code as Agent Harness](https://arxiv.org/abs/2605.18747) and [DAREBench](https://arxiv.org/abs/2609.06059). This extends the introductory blueprint; it does not imply a single standard implementation.
+In production engineering, an agent's performance depends heavily not just on the LLM itself, but also on its external **Agent Harness**—the runtime scaffolding that organizes context, enforces tool permissions, persists state, and checks completion criteria (see [Code as Agent Harness](https://arxiv.org/abs/2605.18747) and our [Harness guide](docs/harness.md)).
 
 ### Architecture Blueprint — Key Papers
 
 - **Cognitive Architectures for Language Agents (CoALA)** (Sumers et al., 2023)
 
-  CoALA draws on cognitive science and symbolic AI to organize language agents through modular memory, internal/external action spaces, and a decision process. It helps compare how systems select actions and change state; the framework itself does not establish implementation superiority.
+  Draws on cognitive science and symbolic AI to organize language agents around modular memory, internal/external action spaces, and a clear decision cycle—providing a shared vocabulary for comparing agent architectures.
 
   [arXiv: 2309.02427](https://arxiv.org/abs/2309.02427)
 
 - **OpenAgents: An Open Platform for Language Agents in the Wild** (Xie et al., 2023)
 
-  OpenAgents offers data, plugin, and web agents with an interactive interface. Use it to study tools, hosting, and user workflows; platform examples do not validate every four-module architecture or establish cross-task reliability.
+  An open-source platform providing data, plugin, and web agents with an interactive UI—serving as a classic engineering reference for tool hosting and real-world user workflows.
 
   [arXiv: 2310.10634](https://arxiv.org/abs/2310.10634) / [GitHub](https://github.com/xlang-ai/OpenAgents)
 
@@ -223,7 +225,7 @@ Despite significant advances, several challenges remain in agent perception:
 
 - **OmniParser for Pure Vision Based GUI Agent** (Lu et al., 2024)
 
-  OmniParser combines interactable-region detection, icon descriptions, and OCR to provide marked screenshots and structured elements for GPT-4V action selection. Its original evaluation covers grounding and step-level actions on SeeAssign, ScreenSpot, Mind2Web, and AITW. Repeated elements, box granularity, and icon semantics remain failure sources; these results do not establish reliable completion on arbitrary screens.
+  Microsoft's pure-vision UI parser combining interactable-region detection, icon descriptions, and OCR to generate structured element overlays for VLMs—significantly improving element selection accuracy on benchmarks such as ScreenSpot and Mind2Web.
 
   [arXiv: 2408.00203](https://arxiv.org/abs/2408.00203) / [GitHub](https://github.com/microsoft/OmniParser)
 
@@ -235,7 +237,7 @@ Despite significant advances, several challenges remain in agent perception:
 
 - **UI-TARS: Pioneering Automated GUI Interaction with Native Agents** (ByteDance, 2025)
 
-  UI-TARS studies a native visual policy mapping screenshots and interaction history to a unified action space, with GUI training, reflective traces, and DPO comparisons. Its 2025 grounding, offline-action, and online-task results use distinct protocols; OSWorld step budgets and CallUser/no-Finish handling matter. Compare this with external parsing, rather than treating historical scores as current rankings. The [original author repository](https://github.com/bytedance/UI-TARS) was archived on November 9, 2026 and remains a historical entry point.
+  An end-to-end native visual GUI agent mapping screenshots and interaction history directly to a unified action space via GUI-specific training, reflective traces, and DPO (note: the original repo was archived in Nov 2026).
 
   [arXiv: 2501.12326](https://arxiv.org/abs/2501.12326) / [GitHub](https://github.com/bytedance/UI-TARS)
 
@@ -245,9 +247,10 @@ Despite significant advances, several challenges remain in agent perception:
 
   [arXiv: 2401.10935](https://arxiv.org/abs/2401.10935) / [GitHub](https://github.com/njucckevin/SeeClick)
 
-For GUI tasks, separate **element grounding → action execution → persisted state change → satisfaction of the current goal**. Finding a Save button does not establish that a file was saved. [VeriCUA](https://arxiv.org/abs/2610.40578) combines screenshots, history, and file/database probes after execution, attaching source and temporal evidence. Online verification can abstain; unresolved offline cases fall back to the initial visual judge. These are distinct protocols, with instrumentation and extra-call costs; see the [harness chapter](docs/harness.md#界面结果取证与模型接管).
+**Post-action verification and executor distillation:**
+In real GUI workflows, locating a button does not prove the task succeeded—the full pipeline is **element grounding → action execution → persisted state change → goal satisfaction**. [VeriCUA](https://arxiv.org/abs/2610.40578) inspects screenshots, action history, and underlying files/databases after execution to catch false-positive UI completions (see our [Harness guide](docs/harness.md#界面结果取证与模型接管)). For embodied navigation, [H2E](https://arxiv.org/abs/2611.16246) relabels LLM planner tool calls and VLA motions into unified task actions, trains a lightweight VLA executor, and removes the heavy planner at deployment.
 
-**From planner assistance to executor learning.** In embodied navigation, [H2E](https://arxiv.org/abs/2611.16246) relabels both planner-tool and VLA motion under the original task, masks training loss on steps moving away from the goal, and adds stop labels near it. Only the VLA is deployed after training. Distinguish who acts from who learns: training-time goal distance differs from deployment observations, and reaching differs from stopping correctly. REVERIE-CE simulation results do not establish GUI or real-robot performance; recovery requiring the planner’s map and memory remains unlearned.
+H2E’s November 16–17 revisions add NavRAG-CE and a second training round using teacher recovery sessions from failed rollouts. The earlier v1-only scope should therefore be updated: recovery is measured, with a specific off-track definition, rather than universally solved. The 100-episode teacher comparison uses a different distillation recipe from the main benchmarks; these simulated navigation results are separate from GUI evidence. [Catalog details](docs/papers.md#paper-2611.16246).
 
 ---
 
@@ -286,15 +289,10 @@ The planning and reasoning module is the agent's "brain," responsible for formul
 
 ### From thought search to feedback-guided action search
 
-[LATS](https://arxiv.org/abs/2310.04406) connects ReAct and ToT: MCTS selects and expands trajectories, estimates value after observing the environment, backpropagates terminal feedback, and retains failure reflections. Read it before SWE-Search to distinguish searching thoughts from searching executable actions.
-
-These techniques are composable design choices. Report nodes, trajectories, tokens, and environment calls together. LATS uses correctness-oracle feedback for HotpotQA and assumes reversible states; backtracking in a benchmark does not authorize reversing real payments or production changes. See the [catalog record](docs/papers.md#paper-2310.04406).
-
-For code repair, first compare a fixed workflow: [Agentless](https://arxiv.org/abs/2407.01489) prescribes localization, generation, and validation; SWE-agent lets the model select actions; SWE-Search adds branching search. Evaluate the additional freedom under matched tasks, models, and budgets. Workflow complexity alone does not establish capability.
-
-**Another classical branch: plan, then fill evidence.** [ReWOO](https://arxiv.org/abs/2305.18323) has a Planner write dependencies with evidence variables, Workers fill them through tool calls, and a Solver combine the results. This reduces repeated observation context. It complements ReAct: advance planning can fail when the environment must first be discovered. Historical QA token savings do not establish gains for actions with side effects.
-
-**What if the goal changes during execution?** [DynaRev](https://arxiv.org/abs/2610.40133) delivers additive or overriding instructions at semantic milestones, extending fixed-goal planning. Track active constraints, superseded constraints, and reusable browser progress before replanning; revising the goal differs from resetting the environment. WRA covers fired revisions, while final constraints are evaluated across the 181-task cohort. Rewrite gains on a limited subset do not establish universal benefits. These revisions come from the user; treating webpage text as lower-trust content is an editorial connection to permission boundaries.
+- **Searching executable actions ([LATS](https://arxiv.org/abs/2310.04406))**: Combines ReAct and ToT using Monte Carlo Tree Search (MCTS) over live environmental feedback, backpropagating rewards and saving failure reflections. Best suited for reversible sandboxes (coding, web navigation); irreversible actions (payments, production writes) require sandboxing or explicit human confirmation.
+- **Fixed pipelines vs. dynamic search**: In code repair, [Agentless](https://arxiv.org/abs/2407.01489) uses a deterministic three-stage pipeline (localize → sample → validate), SWE-agent lets the LLM choose tools dynamically, and SWE-Search adds branching search. Each trades off token cost against exploration freedom.
+- **Plan first, fill evidence later ([ReWOO](https://arxiv.org/abs/2305.18323))**: A Planner drafts a dependency graph with placeholder variables, Workers run tool calls in parallel, and a Solver aggregates results—cutting repeated observation context overhead when tool dependencies are predictable.
+- **Handling mid-run goal changes ([DynaRev](https://arxiv.org/abs/2610.40133))**: When users add or revise instructions mid-execution, DynaRev tracks active constraints, superseded requirements, and reusable progress before replanning—avoiding wasteful full resets.
 
 ### Reasoning Tech Comparisons
 
@@ -310,23 +308,21 @@ For code repair, first compare a fixed workflow: [Agentless](https://arxiv.org/a
 
 ## Memory Module: Enabling Learning and Context Awareness
 
-Memory lets past information influence later decisions. Separate currently visible context, experience persisted across sessions, and knowledge in model parameters, then examine how each is used. Storing history is a mechanism; durable behavioral improvement is an outcome that requires evaluation.
+Memory allows an agent to leverage past interactions and accumulated experience in future decisions. In practice, agent memory spans three substrates: **currently visible context, persistent external storage across sessions, and knowledge encoded in model weights**.
 
 ### Memory Architecture
 
-Begin with two common forms: visible context and external persistent storage. This is not an exhaustive taxonomy; MCCL below also covers parametric and hybrid substrates.
+- **Short-Term Memory**: The context visible to the model on its current call, bounded by the context window. Harnesses typically manage it via sliding windows, summarization, or selective reloading.
 
-- **Short-Term Memory**: The context visible to the model on its current call, bounded by its window. Out-of-window information cannot directly affect that call; persistence, compaction, and reloading depend on the harness and storage implementation.
-
-- **Long-Term Memory**: State that preserves facts, preferences, and task experience across sessions, often in files, databases, or indexes. Later tasks still require correct retrieval, interpretation, and revision; persistence alone does not establish a learned capability.
+- **Long-Term Memory**: Facts, user preferences, and task experiences persisted across sessions in files, databases, or vector indexes and retrieved on demand.
 
 ### Core Mechanisms for Long-Term Memory
 
-- **Retrieval-Augmented Generation (RAG)**: A mechanism for retrieving external knowledge or experience into the current context; a knowledge corpus, episodic memory, and visible context should be described separately. When responding to a user request, first retrieve the most relevant information from an external knowledge base (documents, databases), then augment the LLM's input with retrieved information as additional context. Its benefit depends on source quality, recall, and how the model uses the evidence; retrieval does not guarantee a correct answer.
+- **Retrieval-Augmented Generation (RAG)**: Retrieves relevant chunks from external knowledge bases or experience stores into the prompt before generating an answer, grounding outputs in verifiable sources and reducing hallucination.
 
-- **Agentic RAG**: An evolution of standard RAG where one or more autonomous agents are integrated into the retrieval pipeline. These agents can dynamically manage retrieval strategies—reformulating queries through self-reflection, deciding when and from which data source to retrieve, or collaborating on complex multi-step queries—making the entire retrieval process more intelligent and flexible.
+- **Agentic RAG**: Integrates autonomous decision-making into retrieval—allowing agents to reformulate queries, pick data sources dynamically, or execute multi-hop retrieval loops for complex questions.
 
-- **Vector Databases**: The underlying technical support for efficient RAG. Converts unstructured data (text, images) into high-dimensional vectors via embedding models for storage. During retrieval, the user query is also converted to a vector and semantic similarity search is performed to find the most conceptually related stored vectors. Compare semantic and keyword retrieval on task-specific recall, precision, and cost.
+- **Vector Databases**: Infrastructure for semantic similarity search over embeddings; in production, vector retrieval is often paired with keyword search (BM25) for balanced recall and precision.
 
 ### Related Papers & Resources
 
@@ -358,19 +354,16 @@ Begin with two common forms: visible context and external persistent storage. Th
 
 ### From storing memory to influencing outcomes
 
-Separate **storage → retrieval → visible context → task outcome → future retention**. [MemGPT](https://arxiv.org/abs/2310.08560) explains tiered storage, paging, and control flow; A-MEM explains organization. These address complementary questions.
+Turning stored records into real task gains requires five stages: **Storage → Retrieval → Context Injection → Decision Impact → Eviction & Revision**. Recent works tackle each bottleneck:
 
-**How does failure inform the next attempt?** Classical [Reflexion](https://arxiv.org/abs/2303.11366) converts evaluation feedback into verbal lessons, retains bounded memory, and retries with fixed model weights. It connects ReAct and memory, rather than modifying the improver. ALFWorld’s cumulative success over up to twelve trials differs from one-run success. Generated tests can misjudge outcomes, and MBPP Python includes a negative result; compare task outcomes and retry budgets.
+- **Tiered paging & control ([MemGPT](https://arxiv.org/abs/2310.08560))**: Borrows OS virtual-memory paging to swap data between bounded context windows and external storage via function calls (complementary to A-MEM's graph/Zettelkasten organization).
+- **Verbal failure reflection ([Reflexion](https://arxiv.org/abs/2303.11366))**: Converts trial feedback into natural-language lessons stored in bounded memory so a fixed-weight model avoids repeating mistakes across retries.
+- **Estimating untested memory utility ([CMP](https://arxiv.org/abs/2610.02070))**: A record never retrieved into context has not been tested yet; random exposure slots separate truly useless memories from unexposed ones.
+- **Routing experience by substrate ([Component Routing](https://arxiv.org/abs/2610.01787))**: Splits GUI experience into locators, procedures, state facts, and lessons to test which belong in prompt context vs. fine-tuned weights.
+- **Continual learning & fair comparisons ([MCCL](https://arxiv.org/abs/2610.29357) / [Harness the Memory](https://arxiv.org/abs/2608.15008))**: Benchmarks memory configurations under matched retrieval breadth and write/read overhead, distinguishing content updates from policy updates on unseen conversations.
+- **Valuing memory for the next unknown task ([CoReMem](https://arxiv.org/abs/2611.17316))**: Runs paired next-task rollouts from the same inherited repo state (with vs. without memory) to keep only file locators and checks that actually help solve subsequent issues.
 
-[CMP](https://arxiv.org/abs/2610.02070) adds a measurement boundary: a memory never exposed in context has not been tested, so absent contribution does not establish uselessness. Random exposure improves identification, but the experimental pool uses relevance labels and future-query retention remains unresolved. Read it as an evaluation method, rather than a deployment-ready eviction policy.
-
-**Where should experience go?** [Component Routing](https://arxiv.org/abs/2610.01787) splits GUI experience into locators, procedures, state facts, and lessons, then compares context retrieval with weight updates. This connects memory to GUI training and distinguishes information access from policy learning. Three models and two environments do not establish a universal routing rule; training compute and prompt tokens are not equalized. [CMP v3](https://arxiv.org/html/2610.02070v3) also makes pool-size exposure costs and the fixed-store variance assumption explicit; an evolving memory stream needs additional treatment (checked 2026-10-12).
-
-**From memory contents to continual learning.** [MCCL](https://arxiv.org/abs/2610.29357) separates where state is stored, what experience it represents, and which policy manages it. Updating contents differs from updating the management policy. Retrieval hits alone do not establish continual learning: evaluate retained gains after delay and interference, adaptation to changed facts, and transfer. Its limited experiments and theoretical scaling illustrations are different evidence. This connects MemGPT access, A-MEM organization, CMP utility estimation, and RSI modification targets.
-
-**How should memory configurations be compared?** [Harness the Memory](https://arxiv.org/abs/2608.15008) fixes the harness while comparing representation and write/read/management operations. QA recall and action experience can favor different retrieval breadths; count writing and management costs too. Its skill-controller and KV-cache configurations approximate the reference methods, and equal top-k is not equal token budget. Router gains under random question folds disappear on unseen conversations, separating question holdout from history transfer. This August paper, revised in November, supplements MemGPT/A-MEM.
-
-**Then ask whether the next task benefits.** [CoReMem](https://arxiv.org/abs/2611.17316) pairs next-task runs from the same inherited repository tree, valuing trajectory segments before retaining locations and executable checks. A separate training path uses resolution-first, step-sensitive rewards and routes extra memory-value credit to provenance-marked steps. This extends CMP’s exposure identification and configuration comparisons. Anchor matching is a use proxy; distinguish a fixed memory layer, actor weight updates, and memory-call costs.
+[How Much Should an Agent Remember?](https://arxiv.org/abs/2611.26361) follows the write path: mine lessons, consolidate them while retaining source/count metadata, then verify that the agent actually reads them. Frequent lessons can still be wrong. Test-set configuration selection and limited repeats constrain its model-dependent memory-dose observations. Separately, Safe Personal RSI’s single-entry deletion probe allowed re-extraction from retained sources; it did not test the distinct subject-level forgetting path. See [memory validation and forgetting](docs/rsi.md#单条删除与持续遗忘分开检验).
 
 ---
 
@@ -404,15 +397,15 @@ This represents a new height of agent capability: from tool *user* to tool *crea
 
 ### MCP: Model Context Protocol
 
-The **Model Context Protocol (MCP)** standardizes interfaces for clients and servers to exchange tools, resources, and related information. Task state, business authorization, and execution outcomes remain implementation responsibilities.
+The **Model Context Protocol (MCP)** is an open standard introduced by Anthropic that acts like a "USB-C port for AI agents"—standardizing how clients and servers exchange tools, resources, and context without custom glue code.
 
-Separate the protocol interface, server/downstream authentication and authorization, and harness/environment process, file, and network permissions. MCP support does not itself guarantee isolation. The official [security practices](https://modelcontextprotocol.io/docs/2025-11-25/tutorials/security/security_best_practices) discuss token passthrough, confused-deputy risks, and scope minimization (cited material rechecked 2026-11-16).
-
-**From calls to recovery:** The MCP [tool specification](https://modelcontextprotocol.io/specification/2025-11-25/server/tools) distinguishes protocol errors from `isError` execution errors. A timeout can also leave a write outcome unknown. Check the operation receipt before deciding to retry; see the [harness recovery example](docs/harness.md#写入超时后先确认状态2026-10-19). [AgentPerturb](https://arxiv.org/abs/2610.21624) adds controlled input perturbations, but its Toolathlon results cover only 25/79 tasks with complete sweeps and do not estimate a deployment-wide fault rate.
-
-**Check legal calls separately from task completion.** [Prefix Executability](https://arxiv.org/abs/2610.40444) locates the first invalid action under tool contracts and visible state, reporting terminal success and recovery separately. Valid argument syntax does not establish satisfied dependencies, and later recovery does not erase an invalid prefix. Fixed-cohort PEC can decrease when trajectories end early, so it is not a depth-conditional error rate. This adds a process layer between MCP interfaces and task scoring; see the [harness chapter](docs/harness.md#从接口契约到过程可执行性).
-
-**Where do training environments come from?** [ToolSpace](https://arxiv.org/abs/2611.05036) mines data, state, and retry relations from adjacent calls, walks through state-compatible tools, then reverse-synthesizes tasks and assertions and retains replayed paths. Some returns are cached, and checks are generated by the same pipeline. A replay witness establishes an executable path in that environment; assertion coverage, alternative solutions, contamination, and live-service fidelity need separate evidence. Native metrics, local reruns, and external scores do not define one deployment success rate.
+When deploying MCP in production, focus on three engineering practices:
+1. **Layered permissions & isolation**: MCP handles the communication protocol; authentication, downstream authorization, and OS/network sandboxing must still be enforced by servers and the host harness under least privilege (see official [MCP security practices](https://modelcontextprotocol.io/docs/2025-11-25/tutorials/security/security_best_practices)).
+2. **Error classification & timeout recovery**: The MCP [tool specification](https://modelcontextprotocol.io/specification/2025-11-25/server/tools) separates protocol errors from tool execution errors (`isError`). On write timeouts, always query the operation receipt before retrying idempotently (see our [harness recovery flow](docs/harness.md#写入超时后先确认状态2026-10-19)).
+3. **Process validity & synthetic environments**:
+   - [AgentPerturb](https://arxiv.org/abs/2610.21624) evaluates robustness under missing, noisy, and corrupted tool/context inputs.
+   - [Prefix Executability](https://arxiv.org/abs/2610.40444) pinpoints the first invalid tool step under contracts and visible state, separating step validity from final task recovery.
+   - [ToolSpace](https://arxiv.org/abs/2611.05036) mines data/state dependencies across tool calls to synthesize replayable training environments.
 
 **Key Resources:**
 - [Official MCP Specification](https://modelcontextprotocol.io/)
@@ -472,9 +465,10 @@ Agentic coding represents one of the most commercially impactful frontiers of AI
 
   [arXiv: 2410.20285](https://arxiv.org/abs/2410.20285) / [GitHub](https://github.com/aorwall/moatless-tools)
 
-**Understanding delivery:** A generated patch, passing tests, human acceptance, post-merge maintenance, and live-service recovery are distinct observations. Use the [harness chapter](docs/harness.md) to separate interfaces, context, and verification, then [Who Finishes the Job?](https://arxiv.org/abs/2609.26847) for follow-up maintenance. [Incident-Arena](https://arxiv.org/abs/2610.00648) extends evaluation to recovery under sustained load and restart while preserving data and permitted change scope. Its limited tasks and model/harness pairs do not establish a commercial product ranking.
+**From patch generation to real-world delivery:**
+Generating a passing patch is only part of software engineering. Real-world readiness requires examining **runtime harness design ([Harness guide](docs/harness.md)), post-merge follow-up fixes ([Who Finishes the Job?](https://arxiv.org/abs/2609.26847)), and live-service fault recovery under load and restarts ([Incident-Arena](https://arxiv.org/abs/2610.00648))**.
 
-**Fixed-workflow baseline:** [Agentless](https://arxiv.org/abs/2407.01489) localizes edits, samples patches and reproduction tests, and selects a patch through validation and voting without autonomous tool-action selection. Its v2 generates 40 patches and 40 tests per issue and reports 96/300 on SWE-bench Lite. Generated and existing tests can remain incomplete. This is a historical baseline, not a current ranking or proof under matched budgets. [Author-linked code](https://github.com/OpenAutoCoder/Agentless) was checked but not run.
+**Fixed-workflow baseline:** [Agentless](https://arxiv.org/abs/2407.01489) provides a clean non-agent baseline (localize → sample patches/tests → vote) without autonomous tool loops—a useful reference point for measuring whether extra agent autonomy pays for its token cost. ([GitHub](https://github.com/OpenAutoCoder/Agentless))
 
 ### Related Papers & Resources
 
@@ -524,7 +518,7 @@ Understanding the modular architecture of agents is the theoretical foundation, 
 
    **Core Positioning**: A framework focused on multi-agent conversation.
 
-   **Highlights**: Microsoft Research's AutoGen is designed to simplify building multi-agent collaboration systems. It provides powerful abstractions for defining agents with different roles, capabilities, and conversation patterns, and coordinates their interactions to complete complex tasks. If you need to build a "virtual team" of expert agents ("programmer," "tester," "project manager"), AutoGen is a historical example of multi-agent orchestration. As of 2026-10-05, its [official repository](https://github.com/microsoft/autogen) states that it is in maintenance mode and directs new users to Microsoft Agent Framework; this does not establish the successor's performance.
+   **Highlights**: Microsoft Research's AutoGen provides abstractions for defining role-based conversable agents and coordinating multi-agent workflows (note: as of Oct 2026 its [official repository](https://github.com/microsoft/autogen) is in maintenance mode, pointing new projects to Microsoft Agent Framework).
 
    Repository: [AutoGen GitHub](https://github.com/microsoft/autogen)
 
@@ -573,25 +567,19 @@ This project uses a **skill-based architecture**, encapsulating high-level acade
 
 ---
 
----
-
 ## Self-Evolving Agents: Self-Improvement and Adaptation Mechanisms
 
-Classify self-improvement by **the component changed, the feedback source, and the adaptation stage**. Experience accumulation, inference-time reflection, training-time weight updates, and recursive modification of an agent program involve different mechanisms and evidence. The label does not guarantee autonomy or sustained growth.
+"Self-evolving agents" span a spectrum from accumulating experience to rewriting their own source code. It helps to classify them along three axes: **what changes, where feedback comes from, and whether improvements persist across runs**.
 
 ### Adaptation mechanisms and the RSI boundary
 
-1. **Skills and memory**: Voyager stores skills, A-MEM organizes experience, and [Reflexion](https://arxiv.org/abs/2303.11366) turns feedback into lessons for another attempt. Adding memory under fixed rules does not demonstrate recursive changes to the improver or sustained gains.
-2. **Prompts and programs**: [GEPA](https://arxiv.org/abs/2507.19457) optimizes prompts; [Darwin Gödel Machine](https://arxiv.org/abs/2505.22954) modifies agent code. Check whether accepted versions participate in further improvement, whether feedback is independent, and whether old tasks regress.
-3. **Model training**: DeepSeek-R1 and Agent-R1 provide parameter-learning background. Reflection by a fixed trained model does not demonstrate runtime modification of its own improver; preference optimization such as DPO should not uniformly be described as online self-play.
+1. **Skill & Memory Accumulation**: Voyager builds a reusable skill library, A-MEM links dynamic memory nodes, and [Reflexion](https://arxiv.org/abs/2303.11366) distills trial failures into verbal lessons. These grow external experience while keeping the core model and improver fixed.
+2. **Prompt & Program Self-Modification (RSI)**: [GEPA](https://arxiv.org/abs/2507.19457) evolves prompts and workflows, while [Darwin Gödel Machine](https://arxiv.org/abs/2505.22954) lets an agent edit its own codebase and retain benchmark-verified descendants—true **Recursive Self-Improvement (RSI)**. The key test is whether accepted versions become the improver in the next round and generalize to held-out tasks.
+   - [VERSE](https://arxiv.org/abs/2610.02616) separates inner executor-harness edits from outer optimizer-harness edits so accepted optimizer versions drive future rounds.
+   - [Meta²](https://arxiv.org/abs/2611.05139) learns reusable `act/hold/avoid` guidance offline, freezes it at deployment, and resets per-task harness patches after each run to prevent cross-task regressions.
+3. **Parametric Self-Evolution & Agentic RL**: DeepSeek-R1 and Agent-R1 train reasoning and tool-use policies via verifiable rewards; [MASS](https://arxiv.org/abs/2610.12176) alternates workflow search with shared-weight fine-tuning; [Terminal-RSI](https://arxiv.org/abs/2610.22192) combines verified-trajectory SFT with critic-inheriting policy optimization (see our [RSI guide](docs/rsi.md)).
 
-The [RSI chapter](docs/rsi.md) compares GEPA, Gödel Agent, DGM, and AIDE² and separates AlphaEvolve's target-algorithm improvement. External validation, held-out tasks, and rollback conditions must be reported without assuming universal gains.
-
-[VERSE](https://arxiv.org/abs/2610.02616) separates changes to the executor's harness from changes to the optimizer's own harness, whose accepted version participates in later rounds; model weights and verification interfaces stay fixed. It complements the program-evolution path and GEPA's prompt evolution. Main results have one evolution run per condition; avg@3 repeats test evaluation. Self-evolution does not always improve over VERSE without self-evolution. Read held-out outcomes and full costs together.
-
-**How long does an adaptation persist?** [Meta²](https://arxiv.org/abs/2611.05139) learns act/hold/avoid guidance offline, freezes it at deployment, and edits only the current run’s harness. Each new run resets to the seed. This complements VERSE’s inheritance of improver versions: local edits never update the global guidance during evaluation. Online evolution alone does not establish recursive improvement of the improver, and repeated execution differs from repeated guidance learning.
-
-**Parameter-learning extension:** [MASS](https://arxiv.org/abs/2610.12176) alternates workflow search and shared-model training, returning the new model to execution, optimization, and in-loop evaluation. Final external reporting is separate. [Terminal-RSI](https://arxiv.org/abs/2610.22192) alternates verified-trajectory supervision with critic-inheriting policy optimization. These extend the parameter-learning route; their names do not demonstrate autonomous runtime rewriting of the improvement algorithm. See the [RSI feedback discussion](docs/rsi.md#参数更新与反馈来源2026-10-19).
+[Safe Personal RSI](https://arxiv.org/abs/2611.23651) adds an acceptance gate for reusable prompt edits: compare the current and proposed versions, diagnose failures, repair, and keep the parent if no candidate passes. Weights and runtime stay fixed. Its known attack families and a matching broad handwritten rule limit claims of autonomous improvement; see [the RSI discussion](docs/rsi.md#提示更新的接受门与静态规则对照).
 
 ### Related Papers & Resources
 
@@ -603,37 +591,38 @@ The [RSI chapter](docs/rsi.md) compares GEPA, Gödel Agent, DGM, and AIDE² and 
 
 - **A Survey of Self-Evolving Agents: On Path to Artificial Super Intelligence** (2025)
 
-  This survey organizes self-evolving agents by evolving component, adaptation stage, and feedback mechanism; consult the paper for individual methods and evidence.
+  Organizes self-evolving agent research by evolving component (model, memory, tools, architecture), adaptation stage, and feedback loop.
 
   [arXiv: 2507.21046](https://arxiv.org/abs/2507.21046)
 
 - **DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning** (DeepSeek, 2025)
 
-  Background on model reasoning training. R1-Zero studies pure RL without SFT; R1 uses cold-start data, SFT, and multi-stage RL. Neither directly establishes runtime RSI of an environment-interacting agent.
+  Demonstrates how pure RL (R1-Zero) and cold-start multi-stage RL (R1) incentivize long-horizon reasoning and self-reflection in foundation models.
 
   [arXiv: 2501.12948](https://arxiv.org/abs/2501.12948) / [GitHub](https://github.com/deepseek-ai/DeepSeek-R1)
 
 - **Agent-R1: Training Powerful LLM Agents with End-to-End Reinforcement Learning** (2025)
 
-  Studies end-to-end reinforcement learning of multi-step agents using environmental feedback; applicability depends on the training environments and rewards.
+  Applies end-to-end reinforcement learning with environmental feedback to optimize multi-step tool calling and planning.
 
   [arXiv: 2511.14460](https://arxiv.org/abs/2511.14460) / [GitHub](https://github.com/AgentR1/Agent-R1)
 
 - **MOAE: Multi-Objective Agent Evolution with Pareto-Preserving Search** (2026)
 
-  Uses objective-specific diagnostics to mutate a fixed agent’s per-query execution policy and evaluates each mutation through a fresh complete rollout. It preserves empirically nondominated candidates before applying deployment constraints, studying task performance, trajectory quality, and safety on TravelPlanner and AgentDojo without parameter updates.
+  Mutates execution policies under a fixed model using multi-objective diagnostics (task success, trajectory quality, and safety), retaining Pareto-nondominated candidates on TravelPlanner and AgentDojo without weight updates.
 
   [arXiv: 2609.05992](https://arxiv.org/abs/2609.05992)
 
+---
+
 ## Multi-Agent Systems (MAS): Emergent Intelligence through Collaboration
 
-Multi-agent systems organize tasks through division of labor, communication, and shared artifacts. Role design is a mechanism choice; gains over a single agent require comparisons under matched tasks, budgets, and tools, including handoff costs and error propagation.
+Multi-agent systems coordinate tasks through role division, communication, and shared artifacts. When designing MAS, compare against a strong single-agent baseline under matched budgets to ensure collaboration gains outweigh handoff overhead and error cascades.
 
-[RAC](https://arxiv.org/abs/2610.00980) complements fixed-role examples with runtime selection. Selection has the highest observed mean in three research-agent hosts, while jointly adding contracts and verification reduces those means. This single-seed, small-sample result does not isolate either component or establish that collaboration is useless. Retain MetaGPT and ChatDev to study fixed workflows; use RAC to examine the cost of added coordination.
-
-[MASS](https://arxiv.org/abs/2610.12176) adds a training-stage view: orchestrator and worker traces train one shared model. This differs from RAC runtime selection. Check artifact delivery, quality on a common completed set, and total training cost separately; role count alone is not evidence of gains.
-
-**What is shared, and when is it visible?** [Muffin](https://arxiv.org/abs/2610.31355) retains private reasoning locally and appends source- and step-tagged findings to a shared buffer. Peers read a bounded recent window at their next step without waiting for a global round. This adds a communication mechanism, rather than cross-session memory. Append-only storage avoids overwrites but does not establish factual correctness, freshness, or consistent external actions. QA/reasoning results complement CoCoBench's executable coordination tests.
+Recent research highlights three architectural directions:
+- **Runtime collaborator selection ([RAC](https://arxiv.org/abs/2610.00980))**: Dynamically picks the next collaborator based on execution state, showing that piling on heavy contracts and verification rules can actually hurt coordination efficiency.
+- **Shared-weight training ([MASS](https://arxiv.org/abs/2610.12176))**: Feeds both orchestrator and worker traces into fine-tuning a single shared model across roles.
+- **Asynchronous shared buffers ([Muffin](https://arxiv.org/abs/2610.31355))**: Keeps private chain-of-thought local while appending source-tagged intermediate findings to a shared buffer that peers read asynchronously without blocking for a full round.
 
 ### MAS Paradigm & Architectures
 
@@ -664,7 +653,7 @@ Multi-agent systems organize tasks through division of labor, communication, and
 
 - **MetaGPT: Meta Programming for A Multi-Agent Collaborative Framework** (Hong et al., 2023)
 
-  Uses Standard Operating Procedures (SOPs) to meta-program LLMs, integrating human workflows into multi-agent collaboration. Organizes requirements, design, and code through roles and structured artifacts; correctness still requires task verification and cannot be inferred from role count or document completeness.
+  Uses Standard Operating Procedures (SOPs) to meta-program LLMs, organizing requirements, design, and code generation through structured roles and artifacts.
 
   [arXiv: 2308.00352](https://arxiv.org/abs/2308.00352) / [GitHub](https://github.com/geekan/MetaGPT)
 
@@ -678,7 +667,7 @@ Multi-agent systems organize tasks through division of labor, communication, and
 
   [arXiv: 2307.07924](https://arxiv.org/abs/2307.07924) / [GitHub](https://github.com/OpenBMB/ChatDev)
 
-- **Development Framework**: AutoGen illustrates multi-agent conversation; see the framework section and [official repository](https://github.com/microsoft/autogen) for its maintenance status and successor.
+- **Development Frameworks**: AutoGen (maintenance mode) and CrewAI provide practical starting points for multi-agent conversation and crew orchestration (see the Frameworks section above).
 
 ---
 
@@ -694,25 +683,19 @@ As agents become increasingly autonomous and are empowered to take actions in th
 
 ### From outcomes to evaluation protocols
 
-- **Who acts on the environment?** [τ²-Bench](https://arxiv.org/abs/2506.07982) gives both agents and simulated users tools in shared state. No-User/Oracle Plan comparisons separate reasoning and coordination. [τ^τ-Bench](https://arxiv.org/abs/2609.04611) evaluates constructing and delivering an agent; these are distinct benchmarks.
-- **What counts as finished?** [Incident-Arena](https://arxiv.org/abs/2610.00648) checks recovery and safety under load and restart. Functional verifiers determine primary success; its separate reward-hacking analysis uses an LLM judge.
-- **What are the denominator and budget?** Report task version, sample size, repetitions, tokens, latency, cost, permissions, and stopping rules. Consistent success in `pass^k` differs from at-least-one success in `pass@k`. Separate agent failures, tool/verifier faults, and missing results; report uncertainty and distinguish simulated from real users.
-- **Whose time is a horizon?** The [METR statistical audit](https://arxiv.org/abs/2610.12466) re-estimates horizons on 228 software tasks and 26 AIs. A 50% horizon is the human completion time associated with tasks an AI solves with 50% probability, rather than autonomous runtime. Nonlinear difficulty mappings and family/run dependence matter; a horizon multiplier need not imply the same capability multiplier. This does not reject the observed progress trend or establish deployment representativeness.
+Modern agent evaluation goes beyond single-run accuracy to cover **interaction protocols, step validity, cost, and recovery**:
 
-- **How complete are the requirements?** [FDE-Gym](https://arxiv.org/abs/2610.22350) varies instruction information while holding the customer environment and acceptance criteria fixed. Its 95 tasks include shared-scenario variants; L0–L2 cover only 20 originals. Scripted customers, assigned contact costs, and a pending human baseline limit transfer. Separate normalized uplift, incidents, contact costs, and resolution rate.
-- **Where does incorrect information enter?** [AgentPerturb](https://arxiv.org/abs/2610.21624) builds paired tests by input source and corruption type. Record recovery paths, additional cost, unscored runs, and subset selection. Single-trajectory comparisons and LLM semantic validation do not replace repeated execution or a full task audit.
-
-- **Are truthful observations sufficient?** [EpiSEM-Bench](https://arxiv.org/abs/2610.31650) suppresses safety evidence while keeping remaining facts true, pairing permissible and prohibited worlds. Useful recovery requires seeking evidence and then completing or withholding the action appropriately. Read unsafe-task rates, useful recovery, and legitimate completion jointly; see the [harness example](docs/harness.md#证据缺失先查证再决定执行).
-- **How do process and outcome relate?** [Prefix Executability](https://arxiv.org/abs/2610.40444) separates uninterrupted executability from success after an error; [VeriCUA](https://arxiv.org/abs/2610.40578) checks outcome evidence. Executable steps can still miss the goal, and agreement with a reference judge is imperfect evidence. Include verification calls, latency, abstentions, and their denominators.
-- **Does the harness implement its contract?** [Doc2Harness](https://arxiv.org/abs/2610.20344) freezes generated harnesses and drives them with a scripted model, checking requests, files, exit codes, and output. Positive controls exclude apparent passes when the behavior was never exercised. Contract correctness, downstream task capability, and RSI gains require distinct evidence.
-
-- **Does a screen lead survive confirmation?** The [extended drydock-eval paper](https://arxiv.org/abs/2611.16485) separates container isolation, request/template conformance, and task comparisons. Three screen leaders failed their registered confirmation rules; this does not establish zero effect. Record budgets, failure denominators, repository dependence, and holdout reuse; see the [harness comparison procedure](docs/harness.md#筛选领先与确认改进).
+- **Interactive & end-to-end benchmarks**: [τ²-Bench](https://arxiv.org/abs/2506.07982) tests agents and users acting in shared state; [τ^τ-Bench](https://arxiv.org/abs/2609.04611) evaluates building and delivering an end-to-end service agent; [FDE-Gym](https://arxiv.org/abs/2610.22350) benchmarks requirement clarification under incomplete specs.
+- **Process validity & outcome forensics**: [Prefix Executability](https://arxiv.org/abs/2610.40444) pinpoints the first invalid tool call under contracts, [VeriCUA](https://arxiv.org/abs/2610.40578) probes persisted files/databases after UI actions, and [Incident-Arena](https://arxiv.org/abs/2610.00648) tests fault recovery under load and restarts.
+- **Reporting discipline & robustness**: Always report token/latency/call budgets alongside `pass@k` (at least one success) vs. `pass^k` (consistent success across k trials). For statistical horizon definitions ([METR audit](https://arxiv.org/abs/2610.12466)), input perturbations ([AgentPerturb](https://arxiv.org/abs/2610.21624)), evidence-seeking under missing facts ([EpiSEM-Bench](https://arxiv.org/abs/2610.31650)), and harness contract/holdout verification ([Doc2Harness](https://arxiv.org/abs/2610.20344) / [drydock-eval](https://arxiv.org/abs/2611.16485)), see our [Harness guide](docs/harness.md).
 
 ### Context trust and execution permissions
 
-Training alignment, guards, context trust, and execution permissions constrain different stages. [CPE](https://arxiv.org/abs/2609.01222) studies lower-trust content promoted to higher-priority or more persistent context; the [harness chapter](docs/harness.md) separates this from configuration exposure. Findings on paper-era versions do not establish exploitability of current products; guards and multi-agent review do not replace permission isolation.
+Trustworthy agents require **context trust boundaries** and **least-privilege execution isolation** in addition to model alignment:
+- [CPE](https://arxiv.org/abs/2609.01222) analyzes how untrusted content can be promoted into high-priority or persistent context.
+- [HarnessSecurity-Bench](https://arxiv.org/abs/2610.07639) evaluates legitimate-task utility and attack success side by side under matched models and harnesses (see [Harness security evaluation](docs/harness.md#保护是否有效同时测正常任务与攻击效果)).
 
-[HarnessSecurity-Bench](https://arxiv.org/abs/2610.07639) adds runtime comparisons: measure legitimate-task utility, attack effects, and costs separately before comparing settings under a fixed model and task. Containerized services, one acting model, and an LLM approval reviewer limit generalization; unknown mechanisms are unresolved, and tested versions do not establish current product behavior. See the [harness discussion](docs/harness.md#保护是否有效同时测正常任务与攻击效果).
+[Intent Contracts](https://arxiv.org/abs/2611.24025) separates a planner’s declared goal from the executor’s command, but did not reduce unauthorized actions against blind review when the executor lacked environment evidence. [Agent Meltdowns](https://arxiv.org/abs/2605.19149) adds a complementary test: ordinary tool faults can prompt unsafe recovery without an attacker. Audit the actual target, permissions and effects separately from stated intent or task completion; see [the Harness discussion](docs/harness.md#意图声明授权与环境证据).
 
 ### Evaluation & Benchmarks
 
@@ -752,13 +735,11 @@ Training alignment, guards, context trust, and execution permissions constrain d
 
   [arXiv: 2503.01935](https://arxiv.org/abs/2503.01935) / [GitHub](https://github.com/THUDM/MultiAgentBench)
 
-- **AgentHarm: A Benchmark for Measuring Harmfulness of LLM Agents** (2024)
+- **AgentHarm: A Benchmark for Measuring Harmfulness of LLM Agents** (ICLR 2025)
 
-  A benchmark for measuring harmful task execution by tool-using agents under refusal and attack conditions; it addresses a specific task set rather than a universal safety standard.
+  Evaluates tool-using agents on harmful multi-step tasks under refusal and adversarial attack conditions.
 
   [arXiv: 2410.09024](https://arxiv.org/abs/2410.09024)
-
-Evaluate task completion, constraint satisfaction, outcome evidence, and the calls, time, and cost required together. Safety mechanisms also need legitimate-task evaluation; memory and self-improvement need held-out tasks, interference, and regression checks. Capability and trustworthiness are complementary dimensions. The process, verification, and safety comparisons above help locate failures and decide whether to change the model, interface, or harness.
 
 ---
 
@@ -766,19 +747,19 @@ Evaluate task completion, constraint satisfaction, outcome evidence, and the cal
 
 ## Classical and Background Reading
 
-This section retains classical methods, training background, and earlier systems by topic. Start with the [recent-question entry points](#how-to-use-this-guide) for newly verified research; the [catalog](docs/papers.md) records mechanisms, evaluation conditions, and verification dates, and the [latest monthly selection](docs/monthly-picks.md) provides an editorial route. Read the corresponding chapters to compare the questions addressed by new and classical methods.
+This section highlights representative classical methods and background papers by topic; see the [paper catalog](docs/papers.md) and [monthly picks](docs/monthly-picks.md) for detailed metrics and recent updates.
 
 ### Computer Vision & Multimodal (CV/Multimodal & GUI)
 
 - **UI-TARS: Pioneering Automated GUI Interaction with Native Agents** (ByteDance, 2025)
 
-  UI-TARS studies a native visual policy mapping screenshots and interaction history to a unified action space, with GUI training, reflective traces, and DPO comparisons. Its 2025 grounding, offline-action, and online-task results use distinct protocols; OSWorld step budgets and CallUser/no-Finish handling matter. Compare this with external parsing, rather than treating historical scores as current rankings. The [original author repository](https://github.com/bytedance/UI-TARS) was archived on November 9, 2026 and remains a historical entry point.
+  An end-to-end native visual GUI agent mapping screenshots and history directly to a unified action space via GUI training, reflective traces, and DPO (original repo archived Nov 2026).
 
   [arXiv: 2501.12326](https://arxiv.org/abs/2501.12326) / [GitHub](https://github.com/bytedance/UI-TARS)
 
 - **Embodied Agent Interface: Benchmarking LLMs for Embodied Decision Making** (NeurIPS 2024)
 
-  Proposes the first LLM benchmark framework for embodied decision-making tasks, filling the gap in agent evaluation for complex 3D environment interaction and leading the next evaluation standard for embodied AI.
+  Proposes the first LLM benchmark framework for embodied decision-making tasks, filling the gap in agent evaluation for complex 3D environment interaction.
 
   [arXiv: 2410.07166](https://arxiv.org/abs/2410.07166)
 
@@ -786,19 +767,19 @@ This section retains classical methods, training background, and earlier systems
 
 - **DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning** (DeepSeek, 2025)
 
-  Distinguish R1-Zero's pure RL from R1's multi-stage training. Longer inference traces, training-time weight updates, and agent-program self-modification are separate processes.
+  Demonstrates how pure RL (R1-Zero) and cold-start multi-stage RL (R1) elicit long-horizon reasoning and self-reflection in foundation models.
 
   [arXiv: 2501.12948](https://arxiv.org/abs/2501.12948) / [GitHub](https://github.com/deepseek-ai/DeepSeek-R1)
 
 - **Large Language Model Agent: A Survey on Methodology, Applications and Challenges** (2025)
 
-  Use this survey to organize methods, applications, and challenges within its collection period. Follow the recent-question entry points for subsequent work, then inspect the original mechanisms and experiments.
+  A broad survey organizing LLM agent methodologies, applications, and open challenges—useful for building an initial mental map.
 
   [arXiv: 2503.21460](https://arxiv.org/abs/2503.21460)
 
 - **Agent Q: Advanced Reasoning and Learning for Autonomous AI Agents** (2024)
 
-  Combines guided MCTS, self-critique, and off-policy DPO fine-tuning on interaction trajectories. Search and training are distinct stages; this is a historical method entry, with experimental numbers awaiting full-text verification.
+  Combines guided MCTS, self-critique, and off-policy DPO fine-tuning on interaction trajectories to improve autonomous web agents.
 
   [arXiv: 2408.07199](https://arxiv.org/abs/2408.07199)
 
@@ -806,7 +787,7 @@ This section retains classical methods, training background, and earlier systems
 
 - **SWE-Search: Enhancing Software Agents with Monte Carlo Tree Search and Iterative Refinement** (ICLR 2025)
 
-  Creatively integrates MCTS with LLM software development agents, achieving remarkable optimization in codebase navigation and issue resolution tasks.
+  Integrates MCTS with LLM software development agents to improve codebase navigation and issue resolution.
 
   [arXiv: 2410.20285](https://arxiv.org/abs/2410.20285)
 
@@ -814,13 +795,13 @@ This section retains classical methods, training background, and earlier systems
 
 - **Why Agents Compromise Safety Under Pressure** (Jiang et al., 2026)
 
-  Pioneers the concept of "Agent Pressure", investigating how environmental friction and task deadlines cause autonomous agents to compromise safety alignment under non-adversarial real-world conditions.
+  Pioneers the concept of "Agent Pressure", investigating how environmental friction and task deadlines cause autonomous agents to compromise safety alignment under non-adversarial conditions.
 
   [arXiv: 2603.14975](https://arxiv.org/abs/2603.14975)
 
 - **AgentHarm: A Benchmark for Measuring Harmfulness of LLM Agents** (ICLR 2025)
 
-  Evaluates tool-using agents on harmful tasks and refusal/attack conditions. This differs from missing-evidence, legitimate-utility, and environment-permission tests; its task set does not cover all deployment risks.
+  A benchmark evaluating tool-using agents on harmful multi-step tasks and adversarial robustness.
 
   [arXiv: 2410.09024](https://arxiv.org/abs/2410.09024)
 

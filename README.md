@@ -1,31 +1,41 @@
-# AI-Agent-Guide   <a href="https://ai-notes-red-two.vercel.app/"><img src="assets/open-guide-zh.svg" alt="打开网站 · 开始学习" width="150" height="46"></a>
+# AI-Agent-Guide
 
-[English](README_EN.md) | [中文](README.md) | [![GitHub Stars](https://img.shields.io/github/stars/Scodive/AI-Agent-Guide?style=social)](https://github.com/Scodive/AI-Agent-Guide/stargazers)
+[English](README_EN.md) | [中文](README.md)
 
+[![GitHub Stars](https://img.shields.io/github/stars/Scodive/AI-Agent-Guide?style=social)](https://github.com/Scodive/AI-Agent-Guide/stargazers)
+[![Last Commit](https://img.shields.io/github/last-commit/Scodive/AI-Agent-Guide)](https://github.com/Scodive/AI-Agent-Guide/commits/main)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/Scodive/AI-Agent-Guide/blob/main/CONTRIBUTING.md)
+[![License: MIT](https://img.shields.io/github/license/Scodive/AI-Agent-Guide)](https://github.com/Scodive/AI-Agent-Guide/blob/main/LICENSE)
+[![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
+欢迎来到 **AI-Agent-Guide**！本仓库致力于提供一份系统、清晰且持续更新的 AI 智能体（AI Agent）研究与工程指南，帮助你从零建立完整的知识框架，并快速定位关键论文、核心机制与开源项目。
 
-欢迎来到 AI-Agent-Guide。本指南梳理 AI 智能体的架构、关键技术与研究问题，并保留原有的长篇导读。论文库采用人工精选和逐条核验，不追求收齐每天的新论文；每条记录提供研究问题、机制、实验环境与指标、结论、局限和核验日期。
+> **GitHub 看论文地图，网站学系统课程与实战代码：**
+> 我们把指南进一步整理成了免费可追踪进度的在线学习站 **[AI 学习笔记（ai-notes）](https://ai-notes-red-two.vercel.app/)** —— 包含 **Agent 基础与实战、RL 与大模型后训练、AI Infra 源码精读、工程面试** 四条完整学习路线（共 70 节课程 + 配套代码实验包）。
+>
+> <a href="https://ai-notes-red-two.vercel.app/"><img src="assets/open-guide-zh.svg" alt="打开网站 · 开始学习" width="150" height="46"></a>
 
+**快速导航：** [新手 10 步阅读路线](docs/reading-path.md) · [96 篇精选论文总表](docs/papers.md) · [月度精选](docs/monthly-picks.md) · [Coding Agent 与 Harness 专题](docs/harness.md) · [自我改进（RSI）专题](docs/rsi.md) · [原始数据 CSV](data/papers.csv)
 
-
-阅读导航：[新手阅读路线](docs/reading-path.md) · [论文库表格](docs/papers.md) · [2026 年 10 月精选](docs/monthly-picks.md) · [Harness 与 Coding Agent](docs/harness.md) · [RSI 与自我改进](docs/rsi.md)
-
-论文库的原始数据在 [`data/papers.csv`](data/papers.csv)。截至 2026-11-16，目录共 92 篇，本期新增 11 月 12 日首交的 CoReMem、H2E 与 drydock-eval 扩展论文，分别连接后续任务记忆价值、教师到执行器的经验蒸馏和候选改进的留出确认。上期 89 篇与 MOAE 导读已推送；本期分析及暂缓候选见[本周审查](data/weekly-reviews/2026-11-16.md)。最近一期月度精选仍为十月十篇，十一月按月底 SOP 整理。收录不代表独立复现；发现错误请提交 Issue 或 PR。
+> 本周审查 · 2026-11-23：增补[意图契约](docs/papers.md#paper-2611.24025)、[提示更新接受门](docs/papers.md#paper-2611.23651)、[记忆部署经验](docs/papers.md#paper-2611.26361)，以及本周修订的早期工作 [Agent Meltdowns](docs/papers.md#paper-2605.19149)；H2E 更新到 v3。分析与证据见[本期报告](data/weekly-reviews/2026-11-23.md)。
 
 ## 如何使用这份指南
 
-下文的长篇导读以感知、规划、记忆、行动等基础模块建立概念，不应当作截至今天的完整技术清单。要了解近期研究，请结合[本月精选](docs/monthly-picks.md)和[论文库](docs/papers.md)阅读：
+如果你想系统学习基础架构，请按下方目录顺读；如果你想直接追踪最新研究问题，可以从下表切入（完整 96 篇论文检索与实验细节见 [论文库总表](docs/papers.md)）：
 
-| 近期问题 | 从哪篇开始 | 在指南中的位置 |
+| 你关心的问题 | 推荐切入论文 | 在指南中的位置 |
 | --- | --- | --- |
-| 下一项代码任务还未知，哪些经验值得带过去？ | [CoReMem](https://arxiv.org/abs/2611.17316) · 2026-11-12 | 记忆与代码智能体；同一仓库状态配对后续任务，计入记忆写读成本。 |
-| 能否把复杂 Agent 的经验教给更小的执行器？ | [H2E](https://arxiv.org/abs/2611.16246) · 2026-11-12 | 感知与训练；区分导航规划器、动作标签和部署时的 VLA。 |
-| 小样本领先的框架修改，换任务后仍有效吗？ | [drydock-eval 扩展论文](https://arxiv.org/abs/2611.16485) · 2026-11-12 | Harness、RSI 与评估；请求一致性、筛选与冻结确认分别验证。 |
-| Agent 如何被构建、配置和监督？ | [τ^τ-Bench](https://arxiv.org/abs/2609.04611)、[Scanning the Harness](https://arxiv.org/abs/2609.07360)、[The Work Behind Delegation](https://arxiv.org/abs/2609.24234) | 软件工程、工具与安全；运行框架和人工监督跨越多个基础模块。 |
-| 目标变了、动作做了，怎样判断任务仍正确完成？ | [DynaRev](https://arxiv.org/abs/2610.40133)、[VeriCUA](https://arxiv.org/abs/2610.40578)、[Prefix Executability](https://arxiv.org/abs/2610.40444) | 规划、GUI 与评估；分别检查当前目标、可执行过程和持久结果。 |
-| 工具调用策略会学到什么捷径？ | [Spurious Tool Use](https://arxiv.org/abs/2609.16268) | 工具与行动、自我演进。 |
-| 长期记忆和多 Agent 协作如何评估？ | [DolphinBench](https://arxiv.org/abs/2609.24971)、[CoCoBench](https://arxiv.org/abs/2608.28266) | 记忆与检索、多智能体。 |
-| Agent 的实际使用和交付结果怎样衡量？ | [DAREBench](https://arxiv.org/abs/2609.06059)、[Are We There Yet?](https://arxiv.org/abs/2609.00524)、[Who Finishes the Job?](https://arxiv.org/abs/2609.26847) | 评估与安全、GUI、代码智能体；需同时看成本、用户和后续修复。 |
+| Agent 声明了行动意图，怎样确认它真的获准？ | [Intent Contracts](docs/papers.md#paper-2611.24025) · [Agent Meltdowns](docs/papers.md#paper-2605.19149) | [Harness 与运行时](docs/harness.md#意图声明授权与环境证据) |
+| 怎样确认 Agent 真正写入并读回了经验？ | [How Much Should an Agent Remember?](docs/papers.md#paper-2611.26361) | 记忆与检索 |
+| 可复用提示词更新要通过哪些检查才应采用？ | [Safe Personal RSI](docs/papers.md#paper-2611.23651) | [自我改进](docs/rsi.md#提示更新的接受门与静态规则对照) |
+| 跨任务的代码修改，哪些经验值得保存给下一个任务？ | [CoReMem](https://arxiv.org/abs/2611.17316) | 记忆模块 / 代码智能体 |
+| 如何把大模型的规划经验蒸馏给轻量级执行器？ | [H2E](https://arxiv.org/abs/2611.16246) | 感知与具身训练 |
+| 开发集上领先的 Agent 框架改动，换到新任务还有效吗？ | [drydock-eval](https://arxiv.org/abs/2611.16485) | [Harness 与评估专题](docs/harness.md) |
+| 如何构建、配置并监督一个真实可用的 Coding Agent？ | [τ^τ-Bench](https://arxiv.org/abs/2609.04611)、[Scanning the Harness](https://arxiv.org/abs/2609.07360)、[The Work Behind Delegation](https://arxiv.org/abs/2609.24234) | Agentic Coding / 安全与监督 |
+| 执行中途用户改了目标，或者界面变化后怎么验证真的做完了？ | [DynaRev](https://arxiv.org/abs/2610.40133)、[VeriCUA](https://arxiv.org/abs/2610.40578)、[Prefix Executability](https://arxiv.org/abs/2610.40444) | 规划、GUI 感知与过程验证 |
+| 强化学习训练工具调用时，Agent 会学到哪些“偷懒捷径”？ | [Spurious Tool Use](https://arxiv.org/abs/2609.16268) | 行动与工具学习 |
+| 如何科学评估长期记忆与多智能体协作？ | [DolphinBench](https://arxiv.org/abs/2609.24971)、[CoCoBench](https://arxiv.org/abs/2608.28266) | 记忆检索 / 多智能体 |
+| 如何衡量真实部署下的成本、成功率与后续返工率？ | [DAREBench](https://arxiv.org/abs/2609.06059)、[Are We There Yet?](https://arxiv.org/abs/2609.00524)、[Who Finishes the Job?](https://arxiv.org/abs/2609.26847) | 评估与安全 / 代码智能体 |
 
 ## 目录
 
@@ -58,24 +68,25 @@
   - [MCP：模型上下文协议](#mcp模型上下文协议)
 - [Agentic Coding：软件工程新前沿](#agentic-coding软件工程新前沿)
   - [核心系统与基准测试](#核心系统与基准测试)
+  - [相关论文与资源](#相关论文与资源-3)
 - [智能体开发框架：从理论到实践](#智能体开发框架从理论到实践)
   - [主流框架深度解析](#主流框架深度解析)
   - [智能体开发框架对比](#智能体开发框架对比)
   - [实战：科研技能库 (Paper-Agent-Skills)](#实战科研技能库-paper-agent-skills)
 - [Self-Evolving 智能体：自我进化与自适应机制](#self-evolving-智能体自我进化与自适应机制)
   - [三类适应机制与 RSI 边界](#三类适应机制与-rsi-边界)
-  - [相关论文与资源](#相关论文与资源-3)
+  - [相关论文与资源](#相关论文与资源-4)
 - [多智能体系统（MAS）：协作产生的涌现智能](#多智能体系统mas协作产生的涌现智能)
   - [MAS范式与架构](#mas范式与架构)
   - [典型应用](#典型应用)
   - [关键挑战](#关键挑战-1)
-  - [相关论文与资源](#相关论文与资源-4)
+  - [相关论文与资源](#相关论文与资源-5)
 - [可信度：安全、对齐与评估](#可信度安全对齐与评估)
   - [对齐方法论](#对齐方法论)
   - [从结果到评估协议](#从结果到评估协议)
   - [上下文与执行权限的连接](#上下文与执行权限的连接)
   - [评估与基准测试](#评估与基准测试)
-  - [相关论文与资源](#相关论文与资源-5)
+  - [相关论文与资源](#相关论文与资源-6)
 - [经典与背景延伸阅读](#经典与背景延伸阅读)
   - [计算机视觉与多模态 (CV/Multimodal & GUI)](#计算机视觉与多模态-cvmultimodal--gui)
   - [自然语言处理、长链条推理与 RL (NLP/Reasoning & RL)](#自然语言处理长链条推理与-rl-nlpreasoning--rl)
@@ -92,7 +103,7 @@
 ### 通用智能体综述
 *   **A Survey on Large Language Model based Autonomous Agents** (Wang et al., 2023)
 
-    这篇论文提出了一个关于LLM驱动的自主智能体的整体性框架，系统地从构建、应用和评估三个维度对现有研究进行了梳理。其画像、记忆、规划、行动分类提供组织文献的视角；这里将它作为阅读框架，不将分类称为统一实现标准。
+    这篇奠基性综述提出了一个关于 LLM 自主智能体的整体框架，系统地从构建、应用和评估三个维度梳理了早期研究，并以“画像（Profile）—记忆（Memory）—规划（Planning）—行动（Action）”来组织相关文献。
 
     [arXiv: 2308.11432](https://arxiv.org/abs/2308.11432)
 
@@ -139,36 +150,31 @@
 
 
 ## AI智能体剖析：核心架构蓝图
-本指南用感知、规划与推理、记忆、行动四个视角拆解决策循环，便于从概念走到系统。它们是分析视角，不要求实现中四个独立模块一一对应。Wang 等人的综述使用画像、记忆、规划与行动分类；这里将输入处理单列为感知，不能把两套分类直接视为同一个标准。
+一个现代 AI 智能体通常可以从**感知、规划与推理、记忆、行动**四个核心视角来拆解。它们共同构成智能体与环境持续交互的决策循环：
 
-LLM 可以提出决策，但运行框架还要组织上下文、执行工具、保存状态并判定停止条件。学习每个模块时都要继续问：信息怎样进入模型、动作由谁执行、结果由什么证据验证？
+*   **感知模块 (Perception Module)**：智能体与环境交互的入口，负责接收并处理来自外部世界的原始信息（用户指令、API 返回文本、屏幕截图等），转化为内部可理解的结构化表示。
 
-智能体的四个核心模块分别是：
+*   **规划与推理模块 (Planning & Reasoning Module)**：智能体的认知核心，负责理解目标并制定执行策略，将复杂任务拆解为具体的子步骤或行动序列。
 
-*   **感知模块 (Perception Module)**：智能体与环境交互的入口，负责接收和处理来自外部世界的原始信息，如用户指令、API返回的文本、网页的视觉截图等，并将其转化为内部可理解的结构化表示。
+*   **记忆模块 (Memory Module)**：赋予智能体跨步骤和跨会话学习能力的关键，包括短期记忆（当前上下文）与长期记忆（历史经验、偏好与外部知识库）。
 
-*   **规划与推理模块 (Planning & Reasoning Module)**：智能体的认知核心。它接收感知模块处理后的信息，并根据预设的目标进行思考。这包括将宏大、复杂的目标分解为一系列更小、更具体的可执行步骤或子任务 。
+*   **行动模块 (Action Module)**：将内部决策转化为真实世界影响的执行器，通过调用外部工具（代码解释器、搜索引擎、API、数据库等）完成实际操作。
 
-*   **记忆模块 (Memory Module)**：赋予智能体学习和适应能力的关键。它负责存储和检索信息，包括短期记忆（如当前对话的上下文）和长期记忆（如过去的经验、用户偏好、知识库），为规划和行动提供必要的背景信息。
+信息在这四个部分之间形成闭环：**感知环境状态 → 结合记忆进行规划 → 执行行动改变环境 → 再次感知新状态**，如此循环直至任务完成。
 
-*   **行动模块 (Action Module)**：将规划模块制定的决策转化为与外部环境的实际交互。这通常通过调用外部工具（如代码解释器、搜索引擎API、数据库查询）来实现，从而使智能体能够超越其内部知识的限制，获取实时信息并执行具体任务。
-
-信息在这些模块间的流动形成了一个动态的循环：感知模块获取环境状态，规划模块基于这些信息和记忆进行决策，行动模块执行决策并改变环境状态，而新的环境状态又被感知模块捕获，如此循环往复，直至任务完成。这个架构不仅清晰地划分了功能，也为模块化的设计和迭代优化提供了便利。
-
-这四个模块主要描述 **Agent 内部决策循环**。构建和评估可运行系统时，还需要单独说明运行框架：工具接口、上下文与状态管理、执行权限、验证与停止条件，以及人工监督。运行框架会影响相同模型的任务表现和资源开销，不能只用模型名称概括系统能力。参见 [Code as Agent Harness](https://arxiv.org/abs/2605.18747) 和 [DAREBench](https://arxiv.org/abs/2609.06059)；这是对基础蓝图的补充，不表示这些机制已有统一标准实现。
-
+在工程落地时，除了大模型本身的决策能力，外部的 **运行框架（Agent Harness）** 同样决定系统上限——它负责上下文组织、工具接口、执行权限、状态持久化以及停止/验收条件（详见 [Code as Agent Harness](https://arxiv.org/abs/2605.18747) 与 [Harness 专题](docs/harness.md)）。
 
 ### 架构蓝图相关核心论文
 
 *   **Cognitive Architectures for Language Agents (CoALA)** (Sumers et al., 2023)
     
-    CoALA 借鉴认知科学与符号 AI，以模块化记忆、内部/外部行动空间和决策过程组织语言 Agent。它帮助比较系统如何选择动作和改变状态；这是分析框架，框架本身不证明某种实现更优。
+    借鉴认知科学与符号 AI，提出了模块化记忆、内外部行动空间与标准化决策循环，为设计和比较不同语言智能体提供了清晰的理论词汇。
     
     [arXiv: 2309.02427](https://arxiv.org/abs/2309.02427)
 
 *   **OpenAgents: An Open Platform for Language Agents in the Wild** (Xie et al., 2023)
     
-    OpenAgents 提供数据分析、插件和网页三个 Agent 及交互界面，适合作为工具、宿主平台与用户使用流程的工程实例。平台案例不等于对所有四模块架构或跨任务可靠性的验证。
+    开源通用智能体平台，集成了数据分析、插件调用与网页浏览三类 Agent 及交互界面，是学习工具宿主与真实用户工作流的经典工程实例。
     
     [arXiv: 2310.10634](https://arxiv.org/abs/2310.10634) / [GitHub仓库](https://github.com/xlang-ai/OpenAgents)
 
@@ -204,26 +210,26 @@ VLMs是多模态感知的技术基石。这类模型通过结合视觉编码器�
 
 *   **论文: OmniParser for Pure Vision Based GUI Agent** (Lu et al., 2024)
 
-    OmniParser将可交互区域检测、图标语义描述与OCR结合，生成标记截图和结构化元素，辅助GPT-4V选择动作目标。原论文评估SeeAssign、ScreenSpot、Mind2Web与AITW的定位/逐步动作指标；重复图标、边框粒度和语义误判仍会失败。它是解析辅助路线，不能由此推出任意屏幕或完整任务都可靠。
+    微软开源的纯视觉 UI 解析器，通过可交互区域检测、图标语义描述与 OCR 生成结构化元素，辅助 VLM 精确定位屏幕按钮与输入框，在 ScreenSpot、Mind2Web 等基准上显著提升了操作准确率。
 
     [arXiv: 2408.00203](https://arxiv.org/abs/2408.00203) / [GitHub仓库](https://github.com/microsoft/OmniParser)
 
 *   **论文: Mobile-Agent: Autonomous Multi-Modal Mobile Device Agent with Visual Perception** (Wang et al., 2024)
 
-    介绍了一个纯视觉驱动的移动设备智能体，它无需依赖系统底层的元数据（如XML布局文件），仅通过分析屏幕截图就能自主导航和操作App，充分展示了视觉感知在跨平台通用性方面的巨大潜力。
+    介绍了一个纯视觉驱动的移动设备智能体，它无需依赖系统底层的 XML 布局文件，仅通过分析屏幕截图就能自主导航和操作 App，展示了视觉感知在跨平台通用性方面的潜力。
 
     [arXiv: 2401.16158](https://arxiv.org/abs/2401.16158) / [GitHub仓库](https://github.com/X-PLUG/MobileAgent)
-    
 
-<!-- *   **论文: Are Multimodal Agents Faithful in a Risky World?** (2024)
+*   **论文: ScreenSpot: A Grounding Benchmark for GUI Agents** (Cheng et al., 2024)
 
-    这是一篇至关重要的论文，它首次系统地探讨了GUI智能体在面对环境中无关干扰信息时的脆弱性，对智能体的可靠性和忠实度提出了深刻的质疑。
+    专门评测 GUI 元素定位能力的跨平台基准，覆盖移动端、桌面端和网页端，揭示了通用 VLM 在细粒度界面坐标定位上的核心瓶颈。
 
-    [arXiv: 2402.17641](https://arxiv.org/abs/2402.17641) -->
+    [arXiv: 2401.10935](https://arxiv.org/abs/2401.10935) / [GitHub仓库](https://github.com/njucckevin/SeeClick)
 
-理解 GUI 时，把链条拆成**定位元素 → 执行动作 → 持久状态改变 → 满足当前目标**。准确识别“保存”按钮不能单独证明文件已经保存。[VeriCUA](https://arxiv.org/abs/2610.40578)在执行后结合画面、历史与文件/数据库探查，为判断提供带来源和时序的证据；这是对感知和动作循环的补充。其在线模式允许未决弃权，离线模式未决会回退初始视觉判分，二者不能混称可靠证明。取证还依赖环境权限与额外调用，详见 [Harness 专题](docs/harness.md#界面结果取证与模型接管)。
+**GUI 操作后的结果验证与执行器训练：**
+在真实界面操作中，看懂按钮不等于任务真的成功——完整的链路应拆解为**元素定位 → 执行动作 → 持久状态改变 → 满足目标**。[VeriCUA](https://arxiv.org/abs/2610.40578) 在动作执行后联合检查屏幕画面、操作历史与底层文件/数据库状态，解决“按钮点完但文件没保存”的假成功问题（详见 [Harness 专题](docs/harness.md#界面结果取证与模型接管)）。在具身与导航场景中，[H2E](https://arxiv.org/abs/2611.16246) 提出将大模型规划器的工具调用与 VLA 运动统一重标为任务动作、训练轻量执行器并移除教师模型，显著降低了部署开销。
 
-**从规划器辅助到执行器学习。** 具身导航的[H2E](https://arxiv.org/abs/2611.16246)把 LLM 规划器工具和 VLA 的运动都重标为原始任务的动作，屏蔽远离目标步骤的训练损失，并给近目标状态加停止标签；训练后只部署 VLA。它补“谁行动、谁学习”的区别：训练用的目标距离不等于部署观察，正确停止也不同于曾经到达。证据来自 REVERIE-CE 仿真导航，尚不能推出 GUI 或真实机器人效果；偏航后的地图与记忆恢复仍未学会。
+H2E 的 11 月 16–17 日修订新增 NavRAG-CE，并从第一轮失败轨迹收集教师恢复会话再训练；因此更新 v1 的实验范围，不能沿用 v1“未学会偏航恢复”的笼统结论。恢复指标有特定偏航定义，并不表示解决所有偏航；100 题教师比较的蒸馏配方也与主表不同。这些仍是导航仿真结果，详见[论文库记录](docs/papers.md#paper-2611.16246)。
 
 ---
 
@@ -262,18 +268,13 @@ VLMs是多模态感知的技术基石。这类模型通过结合视觉编码器�
     
 ### 从思维树到环境反馈搜索
 
-[LATS](https://arxiv.org/abs/2310.04406)补上“怎样把行动结果放进搜索”的连接：用 MCTS 选择和扩展轨迹，在获得环境观察后估计价值，再用终局反馈回传并保存失败反思。读完 ReAct 和 ToT 后，可用它区分**搜索想法**与**搜索可执行行动**；之后再读 SWE-Search 的代码环境实现。
-
-这些方法是可组合的设计选择。比较时同时记录节点数、轨迹数、token 和环境调用；LATS 的 HotpotQA 实验使用正确性 oracle，且依赖可回退状态。不能把测试环境中的回溯直接用于不可逆的付款或生产修改。完整边界见[库内记录](docs/papers.md#paper-2310.04406)。
-
-进入代码修复时，还要先比较固定流程：[Agentless](https://arxiv.org/abs/2407.01489)按定位、生成、验证组织工作；SWE-agent 让模型动态选择动作；SWE-Search 扩展分支搜索。可自主决策的步骤更多是否有价值，需要相同任务、模型与预算的对照，不能把流程复杂度当成能力等级。
-
-**另一条经典分支：先规划，再填证据。**[ReWOO](https://arxiv.org/abs/2305.18323)让 Planner 写出带证据变量的计划，Worker 按依赖执行工具并填值，再由 Solver 合并证据，减少逐步回传整段观察的开销。它补充 ReAct 的在线观察循环；若下一步必须先发现未知环境，预写计划可能失效。历史问答任务上的 token 收益不能直接外推到有副作用的操作。
-
-**目标在执行中变化怎么办？**[DynaRev](https://arxiv.org/abs/2610.40133)按语义进度送达增补或覆盖指令，补充固定目标下的规划。读者先写清当前有效约束、已失效约束和可保留的浏览器进度，再决定是否重规划；重写目标不等于重置环境。其 181 个任务中，短期响应 WRA 只统计已触发修订，最终约束另按完整任务检查。有限子集上的指令重写收益不代表所有动态任务都更容易。这里的目标修订来自用户；网页上的新文字不因此获得指令权限，这是编者对信任边界的连接。
+- **搜索可执行行动（[LATS](https://arxiv.org/abs/2310.04406)）**：将 ReAct 与 ToT 结合，用蒙特卡洛树搜索（MCTS）在真实环境反馈下探索多条行动轨迹，并在失败后回传反思。适合代码修复、网页导航等可回溯环境；若涉及不可逆操作（如支付或生产变更），需先做沙盒隔离或人工确认。
+- **固定流程 vs. 动态搜索**：在代码修复领域，[Agentless](https://arxiv.org/abs/2407.01489) 采用“定位 → 生成 → 验证”的固定三段式流水线，成本可控；SWE-agent 允许模型动态决定工具动作；SWE-Search 则引入分支搜索。三者各有成本与自由度权衡，选型时需结合预算与任务复杂度比较。
+- **先规划、再填证据（[ReWOO](https://arxiv.org/abs/2305.18323)）**：由 Planner 一次性写出带依赖变量的完整计划，Worker 并行调用工具填入证据，最后由 Solver 汇总，大幅减少多轮回传观察带来的 Token 消耗。适合工具依赖关系明确的任务；若环境信息需逐步试探发现，仍更适合 ReAct 循环。
+- **动态目标修订（[DynaRev](https://arxiv.org/abs/2610.40133)）**：针对用户在中途追加或修改需求的情况，先区分当前仍有效的约束、已作废的约束与可复用的进度再重规划，避免盲目从头重跑。
 
 ### 核心推理技术对比
-为了帮助研究者和开发者快速理解不同推理技术的特点和适用场景，下表对上述核心技术进行了对比。CoT、自洽性、ReAct 和树搜索分别处理推理分解、采样一致性、外部交互与分支探索；它们不构成必然越来越好的线性升级路线。
+下表总结了不同推理范式的核心思路与适用场景，实际工程中常按任务成本与环境特征组合使用：
 
 | 技术名称      | 核心思想                                     | 主要优势                                           | 适用场景                                         |
 | :------------ | :------------------------------------------- | :------------------------------------------------- | :----------------------------------------------- |
@@ -281,25 +282,24 @@ VLMs是多模态感知的技术基石。这类模型通过结合视觉编码器�
 | Self-Consistency | 对CoT结果进行多样本投票，提高鲁棒性         | 提高答案的准确性和稳定性                           | 对结果准确性要求高的推理任务                     |
 | ReAct         | 交错的“思考-行动-观察”循环                     | 缓解知识幻觉，将推理与外部世界“接地”           | 需要与外部工具（如搜索引擎）交互的任务           |
 | Tree of Thoughts (ToT) | 探索多条推理路径，自我评估和回溯             | 应对需要探索和深思熟虑的复杂问题，系统性搜索     | 需要多步决策、有多种可能路径的问题               |
+| MCTS-based (LATS / SWE-Search) | 基于环境反馈的蒙特卡洛树搜索与迭代优化 | 系统性探索大状态空间，支持失败反思回传 | 代码库修复、复杂网页交互等长链条任务 |
 
 ---
 
 ## 记忆模块：实现学习与情境感知
-记忆使过去的信息有机会影响后续决策。先区分当前可见的上下文、跨会话保存的经验与模型参数中的知识，再检查它们怎样被使用。保存历史是机制，持续改善行为是需要评估的结果；两者不能直接画等号。
+记忆使智能体能够利用历史交互与经验来优化后续决策。理解记忆系统时，可以重点关注三类载体：**当前可见的上下文、跨会话持久化的外部存储、以及固化在模型参数中的知识**。
 
 ### 记忆架构
-入门时先按可见上下文与外部持久存储理解两种常见形式；这不是全部载体的穷尽分类，参数与混合记忆可在下文 MCCL 中继续阅读。
+*   **短期记忆 (Short-Term Memory)**：模型当前调用可见的上下文窗口，受限于窗口长度。运行框架通常通过滑动窗口、摘要压缩等方式决定哪些会话历史被保留或重新载入。
 
-*   **短期记忆 (Short-Term Memory)**：模型本次调用可见的上下文，容量受窗口限制。超出窗口的信息不能直接参与该次推理，但会话记录是否保存、压缩或再次载入，由运行框架和存储实现决定。
-
-*   **长期记忆 (Long-Term Memory)**：跨会话保存事实、偏好和任务经验的状态，常放在文件、数据库或索引中。后续任务仍需正确检索、解释与更新；持久保存本身不保证学会新能力。
+*   **长期记忆 (Long-Term Memory)**：跨会话持久化保存事实、用户偏好和历史经验，通常存储在外部文件、数据库或向量索引中，在需要时检索注入上下文。
 
 ### 长期记忆的关键机制
-*   **检索增强生成 (Retrieval-Augmented Generation, RAG)**：RAG 是将外部知识或经验检索进当前上下文的一类机制；外部知识库、个人经验记忆与当前上下文应分别描述。其核心思想是，在响应用户请求时，首先从一个外部知识库（如文档、数据库）中检索出与当前任务最相关的信息，然后将这些检索到的信息作为附加上下文增强（augment）输入给LLM，最后由LLM生成最终的答案 。检索可能提供相关证据，但其准确性取决于来源质量、召回和模型的使用方式，不能保证回答正确。
+*   **检索增强生成 (Retrieval-Augmented Generation, RAG)**：在响应请求前先从外部知识库（文档、数据库或历史经验库）中检索相关片段作为上下文，让生成有据可依，减少知识幻觉。
 
-*   **智能体化RAG (Agentic RAG)**：这是对标准RAG的演进。在Agentic RAG中，一个或多个自主智能体被集成到检索流程中。这些智能体可以动态地管理检索策略，例如，通过自我反思来重构查询语句、决定何时以及从哪个数据源进行检索，甚至协同工作来处理复杂的多步查询，从而使整个检索过程更加智能、灵活和高效 。
+*   **智能体化RAG (Agentic RAG)**：将自主决策引入检索流程——智能体可以根据检索效果动态重构查询、切换数据源，或协同执行多跳检索，以应对复杂问题。
 
-*   **向量数据库 (Vector Databases)**：向量数据库是实现高效RAG的底层技术支撑。它将文本、图片等非结构化数据通过嵌入模型（Embedding Model）转换为高维向量，并存储起来。当需要检索时，系统会将用户的查询也转换为一个向量，然后在数据库中快速执行语义相似度搜索，找到与查询向量在“意义”上最接近的存储向量。语义检索和关键词检索各有适用范围，应在目标任务上比较召回、精度与成本。
+*   **向量数据库 (Vector Databases)**：高效 RAG 的基础设施，将非结构化数据转化为向量以支持语义相似度搜索；工程上常与关键词检索（BM25）结合使用以兼顾精确匹配与语义召回。
 
 ### 相关论文与资源
 *   **论文: Cognitive Memory in Large Language Models** (2025)
@@ -326,24 +326,20 @@ VLMs是多模态感知的技术基石。这类模型通过结合视觉编码器�
 
     [arXiv: 2501.09136](https://arxiv.org/abs/2501.09136)
 
-*   **向量数据库:**
-    *   [Weaviate](https://weaviate.io/)
+*   **向量数据库:** [Weaviate](https://weaviate.io/) · [Chroma](https://www.trychroma.com/) · [Qdrant](https://qdrant.tech/) · [Pinecone](https://www.pinecone.io/)
 
 ### 记忆从保存到产生作用
 
-将过程拆成**保存 → 检索 → 放入当前上下文 → 影响任务结果 → 决定以后保留什么**。[MemGPT](https://arxiv.org/abs/2310.08560)解释前几步的分层存储、分页与控制流；A-MEM 解释内容如何组织，两者并非替代关系。
+一条经验要真正提升后续任务表现，需经过**保存 → 检索 → 注入上下文 → 影响决策 → 定期淘汰/更新**五个环节。近期研究围绕这五个环节提出了关键方法：
 
-**失败如何变成下一次尝试的经验？** 经典 [Reflexion](https://arxiv.org/abs/2303.11366)将评价反馈转成语言教训，保存在有界记忆中，再让固定模型重试。它连接 ReAct 与记忆，而不是修改改进器；ALFWorld 的最多 12 试验累计成功不能当成一次执行成功。自生成测试也会误判，论文的 MBPP Python 结果有下降；反思有用与否仍需任务和预算对照。
+- **分页与分层调度（[MemGPT](https://arxiv.org/abs/2310.08560)）**：借鉴操作系统的虚拟内存机制，通过函数调用在“有限上下文”与“外部持久存储”之间动态换入换出信息（A-MEM 侧重知识图式组织，MemGPT 侧重调度控制，两者互补）。
+- **失败反思记忆（[Reflexion](https://arxiv.org/abs/2303.11366)）**：将失败轨迹转化为自然语言“教训”写入有界记忆，供固定权重模型在下一轮尝试时规避重复错误（注意：多次试错的累计成功率应与单次通过率分开评估）。
+- **记忆效用识别（[CMP](https://arxiv.org/abs/2610.02070)）**：一条从未被检索进上下文的记忆，日志里显示“无贡献”可能只是没被测试到；通过随机曝光与留存评估才能更准确地做记忆淘汰。
+- **经验载体路由（[Component Routing](https://arxiv.org/abs/2610.01787)）**：把 GUI 经验拆成元素定位、操作流程、状态事实和失败教训四类，分别判断哪些适合放进提示词上下文、哪些更适合微调进模型权重。
+- **持续学习与配置比较（[MCCL](https://arxiv.org/abs/2610.29357) / [Harness the Memory](https://arxiv.org/abs/2608.15008)）**：在固定框架下对齐检索宽度与写入成本，区分“内容更新”与“管理策略更新”，并在新对话留出集上验证长期留存与跨任务迁移能力。
+- **面向下一任务的记忆估值（[CoReMem](https://arxiv.org/abs/2611.17316)）**：从同一仓库历史状态出发，配对对比“带记忆 vs. 无记忆”在下一未知代码任务上的表现，把真正带来修复收益的定位线索与检查项保留下来。
 
-[CMP](https://arxiv.org/abs/2610.02070)补充效用估计的边界：某条记忆从未进入上下文时，日志里的“没贡献”可能是没被测试，而不是无用。论文用固定槽位的随机曝光改善识别，但曝光池利用相关记忆标签，未来查询上的留存策略仍未解决。它适合作为评估方法阅读，不能直接当作可部署的自动淘汰规则。
-
-**经验放在哪里？**[Component Routing](https://arxiv.org/abs/2610.01787)将同一 GUI 经验分成定位、程序步骤、状态事实与失败经验，比较进入上下文或微调权重；区分“获取信息”和“改变策略”。它连接记忆与 GUI 训练，三个模型、两个环境的对照不能推出通用路由法则，且训练费用与上下文 token 未等额匹配。[CMP v3](https://arxiv.org/html/2610.02070v3)另提示曝光预算随池大小增长，固定存储的方差分析不直接适用于动态记忆流；核对日期 2026-10-12。
-
-**从记忆内容到持续学习。**[MCCL](https://arxiv.org/abs/2610.29357)补三个观察轴：存在哪里（上下文、外部存储、参数等）、存什么（事件、事实、程序）、谁管理写入/检索/修订。内容更新与管理策略更新是不同修改面；检索命中也不足以证明持续学习，还要在延迟和干扰后保留收益、适应事实变化并迁移到新任务。其有限实证与理论缩放示意须分开读。这连接 MemGPT 的存取、A-MEM 的组织、CMP 的效用估计和 RSI 的修改对象。
-
-**怎样比较记忆配置？**[Harness the Memory](https://arxiv.org/abs/2608.15008)固定运行框架，比较表示与写入、读取、管理操作：问答召回和行动经验可能需要不同检索宽度，写入与管理开销也要记账。其中技能控制器和KV缓存方案采用近似实现，同一top-k并非同token预算。其路由在问题随机分折时有增益，留出全新对话时增益消失；因此“留出问题”与“留出整段对话”的迁移证据应分开。这是8月首发、11月修订的补收，不替代MemGPT/A-MEM。
-
-**再问下一任务是否受益。**[CoReMem](https://arxiv.org/abs/2611.17316)从同一继承仓库状态配对运行后续任务，比较有无记忆，按轨迹片段估值后保留文件定位和可执行检查。另一路用成功优先、计步数的奖励训练执行模型，并把额外记忆价值信用分给使用来源锚点的步骤。它补 CMP 的曝光识别与配置比较；锚点匹配只是使用代理，固定记忆层、actor 参数训练和记忆写读开销要分别记账。
+[How Much Should an Agent Remember?](https://arxiv.org/abs/2611.26361) 把检查延伸到写入链路：提炼教训、保留来源与支持计数地合并、再回读确认 Agent 确实使用了指导。高频教训仍可能错误；测试集调参和有限重复也限制其“不同模型需要不同记忆量”的解释。另需区分删除一条记录和持续遗忘：Safe Personal RSI 的单条删除探针保留了可再提取的来源，未测试独立的主体级遗忘路径。见[记忆验证与遗忘](docs/rsi.md#单条删除与持续遗忘分开检验)。
 
 ---
 
@@ -397,15 +393,15 @@ VLMs是多模态感知的技术基石。这类模型通过结合视觉编码器�
 
 ### MCP：模型上下文协议
 
-模型上下文协议（Model Context Protocol, MCP）统一客户端与服务器交换工具、资源等信息的接口。它帮助减少重复集成，但任务状态、业务权限与工具执行结果仍由具体实现负责。
+**模型上下文协议（Model Context Protocol, MCP）** 是 Anthropic 提出的开放标准，为 AI 智能体与外部工具、数据源之间提供“USB-C 式”的统一连接协议，大幅降低了重复编写工具适配代码的工作量。
 
-需要分开的三层：协议负责描述与交互；服务器和下游服务负责认证、授权；运行框架和执行环境负责进程、文件与网络权限。支持 MCP 不自动保证隔离。官方[安全实践](https://modelcontextprotocol.io/docs/2025-11-25/tutorials/security/security_best_practices)明确讨论令牌透传、混淆代理与最小权限问题（本段所引资料复核：2026-11-16）。
-
-从调用到恢复：MCP 的[工具规范](https://modelcontextprotocol.io/specification/2025-11-25/server/tools)区分协议错误与 `isError` 执行错误；超时还可能留下“写入是否发生未知”的状态。先查回执，再决定重试，具体例子见 [Harness 的恢复流程](docs/harness.md#写入超时后先确认状态2026-10-19)。[AgentPerturb](https://arxiv.org/abs/2610.21624)补受控的输入扰动评估；其 Toolathlon 仅覆盖完成全套测试的 25/79 题，不能作为全量部署故障率。
-
-**调用合法与任务完成分别检查。**[Prefix Executability](https://arxiv.org/abs/2610.40444)在工具契约和可见状态下定位首个无效动作，另报最终成功及出错后的恢复。参数格式正确不等于依赖已满足；后来修好也不能抹掉先前无效步骤。固定样本集合 PEC 下降还可能来自提前结束，不能直接解释成该深度的错误率。它补 MCP 接口与任务评分之间的过程层，详见 [Harness](docs/harness.md#从接口契约到过程可执行性)。
-
-**训练任务的环境从哪里来？**[ToolSpace](https://arxiv.org/abs/2611.05036)从相邻工具调用提取数据、状态和重试关系，按状态游走，再从成功链反向生成任务与断言，重放通过后保留。它连接工具学习与可执行训练环境；有的工具返回来自缓存，断言也由生成流程构造。重放见证支持“这条路径在所构造环境可走通”，还需另查断言覆盖、替代解、测试污染与线上服务差异。原生指标、三次本地评估和外部发布值不合成统一部署成功率。
+在工程落地 MCP 时，建议重点把控三件事：
+1. **权限与安全分层**：MCP 协议只负责工具描述与通信，认证、授权与沙盒隔离必须由服务端和运行框架分别落实，遵循最小权限原则（参见官方 [MCP 安全实践](https://modelcontextprotocol.io/docs/2025-11-25/tutorials/security/security_best_practices)）。
+2. **区分失败类型与超时恢复**：[MCP 工具规范](https://modelcontextprotocol.io/specification/2025-11-25/server/tools)区分了协议错误与业务执行错误（`isError`）；遇到写操作超时，应先查服务端回执确认状态再决定是否幂等重试（具体恢复流程见 [Harness 专题](docs/harness.md#写入超时后先确认状态2026-10-19)）。
+3. **过程可执行性与合成环境验证**：
+   - [AgentPerturb](https://arxiv.org/abs/2610.21624) 评测了输入缺失、冗余和错误扰动下的工具调用鲁棒性。
+   - [Prefix Executability](https://arxiv.org/abs/2610.40444) 在工具契约和当前状态下追踪“首个无效动作”，把参数合法性与最终任务成功分开评估（详见 [Harness 专题](docs/harness.md#从接口契约到过程可执行性)）。
+   - [ToolSpace](https://arxiv.org/abs/2611.05036) 通过提取工具间的数据流与状态依赖自动合成可重放训练任务，为工具学习提供低成本沙盒环境。
 
 **关键资源：**
 - [官方 MCP 规范](https://modelcontextprotocol.io/)
@@ -424,13 +420,15 @@ Agentic Coding（智能体化编码）是 AI 智能体商业影响力最显著�
 
 **标准基准：**
 
-- **SWE-bench**：评估编码智能体的标准基准，包含来自主流 Python 项目（Django、scikit-learn 等）的 2,294 个真实 GitHub Issue。智能体须分析代码库并提交能解决 Issue 的补丁。
+- **SWE-bench**：评估编码智能体的标准基准，包含来自主流 Python 项目（Django、scikit-learn 等）的 2,294 个真实 GitHub Issue。智能体须分析代码库并提交能解决 Issue 的补丁。SWE-bench Verified 为人工核验的高质量子集。
 
   [官网](https://www.swebench.com/) / [arXiv: 2310.06770](https://arxiv.org/abs/2310.06770) / [GitHub](https://github.com/princeton-nlp/SWE-bench)
 
-**固定流程对照：**[Agentless](https://arxiv.org/abs/2407.01489)先定位，再采样补丁和复现测试，最后用测试与投票选补丁，模型不自主选择后续工具动作。v2 每题生成 40 个补丁与 40 个测试，SWE-bench Lite 的历史结果为 96/300；既有测试和生成测试仍可能不完整。读它理解验证与采样，不把历史榜单视为当前排名或等预算证明。作者[代码](https://github.com/OpenAutoCoder/Agentless)已关联，未运行。
+**开源智能体与基线：**
 
-**开源智能体：**
+- **Agentless**：一个极具启发性且极简的非 Agent 固定流水线基线——依次完成定位、补丁/测试采样与投票筛选，不依赖模型自主选择工具动作，为衡量复杂 Agent 架构的“额外投入产出比”提供了清晰参照。
+
+  [arXiv: 2407.01489](https://arxiv.org/abs/2407.01489) / [GitHub](https://github.com/OpenAutoCoder/Agentless)
 
 - **SWE-agent**（普林斯顿，2024）：设计了专门用于导航和编辑大型代码库的智能体-计算机接口（ACI），提供带行号的文件查看器、定向搜索和编辑命令等专为 LLM 优化的工具，在 SWE-bench 上表现优异。
 
@@ -444,7 +442,17 @@ Agentic Coding（智能体化编码）是 AI 智能体商业影响力最显著�
 
   [arXiv: 2410.20285](https://arxiv.org/abs/2410.20285) / [GitHub](https://github.com/aorwall/moatless-tools)
 
-理解完整交付：模型生成补丁、测试通过、人工接受、合并后维护，以及线上服务恢复是不同观察点。先用 [Harness 导读](docs/harness.md)拆解接口、上下文和验证，再用 [Who Finishes the Job?](https://arxiv.org/abs/2609.26847)检查后续维护。[Incident-Arena](https://arxiv.org/abs/2610.00648)将边界延伸到故障恢复：持续负载和重启之后，服务、数据和允许修改范围是否仍满足要求？其有限任务与模型/Harness 组合不构成商业产品排名。
+- **AutoCodeRover**（2024）：结合程序抽象语法树（AST）结构搜索与 LLM 推理，高效定位并修复代码缺陷。
+
+  [arXiv: 2404.05427](https://arxiv.org/abs/2404.05427) / [GitHub](https://github.com/nus-apr/auto-code-rover)
+
+**从补丁生成到真实软件交付：**
+写对一个补丁只是第一步。工程实践中还需要关注**运行框架设计（[Harness 导读](docs/harness.md)）、PR 合并后的后续返工维护（[Who Finishes the Job?](https://arxiv.org/abs/2609.26847)）以及持续负载与重启下的故障恢复能力（[Incident-Arena](https://arxiv.org/abs/2610.00648)）**。
+
+### 相关论文与资源
+- **SWE-bench: Can Language Models Resolve Real-world GitHub Issues?** (Jimenez et al., 2023) — [arXiv: 2310.06770](https://arxiv.org/abs/2310.06770)
+- **Devin: The First AI Software Engineer** (Cognition AI, 2024) — [官方博客](https://cognition.ai/blog/introducing-devin) / [官网](https://cognition.ai/)
+- **SWE-Search: Enhancing Software Agents with Monte Carlo Tree Search** (2024) — [arXiv: 2410.20285](https://arxiv.org/abs/2410.20285)
 
 ---
 
@@ -471,7 +479,7 @@ Agentic Coding（智能体化编码）是 AI 智能体商业影响力最显著�
 3.  **AutoGen**
     核心定位: 一个专注于多智能体对话的框架。
 
-    特点: 由微软研究院推出的AutoGen，其核心设计理念是简化多智能体协作系统的构建。它提供了一套强大的抽象，用于定义具有不同角色、能力和对话模式的智能体，并协调它们之间的交互来共同完成复杂任务。如果你需要构建一个由多个专家智能体（如“程序员”、“测试员”、“项目经理”）组成的虚拟团队，AutoGen 可作为多智能体编排的历史实例。截至 2026-10-05，其[官方仓库](https://github.com/microsoft/autogen)标注维护模式，建议新项目查看 Microsoft Agent Framework；本文不据此保证后继框架的性能。
+    特点: 由微软研究院推出，提供了一套定义不同角色、对话模式与多智能体协同的抽象层，是学习多智能体对话编排的经典项目（注：截至 2026 年 10 月其[官方仓库](https://github.com/microsoft/autogen)已进入维护模式，新项目可关注其继任者 Microsoft Agent Framework）。
 
     代码库: [AutoGen GitHub](https://github.com/microsoft/autogen)
 
@@ -486,15 +494,23 @@ Agentic Coding（智能体化编码）是 AI 智能体商业影响力最显著�
 
     代码库: [MS-Agent GitHub](https://github.com/modelscope/ms-agent)
 
+5.  **CrewAI**
+    核心定位: 面向团队角色扮演的多智能体编排框架。
+
+    特点: CrewAI 将智能体组织为职责明确的“团队（Crew）”，支持层级式与顺序式任务流，API 简洁直观，社区生态活跃，适合快速搭建角色分工明确的多智能体工作流。
+
+    代码库: [CrewAI GitHub](https://github.com/crewAIInc/crewAI)
+
 ### 智能体开发框架对比
-对于开发者而言，选择合适的框架是项目成功的关键第一步。这个决策将深刻影响应用的架构、开发效率和未来的可扩展性。下表根据各个框架的核心设计理念和主要优势，提供了一个清晰的选型指南。
+对于开发者而言，选择合适的框架是项目成功的关键第一步。下表根据各个框架的核心设计理念和主要优势，提供了一个清晰的选型指南。
 
 | 框架        | 核心抽象         | 主要用例                   | 关键优势                         |
 | :---------- | :--------------- | :------------------------- | :------------------------------- |
-| LangChain   | 组件链/图 (Chains/Graphs) | 快速原型化各类LLM应用      | 极高的模块化程度和庞大的集成生态 |
+| LangChain / LangGraph | 组件链/状态图 | 复杂、有状态的通用 LLM 应用 | 极高的模块化程度与集成生态 |
 | LlamaIndex  | 数据索引/查询引擎 | 构建基于私有数据的智能体 (RAG) | 以数据为中心的索引和检索优化     |
-| AutoGen     | 可对话的智能体 (Conversable Agents) | 多智能体协作系统           | 灵活的多智能体对话编排与管理     |
-| MS-Agent    | 自主探索、工具调用 | 代码生成、数据分析、通用工具调用 | 轻量级、多模态、高效、可扩展      |
+| AutoGen     | 可对话的智能体 (Conversable Agents) | 多智能体对话原型（维护模式） | 灵活的多智能体对话编排范式     |
+| MS-Agent    | 自主探索、工具调用 | 代码生成、数据分析、通用工具调用 | 轻量级、多模态、支持 MCP         |
+| CrewAI      | 角色驱动团队 (Crews) | 团队协作与角色分工工作流   | API 简洁直观，上手成本低         |
 
 ### 实战：科研技能库 (Paper-Agent-Skills)
 为了展示智能体如何学习并执行复杂的垂直领域任务，我们提供了一个实战项目：**[Paper-Agent-Skills](https://github.com/Scodive/Paper-Agent-Skills)**。
@@ -509,25 +525,19 @@ Agentic Coding（智能体化编码）是 AI 智能体商业影响力最显著�
 
 ---
 
----
-
 ## Self-Evolving 智能体：自我进化与自适应机制
 
-自我演进应先按**修改对象、反馈来源和发生阶段**分类。经验积累、推理时反思、训练时参数更新，以及递归修改自身程序，对应不同机制和证据；“自我进化”不意味着无人监督或保证持续增长。
+“自我进化（Self-Evolving）”涵盖了从经验积累到修改自身源码的多个层次。理解这个方向时，建议按**修改对象、反馈来源、是否持续继承**三个维度来区分：
 
 ### 三类适应机制与 RSI 边界
 
-1. **技能与记忆积累**：Voyager 保存技能，A-MEM 组织经验；[Reflexion](https://arxiv.org/abs/2303.11366)把反馈写成下一次尝试的教训。固定规则下增加记忆不等于改进器递归变化，也不保证持续收益。
-2. **提示词与程序优化**：[GEPA](https://arxiv.org/abs/2507.19457)优化提示词，[Darwin Gödel Machine](https://arxiv.org/abs/2505.22954)修改 Agent 程序。检查新版本是否进入下一轮改进、反馈是否独立、旧任务是否退化，才能判断递归性和收益。
-3. **模型训练**：DeepSeek-R1 与 Agent-R1 提供参数学习背景。训练后的固定模型能反思，不等于运行时会修改自身改进器；DPO 等偏好优化也不能统一写成在线自博弈。
+1. **技能与记忆积累**：如 Voyager 持续沉淀可执行技能库，A-MEM 动态组织知识图谱，[Reflexion](https://arxiv.org/abs/2303.11366) 将错误反馈总结成文字教训。这类方式扩充的是“外部经验”，模型参数和底层逻辑保持不变。
+2. **提示词与程序自我修改（RSI）**：如 [GEPA](https://arxiv.org/abs/2507.19457) 优化提示词与工作流，[Darwin Gödel Machine](https://arxiv.org/abs/2505.22954) 让智能体直接修改自身代码并在基准上筛选保留，实现真正的**递归自我改进（RSI）**。关键看两点：被接受的新版本是否继续参与下一轮改进，以及在留出任务上是否产生真实迁移收益。
+   - [VERSE](https://arxiv.org/abs/2610.02616) 进一步把“改进执行器”和“改进优化器自身的 Harness”拆成两层闭环，验证优化器自我演化的作用边界。
+   - [Meta²](https://arxiv.org/abs/2611.05139) 则提供另一种运行时思路：离线提炼通用指导原则并在部署时冻结，单次任务中只做局部 Harness 补丁，任务结束后重置，避免局部补丁污染后续任务。
+3. **参数级自我演进与 Agentic RL**：如 DeepSeek-R1、Agent-R1 利用可验证奖励训练推理与工具策略；[MASS](https://arxiv.org/abs/2610.12176) 交替优化多智能体工作流与共享模型权重；[Terminal-RSI](https://arxiv.org/abs/2610.22192) 则在终端任务中结合轨迹监督与策略优化进行迭代强化（更多细节见 [RSI 专题](docs/rsi.md)）。
 
-**RSI 阅读入口：**[专题](docs/rsi.md)逐项比较 GEPA、Gödel Agent、DGM、AIDE² 的修改面和递归性，并说明 AlphaEvolve 改进目标算法的相邻边界。外部验证、留出任务与版本回滚都是要报告的条件，而非通用效果保证。
-
-[VERSE](https://arxiv.org/abs/2610.02616)补“谁在改进谁”：内层修改执行器的 Harness，外层修改优化器自身的 Harness，再由接受后的版本进入下一轮；模型权重与验证接口固定。它补充程序演化路线，不替代 GEPA。主实验每项只有一次演化运行，avg@3 是重复测试；自演化相对不自演化版本并非总有增益，需同时看完整成本和留出任务。
-
-**运行中适应保留到哪一轮？**[Meta²](https://arxiv.org/abs/2611.05139)离线提炼“何时改、何时保持、避免什么”的指导，部署时冻结指导，只修改当前运行的Harness，下一次运行从种子框架重新开始。它与VERSE改进器自身版本继承形成对照；测试中的局部编辑没有回写全局指导，不能只凭“online evolution”认定改进器递归变强。其重复执行也不等于重复学习指导。
-
-**参数学习拓展：**[MASS](https://arxiv.org/abs/2610.12176)交替优化工作流与训练共享模型，新模型回到执行、优化和内环评价角色；最终外部报告与内环自评分开。[Terminal-RSI](https://arxiv.org/abs/2610.22192)交替验证轨迹监督训练和继承 critic 的策略优化，改的是参数与训练流程。两者补参数学习路线，不能据名称推断运行时自主重写改进算法。详见 [RSI 的反馈与参数更新](docs/rsi.md#参数更新与反馈来源2026-10-19)。
+[Safe Personal RSI](https://arxiv.org/abs/2611.23651) 补充可复用提示更新的接受门：比较现版与提案，诊断失败、尝试修复，没有通过就保留父版本。模型权重和运行时固定；已知攻击族重用、宽泛手写规则达到同样结果，限制了自主改进的解释。先理解采用条件，再讨论递归性，详见 [RSI 专题](docs/rsi.md#提示更新的接受门与静态规则对照)。
 
 ### 相关论文与资源
 
@@ -539,36 +549,37 @@ Agentic Coding（智能体化编码）是 AI 智能体商业影响力最显著�
 
 *   **论文: A Survey of Self-Evolving Agents: On Path to Artificial Super Intelligence** (2025)
 
-    该综述从智能体组件、适应阶段和反馈机制等角度整理自我演进研究；具体方法与实验结论仍需查阅原论文。
+    系统梳理了自我演进智能体的分类体系，从演进组件（模型、记忆、工具、架构）、适应阶段与反馈机制三个角度搭建全景图谱。
 
     [arXiv: 2507.21046](https://arxiv.org/abs/2507.21046)
 
 *   **论文: DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning** (DeepSeek, 2025)
 
-    模型推理训练的基础阅读。R1-Zero 研究不经 SFT 的纯 RL；R1 采用冷启动数据、SFT 与多阶段 RL。两者都不直接证明环境交互 Agent 的运行时 RSI。
+    展示了纯强化学习（R1-Zero）与冷启动多阶段 RL（R1）在长链条推理和自我反思上的突破，为推理型 Agent 的基座训练奠定了基础。
 
     [arXiv: 2501.12948](https://arxiv.org/abs/2501.12948) / [GitHub仓库](https://github.com/deepseek-ai/DeepSeek-R1)
 
 *   **论文: Agent-R1: Training Powerful LLM Agents with End-to-End Reinforcement Learning** (2025)
 
-    研究使用环境反馈对多步交互 Agent 进行端到端强化学习；适用范围取决于训练环境与奖励设计。
+    将端到端强化学习引入多步环境交互智能体，直接基于环境反馈优化工具调用与规划决策。
 
     [arXiv: 2511.14460](https://arxiv.org/abs/2511.14460) / [GitHub](https://github.com/AgentR1/Agent-R1)
 
 *   **论文: MOAE: Multi-Objective Agent Evolution with Pareto-Preserving Search** (2026)
 
-    在固定模型下，针对单个任务用多目标诊断生成执行策略修改，并通过新的完整运行验证；保留经验非支配候选，最后按部署约束选择。论文在 TravelPlanner 与 AgentDojo 上研究任务表现、轨迹质量和安全之间的权衡，无需参数更新。
+    在固定模型权重下，针对任务表现、轨迹质量与安全性进行多目标诊断并演化执行策略，通过保留 Pareto 非支配候选在多个基准上实现无参数更新的稳健权衡。
 
     [arXiv: 2609.05992](https://arxiv.org/abs/2609.05992)
 
+---
+
 ## 多智能体系统（MAS）：协作产生的涌现智能
-多智能体系统（Multi-Agent Systems, MAS）通过分工、通信和共享产物组织任务。角色设计是机制选择；能否优于单 Agent，需在相同任务、预算与工具条件下测量，也要计入交接开销和错误传播。
+多智能体系统（Multi-Agent Systems, MAS）通过角色分工、通信与共享产物来解决复杂任务。设计 MAS 时不仅要看角色编排，也要在同等预算下对比“单智能体 + 强工具”是否更划算，并留意交接开销与错误级联。
 
-[RAC](https://arxiv.org/abs/2610.00980)提供已有经典角色分工之外的对照：根据执行状态选择下一位协作者，在三个科研宿主中取得最高观察均分，但联合加入契约和验证后均分下降。该结果来自单种子小样本，不能分别归因到契约或验证，也不能推广为“协作无用”。用它检查复杂机制是否值得预算，而保留 MetaGPT、ChatDev 作为固定工作流阅读。
-
-[MASS](https://arxiv.org/abs/2610.12176)再补训练阶段：把工作流中的编排与子 Agent 执行轨迹用于训练同一个共享模型。它与 RAC 的运行时选择研究对象不同；角色越多不构成收益证明，研究产物完成率、同一完成集合上的质量及全训练成本还需分别核对。
-
-**共享什么、什么时候可见？**[Muffin](https://arxiv.org/abs/2610.31355)将局部推理留在各 Agent 内，只把带来源和步骤的中间发现追加到共享缓冲区；其他 Agent 在下一步读取最近的有限条目，不等所有同伴完成一轮。它补通信机制，不等于跨会话长期记忆；只追加避免覆盖冲突，也不保证内容正确、无过时信息或外部动作一致。现有证据来自推理/问答，不能替代 CoCoBench 的可执行协作评估。
+近期在协作机制上的前沿探索包括：
+- **运行时动态选人（[RAC](https://arxiv.org/abs/2610.00980)）**：根据当前执行状态动态选择下一位协作者，并揭示了过度堆叠“契约 + 验证”规则反而可能拖累协作效率的现象。
+- **共享模型训练（[MASS](https://arxiv.org/abs/2610.12176)）**：把编排者与执行者的多 Agent 交互轨迹汇总，用于联合微调同一个共享基座模型。
+- **异步共享缓冲区（[Muffin](https://arxiv.org/abs/2610.31355)）**：各智能体把局部推理保留在内部，仅将带来源标注的阶段性发现追加写入共享缓冲区，同伴可按窗口异步读取而无需等待整轮同步。
 
 ### MAS范式与架构
 
@@ -597,7 +608,7 @@ Agentic Coding（智能体化编码）是 AI 智能体商业影响力最显著�
 
 *   **论文: MetaGPT: Meta Programming for A Multi-Agent Collaborative Framework** (Hong et al., 2023)
 
-    利用标准操作程序 (SOPs) 对大语言模型进行元编程，将人类工作流编排进多智能体协作框架中。以角色和结构化产物组织需求、设计与代码生成；是否正确仍需任务验证，不能从角色数量或文档完整性推断。
+    利用标准操作程序 (SOPs) 对大语言模型进行元编程，将人类工作流编排进多智能体协作框架中，通过角色分工与结构化文档产物组织需求、设计与代码生成。
 
     [arXiv: 2308.00352](https://arxiv.org/abs/2308.00352) / [GitHub仓库](https://github.com/geekan/MetaGPT)
 
@@ -612,7 +623,7 @@ Agentic Coding（智能体化编码）是 AI 智能体商业影响力最显著�
     [arXiv: 2307.07924](https://arxiv.org/abs/2307.07924) / [GitHub仓库](https://github.com/OpenBMB/ChatDev)
     
 
-*   **开发框架**: AutoGen 提供多智能体对话的历史实例；当前维护状态与后继项目见上方框架章节及[官方仓库](https://github.com/microsoft/autogen)。
+*   **开发框架**: AutoGen（维护模式）与 CrewAI 等框架为多智能体对话与团队编排提供了工程起点，详见上方开发框架章节。
 
 ---
 
@@ -626,25 +637,19 @@ Agentic Coding（智能体化编码）是 AI 智能体商业影响力最显著�
 
 ### 从结果到评估协议
 
-- **谁改变环境？**[τ²-Bench](https://arxiv.org/abs/2506.07982)让 Agent 与模拟用户都能操作共享状态；No-User/Oracle Plan 对照区分推理与协作负担。它测执行中的协作；[τ^τ-Bench](https://arxiv.org/abs/2609.04611)测构建并交付一个 Agent，二者不是同一个基准或版本。
-- **什么时候算完成？**[Incident-Arena](https://arxiv.org/abs/2610.00648)要求恢复与安全条件同时通过，并检查负载和重启后的结果。主成功判定使用功能验证；论文另行分析奖励投机时使用 LLM judge，不能把整篇工作概括为完全无模型判分。
-- 分母与预算是什么？报告任务集版本、抽样数、重复次数、token/时延/费用、工具权限及停止规则。`pass^k` 的多次一致成功与 `pass@k` 的至少一次成功含义不同。区分模型失败、工具/验证器故障与缺失结果，并报告不确定性；真实用户研究与模拟用户也分开。
-- **“时间跨度”是谁的时间？**[METR 指标统计审查](https://arxiv.org/abs/2610.12466)在 228 个软件任务、26 个 AI 上重估：50% horizon 是 Agent 成功概率为 50% 的任务对应的人类完成时间，不是 Agent 自主运行时长。人类时间到 AI 难度的映射可能非线性，任务家族与重复运行相关性也影响区间；不能由跨度倍数直接推出同倍能力提升。这不否定既有进展趋势，也未验证任务库对全部部署的代表性。
+评价一个智能体不能只看单次任务的表面通过率，近年评测研究正在向**交互协议、过程合规、成本与恢复力**四个维度演进：
 
-- **需求是否给全？**[FDE-Gym](https://arxiv.org/abs/2610.22350)固定客户环境和验收、改变任务说明的信息量，连接需求澄清与交付收益。其 95 个任务包含同场景变体，L0–L2 仅测 20 个原题；脚本客户、设定的沟通成本与未完成真人基线限制外推。归一化收益、事故、沟通成本和解决比例要分别读。
-- **错误怎样进入交互？**[AgentPerturb](https://arxiv.org/abs/2610.21624)按来源与错误类型构造成对测试。记录恢复路径、额外成本、无评分运行和子集选择；单轨迹比较及 LLM 语义核验不能替代重复试验或全部任务审计。
-
-- **观察真实就足够吗？**[EpiSEM-Bench](https://arxiv.org/abs/2610.31650)保持事实为真却抑制安全所需证据，配对允许与禁止执行的世界；主动查证后还要分别完成或停止。违规任务比例、有用恢复与正常任务完成应一起看；更具体的例子见 [Harness](docs/harness.md#证据缺失先查证再决定执行)。
-- **过程与结果怎样一起看？**[Prefix Executability](https://arxiv.org/abs/2610.40444)区分全程可执行与出错后成功，[VeriCUA](https://arxiv.org/abs/2610.40578)另查结果证据。一个约束合规的动作序列也可能没完成目标；取证一致性也不是无误的真值。比较额外验证时，计入调用和时延，并报告弃权及其分母。
-- **运行框架真的实现了约定吗？**[Doc2Harness](https://arxiv.org/abs/2610.20344)冻结模型生成的框架，用脚本模型驱动并观察请求、文件、退出码和输出，以正对照排除“行为没发生所以没出错”。这是实现契约测试，与下游任务能力及 RSI 收益分别验证。
-
-- **筛选领先是否通过新任务确认？**[drydock-eval 扩展论文](https://arxiv.org/abs/2611.16485)把容器隔离、请求/模板一致性和任务表现比较分开。三个候选在筛选中领先，均未通过各自冻结的确认规则；这不是效应为零的证明。预算、失败分母、仓库相关性及重复使用留出集需要记录，详见[Harness 的比较流程](docs/harness.md#筛选领先与确认改进)。
+- **交互与构建基准**：[τ²-Bench](https://arxiv.org/abs/2506.07982) 评测 Agent 与用户在共享环境中的协同执行；[τ^τ-Bench](https://arxiv.org/abs/2609.04611) 进一步要求端到端构建并交付一个可运行的客服 Agent；[FDE-Gym](https://arxiv.org/abs/2610.22350) 则评估需求信息不完整时的澄清与交付收益。
+- **过程可执行性与结果取证**：[Prefix Executability](https://arxiv.org/abs/2610.40444) 定位工具调用序列中的首个无效步骤，[VeriCUA](https://arxiv.org/abs/2610.40578) 在操作后结合底层状态检查持久化结果，[Incident-Arena](https://arxiv.org/abs/2610.00648) 将验收延伸到持续负载与系统重启后的故障恢复。
+- **统计规范与鲁棒性**：报告实验时需同时给出预算（token、时延、调用次数）并区分 `pass@k`（至少成功一次）与 `pass^k`（多次稳定成功）。关于“时间跨度（horizon）”统计口径、[AgentPerturb](https://arxiv.org/abs/2610.21624) 扰动测试、[EpiSEM-Bench](https://arxiv.org/abs/2610.31650) 证据缺失查证，以及 [Doc2Harness](https://arxiv.org/abs/2610.20344) / [drydock-eval](https://arxiv.org/abs/2611.16485) 对运行框架实现契约与留出集确认的检验，详见 [Harness 专题](docs/harness.md) 与 [METR 统计审查](https://arxiv.org/abs/2610.12466)。
 
 ### 上下文与执行权限的连接
 
-训练对齐、输入/输出守卫、上下文信任边界和执行权限分别约束不同环节。[CPE 研究](https://arxiv.org/abs/2609.01222)说明低信任内容可能被搬入更高优先级或更持久的上下文；[Harness 专题](docs/harness.md)区分它与配置暴露。论文版本中的攻击路径不代表当前产品版本仍可利用，守卫或多 Agent 审查也不是权限隔离的替代。
+智能体安全不能只靠模型自身对齐或外挂“守卫”模型，必须建立**上下文信任边界**与**最小执行权限隔离**：
+- [CPE](https://arxiv.org/abs/2609.01222) 揭示了低信任来源的内容如何被提升到高优先级或持久化上下文中从而引发越权风险。
+- [HarnessSecurity-Bench](https://arxiv.org/abs/2610.07639) 在同一模型与任务下同时对比“正常任务效用”与“攻击成功率”，帮助衡量安全开关的实际代价（详见 [Harness 安全对照](docs/harness.md#保护是否有效同时测正常任务与攻击效果)）。
 
-[HarnessSecurity-Bench](https://arxiv.org/abs/2610.07639)补运行对照：正常任务效用、攻击效果和执行成本分别记录，再比较同一模型与任务下的设置开关。容器环境、固定行动模型与 LLM 审批器限制外推；未知机制不等于不存在，受测版本不等于当前产品版本。详情见 [Harness 的双目标评估](docs/harness.md#保护是否有效同时测正常任务与攻击效果)。
+[Intent Contracts](https://arxiv.org/abs/2611.24025) 把规划器声明的目标与执行器生成的命令分开，但执行器缺少环境证据时，未授权动作并未优于盲审。[Agent Meltdowns](https://arxiv.org/abs/2605.19149) 则补普通工具故障下的越界恢复：没有攻击者也可能出错。应分别核对声明、真实目标、权限和执行效果，不能由意图清楚或任务完成推断已获授权；详见 [Harness 专题](docs/harness.md#意图声明授权与环境证据)。
 
 ### 评估与基准测试
 *   **AgentBench**: 这是一个针对单智能体能力的综合性评估基准。它包含了8个不同的、精心设计的环境，覆盖了从操作系统交互、数据库查询到网页浏览等多种真实世界任务，旨在全面评估LLM作为智能体的推理和决策能力 。
@@ -681,10 +686,13 @@ Agentic Coding（智能体化编码）是 AI 智能体商业影响力最显著�
 
 *   **论文: MultiAgentBench: Evaluating the Collaboration and Competition of LLM agents** (Zhu et al., 2025)
 
-    [arXiv: 2503.01935](https://arxiv.org/abs/2503.01935)
-    
+    [arXiv: 2503.01935](https://arxiv.org/abs/2503.01935) / [GitHub仓库](https://github.com/THUDM/MultiAgentBench)
 
-评估应同时看任务是否完成、过程是否满足约束、结果有何证据，以及为此花了多少调用、时间和费用。安全设置还要保留正常任务的完成路径，记忆与自我改进则要检查留出任务、历史干扰和回归。任务成功率与可信度是互补的评价维度；前面的过程、取证和安全对照用于解释失败发生在哪一层，并帮助决定下一步应改模型、接口还是运行框架。
+*   **论文: AgentHarm: A Benchmark for Measuring Harmfulness of LLM Agents** (ICLR 2025)
+
+    评估工具型智能体在对抗攻击与有害多步任务中的鲁棒性与拒答能力。
+
+    [arXiv: 2410.09024](https://arxiv.org/abs/2410.09024)
 
 ---
 
@@ -692,57 +700,57 @@ Agentic Coding（智能体化编码）是 AI 智能体商业影响力最显著�
 
 ## 经典与背景延伸阅读
 
-本节按主题保留经典方法、训练背景与早期系统。最近核验的研究从[近期问题入口](#如何使用这份指南)进入；完整机制、实验条件与核验日期见[论文库](docs/papers.md)，月度编辑路线见[最近一期精选](docs/monthly-picks.md)。新方法与经典分别解决什么问题，应结合对应章节阅读。
+本节按主题汇总代表性经典方法与背景文献；完整实验指标与最新周更动态可进入[论文库总表](docs/papers.md)或[月度精选](docs/monthly-picks.md)。
 
 ### 计算机视觉与多模态 (CV/Multimodal & GUI)
 *   **UI-TARS: Pioneering Automated GUI Interaction with Native Agents** (ByteDance, 2025)
 
-    UI-TARS研究从截图与交互历史直接输出统一动作的原生视觉策略，并比较GUI训练、反思轨迹与DPO。其2025年结果按定位、离线动作和在线任务分别报告；OSWorld步数与CallUser/无Finish处理属于具体协议。与OmniParser外接解析路线对照阅读，不将历史SOTA表述当当前排名或部署保证。[原作者仓库](https://github.com/bytedance/UI-TARS)已于2026-11-09归档，仍保留作历史入口。
+    端到端原生视觉 GUI 智能体，直接从屏幕截图与历史轨迹映射到统一动作空间，结合反思轨迹与 DPO 优化在 ScreenSpot、OSWorld 等基准上表现突出（原仓库已于 2026-11 归档，保留作技术路线参考）。
 
     [arXiv: 2501.12326](https://arxiv.org/abs/2501.12326) / [GitHub仓库](https://github.com/bytedance/UI-TARS)
 
 *   **Embodied Agent Interface: Benchmarking LLMs for Embodied Decision Making** (NeurIPS 2024)
     
-    提出了首个针对具身决策任务的大语言模型基准框架，填补了智能体在复杂三维环境中交互评估的空白，引领了具身人工智能的下一步评价标准。
+    提出了首个针对具身决策任务的大语言模型基准框架，填补了智能体在复杂三维环境中交互评估的空白。
     
     [arXiv: 2410.07166](https://arxiv.org/abs/2410.07166)
 
 ### 自然语言处理、长链条推理与 RL (NLP/Reasoning & RL)
 *   **DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning** (DeepSeek, 2025)
 
-    区分 R1-Zero 的纯 RL 与 R1 的多阶段训练。可用于理解推理模型的训练反馈；推理时生成更长轨迹、训练时参数更新和 Agent 自改程序是不同过程。
+    系统验证了纯强化学习（R1-Zero）与冷启动多阶段 RL（R1）对模型自主推理、自我反思和长链条规划能力的激发作用。
 
     [arXiv: 2501.12948](https://arxiv.org/abs/2501.12948) / [GitHub仓库](https://github.com/deepseek-ai/DeepSeek-R1)
 
 *   **Large Language Model Agent: A Survey on Methodology, Applications and Challenges** (2025)
 
-    用于建立方法、应用与挑战的分类框架。综述的覆盖范围受收集时间限制；阅读后可沿近期问题入口补充后续研究，再回原论文核对机制与实验。
+    全面梳理 LLM 智能体的方法论、典型应用与核心挑战，适合作为建立全局视野的综述入口。
     
     [arXiv: 2503.21460](https://arxiv.org/abs/2503.21460)
 
 *   **Agent Q: Advanced Reasoning and Learning for Autonomous AI Agents** (2024)
 
-    将引导式 MCTS、自我批判与基于交互轨迹的离策略 DPO 微调结合。搜索和训练是不同环节；这里作为历史方法入口，实验数字仍需阅读全文核验。
+    将引导式蒙特卡洛树搜索（MCTS）、自我批判与基于交互轨迹的离策略 DPO 训练结合，显著提升自主网页任务的执行表现。
 
     [arXiv: 2408.07199](https://arxiv.org/abs/2408.07199)
 
 ### 软件工程与系统架构 (SE/Systems)
 *   **SWE-Search: Enhancing Software Agents with Monte Carlo Tree Search and Iterative Refinement** (ICLR 2025)
     
-    创新性地将蒙特卡洛树搜索（MCTS）与大语言模型软件开发智能体深入融合，在代码库导航和错误自动修复 (Issue Resolution) 任务中实现了惊人优化。
+    将蒙特卡洛树搜索（MCTS）与大语言模型软件开发智能体结合，提升代码库导航与自动化 Issue 修复效果。
 
     [arXiv: 2410.20285](https://arxiv.org/abs/2410.20285)
 
 ### 可信度、安全与压力评估 (Trustworthiness & Safety)
 *   **Why Agents Compromise Safety Under Pressure** (Jiang et al., 2026)
 
-    首个提出“智能体压力 (Agent Pressure)”概念的研究，探讨在非主动恶意攻击的复杂真实交互下，任务压力与环境反馈如何导致智能体产生安全妥协行为，为构建可靠的可信 Agent 提供了全新的分析维度。
+    首个系统提出“智能体压力 (Agent Pressure)”概念的研究，探讨在非恶意对抗的日常压力与环境摩擦下，智能体产生安全妥协行为的成因与评测方式。
 
     [arXiv: 2603.14975](https://arxiv.org/abs/2603.14975)
 
 *   **AgentHarm: A Benchmark for Measuring Harmfulness of LLM Agents** (ICLR 2025)
     
-    评估工具型 Agent 执行有害任务的能力，以及拒绝与攻击条件下的表现。它与证据缺失、正常任务效用和环境权限测试关注不同问题；特定任务集不覆盖全部部署风险。
+    面向工具调用型智能体的有害任务与对抗鲁棒性评测基准。
 
     [arXiv: 2410.09024](https://arxiv.org/abs/2410.09024)
 

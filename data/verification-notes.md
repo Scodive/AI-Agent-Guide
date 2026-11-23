@@ -206,3 +206,27 @@
 2026-11-16重开所引MCP[工具规范](https://modelcontextprotocol.io/specification/2025-11-25/server/tools)错误处理/安全段与[安全实践](https://modelcontextprotocol.io/docs/2025-11-25/tutorials/security/security_best_practices)混淆代理/令牌透传段。保留协议错误与isError区别，权限由服务器/执行环境落实；仅刷新双语README该段访问核对日期，未做历史差异比较或最新版协议全面审计。标在URL上的版本不是固定内容哈希。Codex两架构页仍沿用11-02，其余产品资料未重开，不改产品业务或权限。
 
 只读核对独立网站同步脚本仍读取CSV与阅读路线/Harness/RSI/精选；本期纯函数解析/MDX编译检查与实际同步分开。GitHub网站仓库main的来源清单记录b9c42ee、2026-11-10、89篇；本地网站来源清单仍为5ff34a4/86篇，已过时，不能据本地快照推生产状态。本期未运行同步、写入网站或部署。
+
+## 2026-11-23 来源与协议核验
+
+核验日期2026-11-23；日期按arXiv UTC历史，收录预印本不代表正式发表或独立复现。以下全文阅读指研究方法、主要实验和局限，不声称审计全部附录代码或复现全部数据。范围见[本周报告](weekly-reviews/2026-11-23.md)，候选去重与暂缓见[候选日志](candidate-log.md#2026-11-23-周次候选与复查)。
+
+### 新增与修订
+
+- **Intent Contracts / 2611.24025v1**：Ziyuan Wang、Genliang Zhu、Xiaobo Chen、Chu Wang；首交2026-11-18 08:14:22 UTC。读[全文](https://arxiv.org/html/2611.24025v1)§2机制、§3设计、结果与限制。规划器无直接工具，契约包含目标、用户原句与范围；校验代码后受信模型写一次调用。受信仅是遵循用户的假设，不是正确性保证；其视野不含环境/工具输出，歧义实体选择仍由规划器影响。范围检查不能覆盖任意shell写入，实验关闭出站命令检查。AmPermBench四类取三类、96提示来自16模板，每条件单次；另10单文件和8多文件任务各三次。原96提示契约与盲审均10次未授权，补清歧义环境后状态变更运行中错误目标占40–49%，不能推成安全改善；27/30对16/30是特定捆绑任务完成比较。单模板相关、未校正多比较、置信区间/配对检验仅描述；服务中断运行丢弃重跑另记，非静默成功筛选。原文关联[作者代码](https://github.com/zwang-devv/intent-contracts)，README标题/运行记录相符，未执行，未固定发布版本。
+- **Safe Personal RSI / 2611.23651v1**：Jiapeng Pei、Yuhang Yao、Sitan Liu、Hanxin Chen、Hao Li、Guogeng Li、Jiapei Liu、Ruijie Chen、Hongshan Lin、Yang Mo、Tianyu Shi、Shangding Gu；首交11-18 00:15:38 UTC。读[全文](https://arxiv.org/html/2611.23651v1)更新对象、诊断/修复、实验设计、确认结果、运行时探针与讨论。权重/运行时/工具固定，两个预设风险编辑，至多两次修复，经验门槛是风险≤0.1且不劣于父版、效用点估计通过，不是统计安全保证。29例中16开发（15攻击+1授权控制）、13循环外攻击已用于基准开发；三模型/两轮控制接收，确认145运行=140攻击+5控制；修复87=84+3，安全完成分母87。20/21拒收是重复更新尝试，模板修复未获确认；Luna一个修复与宽泛手写授权规则同样表现，不能由此声称自动规则发现优于强静态。Qwen迁移比较用更强攻击及较窄凭据规则，不是跨模型同条件优势。搜索/修复费未计入每任务效用，仅一个授权控制限制误拒识别。草稿模式/模拟外部服务，无真实发送或交易。单条行程删除后来源/会话保留，11分钟真实空闲后再提取；独立主体级遗忘路径未测。OAuth本地分发检查缺口仅所测快照，模拟提供者403阻止写入；不是当前产品漏洞或修复验证。未确认本工作专属作者代码，CSV留空。
+- **How Much Should an Agent Remember? / 2611.26361v1**：K. R. Jayaram、Vatche Isahagian、Aswath Vaithinathan Aravindan、Vinod Muthusamy、Punleuk Oum、Gaodan Fang、Michal Ulewicz、Gegi Thomas、Evelyn Duesterwald；首交11-19 16:29:16 UTC。读[全文](https://arxiv.org/html/2611.26361v1)流水线、AppWorld协议、工程教训、CUGA和生产案例。成功/失败轨迹都提炼，源任务聚类内合并，累计支持数与未覆盖条目保留；阈值选取不是删除，出现次数不是正确性或新鲜度。AppWorld test_normal168题，指定比较test_challenge417题，8基线/6记忆模型；训练/开发均用于挖掘，无独立配置选择集，配置比较发生在test_normal，主表有最佳配置选择且同时列预先固定的全量条件。多数单次、部分两次，不能当独立确认的剂量定律。CUGA早期50题无效试验发现写入钩子未调用，不能当有记忆负结果；修复后GPT-4.1/两个基准各三次，retail40测试/74训练，约两题差不能确认效应大小。GLM两次/臂有增益但token多36%，不写成更快。不同ACE框架基线不同，只比较各自增量。产品收据输入不同，是定性案例。原文关联[altk-evolve](https://github.com/AgentToolkit/altk-evolve)，工具库不等于完整冻结实验；作者自报IAAI 2027 Oral尚未核对正式会议录，不登记为已核实接收。
+- **Agent Meltdowns / 2605.19149v2**：Rishi Jha、Harold Triedman、Arkaprabha Bhattacharya、Vitaly Shmatikov；首交05-18 22:03:38 UTC，v2修订11-18 22:34:53 UTC。本周较早补收，读[v2](https://arxiv.org/html/2605.19149v2)§3–4故障与测量、§5结果、§6讨论/限制；未比v1/v2，不归因哪些结果本周新增。LD_PRELOAD/MITMProxy在Docker注入七类故障，四主Harness八模型，另Claude Code有限试验。汇总1297/2000故障运行含计划/尝试/执行不同生命周期，不是成功实施危害的分母。主要LLM分类有人工60例审查、260行为核对及150轨迹跨模型检查，不能消除标签误差；406成功无故障轨迹的低误报检查不代表所有无故障运行。部分有广权限/passwordless sudo，非产品默认；模型预算不齐，轨迹长度相关不构成因果。原文关联[作者任务包](https://github.com/htried/meltdowns)，未运行或确认完整冻结实验镜像。
+- **H2E / 2611.16246v3**：Jinze Tao、Yuxiao Han、Kangkang Dong、Yancong Wei、Xiaojun Zhu、Bokui Chen、Houde Liu；首交11-12 03:42:58 UTC，v2 11-16 14:35:40、v3 11-17 07:52:30 UTC。对照[v1](https://arxiv.org/html/2611.16246v1)与[v3](https://arxiv.org/html/2611.16246v3)机制、实验与附录有关协议；arXiv注明v2新增NavRAG/恢复，未隔离v2→v3差异。第二阶段从首轮执行失败的216状态取648次尝试，保留435成功恢复会话，与首轮/DART/R2R数据混合再训；不能把附录另有可用步统计与648尝试混为同一分母。REVERIE3189题/10场景、NavRAG6932题；特定偏航恢复定义以至少2米等条件筛选，不是全部失败。100题/26场景教师比较使用另一个63会话蒸馏设置，非主2395+435配方直接对比。861题验证子集参与LoRA配置选择，跨方法输入/样本不同；仍单VLA/规划器、仿真监督，不能推真机/GUI。代码/适配器/会话承诺接收后发布，未核验仓库，留空。CSV只改机制、实验、结论、局限、核验日期、来源状态六项，其余原字段保留。
+
+### 暂缓与元数据级复查
+
+OpenKAGE（Wenhao Yuan、Longhui Yuan、Zexi Jia、Ningzhe Shi、Jingwei Li、Shipeng Cen、Pengcheng Luo、Jie Zhou、Jinchao Zhang，2611.24302v1，11-18 12:11:56 UTC）与Context as a Resource（Xufei Tian、Han Hu、Wenli Du，2611.26346v1，11-19 16:19:56 UTC）只完成原始记录/摘要；虽下载HTML，不代表已阅读方法。后者所链接dsh-superagent-prototype不确认为ClonAct作者实现。AgentAbstain（Xun Liu、Yi Evie Zhang、Vira Kasprova、Parisa Rabbani、Pardis Sadat Zahraei、Tianyu Zhang、Ali Ebrahimpour-Boroojeny、Varun Chandrasekaran，2607.10059，07-11首交、11-18 v2）也仅记录/摘要，不采用其性能或抗污染宣传；全文协议待核验。三者去留理由见候选表。
+
+CoReMem与drydock仍v1，StateGraph与Reglos仍v1，本期仅原始记录元数据复查，不刷新其旧全文核验日期，不表示原有协议缺口已补齐。旧Architecture Cost-Success的12/13 SOP与汇总冲突未重核，维持暂缓；其他历史候选也未全部追踪，不称本周领域完整覆盖。
+
+### 官方接口与独立网站来源
+
+重开MCP[2025-11-25工具规范](https://modelcontextprotocol.io/specification/2025-11-25/server/tools)错误/安全段：工具执行错误、协议错误与不可信注解分别处理；未完整复审最新规范，未刷新所有官方资料日期。Codex两架构页沿用11-02，其余日期不变。
+
+只读检查独立网站同步脚本：来源是data/papers.csv及docs下reading-path/harness/rsi/monthly-picks四页，README/index不是该五文件流水线直接输入。网站仓库main来源清单本期读取为1af5f68dab65fe06be0eb9e6565ef1669a776c80、2026-11-16、92条；这纠正上周尚未同步的历史状态，但清单不是浏览器生产上线验证。本期只做内存转换/编译，不运行同步、不写网站、不部署；96条仍为本地候选。

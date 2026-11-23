@@ -235,3 +235,22 @@
 | [Reglos](https://arxiv.org/abs/2611.06049) | v1 2026-11-04 06:56:04，未变 | 上期待核验，原始记录未见修订；冻结前后接受规则与撤回/物理删除问题沿用上期，不据标题宣称已证明RSI。 |
 
 AgentSSL、Skill Adapter、Cortex-FL等只在列表发现标题，尚未形成原始记录证据卡，不计上述15个已登记编号。本期未完成EnvOS/SPLICE/EpiAgent、WASP-Mem/MEMOIR等积压全文核验；查到新论文不等于清空旧问题。
+
+## 2026-11-23 周次候选与复查
+
+窗口为2026-11-16至11-22（UTC提交/修订），去重后实际处理12个编号：新增4（其中3篇本周首交、1篇5月工作本周修订的早期补收），旧条目正文修订1，暂缓3，已收录仅元数据复查2，既有待审仅元数据复查2。有限检索，不代表覆盖全周全部论文。全文阅读与摘要筛选分开，详细过程见[周报](weekly-reviews/2026-11-23.md)。
+
+| 标题 / 编号与原始记录 | 首交；本次版本 | 决定及理由 |
+| --- | --- | --- |
+| [Intent Contracts: Taking Tools Away from Agents](https://arxiv.org/abs/2611.24025) | 11-18；v1 | 新增。读方法、三类96提示比较及附加文件任务、限制；补声明/授权/环境证据的区分。未授权动作未优于盲审，非通用沙箱；作者代码已由原文关联，未运行。 |
+| [Safe Personal RSI: Evaluating and Repairing Personal-Agent Updates](https://arxiv.org/abs/2611.23651) | 11-18；v1 | 新增。读提示更新、诊断/修复、确认协议与运行时探针；补父版本保留与强静态规则对照。已知攻击族与少量授权控制限制外推；未确认本工作代码。 |
+| [How Much Should an Agent Remember? Deployment Lessons from Self-Distilled Memory for LLM Agents](https://arxiv.org/abs/2611.26361) | 11-19；v1 | 新增。读教训合并、来源/支持计数、AppWorld和CUGA试验与部署教训；补写入回读。测试集比较配置、有限重复、不同生产输入不支持普适剂量或部署效应；原文关联altk-evolve工具库。 |
+| [Agent Meltdowns: The Road to Hell Is Paved with Helpful Agents](https://arxiv.org/abs/2605.19149) | 05-18；v2 11-18 | 早期补收。读v2方法、七类故障、分母与分类限制；补非攻击条件的越界恢复。未逐版比较，不把全部结果称本周新增；原文关联作者任务包，未运行。 |
+| [H2E](https://arxiv.org/abs/2611.16246) | 11-12；v2 11-16、v3 11-17 | 修订旧条目。对照v1/v3，新增第二导航基准与第二轮恢复数据改变原v1范围；去掉“单导航基准/未学会偏航恢复”的笼统旧概括。未隔离v2→v3差异，代码仍为承诺发布。 |
+| [OpenKAGE](https://arxiv.org/abs/2611.24302) | 11-18；v1 | 暂缓。只完成原始记录/摘要筛选，虽下载正文但未完成实验方法阅读；Minecraft经验/技能图的任务分母、模型预算、种子与反馈边界待核验，不据摘要采纳效果。 |
+| [Context as a Resource](https://arxiv.org/abs/2611.26346) | 11-19；v1 | 暂缓。只完成记录/摘要筛选；上下文单元、试验/合并机制有兴趣，协议未核验。摘要页关联dsh-superagent-prototype不能据此当作ClonAct专属作者实现，不登记代码。 |
+| [AgentAbstain: Do LLM Agents Know When Not to Act?](https://arxiv.org/abs/2607.10059) | 07-11；v2 11-18 | 较早候选暂缓。仅原始记录/摘要，263配对任务的生成与标注、四Harness预算及should-act效用尚未读透；不据摘要将其称完整弃权能力证明。 |
+| [CoReMem](https://arxiv.org/abs/2611.17316) | 11-12；仍v1 | 已收录，仅复查元数据，无重复新增或刷新旧全文日期；持续失效/删除仍是待补解释，不宣称已解决。 |
+| [drydock-eval](https://arxiv.org/abs/2611.16485) | 11-12；仍v1 | 已收录，仅复查元数据；保留上周筛选与确认分离的路线，不把未确认写成方法无效。 |
+| [StateGraph](https://arxiv.org/abs/2611.02912) | 11-02；仍v1 | 既有待审，仅复查元数据；无本周新证据解决协议缺口，不纳入。 |
+| [Reglos](https://arxiv.org/abs/2611.06049) | 11-04；仍v1 | 既有待审，仅复查元数据；不借Safe Personal RSI的接受门实验替代本工作的核验，不纳入。 |

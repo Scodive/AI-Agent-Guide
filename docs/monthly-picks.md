@@ -2,7 +2,7 @@
 
 **截至 2026-10-26 人工选读 10 篇。**九篇在十月首次提交，Incident-Arena 首次提交于 9 月 30 日。本页围绕“经验怎样进入系统、运行机制怎样被验证、交付怎样验收”组织阅读，兼顾本月较早工作；不按发布时间或榜单排名。均按预印本阅读，效果为作者报告，未独立复现。
 
-11 月 16 日周审查的CoReMem、H2E与drydock-eval扩展论文见[本期报告](https://github.com/Scodive/AI-Agent-Guide/blob/main/data/weekly-reviews/2026-11-16.md)与[论文库](papers.md)。本页保留十月已完成的十篇编辑选择；十一月精选按每月最后一周的SOP更新。
+11 月 23 日周审查的意图契约、提示更新接受门、记忆部署经验、Agent Meltdowns 早期补收与 H2E 修订见[本期报告](https://github.com/Scodive/AI-Agent-Guide/blob/main/data/weekly-reviews/2026-11-23.md)与[论文库](papers.md)。本页保留十月已完成的十篇编辑选择；十一月精选按每月最后一周的SOP更新。
 
 | # | 论文 | 为什么本月读 | 证据与边界 |
 | --- | --- | --- | --- |

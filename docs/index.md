@@ -1,49 +1,31 @@
 # AI Agent 研究指南
 
-从研究问题出发阅读 Agent 论文。导读解释概念与脉络；[论文库](papers.md)保存可筛选、可核验的核心条目。
-
-> 核心库每周人工维护，**不承诺收录每天所有新论文**。当前篇数及最近核验日期见[论文库](papers.md)。
+从研究问题出发系统学习 AI Agent。本目录提供阅读路线、专题拆解与可核验的论文索引；如果你想进一步体验**成体系的中文课程、源码精读与配套代码实验包**，欢迎访问配套网站 **[AI 学习笔记（ai-notes）](https://ai-notes-red-two.vercel.app/)**。
 
 ## 新手阅读路线
 
-先读综述和架构，再看一个完整的“推理—行动”循环，最后进入你关心的环境与评估。推荐的 10 个阅读步骤见[新手阅读路线](reading-path.md)。
+先读综述和架构，再看一个完整的“推理—行动”循环，最后进入你关心的环境与评估。推荐的 10 个阅读步骤见 [新手阅读路线](reading-path.md)。
 
 ## 按问题探索
 
 | 我想了解的问题 | 从这里开始 |
 | --- | --- |
-| Agent 如何规划并使用工具？ | [规划与推理、工具与行动](papers.md) |
-| Coding Agent 的模型、工具和运行环境怎样协同工作？ | [Agent Harness 与 Codex](harness.md) |
-| Agent 如何记住并利用过去的经验？ | [记忆与检索](papers.md) |
-| Agent 怎样改进自己的提示词、逻辑或代码？ | [RSI 与自我改进](rsi.md) |
-| Agent 如何操作界面与代码仓库？ | [感知与 GUI、代码智能体](papers.md) |
-| 多 Agent 协作到底解决什么问题？ | [多智能体](papers.md) |
-| 如何评估能力、安全和自我演进？ | [评估与安全、自我演进](papers.md) |
+| Agent 如何规划并使用工具？ | [论文库 · 规划与工具](papers.md) |
+| Coding Agent 的模型、工具和运行环境怎样协同工作？ | [Agent Harness 与 Coding Agent](harness.md) |
+| Agent 如何记住并利用过去的经验？ | [阅读路线 · 保存、共享与学习](reading-path.md#保存共享和学习分别改变了什么) |
+| 怎样判断提示词更新是否值得采用？ | [RSI · 提示更新的接受门](rsi.md#提示更新的接受门与静态规则对照) |
+| Agent 如何操作界面与代码仓库？ | [论文库 · GUI 与代码智能体](papers.md) |
+| 多 Agent 协作到底解决什么问题？ | [论文库 · 多智能体](papers.md) |
+| 如何区分授权、攻击和普通执行故障？ | [阅读路线 · 信息不足、攻击与执行错误](reading-path.md#信息不足攻击和执行错误怎样区分) |
 
-仓库内的论文库提供静态表格，展示网站从 `data/papers.csv` 读取论文并负责搜索与筛选。每条记录列出实验环境与指标、主要结论、局限和核验日期。
+本周补意图与授权、提示更新的接受门、记忆写入验证，并修订 H2E 的恢复实验范围；见[11 月 23 日周报](../data/weekly-reviews/2026-11-23.md)。
 
-## 本月精选
+## 专题与精选
 
-最近一期是[2026 年 10 月编辑精选](monthly-picks.md)，共十篇，从记忆与经验走到运行验证、证据恢复和交付验收。[九月十篇已存档](archive/monthly-picks-2026-09.md)。
-
-**2026-11-16 周审查（已获批提交）：**目录89→92篇；新增[CoReMem](papers.md#paper-2611.17316)、[H2E](papers.md#paper-2611.16246)与[drydock-eval扩展论文](papers.md#paper-2611.16485)，连接后续任务记忆价值、经验蒸馏与冻结确认。15个候选/复查编号的去留和11方向审查见[本期报告](../data/weekly-reviews/2026-11-16.md)。维护者已批准本期提交与推送；网站同步及上线另行核验，十月精选保留。
-
-**2026-11-09 周审查（11月10日已提交并推送）：**目录86→89篇；新增[Meta²](papers.md#paper-2611.05139)、[ToolSpace](papers.md#paper-2611.05036)，较早补收11月修订的[Harness the Memory](papers.md#paper-2608.15008)。连接修改生命周期、合成环境检查和记忆比较，收窄两篇经典GUI表述并跟进Terminal-RSI v3。详见[本期报告](../data/weekly-reviews/2026-11-09.md)。该期已在提交b9c42ee中，网站仓库来源清单已于11月10日同步89篇；生产上线未据此确认，十月精选保留。
-
-**2026-11-02 周审查（已纳入既有提交）：**目录从 81 增至 86 篇：本周的 [VeriCUA](papers.md#paper-2610.40578)、[DynaRev](papers.md#paper-2610.40133)、[Prefix Executability](papers.md#paper-2610.40444)，较早补收 [LEASH](papers.md#paper-2610.22280) 与经典 [Reflexion](papers.md#paper-2303.11366)；另跟进 Terminal-RSI 的 10 月 25 日 v2。导读连接当前目标、可执行过程、持久结果与反思记忆，并分清 Codex 托管 API/本地集成。详见[完整报告](../data/weekly-reviews/2026-11-02.md)。该期内容已在既有提交5ff34a4，网站仓库来源快照为86条；生产上线未据此确认。
-
-**2026-10-26 周审查（已获批）：**库从 76 增至 81 篇：本周的 [MCCL](papers.md#paper-2610.29357)、[Muffin](papers.md#paper-2610.31355)、[EpiSEM-Bench](papers.md#paper-2610.31650)，较早补收的 [ReWOO](papers.md#paper-2305.18323)、[Doc2Harness](papers.md#paper-2610.20344)；AgentPerturb 核对 v2，不重复计数。阅读路线按问题整合，十月十篇精选替换九月入口。详见[完整报告](../data/weekly-reviews/2026-10-26.md)。本期源文件更新已获维护者批准，网站同步与部署另行核验。
-
-**2026-10-03 周更：**论文库新增 5 篇，含 3 篇 10 月 1 日提交的新论文和 2 篇 9 月遗漏补收。先从 [VISTA](papers.md#paper-2610.02200)、[Mingbird](papers.md#paper-2610.02001)了解视觉和小模型 Harness，再用 [Beyond the Model](papers.md#paper-2609.32459)比较组件效果；[RAC](papers.md#paper-2610.00980)与 [Self-Healing Harness](papers.md#paper-2609.24130)分别讨论动态协作和持久规则修改。它们均按预印本收录。
-
-**2026-10-19 周审查（已获批）：**库从 72 增至 76 篇。本周的 [AgentPerturb](papers.md#paper-2610.21624)、[FDE-Gym](papers.md#paper-2610.22350)、[Terminal-RSI](papers.md#paper-2610.22192)及较早补收 [MASS](papers.md#paper-2610.12176)连接交互恢复、需求验收和参数学习；增加写入超时例子，更正两篇综述标题及架构“标准”措辞。详见[本周报告](../data/weekly-reviews/2026-10-19.md)。本期源文件更新已获维护者批准，网站同步与上线另行核验。
-
-**2026-10-12 周审查（已获批）：**库从 67 增至 72 篇。本周新提交的 [HarnessSecurity-Bench](papers.md#paper-2610.07639)与[时间跨度统计审查](papers.md#paper-2610.12466)补安全/效用和指标解释；较早补收 [Agentless](papers.md#paper-2407.01489)、[Component Routing](papers.md#paper-2610.01787)、[VERSE](papers.md#paper-2610.02616)，连接固定流程、经验去向和改进器自改。CMP 跟进 10 月 8 日 v3，不重复入库。详见[本周完整报告](../data/weekly-reviews/2026-10-12.md)；源数据修改已获维护者批准，网站上线另行核验。
-
-**2026-10-05 周审查：**库从 62 增至 67 篇：新增近期的 [CMP](papers.md#paper-2610.02070)、[Incident-Arena](papers.md#paper-2610.00648)，补收 [MemGPT](papers.md#paper-2310.08560)、[LATS](papers.md#paper-2310.04406)、[τ²-Bench](papers.md#paper-2506.07982)。重点修订记忆可见性、搜索反馈、RSI 分类、MCP 权限和多 Agent 协作边界，详见[完整周报](../data/weekly-reviews/2026-10-05.md)。该期源文件已于 10 月 6 日获批提交；不再标作待审核。
+- [完整论文库（96 篇）](papers.md) · [原始 CSV](../data/papers.csv)
+- [最近一期月度精选](monthly-picks.md) · [历史月度存档](archive/monthly-picks-2026-09.md)
+- [每周研究审查记录](../data/weekly-reviews/2026-11-23.md) · [收录标准与更新 SOP](update-sop.md)
 
 ## 保留的完整指南
 
 [中文完整指南](../README.md) · [English guide](../README_EN.md)
-
-新论文建议按[收录标准与每周更新 SOP](update-sop.md)提交。核心库中的简短结论是阅读导航，不替代原论文，也不表示独立复现。
